@@ -208,9 +208,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .bossx-ai-typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .bossx-ai-typing-dot:nth-child(3) { animation-delay: 0.4s; }
 @keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-8px); opacity: 1; } }
-.bossx-ai-quick-replies { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px 16px; flex-shrink: 0; max-height: 120px; overflow-y: auto; }
-.bossx-ai-quick-btn { padding: 7px 12px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.4); border-radius: 16px; color: #7DF9FF; font-size: 12px; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
-.bossx-ai-quick-btn:hover { background: rgba(0, 229, 255, 0.2); border-color: #00E5FF; color: #E0FFFF; box-shadow: 0 0 12px rgba(0, 229, 255, 0.4); transform: translateY(-1px); }
 .bossx-ai-footer { border-top: 2px solid rgba(0, 229, 255, 0.3); padding: 12px; display: flex; gap: 8px; align-items: center; background: rgba(0, 8, 20, 0.6); flex-shrink: 0; }
 .bossx-ai-input { flex: 1; padding: 10px 14px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #fff; font-size: 13.5px; outline: none; transition: all 0.2s ease; }
 .bossx-ai-input:focus { border-color: #00E5FF; box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2), 0 0 15px rgba(0, 229, 255, 0.3); }
@@ -276,7 +273,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .sfi-stat-card { background: linear-gradient(145deg, #001233, #001845); border: 2px solid rgba(0, 229, 255, 0.2); border-radius: 0.75rem; padding: 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
 .sfi-stat-value { font-size: 1.5rem; font-weight: bold; color: #00E5FF; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
 .sfi-stat-label { font-size: 12px; color: #7DF9FF; margin-top: 4px; }
-/* 🔥 NEW: Settings & Referral styles */
 .settings-section { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03); }
 .settings-section h3 { color: #E0FFFF; font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
 .settings-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(0, 229, 255, 0.1); }
@@ -325,10 +321,8 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 </div>
 </div>
 </div>
-
 <!-- MAIN APP -->
 <div id="main-app" class="min-h-screen text-white flex main-container" style="display: none; background: #000814;">
-<!-- SIDEBAR -->
 <div id="sidebar" class="sidebar h-screen">
 <div class="p-3 border-b border-cyan-400/30">
 <div class="flex items-center justify-between">
@@ -393,8 +387,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 </a>
 </nav>
 </div>
-
-<!-- MAIN CONTENT -->
 <div class="flex-1 flex flex-col min-w-0">
 <header class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-b-2 border-cyan-400/30 px-4 py-3" style="box-shadow: 0 4px 20px rgba(0, 229, 255, 0.15);">
 <div class="flex items-center justify-between">
@@ -429,10 +421,8 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 </div>
 </div>
 </header>
-
 <main class="flex-1 overflow-auto">
 <div id="content" class="content-container space-y-4">
-
 <!-- DASHBOARD PAGE -->
 <div id="dashboard-page" class="page-content">
 <div class="bg-[#001233] border-2 border-cyan-400/30 rounded-xl p-3 overflow-hidden" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);">
@@ -572,7 +562,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 <!-- PRIVATE KEY PAGE -->
 <div id="private-key-page" class="page-content active">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-300/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -691,7 +680,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 <!-- DEPOSIT PAGE -->
 <div id="deposit-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -796,7 +784,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 <!-- WITHDRAWAL PAGE -->
 <div id="withdrawal-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-rose-500/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(255, 0, 110, 0.2);">
@@ -924,8 +911,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
-<!-- 🔥 EXCHANGE PAGE (FIXED: No memory leak) -->
+<!-- EXCHANGE PAGE -->
 <div id="exchange-page" class="page-content exchange-bg">
 <div class="exchange-card p-4 mb-4">
 <div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
@@ -1029,8 +1015,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
-<!-- 🔥 P2P PAGE (FIXED: Validasi username, dummy user list) -->
+<!-- P2P PAGE -->
 <div id="p2p-page" class="page-content exchange-bg">
 <div class="exchange-card p-6 mb-6">
 <div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
@@ -1095,8 +1080,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="p2p-history-content" class="overflow-x-auto"></div>
 </div>
 </div>
-
-<!-- 🔥 SOCIALFI PAGE (FIXED: Loading state) -->
+<!-- SOCIALFI PAGE -->
 <div id="socialfi-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between flex-wrap gap-4">
@@ -1152,8 +1136,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="sfi-feed"></div>
 </div>
 </div>
-
-<!-- 🔥 REFERRAL PAGE (FIXED: Dinamis dengan localStorage) -->
+<!-- REFERRAL PAGE -->
 <div id="referral-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between flex-wrap gap-4">
@@ -1227,8 +1210,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </ul>
 </div>
 </div>
-
-<!-- 🔥 TEAM DEVELOPER PAGE (FIXED: Avatar gradient untuk placeholder) -->
+<!-- TEAM DEVELOPER PAGE -->
 <div id="team-developer-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between flex-wrap gap-4">
@@ -1245,8 +1227,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="team-grid"></div>
 </div>
-
-<!-- 🔥 SETTINGS PAGE (FIXED: Fungsional penuh) -->
+<!-- SETTINGS PAGE -->
 <div id="settings-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between flex-wrap gap-4">
@@ -1395,7 +1376,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <h3><i data-lucide="info" class="w-5 h-5 text-cyan-400"></i>Tentang Aplikasi</h3>
 <div class="settings-row">
 <div><div class="settings-row-label">Versi</div></div>
-<div class="text-cyan-300 font-mono">v1.6.0</div>
+<div class="text-cyan-300 font-mono">v1.6.1</div>
 </div>
 <div class="settings-row">
 <div><div class="settings-row-label">Build</div></div>
@@ -1428,12 +1409,10 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 </div>
 </main>
 </div>
 </div>
-
 <!-- BOSSX AI AGENT -->
 <div id="bossx-ai-fab" class="bossx-ai-fab" onclick="toggleBossxAI()" title="BossX AI AGENT">
 <span class="bossx-ai-fab-icon">🤖</span>
@@ -1457,25 +1436,12 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 <div id="bossx-ai-body" class="bossx-ai-body"></div>
-<div id="bossx-ai-quick-replies" class="bossx-ai-quick-replies">
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Apa itu BossX?')">Apa itu BossX?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Apa itu Access Key?')">Access Key?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Bagaimana reward bekerja?')">Reward?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Bagaimana tokenomics BossX?')">Tokenomics?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Cara deposit?')">Deposit?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Cara withdrawal?')">Withdrawal?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Apa itu SocialFi?')">SocialFi?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Siapa team developer?')">Team?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Bagaimana roadmap BossX?')">Roadmap?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Bagaimana sistem referral?')">Referral?</button>
-</div>
 <div class="bossx-ai-footer">
 <button class="bossx-ai-clear-btn" onclick="clearBossxAIChat()" title="Hapus chat"><i data-lucide="trash-2" style="width:16px;height:16px;"></i></button>
 <input id="bossx-ai-input" type="text" class="bossx-ai-input" placeholder="Tanyakan seputar BossX..." onkeypress="handleBossxAIKey(event)" />
 <button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
 </div>
 </div>
-
 <script>
 // ============ UTILITY FUNCTIONS ============
 function showSuccessMessage(message) {
@@ -1555,7 +1521,6 @@ function showRegisterInfo() {
 alert('Fitur registrasi akan segera hadir!\nSilakan hubungi admin untuk pendaftaran.');
 return false;
 }
-
 // ============ STATE VARIABLES ============
 let currentPage = 'private-key';
 let activeTab = 'USDT';
@@ -1574,9 +1539,7 @@ let logInterval;
 let lastClaimTime = 0;
 let masaBerlaku = 40000000;
 let masaInterval;
-// 🔥 NEW: Exchange initialization flag (fix memory leak)
 let exchangeInitialized = false;
-
 const walletAddresses = {
 USDT: { address: 'TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM&color=00E5FF' },
 BOSSX: { address: 'TTfKjrU18mi223ukVmz6FMNgBkma13kVA3', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTfKjrU18mi223ukVmz6FMNgBkma13kVA3&color=00E5FF' }
@@ -1594,13 +1557,11 @@ USDT: [
 BOSSX: [
 { id: '4', amount: 1000.0, txHash: 'd4e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3', fromAddress: 'TAbcd456789012345678901234567890123', status: 'confirmed', timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), confirmationCount: 1 },
 { id: '5', amount: 500.0, txHash: 'e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4', fromAddress: 'TBcde567890123456789012345678901234', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '6', amount: 2000.0, txHash: 'f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
+{ id: '6', amount: 2000.0, txHash: 'f678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
 ]
 };
 const withdrawalHistory = { USDT: [], BOSSX: [] };
 const p2pHistory = [];
-
-// 🔥 NEW: Dummy P2P user list
 const P2P_USERS = [
 { username: '@alice_trader', name: 'Alice Trader', balance: 5000 },
 { username: '@bob_investor', name: 'Bob Investor', balance: 12000 },
@@ -1610,7 +1571,6 @@ const P2P_USERS = [
 { username: '@fiona_dev', name: 'Fiona Dev', balance: 15000 },
 { username: '@george_analyst', name: 'George Analyst', balance: 7800 }
 ];
-
 function initializeMainApp() {
 try {
 updateClock();
@@ -1634,7 +1594,6 @@ setTimeout(() => showSuccessMessage('Selamat datang di BossX Crypto Exchange Pla
 console.error('Error di initializeMainApp:', err);
 }
 }
-
 function updateClock() {
 const now = new Date();
 const timeOptions = { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -1665,7 +1624,6 @@ if (hours < 24) return `${hours} jam lalu`;
 if (days < 7) return `${days} hari lalu`;
 return new Date(timestamp).toLocaleDateString('id-ID');
 }
-
 function showPage(pageId) {
 document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
 const targetPage = document.getElementById(pageId + '-page');
@@ -1698,7 +1656,6 @@ if (typeof wsDepth !== 'undefined' && wsDepth) { wsDepth.close(); wsDepth = null
 if (typeof wsTrades !== 'undefined' && wsTrades) { wsTrades.close(); wsTrades = null; }
 }
 }
-
 const logTemplates = [
 '[WARNING] High temp on GPU#0: 79°C | Fan: 90%',
 '[INFO] GPU#0: 48.4 MH/s | Temp: 78°C | Fan: 89%',
@@ -1735,7 +1692,6 @@ logOutput.appendChild(logEntry);
 while (logOutput.children.length > 100) logOutput.removeChild(logOutput.firstChild);
 logOutput.scrollTop = logOutput.scrollHeight;
 }
-
 function updateMasaBerlaku() {
 const el = document.getElementById('masa-berlaku');
 if (!el) return;
@@ -1896,7 +1852,6 @@ if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() === 0) {
 if (isValidationRunning) forceStopValidation('otomatis pada jam 06:00');
 }
 }
-
 // ============ PRIVATE KEY FUNCTIONS ============
 const PK_STORAGE_KEY = 'bossx_private_keys';
 const PK_FEE = 1;
@@ -2120,7 +2075,6 @@ const maxStake = Math.max(0, bossxBalance - PK_FEE);
 document.getElementById('pk-stake-amount').value = maxStake.toFixed(9);
 updatePKSummary();
 }
-
 // ============ DEPOSIT FUNCTIONS ============
 function updateDepositContent() {
 const wallet = walletAddresses[activeTab];
@@ -2193,7 +2147,6 @@ case 'failed': return 'Gagal';
 default: return 'Pending';
 }
 }
-
 // ============ WITHDRAWAL FUNCTIONS ============
 function updateWithdrawalContent() {
 const balance = activeWithdrawalTab === 'USDT' ? usdtBalance : bossxBalance;
@@ -2338,8 +2291,7 @@ case 'failed': return 'Gagal';
 default: return 'Diproses';
 }
 }
-
-// 🔥 ============ P2P FUNCTIONS (FIXED: Validasi username, user list) ============
+// ============ P2P FUNCTIONS ============
 function updateP2PContent() {
 updateBalanceDisplays();
 updateP2PStatistics();
@@ -2414,15 +2366,13 @@ const totalReceived = p2pHistory.filter(t => t.type === 'in').reduce((sum, t) =>
 document.getElementById('p2p-total-sent').textContent = formatAmount(totalSent) + ' BossX';
 document.getElementById('p2p-total-received').textContent = formatAmount(totalReceived) + ' BossX';
 }
-
-// 🔥 ============ REFERRAL FUNCTIONS (FIXED: Dinamis dengan localStorage) ============
+// ============ REFERRAL FUNCTIONS ============
 const REF_STORAGE_KEY = 'bossx_referral_data';
 function getReferralData() {
 try {
 const data = localStorage.getItem(REF_STORAGE_KEY);
 if (data) return JSON.parse(data);
 } catch (e) {}
-// Generate default
 const defaultData = {
 code: 'REF-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
 list: [],
@@ -2437,7 +2387,6 @@ try { localStorage.setItem(REF_STORAGE_KEY, JSON.stringify(data)); } catch (e) {
 function initReferral() {
 const data = getReferralData();
 document.getElementById('referral-code-display').textContent = data.code;
-// Seed demo referrals jika kosong
 if (data.list.length === 0) {
 const demoRefs = [
 { id: '1', username: '@alice_trader', name: 'Alice Trader', purchaseAmount: 100, reward: 5, timestamp: Date.now() - 5 * 86400000, status: 'active' },
@@ -2520,8 +2469,7 @@ link.href = walletAddresses[activeTab].qrCode;
 link.click();
 showSuccessMessage(`QR Code ${activeTab} berhasil didownload!`);
 }
-
-// 🔥 ============ TEAM DEVELOPER (FIXED: Avatar gradient untuk placeholder) ============
+// ============ TEAM DEVELOPER ============
 const TEAM_MEMBERS = [
 { name: 'Fery Muliawan', role: 'CEO (Chief Executive Officer)', desc: 'Pendiri dan visioner BossX.', image: 'https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png', social: { twitter: '#', linkedin: '#' } },
 { name: 'Mr.Ramadhan', role: 'CFO (Chief Financial Officer)', desc: 'Mengawasi operasi harian & keuangan.', image: 'https://i.ibb.co.com/xKDSrKYw/Picsart-25-10-03-12-44-06-927.png', social: { twitter: '#', linkedin: '#' } },
@@ -2547,8 +2495,7 @@ return `<div class="exchange-card p-6 text-center relative overflow-hidden"><div
 }).join('');
 lucide.createIcons();
 }
-
-// 🔥 ============ SETTINGS FUNCTIONS (FIXED: Fungsional penuh) ============
+// ============ SETTINGS FUNCTIONS ============
 const SETTINGS_KEY = 'bossx_settings';
 function getSettings() {
 try {
@@ -2589,8 +2536,7 @@ keysToKeep.forEach(k => { if (kept[k]) localStorage.setItem(k, kept[k]); });
 showSuccessMessage('Data lokal berhasil dihapus! Halaman akan di-reload.');
 setTimeout(() => location.reload(), 1500);
 }
-
-// 🔥 ============ EXCHANGE FUNCTIONS (FIXED: No memory leak) ============
+// ============ EXCHANGE FUNCTIONS ============
 let currentSymbol = 'BTCUSDT';
 let wsDepth = null;
 let wsTrades = null;
@@ -2598,7 +2544,6 @@ function isBossXPair(symbol) {
 return symbol.toUpperCase() === 'BOSSXUSDT';
 }
 function initExchangePage() {
-// 🔥 FIX: Only setup pair buttons once
 if (!exchangeInitialized) {
 document.querySelectorAll('.pair-button').forEach(btn => {
 btn.onclick = function() {
@@ -2794,7 +2739,6 @@ function updateAvbl() {
 document.getElementById('buy-avbl').textContent = usdtBalance.toFixed(2) + ' USDT';
 document.getElementById('sell-avbl').textContent = bossxBalance.toFixed(9) + ' BossX';
 }
-
 // ============ EVENT LISTENERS ============
 function setupEventListeners() {
 const toggleBtn = document.getElementById('toggle-sidebar');
@@ -2856,7 +2800,6 @@ if (!e.target) return;
 if (e.target.id === 'max-withdrawal') setMaxWithdrawal();
 if (e.target.id === 'refresh-withdrawal-history') { showSuccessMessage('History withdrawal berhasil diperbarui!'); updateWithdrawalHistory(); }
 if (e.target.id === 'p2p-max') setMaxP2P();
-// Close P2P suggestions when clicking outside
 if (!e.target.closest('#p2p-username') && !e.target.closest('#p2p-user-suggestions')) {
 const suggestions = document.getElementById('p2p-user-suggestions');
 if (suggestions) suggestions.classList.remove('show');
@@ -2893,7 +2836,6 @@ if (priceInput) priceInput.style.display = e.target.value === 'market' ? 'none' 
 }
 setInterval(updateClock, 1000);
 setInterval(checkSixAMStop, 1000);
-
 // ============================================
 // SOCIALFI MODULE
 // ============================================
@@ -2950,7 +2892,6 @@ return sub;
 }
 function renderSocialFi() {
 const feed = document.getElementById('sfi-feed');
-// 🔥 FIX: Show loading state
 if (feed) {
 feed.innerHTML = `<div class="sfi-loading"><div class="sfi-loading-spinner"></div><div>Memuat feed SocialFi...</div></div>`;
 }
@@ -3147,7 +3088,6 @@ const div = document.createElement('div');
 div.textContent = text;
 return div.innerHTML;
 }
-
 // ============================================
 // BOSSX AI AGENT - KNOWLEDGE BASE (35+ ENTRI)
 // ============================================
@@ -3190,7 +3130,7 @@ const BOSSX_AI_KB = [
 { keywords: ['multi chain', 'ekspansi', 'future plan', 'rencana masa depan'], question: 'Apakah BossX akan ekspansi ke blockchain lain?', answer: '<strong>Ya!</strong> BossX memiliki rencana ekspansi multi-chain.<br><br><strong>🗺️ Roadmap Ekspansi:</strong><br>• <strong>Q1 2026:</strong> Desain multi-chain<br>• <strong>Q4 2026:</strong> Ekspansi multi-chain<br>• <strong>Q3-Q4 2027:</strong> Ekspansi global ke market baru<br><br><strong>💡 Tujuan:</strong><br>• Meningkatkan aksesibilitas<br>• Diversifikasi risiko<br>• Memperluas ekosistem BossX<br>• Integrasi dengan blockchain populer lain<br><br><strong>⚠️ Catatan:</strong> Saat ini BossX masih fokus di jaringan TRON (TRC20). Ekspansi multi-chain akan diumumkan secara resmi.' }
 ];
 const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>belum tersedia di database saya</strong>. Saya dapat membantu menjawab pertanyaan seputar:<br><br>• Tentang BossX & jaringan TRON<br>• Access Key & Masternode<br>• Mekanisme Reward & Auto-Claim<br>• Tokenomics & Alokasi Dana<br>• Deposit & Withdrawal<br>• Internal Market, P2P, SocialFi<br>• Referral & 7 Program Utama<br>• Team Developer & Roadmap<br>• Keamanan, Governance, Charity<br><br>Silakan coba pertanyaan lain atau hubungi admin@bossx.io untuk bantuan lebih lanjut.';
-const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX v1.6.<br><br>Silakan ketik pertanyaan Anda atau pilih <strong>quick reply</strong> di bawah untuk memulai!';
+const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX v1.6.1.<br><br>Silakan ketik pertanyaan Anda untuk memulai!';
 let bossxAIHistory = [];
 let bossxAIIsOpen = false;
 let bossxAIIsMinimized = false;
@@ -3359,7 +3299,8 @@ addBossxAIMessage('user', escapeHtml(text));
 bossxAIHistory.push({ role: 'user', content: escapeHtml(text) });
 saveBossxAIHistory();
 showBossxAITyping();
-const delay = 800 + Math.random() * 800;
+// 🔥 PERUBAHAN: Delay respons AI menjadi 10 detik (10000ms)
+const delay = 10000;
 setTimeout(() => {
 hideBossxAITyping();
 const match = findBossxAIAnswer(text);
@@ -3372,18 +3313,13 @@ saveBossxAIHistory();
 playBossxAISound();
 }, delay);
 }
-function sendQuickReply(text) {
-document.getElementById('bossx-ai-input').value = text;
-sendBossxAIMessage();
-}
 function handleBossxAIKey(event) {
 if (event.key === 'Enter') {
 event.preventDefault();
 sendBossxAIMessage();
 }
 }
-
-console.log('🚀 BossX Fixed Script dimulai');
+console.log('🚀 BossX v1.6.1 - AI Quick Reply Dihapus, Delay 10 detik');
 checkAuth();
 lucide.createIcons();
 </script>
