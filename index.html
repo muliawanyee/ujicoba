@@ -12,11 +12,20 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
 body { background: #000814; color: #ffffff; overflow-x: hidden; }
 :root {
---glacier-primary: #00E5FF; --glacier-bright: #00F5FF; --glacier-electric: #7DF9FF;
---glacier-ice: #E0FFFF; --glacier-frost: #B0E0E6; --glacier-arctic: #00B8D4;
---glacier-deep: #0097A7; --glacier-bg: #000814; --glacier-card: #001233;
---glacier-elevated: #001845; --glacier-border: #023E8A; --glacier-success: #00FFC8;
---glacier-error: #FF006E; --glacier-warning: #FFBE0B;
+--glacier-primary: #00E5FF;
+--glacier-bright: #00F5FF;
+--glacier-electric: #7DF9FF;
+--glacier-ice: #E0FFFF;
+--glacier-frost: #B0E0E6;
+--glacier-arctic: #00B8D4;
+--glacier-deep: #0097A7;
+--glacier-bg: #000814;
+--glacier-card: #001233;
+--glacier-elevated: #001845;
+--glacier-border: #023E8A;
+--glacier-success: #00FFC8;
+--glacier-error: #FF006E;
+--glacier-warning: #FFBE0B;
 }
 .login-page { min-height: 100vh; background: radial-gradient(ellipse at center, #001845 0%, #000814 50%, #000000 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
 .login-page::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, rgba(125, 249, 255, 0.1) 30%, transparent 70%); animation: rotate 30s linear infinite; }
@@ -40,6 +49,12 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .login-footer { text-align: center; margin-top: 2rem; color: #7DF9FF; font-size: 0.875rem; }
 .login-footer a { color: #00E5FF; text-decoration: none; font-weight: 600; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
 .login-footer a:hover { text-decoration: underline; color: #E0FFFF; }
+.gradient-bg { background: linear-gradient(to bottom, #001233, #000814); }
+.gradient-border { border: 2px solid rgba(0, 229, 255, 0.3); box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.05); }
+.hover-scale { transition: transform 0.2s ease-in-out; }
+.hover-scale:hover { transform: scale(1.02); }
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
 .sidebar { transition: width 0.3s ease-in-out; width: 14rem; min-width: 14rem; background: linear-gradient(180deg, #001233 0%, #000814 100%); border-right: 2px solid rgba(0, 229, 255, 0.2); box-shadow: inset -10px 0 30px rgba(0, 229, 255, 0.05); }
 .sidebar.collapsed { width: 4rem; min-width: 4rem; }
 .menu-item { transition: all 0.2s ease-in-out; border: 1px solid transparent; }
@@ -54,8 +69,10 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .stat-card:hover { border-color: rgba(0, 229, 255, 0.8); box-shadow: 0 0 30px rgba(0, 229, 255, 0.5), 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(0, 229, 255, 0.08); transform: translateY(-2px); }
 .corner-dot { position: absolute; width: 8px; height: 8px; background: radial-gradient(circle, #E0FFFF, #00E5FF); border-radius: 50%; opacity: 0; transition: opacity 0.3s ease; box-shadow: 0 0 10px #00E5FF, 0 0 20px #00F5FF; pointer-events: none; }
 .stat-card:hover .corner-dot { opacity: 1; animation: dotPulse 2s ease-in-out infinite; }
-.corner-dot.top-left { top: -4px; left: -4px; } .corner-dot.top-right { top: -4px; right: -4px; }
-.corner-dot.bottom-right { bottom: -4px; right: -4px; } .corner-dot.bottom-left { bottom: -4px; left: -4px; }
+.corner-dot.top-left { top: -4px; left: -4px; }
+.corner-dot.top-right { top: -4px; right: -4px; }
+.corner-dot.bottom-right { bottom: -4px; right: -4px; }
+.corner-dot.bottom-left { bottom: -4px; left: -4px; }
 @keyframes dotPulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 10px #00E5FF, 0 0 20px #00F5FF; } 50% { transform: scale(1.4); box-shadow: 0 0 15px #E0FFFF, 0 0 30px #00E5FF; } }
 .border-line { position: absolute; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
 .stat-card:hover .border-line { opacity: 1; }
@@ -111,12 +128,22 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .content-container { max-width: 100%; padding: 1rem; }
 .countdown-timer { font-family: 'Courier New', monospace; font-size: 1.1rem; font-weight: bold; color: #00FFC8; text-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 25px rgba(0, 255, 200, 0.5); }
 .auto-claim-timer { font-family: 'Courier New', monospace; font-size: 1rem; font-weight: bold; color: #00E5FF; text-shadow: 0 0 15px rgba(0, 229, 255, 0.8), 0 0 25px rgba(0, 229, 255, 0.5); }
+@keyframes glowingBorder { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+.glowing-border::before { content: ''; position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px; background: linear-gradient(45deg, #00E5FF, #E0FFFF, #7DF9FF, #00E5FF); background-size: 300% 300%; z-index: -1; border-radius: 26px; opacity: 0.8; filter: blur(2px); animation: glowingBorder 6s linear infinite; box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); pointer-events: none; }
+@keyframes messageIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+.message-animate { animation: messageIn 0.4s ease-out forwards; }
+.custom-scroll::-webkit-scrollbar { width: 6px; }
+.custom-scroll::-webkit-scrollbar-track { background: transparent; }
+.custom-scroll::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #00E5FF, #00B8D4); border-radius: 3px; box-shadow: 0 0 5px rgba(0, 229, 255, 0.5); }
+.custom-scroll::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #00F5FF, #00E5FF); }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.live-indicator { animation: blink 1.5s infinite; box-shadow: 0 0 10px currentColor; }
 .log-entry { color: #00FFC8; text-shadow: 0 0 5px rgba(0, 255, 200, 0.5); }
 .log-entry.auto-claim { color: #00E5FF; text-shadow: 0 0 8px rgba(0, 229, 255, 0.7); }
 .log-entry.pk-success { color: #7DF9FF; text-shadow: 0 0 10px rgba(125, 249, 255, 0.8); }
 .log-entry.pk-error { color: #FF006E; text-shadow: 0 0 8px rgba(255, 0, 110, 0.6); }
 .exchange-bg { background: radial-gradient(ellipse at center, #001845 0%, #000814 50%, #000000 100%); box-shadow: inset 0 0 80px rgba(0, 229, 255, 0.1); }
-.exchange-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 1rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3); transition: all 0.3s ease; position: relative; overflow: hidden; }
+.exchange-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 1rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3); transition: all 0.3s ease; }
 .exchange-card:hover { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 229, 255, 0.5); transform: translateY(-5px); border-color: rgba(0, 229, 255, 0.7); }
 .pair-button { background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #000814; font-weight: bold; padding: 0.75rem 1.5rem; border-radius: 0.5rem; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 229, 255, 0.5); margin-bottom: 1rem; display: block; min-width: 100px; flex-shrink: 0; width: auto; }
 .pair-button:hover { background: linear-gradient(145deg, #00F5FF, #00E5FF); box-shadow: 0 0 30px rgba(0, 229, 255, 0.7); transform: scale(1.05); }
@@ -161,8 +188,12 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .pk-highlight-new { animation: pkHighlight 3s ease-out; }
 @keyframes pkHighlight { 0% { background: rgba(0, 229, 255, 0.4); transform: scale(1.02); box-shadow: 0 0 30px rgba(0, 229, 255, 0.8); } 100% { background: transparent; transform: scale(1); } }
 .frost-text { color: #E0FFFF; text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.5), 0 0 30px rgba(125, 249, 255, 0.3); }
+.ice-glow { box-shadow: 0 0 20px rgba(0, 229, 255, 0.5), 0 0 40px rgba(0, 229, 255, 0.3), inset 0 0 15px rgba(224, 255, 255, 0.1); }
 .validation-card { display: flex; flex-direction: column; justify-content: space-between; }
 .validation-bottom-section { margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(0, 229, 255, 0.15); }
+/* ============================================ */
+/* BOSSX AI AGENT - FLOATING CHATBOT STYLES     */
+/* ============================================ */
 .bossx-ai-fab { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); border: 3px solid rgba(224, 255, 255, 0.6); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 229, 255, 0.7), 0 0 60px rgba(0, 229, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.2); z-index: 9999; transition: all 0.3s ease; animation: fabPulse 3s ease-in-out infinite; }
 .bossx-ai-fab:hover { transform: scale(1.08) rotate(8deg); box-shadow: 0 0 40px rgba(0, 229, 255, 0.9), 0 0 80px rgba(0, 229, 255, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.3); }
 .bossx-ai-fab.minimized { animation: fabPulse 3s ease-in-out infinite; }
@@ -219,88 +250,380 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .bossx-ai-clear-btn { background: rgba(255, 0, 110, 0.15); color: #FF006E; border: 1px solid rgba(255, 0, 110, 0.4); }
 .bossx-ai-clear-btn:hover { background: rgba(255, 0, 110, 0.25); box-shadow: 0 0 12px rgba(255, 0, 110, 0.4); }
 @media (max-width: 480px) { .bossx-ai-window { width: calc(100vw - 24px); right: 12px; bottom: 90px; height: calc(100vh - 120px); } .bossx-ai-fab { bottom: 16px; right: 16px; width: 56px; height: 56px; } }
-.sfi-subscribe-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3); }
-.sfi-subscribe-icon { width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(145deg, #00E5FF, #00B8D4); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2); border: 3px solid rgba(224, 255, 255, 0.6); animation: fabPulse 3s ease-in-out infinite; }
-.sfi-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: bold; }
-.sfi-status-badge.active { background: rgba(0, 255, 200, 0.15); color: #00FFC8; border: 1px solid rgba(0, 255, 200, 0.4); box-shadow: 0 0 10px rgba(0, 255, 200, 0.3); }
-.sfi-status-badge.inactive { background: rgba(255, 0, 110, 0.15); color: #FF006E; border: 1px solid rgba(255, 0, 110, 0.4); }
-.sfi-post-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03); transition: all 0.3s ease; animation: msgFadeIn 0.4s ease-out; }
-.sfi-post-card:hover { border-color: rgba(0, 229, 255, 0.6); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.3); }
-.sfi-post-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.sfi-post-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(0, 229, 255, 0.5); box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); flex-shrink: 0; background: linear-gradient(145deg, #00E5FF, #00B8D4); display: flex; align-items: center; justify-content: center; color: #000814; font-weight: bold; font-size: 16px; }
-.sfi-post-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.sfi-post-meta { flex: 1; }
-.sfi-post-author { color: #E0FFFF; font-weight: 600; font-size: 14px; text-shadow: 0 0 8px rgba(0, 229, 255, 0.5); }
-.sfi-post-role { color: #7DF9FF; font-size: 11px; margin-top: 2px; }
-.sfi-post-time { color: #7DF9FF; font-size: 11px; opacity: 0.7; }
-.sfi-post-content { color: #E0FFFF; font-size: 14px; line-height: 1.6; margin-bottom: 12px; word-wrap: break-word; }
-.sfi-post-media { width: 100%; max-height: 400px; border-radius: 0.75rem; margin-bottom: 12px; border: 2px solid rgba(0, 229, 255, 0.3); object-fit: cover; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
-.sfi-post-media-video { width: 100%; max-height: 400px; border-radius: 0.75rem; margin-bottom: 12px; border: 2px solid rgba(0, 229, 255, 0.3); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
-.sfi-post-actions { display: flex; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(0, 229, 255, 0.15); }
-.sfi-action-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(0, 24, 69, 0.6); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 20px; color: #7DF9FF; font-size: 12px; cursor: pointer; transition: all 0.2s ease; }
-.sfi-action-btn:hover { background: rgba(0, 229, 255, 0.15); border-color: #00E5FF; color: #E0FFFF; box-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
-.sfi-action-btn.liked { background: rgba(255, 0, 110, 0.15); border-color: rgba(255, 0, 110, 0.5); color: #FF006E; box-shadow: 0 0 10px rgba(255, 0, 110, 0.3); }
-.sfi-comments-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0, 229, 255, 0.15); }
-.sfi-comment { display: flex; gap: 10px; padding: 8px 0; animation: msgFadeIn 0.3s ease-out; }
-.sfi-comment-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(145deg, #7DF9FF, #00E5FF); color: #000814; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; flex-shrink: 0; border: 1px solid rgba(0, 229, 255, 0.4); overflow: hidden; }
-.sfi-comment-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.sfi-comment-body { flex: 1; background: rgba(0, 24, 69, 0.6); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 12px; padding: 8px 12px; }
-.sfi-comment-author { color: #00E5FF; font-weight: 600; font-size: 12px; margin-bottom: 2px; }
-.sfi-comment-text { color: #E0FFFF; font-size: 13px; line-height: 1.4; }
-.sfi-comment-time { color: #7DF9FF; font-size: 10px; opacity: 0.6; margin-top: 4px; }
-.sfi-reply-btn { background: none; border: none; color: #7DF9FF; font-size: 11px; cursor: pointer; padding: 2px 6px; margin-left: 8px; }
-.sfi-reply-btn:hover { color: #00E5FF; text-decoration: underline; }
-.sfi-reply { margin-left: 42px; padding: 6px 0; }
-.sfi-reply .sfi-comment-avatar { width: 26px; height: 26px; font-size: 10px; background: linear-gradient(145deg, #00E5FF, #00B8D4); }
-.sfi-comment-input-wrap { display: flex; gap: 8px; margin-top: 10px; }
-.sfi-comment-input { flex: 1; padding: 8px 12px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #fff; font-size: 13px; outline: none; }
-.sfi-comment-input:focus { border-color: #00E5FF; box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2); }
-.sfi-comment-send { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #000814; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
-.sfi-comment-send:hover { background: linear-gradient(145deg, #00F5FF, #00E5FF); box-shadow: 0 0 15px rgba(0, 229, 255, 0.6); }
-.sfi-compose-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.2); }
-.sfi-compose-textarea { width: 100%; min-height: 80px; padding: 12px; background: rgba(0, 24, 69, 0.8); border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 0.75rem; color: #fff; font-size: 14px; resize: vertical; outline: none; font-family: inherit; }
-.sfi-compose-textarea:focus { border-color: #00E5FF; box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2); }
-.sfi-media-toggle { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
-.sfi-media-btn { padding: 6px 12px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #7DF9FF; font-size: 12px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
-.sfi-media-btn:hover { background: rgba(0, 229, 255, 0.15); border-color: #00E5FF; color: #E0FFFF; }
-.sfi-media-btn.active { background: rgba(0, 229, 255, 0.25); border-color: #00E5FF; color: #E0FFFF; }
-.sfi-media-url-input { width: 100%; padding: 8px 12px; margin-top: 10px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 0.5rem; color: #fff; font-size: 13px; outline: none; display: none; }
+/* ============================================ */
+/* SOCIALFI STYLES (Modul Terpisah - Prefix sfi) */
+/* ============================================ */
+.sfi-subscribe-card {
+background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
+border: 2px solid rgba(0, 229, 255, 0.4);
+border-radius: 1rem;
+padding: 2rem;
+text-align: center;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3);
+}
+.sfi-subscribe-icon {
+width: 80px;
+height: 80px;
+margin: 0 auto 1rem;
+background: linear-gradient(145deg, #00E5FF, #00B8D4);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2);
+border: 3px solid rgba(224, 255, 255, 0.6);
+animation: fabPulse 3s ease-in-out infinite;
+}
+.sfi-status-badge {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+padding: 4px 12px;
+border-radius: 12px;
+font-size: 11px;
+font-weight: bold;
+}
+.sfi-status-badge.active {
+background: rgba(0, 255, 200, 0.15);
+color: #00FFC8;
+border: 1px solid rgba(0, 255, 200, 0.4);
+box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
+}
+.sfi-status-badge.inactive {
+background: rgba(255, 0, 110, 0.15);
+color: #FF006E;
+border: 1px solid rgba(255, 0, 110, 0.4);
+}
+.sfi-post-card {
+background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
+border: 2px solid rgba(0, 229, 255, 0.3);
+border-radius: 1rem;
+padding: 1.25rem;
+margin-bottom: 1rem;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03);
+transition: all 0.3s ease;
+animation: msgFadeIn 0.4s ease-out;
+}
+.sfi-post-card:hover {
+border-color: rgba(0, 229, 255, 0.6);
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.3);
+}
+.sfi-post-header {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 12px;
+}
+.sfi-post-avatar {
+width: 44px;
+height: 44px;
+border-radius: 50%;
+overflow: hidden;
+border: 2px solid rgba(0, 229, 255, 0.5);
+box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+flex-shrink: 0;
+background: linear-gradient(145deg, #00E5FF, #00B8D4);
+display: flex;
+align-items: center;
+justify-content: center;
+color: #000814;
+font-weight: bold;
+font-size: 16px;
+}
+.sfi-post-avatar img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.sfi-post-meta {
+flex: 1;
+}
+.sfi-post-author {
+color: #E0FFFF;
+font-weight: 600;
+font-size: 14px;
+text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+.sfi-post-role {
+color: #7DF9FF;
+font-size: 11px;
+margin-top: 2px;
+}
+.sfi-post-time {
+color: #7DF9FF;
+font-size: 11px;
+opacity: 0.7;
+}
+.sfi-post-content {
+color: #E0FFFF;
+font-size: 14px;
+line-height: 1.6;
+margin-bottom: 12px;
+word-wrap: break-word;
+}
+.sfi-post-media {
+width: 100%;
+max-height: 400px;
+border-radius: 0.75rem;
+margin-bottom: 12px;
+border: 2px solid rgba(0, 229, 255, 0.3);
+object-fit: cover;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+.sfi-post-media-video {
+width: 100%;
+max-height: 400px;
+border-radius: 0.75rem;
+margin-bottom: 12px;
+border: 2px solid rgba(0, 229, 255, 0.3);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+.sfi-post-actions {
+display: flex;
+gap: 12px;
+padding-top: 12px;
+border-top: 1px solid rgba(0, 229, 255, 0.15);
+}
+.sfi-action-btn {
+display: flex;
+align-items: center;
+gap: 6px;
+padding: 6px 12px;
+background: rgba(0, 24, 69, 0.6);
+border: 1px solid rgba(0, 229, 255, 0.2);
+border-radius: 20px;
+color: #7DF9FF;
+font-size: 12px;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+.sfi-action-btn:hover {
+background: rgba(0, 229, 255, 0.15);
+border-color: #00E5FF;
+color: #E0FFFF;
+box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+.sfi-action-btn.liked {
+background: rgba(255, 0, 110, 0.15);
+border-color: rgba(255, 0, 110, 0.5);
+color: #FF006E;
+box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+}
+.sfi-comments-section {
+margin-top: 12px;
+padding-top: 12px;
+border-top: 1px solid rgba(0, 229, 255, 0.15);
+}
+.sfi-comment {
+display: flex;
+gap: 10px;
+padding: 8px 0;
+animation: msgFadeIn 0.3s ease-out;
+}
+.sfi-comment-avatar {
+width: 32px;
+height: 32px;
+border-radius: 50%;
+background: linear-gradient(145deg, #7DF9FF, #00E5FF);
+color: #000814;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+font-size: 12px;
+flex-shrink: 0;
+border: 1px solid rgba(0, 229, 255, 0.4);
+}
+.sfi-comment-body {
+flex: 1;
+background: rgba(0, 24, 69, 0.6);
+border: 1px solid rgba(0, 229, 255, 0.2);
+border-radius: 12px;
+padding: 8px 12px;
+}
+.sfi-comment-author {
+color: #00E5FF;
+font-weight: 600;
+font-size: 12px;
+margin-bottom: 2px;
+}
+.sfi-comment-text {
+color: #E0FFFF;
+font-size: 13px;
+line-height: 1.4;
+}
+.sfi-comment-time {
+color: #7DF9FF;
+font-size: 10px;
+opacity: 0.6;
+margin-top: 4px;
+}
+.sfi-reply-btn {
+background: none;
+border: none;
+color: #7DF9FF;
+font-size: 11px;
+cursor: pointer;
+padding: 2px 6px;
+margin-left: 8px;
+}
+.sfi-reply-btn:hover {
+color: #00E5FF;
+text-decoration: underline;
+}
+.sfi-reply {
+margin-left: 42px;
+padding: 6px 0;
+}
+.sfi-reply .sfi-comment-avatar {
+width: 26px;
+height: 26px;
+font-size: 10px;
+background: linear-gradient(145deg, #00E5FF, #00B8D4);
+}
+.sfi-comment-input-wrap {
+display: flex;
+gap: 8px;
+margin-top: 10px;
+}
+.sfi-comment-input {
+flex: 1;
+padding: 8px 12px;
+background: rgba(0, 24, 69, 0.8);
+border: 1px solid rgba(0, 229, 255, 0.3);
+border-radius: 20px;
+color: #fff;
+font-size: 13px;
+outline: none;
+}
+.sfi-comment-input:focus {
+border-color: #00E5FF;
+box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
+}
+.sfi-comment-send {
+width: 34px;
+height: 34px;
+border-radius: 50%;
+background: linear-gradient(145deg, #00E5FF, #00B8D4);
+color: #000814;
+border: none;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+.sfi-comment-send:hover {
+background: linear-gradient(145deg, #00F5FF, #00E5FF);
+box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+}
+.sfi-compose-card {
+background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
+border: 2px solid rgba(0, 229, 255, 0.4);
+border-radius: 1rem;
+padding: 1.25rem;
+margin-bottom: 1.5rem;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.2);
+}
+.sfi-compose-textarea {
+width: 100%;
+min-height: 80px;
+padding: 12px;
+background: rgba(0, 24, 69, 0.8);
+border: 2px solid rgba(0, 229, 255, 0.3);
+border-radius: 0.75rem;
+color: #fff;
+font-size: 14px;
+resize: vertical;
+outline: none;
+font-family: inherit;
+}
+.sfi-compose-textarea:focus {
+border-color: #00E5FF;
+box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
+}
+.sfi-media-toggle {
+display: flex;
+gap: 8px;
+margin-top: 10px;
+flex-wrap: wrap;
+}
+.sfi-media-btn {
+padding: 6px 12px;
+background: rgba(0, 24, 69, 0.8);
+border: 1px solid rgba(0, 229, 255, 0.3);
+border-radius: 20px;
+color: #7DF9FF;
+font-size: 12px;
+cursor: pointer;
+transition: all 0.2s ease;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.sfi-media-btn:hover {
+background: rgba(0, 229, 255, 0.15);
+border-color: #00E5FF;
+color: #E0FFFF;
+}
+.sfi-media-btn.active {
+background: rgba(0, 229, 255, 0.25);
+border-color: #00E5FF;
+color: #E0FFFF;
+}
+.sfi-media-url-input {
+width: 100%;
+padding: 8px 12px;
+margin-top: 10px;
+background: rgba(0, 24, 69, 0.8);
+border: 1px solid rgba(0, 229, 255, 0.3);
+border-radius: 0.5rem;
+color: #fff;
+font-size: 13px;
+outline: none;
+display: none;
+}
 .sfi-media-url-input.show { display: block; }
-.sfi-media-url-input:focus { border-color: #00E5FF; }
-.sfi-media-preview { margin-top: 10px; max-width: 100%; max-height: 200px; border-radius: 0.5rem; border: 1px solid rgba(0, 229, 255, 0.3); display: none; }
+.sfi-media-url-input:focus {
+border-color: #00E5FF;
+}
+.sfi-media-preview {
+margin-top: 10px;
+max-width: 100%;
+max-height: 200px;
+border-radius: 0.5rem;
+border: 1px solid rgba(0, 229, 255, 0.3);
+display: none;
+}
 .sfi-media-preview.show { display: block; }
-.sfi-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-.sfi-stat-card { background: linear-gradient(145deg, #001233, #001845); border: 2px solid rgba(0, 229, 255, 0.2); border-radius: 0.75rem; padding: 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
-.sfi-stat-value { font-size: 1.5rem; font-weight: bold; color: #00E5FF; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
-.sfi-stat-label { font-size: 12px; color: #7DF9FF; margin-top: 4px; }
-.settings-section { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03); }
-.settings-section h3 { color: #E0FFFF; font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
-.settings-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(0, 229, 255, 0.1); }
-.settings-row:last-child { border-bottom: none; }
-.settings-row-label { color: #E0FFFF; font-size: 0.9rem; }
-.settings-row-desc { color: #7DF9FF; font-size: 0.75rem; margin-top: 2px; opacity: 0.7; }
-.toggle-switch { position: relative; width: 48px; height: 26px; background: rgba(0, 24, 69, 0.8); border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 13px; cursor: pointer; transition: all 0.3s ease; }
-.toggle-switch.active { background: linear-gradient(145deg, #00E5FF, #00B8D4); border-color: #00E5FF; box-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
-.toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
-.toggle-switch.active::after { left: 24px; }
-.referral-stat-card { background: linear-gradient(145deg, #001233, #001845); border: 2px solid rgba(0, 229, 255, 0.2); border-radius: 0.75rem; padding: 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
-.referral-stat-value { font-size: 1.75rem; font-weight: bold; color: #00E5FF; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
-.referral-stat-label { font-size: 12px; color: #7DF9FF; margin-top: 4px; }
-.referral-item { background: rgba(0, 24, 69, 0.6); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s ease; }
-.referral-item:hover { border-color: rgba(0, 229, 255, 0.5); background: rgba(0, 24, 69, 0.8); }
-.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #7DF9FF; font-size: 12px; cursor: pointer; transition: all 0.2s ease; }
-.share-btn:hover { background: rgba(0, 229, 255, 0.15); border-color: #00E5FF; color: #E0FFFF; box-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
-.p2p-user-item { padding: 0.5rem 0.75rem; background: rgba(0, 24, 69, 0.6); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 0.5rem; cursor: pointer; transition: all 0.2s ease; font-size: 0.875rem; color: #E0FFFF; }
-.p2p-user-item:hover { background: rgba(0, 229, 255, 0.15); border-color: #00E5FF; }
-.p2p-user-suggestions { position: absolute; top: 100%; left: 0; right: 0; background: linear-gradient(145deg, rgba(0, 18, 51, 0.98), rgba(0, 24, 69, 0.98)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 0.5rem; margin-top: 4px; max-height: 200px; overflow-y: auto; z-index: 100; display: none; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
-.p2p-user-suggestions.show { display: block; }
-.sfi-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem; color: #7DF9FF; }
-.sfi-loading-spinner { width: 40px; height: 40px; border: 3px solid rgba(0, 229, 255, 0.2); border-top-color: #00E5FF; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1rem; }
-@keyframes spin { to { transform: rotate(360deg); } }
+.sfi-stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 1rem;
+margin-bottom: 1.5rem;
+}
+.sfi-stat-card {
+background: linear-gradient(145deg, #001233, #001845);
+border: 2px solid rgba(0, 229, 255, 0.2);
+border-radius: 0.75rem;
+padding: 1rem;
+text-align: center;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+.sfi-stat-value {
+font-size: 1.5rem;
+font-weight: bold;
+color: #00E5FF;
+text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+}
+.sfi-stat-label {
+font-size: 12px;
+color: #7DF9FF;
+margin-top: 4px;
+}
 </style>
 </head>
 <body>
-<!-- LOGIN PAGE -->
 <div id="login-page" class="login-page">
 <div class="login-container">
 <div class="login-card">
@@ -321,7 +644,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 </div>
 </div>
 </div>
-<!-- MAIN APP -->
 <div id="main-app" class="min-h-screen text-white flex main-container" style="display: none; background: #000814;">
 <div id="sidebar" class="sidebar h-screen">
 <div class="p-3 border-b border-cyan-400/30">
@@ -356,10 +678,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 <a href="#" class="menu-item flex items-center px-2 py-2 mb-2 rounded-xl text-cyan-200" data-page="withdrawal">
 <i data-lucide="arrow-up-circle" class="w-4 h-4"></i>
 <span class="ml-2 font-medium menu-text text-sm">Withdrawal</span>
-</a>
-<a href="#" class="menu-item flex items-center px-2 py-2 mb-2 rounded-xl text-cyan-200" data-page="exchange">
-<i data-lucide="bar-chart-2" class="w-4 h-4"></i>
-<span class="ml-2 font-medium menu-text text-sm">Internal Market</span>
 </a>
 <a href="#" class="menu-item flex items-center px-2 py-2 mb-2 rounded-xl text-cyan-200" data-page="p2p">
 <i data-lucide="users" class="w-4 h-4"></i>
@@ -679,7 +997,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-</div>
 <!-- DEPOSIT PAGE -->
 <div id="deposit-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -911,17 +1228,232 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+<!-- P2P PAGE -->
+<div id="p2p-page" class="page-content exchange-bg">
+<div class="exchange-card p-6 mb-6">
+<h1 class="text-3xl font-bold text-cyan-400 mb-4 flex items-center frost-text">
+<i data-lucide="users" class="w-8 h-8 mr-2"></i>Peer to Peer Transfer
+</h1>
+<p class="text-cyan-200 mb-6">Transfer BossX ke sesama pengguna menggunakan @username.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="exchange-card p-6">
+<h2 class="text-xl font-bold text-white mb-4 flex items-center">
+<i data-lucide="send" class="w-6 h-6 mr-2 text-cyan-400"></i>Kirim BossX
+</h2>
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-sm text-cyan-200">Username Penerima:</label>
+<input id="p2p-username" type="text" placeholder="@username" class="node-input" />
+</div>
+<div class="space-y-2">
+<label class="text-sm text-cyan-200">Jumlah BossX:</label>
+<div class="relative">
+<input id="p2p-amount" type="number" placeholder="0.00" class="node-input pr-16" step="0.000000001" min="1" />
+<button id="p2p-max" class="absolute right-2 top-1/2 transform -translate-y-1/2 px-2 py-1 bg-cyan-400 text-[#000814] text-xs rounded font-semibold hover:bg-cyan-300 transition-colors" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">MAX</button>
+</div>
+</div>
+<button id="p2p-submit" class="node-button" onclick="submitP2PTransfer()">
+<i data-lucide="send" class="mr-2 w-4 h-4"></i>Kirim BossX
+</button>
+</div>
+</div>
+<div class="exchange-card p-6">
+<h2 class="text-xl font-bold text-white mb-4 flex items-center">
+<i data-lucide="bar-chart" class="w-6 h-6 mr-2 text-cyan-400"></i>Statistik P2P
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="stat-card p-4">
+<div class="flex items-center justify-between mb-2"><p class="text-sm text-cyan-200">Total Dikirim</p><i data-lucide="arrow-up-circle" class="w-4 h-4 text-rose-400"></i></div>
+<div id="p2p-total-sent" class="text-xl font-bold text-white">0 BossX</div>
+</div>
+<div class="stat-card p-4">
+<div class="flex items-center justify-between mb-2"><p class="text-sm text-cyan-200">Total Diterima</p><i data-lucide="arrow-down-circle" class="w-4 h-4 text-emerald-400"></i></div>
+<div id="p2p-total-received" class="text-xl font-bold text-white">0 BossX</div>
+</div>
+</div>
+</div>
+</div>
+<div class="exchange-card mt-6 p-6">
+<h2 class="text-xl font-bold text-white mb-4 flex items-center">
+<i data-lucide="history" class="w-6 h-6 mr-2 text-cyan-400"></i>History Transfer P2P
+</h2>
+<div id="p2p-history-content" class="overflow-x-auto"></div>
+</div>
+</div>
+<!-- ============================================ -->
+<!-- SOCIALFI PAGE (MODUL BARU)                   -->
+<!-- ============================================ -->
+<div id="socialfi-page" class="page-content">
+<div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
+<div class="flex items-center justify-between flex-wrap gap-4">
+<div>
+<h1 class="text-3xl font-bold text-cyan-400 mb-2 flex items-center frost-text">
+<i data-lucide="share-2" class="w-8 h-8 mr-2"></i>SocialFi
+</h1>
+<p class="text-cyan-200">Platform sosial eksklusif untuk holder BossX. Bagikan momen, ide, dan analisis Anda.</p>
+</div>
+<div class="crypto-icon-large" style="background: linear-gradient(145deg, rgba(0, 229, 255, 0.2), rgba(125, 249, 255, 0.1)); border-color: rgba(0, 229, 255, 0.5); box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);">
+<i data-lucide="share-2" class="text-cyan-300 w-8 h-8"></i>
+</div>
+</div>
+</div>
+<!-- Subscription Status Card -->
+<div id="sfi-subscription-card" class="sfi-subscribe-card mb-6">
+<div class="sfi-subscribe-icon">
+<i data-lucide="crown" class="w-10 h-10 text-[#000814]"></i>
+</div>
+<h2 class="text-2xl font-bold text-white mb-2 frost-text">BossX SocialFi Access</h2>
+<p class="text-cyan-200 mb-4">Nikmati akses penuh ke platform sosial eksklusif BossX</p>
+<div id="sfi-subscription-status" class="mb-4"></div>
+<div id="sfi-subscription-action"></div>
+</div>
+<!-- Main Content (hanya muncul jika subscribed) -->
+<div id="sfi-main-content" style="display: none;">
+<!-- Stats Grid -->
+<div class="sfi-stats-grid">
+<div class="sfi-stat-card">
+<div class="sfi-stat-value" id="sfi-stat-posts">0</div>
+<div class="sfi-stat-label">Total Postingan</div>
+</div>
+<div class="sfi-stat-card">
+<div class="sfi-stat-value" id="sfi-stat-likes">0</div>
+<div class="sfi-stat-label">Total Likes</div>
+</div>
+<div class="sfi-stat-card">
+<div class="sfi-stat-value" id="sfi-stat-comments">0</div>
+<div class="sfi-stat-label">Total Komentar</div>
+</div>
+<div class="sfi-stat-card">
+<div class="sfi-stat-value" id="sfi-stat-members">1,247</div>
+<div class="sfi-stat-label">Member Aktif</div>
+</div>
+</div>
+<!-- Compose Post -->
+<div class="sfi-compose-card">
+<div class="flex items-center gap-3 mb-3">
+<div class="sfi-post-avatar">FM</div>
+<div>
+<div class="sfi-post-author">Fery Muliawan</div>
+<div class="sfi-post-role">CEO • BossX</div>
+</div>
+</div>
+<textarea id="sfi-compose-text" class="sfi-compose-textarea" placeholder="Apa yang sedang Anda pikirkan, Bos? Bagikan dengan komunitas BossX..." maxlength="500"></textarea>
+<div class="sfi-media-toggle">
+<button class="sfi-media-btn" onclick="toggleSfiMedia('image')" id="sfi-btn-image">
+<i data-lucide="image" class="w-4 h-4"></i> Gambar
+</button>
+<button class="sfi-media-btn" onclick="toggleSfiMedia('video')" id="sfi-btn-video">
+<i data-lucide="video" class="w-4 h-4"></i> Video
+</button>
+</div>
+<input type="text" id="sfi-media-url" class="sfi-media-url-input" placeholder="Paste URL gambar/video di sini (contoh: https://...)" />
+<img id="sfi-media-preview" class="sfi-media-preview" alt="Preview" />
+<div class="flex justify-between items-center mt-3">
+<span class="text-xs text-cyan-300"><span id="sfi-char-count">0</span>/500</span>
+<button class="node-button" style="width: auto; padding: 0.5rem 1.5rem;" onclick="submitSfiPost()">
+<i data-lucide="send" class="w-4 h-4 inline mr-1"></i>Posting
+</button>
+</div>
+</div>
+<!-- Feed -->
+<div id="sfi-feed"></div>
+</div>
+</div>
+<!-- REFERRAL PAGE -->
+<div id="referral-page" class="page-content">
+<div class="p-6">
+<h1 class="text-2xl font-bold text-cyan-400 mb-4 frost-text">Referral</h1>
+<div class="stat-card p-6 mb-6">
+<h3 class="text-xl font-bold text-white mb-4">Kode Referral Anda</h3>
+<div class="flex items-center space-x-2 mb-4">
+<input id="referral-code" type="text" class="node-input flex-1" readonly value="REF-XXXXXX" />
+<button onclick="copyReferralCode()" class="copy-button flex items-center px-3 py-2 bg-gradient-to-r from-cyan-400 to-cyan-300 text-[#000814] rounded-lg font-semibold" style="box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);">
+<i data-lucide="copy" class="mr-1 w-4 h-4"></i>Copy
+</button>
+</div>
+<button onclick="generateReferralCode()" class="node-button mb-4">Generate Kode Baru</button>
+<p class="text-cyan-200">Bagikan kode referral Anda untuk mendapatkan reward.</p>
+</div>
+<div class="stat-card p-6">
+<h3 class="text-xl font-bold text-white mb-4">Statistik Referral</h3>
+<div class="grid grid-cols-2 gap-4">
+<div><p class="text-cyan-200">Total Referral</p><p class="text-2xl font-bold text-white">0</p></div>
+<div><p class="text-cyan-200">Reward Didapat</p><p class="text-2xl font-bold text-white">0 BossX</p></div>
+</div>
+</div>
+</div>
+</div>
+<!-- TEAM DEVELOPER PAGE -->
+<div id="team-developer-page" class="page-content">
+<div class="p-6">
+<h1 class="text-3xl font-bold text-cyan-400 mb-6 frost-text">Team Developer</h1>
+<p class="text-cyan-200 mb-8">Temui tim di balik BossX Crypto Exchange Platform.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="exchange-card p-6 text-center relative overflow-hidden">
+<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
+<div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-cyan-400" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);">
+<img src="https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png" alt="CEO" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Fery Muliawan</h3>
+<p class="text-cyan-400 mb-4 frost-text">CEO (Chief Executive Officer)</p>
+<p class="text-cyan-100">Pendiri dan visioner BossX.</p>
+</div>
+<div class="exchange-card p-6 text-center relative overflow-hidden">
+<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
+<div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-cyan-400" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);">
+<img src="https://i.ibb.co.com/xKDSrKYw/Picsart-25-10-03-12-44-06-927.png" alt="CFO" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Mr.Ramadhan</h3>
+<p class="text-cyan-400 mb-4 frost-text">CFO Chief Financial Officer</p>
+<p class="text-cyan-100">Mengawasi operasi harian.</p>
+</div>
+<div class="exchange-card p-6 text-center relative overflow-hidden">
+<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
+<div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-cyan-400" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);">
+<img src="https://via.placeholder.com/150/00E5FF/000814?text=Manager" alt="Manager" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Michael Johnson</h3>
+<p class="text-cyan-400 mb-4 frost-text">Manager</p>
+<p class="text-cyan-100">Mengatur tim operasional.</p>
+</div>
+<div class="exchange-card p-6 text-center relative overflow-hidden">
+<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
+<div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-cyan-400" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);">
+<img src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg" alt="CTO" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Lee</h3>
+<p class="text-cyan-400 mb-4 frost-text">CTO (Chief Technology Officer)</p>
+<p class="text-cyan-100">Infrastruktur teknis & keamanan.</p>
+</div>
+<div class="exchange-card p-6 text-center relative overflow-hidden">
+<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
+<div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-cyan-400" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);">
+<img src="https://via.placeholder.com/150/00E5FF/000814?text=Secretary" alt="Secretary" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Emily Brown</h3>
+<p class="text-cyan-400 mb-4 frost-text">Secretary</p>
+<p class="text-cyan-100">Administrasi & komunikasi.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- SETTINGS PAGE -->
+<div id="settings-page" class="page-content">
+<div class="p-6">
+<h1 class="text-2xl font-bold text-cyan-400 mb-4 frost-text">Settings</h1>
+<p class="text-cyan-200">Fitur Settings akan segera hadir...</p>
+</div>
+</div>
 <!-- EXCHANGE PAGE -->
 <div id="exchange-page" class="page-content exchange-bg">
 <div class="exchange-card p-4 mb-4">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
 <h1 class="text-3xl font-bold text-cyan-400 mb-2 flex items-center frost-text">
 <i data-lucide="dollar-sign" class="w-8 h-8 mr-2"></i>Internal Market - BossX
 </h1>
 <p class="text-cyan-200 mb-4">Trade cryptocurrency with Binance-like interface and real data.</p>
 </div>
 <div class="exchange-card p-4 mb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
 <div>
 <h2 class="text-lg font-bold text-white mb-2">Trading Pairs</h2>
 <div class="flex flex-row flex-wrap gap-2 overflow-x-auto">
@@ -940,7 +1472,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4" style="height: 90vh;">
 <div class="exchange-card p-4 col-span-3">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
 <h2 class="text-lg font-bold text-white mb-4 flex items-center">
 <i data-lucide="trending-up" class="w-5 h-5 mr-2 text-cyan-400"></i>Price Chart
 </h2>
@@ -949,7 +1480,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 <div class="exchange-card p-4 col-span-1">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
 <h2 class="text-lg font-bold text-white mb-4 flex items-center">
 <i data-lucide="book-open" class="w-5 h-5 mr-2 text-emerald-400"></i>Buy Orders
 </h2>
@@ -963,7 +1493,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 <div class="exchange-card p-4 col-span-1">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
 <h2 class="text-lg font-bold text-white mb-4 flex items-center">
 <i data-lucide="activity" class="w-5 h-5 mr-2 text-cyan-400"></i>Recent Trades
 </h2>
@@ -978,7 +1507,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 <div class="exchange-card p-4 col-span-1">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
 <h2 class="text-lg font-bold text-white mb-4 flex items-center">
 <i data-lucide="book-open" class="w-5 h-5 mr-2 text-rose-400"></i>Sell Orders
 </h2>
@@ -992,7 +1520,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 <div class="exchange-card p-4 col-span-3">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
 <h2 class="text-lg font-bold text-white mb-4 flex items-center">
 <i data-lucide="shopping-cart" class="w-5 h-5 mr-2 text-cyan-400"></i>Trade
 </h2>
@@ -1015,405 +1542,13 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-<!-- P2P PAGE -->
-<div id="p2p-page" class="page-content exchange-bg">
-<div class="exchange-card p-6 mb-6">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
-<h1 class="text-3xl font-bold text-cyan-400 mb-4 flex items-center frost-text">
-<i data-lucide="users" class="w-8 h-8 mr-2"></i>Peer to Peer Transfer
-</h1>
-<p class="text-cyan-200 mb-6">Transfer BossX ke sesama pengguna menggunakan @username.</p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-<div class="exchange-card p-6">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
-<h2 class="text-xl font-bold text-white mb-4 flex items-center">
-<i data-lucide="send" class="w-6 h-6 mr-2 text-cyan-400"></i>Kirim BossX
-</h2>
-<div class="space-y-4">
-<div class="space-y-2 relative">
-<label class="text-sm text-cyan-200">Username Penerima:</label>
-<input id="p2p-username" type="text" placeholder="@username" class="node-input" oninput="onP2PUsernameInput()" autocomplete="off" />
-<div id="p2p-user-suggestions" class="p2p-user-suggestions"></div>
-</div>
-<div class="space-y-2">
-<label class="text-sm text-cyan-200">Jumlah BossX:</label>
-<div class="relative">
-<input id="p2p-amount" type="number" placeholder="0.00" class="node-input pr-16" step="0.000000001" min="1" />
-<button id="p2p-max" class="absolute right-2 top-1/2 transform -translate-y-1/2 px-2 py-1 bg-cyan-400 text-[#000814] text-xs rounded font-semibold hover:bg-cyan-300 transition-colors" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">MAX</button>
-</div>
-</div>
-<div class="bg-cyan-400/10 border-2 border-cyan-400/30 rounded-xl p-3">
-<p class="text-xs text-cyan-200"><i data-lucide="info" class="w-3 h-3 inline mr-1"></i>Fee: <strong class="text-cyan-300">GRATIS</strong> • Minimal: <strong class="text-cyan-300">1 BossX</strong></p>
-</div>
-<button id="p2p-submit" class="node-button" onclick="submitP2PTransfer()">
-<i data-lucide="send" class="mr-2 w-4 h-4"></i>Kirim BossX
-</button>
-</div>
-</div>
-<div class="exchange-card p-6">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
-<h2 class="text-xl font-bold text-white mb-4 flex items-center">
-<i data-lucide="bar-chart" class="w-6 h-6 mr-2 text-cyan-400"></i>Statistik P2P
-</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="stat-card p-4">
-<div class="flex items-center justify-between mb-2"><p class="text-sm text-cyan-200">Total Dikirim</p><i data-lucide="arrow-up-circle" class="w-4 h-4 text-rose-400"></i></div>
-<div id="p2p-total-sent" class="text-xl font-bold text-white">0 BossX</div>
-</div>
-<div class="stat-card p-4">
-<div class="flex items-center justify-between mb-2"><p class="text-sm text-cyan-200">Total Diterima</p><i data-lucide="arrow-down-circle" class="w-4 h-4 text-emerald-400"></i></div>
-<div id="p2p-total-received" class="text-xl font-bold text-white">0 BossX</div>
-</div>
-</div>
-<div class="mt-4">
-<h3 class="text-sm text-cyan-300 mb-2 font-semibold">User Aktif (Demo):</h3>
-<div id="p2p-user-list" class="flex flex-wrap gap-2"></div>
-</div>
-</div>
-</div>
-<div class="exchange-card mt-6 p-6">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
-<h2 class="text-xl font-bold text-white mb-4 flex items-center">
-<i data-lucide="history" class="w-6 h-6 mr-2 text-cyan-400"></i>History Transfer P2P
-</h2>
-<div id="p2p-history-content" class="overflow-x-auto"></div>
-</div>
-</div>
-<!-- SOCIALFI PAGE -->
-<div id="socialfi-page" class="page-content">
-<div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
-<div class="flex items-center justify-between flex-wrap gap-4">
-<div>
-<h1 class="text-3xl font-bold text-cyan-400 mb-2 flex items-center frost-text">
-<i data-lucide="share-2" class="w-8 h-8 mr-2"></i>SocialFi
-</h1>
-<p class="text-cyan-200">Platform sosial eksklusif untuk holder BossX. Bagikan momen, ide, dan analisis Anda.</p>
-</div>
-<div class="crypto-icon-large" style="background: linear-gradient(145deg, rgba(0, 229, 255, 0.2), rgba(125, 249, 255, 0.1)); border-color: rgba(0, 229, 255, 0.5); box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);">
-<i data-lucide="share-2" class="text-cyan-300 w-8 h-8"></i>
-</div>
-</div>
-</div>
-<div id="sfi-subscription-card" class="sfi-subscribe-card mb-6">
-<div class="sfi-subscribe-icon">
-<i data-lucide="crown" class="w-10 h-10 text-[#000814]"></i>
-</div>
-<h2 class="text-2xl font-bold text-white mb-2 frost-text">BossX SocialFi Access</h2>
-<p class="text-cyan-200 mb-4">Nikmati akses penuh ke platform sosial eksklusif BossX</p>
-<div id="sfi-subscription-status" class="mb-4"></div>
-<div id="sfi-subscription-action"></div>
-</div>
-<div id="sfi-main-content" style="display: none;">
-<div class="sfi-stats-grid">
-<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-posts">0</div><div class="sfi-stat-label">Total Postingan</div></div>
-<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-likes">0</div><div class="sfi-stat-label">Total Likes</div></div>
-<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-comments">0</div><div class="sfi-stat-label">Total Komentar</div></div>
-<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-members">1,247</div><div class="sfi-stat-label">Member Aktif</div></div>
-</div>
-<div class="sfi-compose-card">
-<div class="flex items-center gap-3 mb-3">
-<div class="sfi-post-avatar">FM</div>
-<div>
-<div class="sfi-post-author">Fery Muliawan</div>
-<div class="sfi-post-role">CEO • BossX</div>
-</div>
-</div>
-<textarea id="sfi-compose-text" class="sfi-compose-textarea" placeholder="Apa yang sedang Anda pikirkan, Bos? Bagikan dengan komunitas BossX..." maxlength="500"></textarea>
-<div class="sfi-media-toggle">
-<button class="sfi-media-btn" onclick="toggleSfiMedia('image')" id="sfi-btn-image"><i data-lucide="image" class="w-4 h-4"></i> Gambar</button>
-<button class="sfi-media-btn" onclick="toggleSfiMedia('video')" id="sfi-btn-video"><i data-lucide="video" class="w-4 h-4"></i> Video</button>
-</div>
-<input type="text" id="sfi-media-url" class="sfi-media-url-input" placeholder="Paste URL gambar/video di sini (contoh: https://...)" />
-<img id="sfi-media-preview" class="sfi-media-preview" alt="Preview" />
-<div class="flex justify-between items-center mt-3">
-<span class="text-xs text-cyan-300"><span id="sfi-char-count">0</span>/500</span>
-<button class="node-button" style="width: auto; padding: 0.5rem 1.5rem;" onclick="submitSfiPost()">
-<i data-lucide="send" class="w-4 h-4 inline mr-1"></i>Posting
-</button>
-</div>
-</div>
-<div id="sfi-feed"></div>
-</div>
-</div>
-<!-- REFERRAL PAGE -->
-<div id="referral-page" class="page-content">
-<div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
-<div class="flex items-center justify-between flex-wrap gap-4">
-<div>
-<h1 class="text-3xl font-bold text-cyan-400 mb-2 flex items-center frost-text">
-<i data-lucide="user-plus" class="w-8 h-8 mr-2"></i>Referral Program
-</h1>
-<p class="text-cyan-200">Dapatkan bonus 5% dari setiap pembelian Access Key oleh referral Anda!</p>
-</div>
-<div class="crypto-icon-large" style="background: linear-gradient(145deg, rgba(0, 229, 255, 0.2), rgba(125, 249, 255, 0.1)); border-color: rgba(0, 229, 255, 0.5); box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);">
-<i data-lucide="user-plus" class="text-cyan-300 w-8 h-8"></i>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-<div class="referral-stat-card">
-<div class="referral-stat-value" id="ref-total-count">0</div>
-<div class="referral-stat-label">Total Referral</div>
-</div>
-<div class="referral-stat-card">
-<div class="referral-stat-value" id="ref-total-reward">0</div>
-<div class="referral-stat-label">Total Reward (BossX)</div>
-</div>
-<div class="referral-stat-card">
-<div class="referral-stat-value" id="ref-active-count">0</div>
-<div class="referral-stat-label">Referral Aktif</div>
-</div>
-</div>
-<div class="bg-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);">
-<h3 class="text-xl font-bold text-white mb-4 flex items-center">
-<i data-lucide="key" class="mr-2 text-cyan-400 w-5 h-5"></i>Kode Referral Anda
-</h3>
-<div class="pk-code-display mb-4" id="referral-code-display">REF-XXXXXX</div>
-<div class="flex flex-wrap gap-2 mb-4">
-<button onclick="copyReferralCode()" class="copy-button flex items-center px-4 py-2 bg-gradient-to-r from-cyan-400 to-cyan-300 text-[#000814] rounded-lg font-semibold" style="box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);">
-<i data-lucide="copy" class="mr-1 w-4 h-4"></i>Copy Kode
-</button>
-<button onclick="generateReferralCode()" class="flex items-center px-4 py-2 bg-[#001845] hover:bg-[#001233] text-white rounded-lg transition-colors border-2 border-cyan-400/30">
-<i data-lucide="refresh-cw" class="mr-1 w-4 h-4"></i>Generate Baru
-</button>
-</div>
-<div class="flex flex-wrap gap-2">
-<button onclick="shareReferral('whatsapp')" class="share-btn"><i data-lucide="message-circle" class="w-4 h-4"></i>WhatsApp</button>
-<button onclick="shareReferral('telegram')" class="share-btn"><i data-lucide="send" class="w-4 h-4"></i>Telegram</button>
-<button onclick="shareReferral('twitter')" class="share-btn"><i data-lucide="twitter" class="w-4 h-4"></i>Twitter</button>
-<button onclick="shareReferral('facebook')" class="share-btn"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</button>
-<button onclick="shareReferral('copy')" class="share-btn"><i data-lucide="link" class="w-4 h-4"></i>Copy Link</button>
-</div>
-</div>
-<div class="bg-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);">
-<div class="flex justify-between items-center mb-4">
-<h3 class="text-xl font-bold text-white flex items-center">
-<i data-lucide="users" class="mr-2 text-cyan-400 w-5 h-5"></i>Daftar Referral
-</h3>
-<button onclick="renderReferralList()" class="flex items-center px-3 py-1 bg-[#001845] hover:bg-[#001233] text-white rounded-lg transition-colors border-2 border-cyan-400/30 text-sm">
-<i data-lucide="refresh-cw" class="mr-1 w-3 h-3"></i>Refresh
-</button>
-</div>
-<div id="referral-list"></div>
-</div>
-<div class="bg-cyan-400/10 border-2 border-cyan-400/30 rounded-xl p-4">
-<h4 class="text-cyan-300 font-semibold mb-2 flex items-center">
-<i data-lucide="info" class="mr-2 w-4 h-4"></i>Cara Kerja Referral
-</h4>
-<ul class="text-sm text-cyan-100 space-y-1">
-<li>• Bagikan kode referral Anda ke teman/komunitas</li>
-<li>• Teman daftar & beli Access Key menggunakan kode Anda</li>
-<li>• Anda mendapat <strong class="text-cyan-300">5% bonus</strong> dari nilai pembelian</li>
-<li>• Bonus dibayarkan dalam <strong class="text-cyan-300">BOSSX</strong> langsung ke wallet</li>
-<li>• Bonus berlaku untuk pembelian berulang</li>
-</ul>
-</div>
-</div>
-<!-- TEAM DEVELOPER PAGE -->
-<div id="team-developer-page" class="page-content">
-<div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
-<div class="flex items-center justify-between flex-wrap gap-4">
-<div>
-<h1 class="text-3xl font-bold text-cyan-400 mb-2 flex items-center frost-text">
-<i data-lucide="users" class="w-8 h-8 mr-2"></i>Team Developer
-</h1>
-<p class="text-cyan-200">Temui tim di balik BossX Crypto Exchange Platform.</p>
-</div>
-<div class="crypto-icon-large" style="background: linear-gradient(145deg, rgba(0, 229, 255, 0.2), rgba(125, 249, 255, 0.1)); border-color: rgba(0, 229, 255, 0.5); box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);">
-<i data-lucide="users" class="text-cyan-300 w-8 h-8"></i>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="team-grid"></div>
-</div>
-<!-- SETTINGS PAGE -->
-<div id="settings-page" class="page-content">
-<div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
-<div class="flex items-center justify-between flex-wrap gap-4">
-<div>
-<h1 class="text-3xl font-bold text-cyan-400 mb-2 flex items-center frost-text">
-<i data-lucide="settings" class="w-8 h-8 mr-2"></i>Settings
-</h1>
-<p class="text-cyan-200">Kelola preferensi akun dan aplikasi Anda.</p>
-</div>
-<div class="crypto-icon-large" style="background: linear-gradient(145deg, rgba(0, 229, 255, 0.2), rgba(125, 249, 255, 0.1)); border-color: rgba(0, 229, 255, 0.5); box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);">
-<i data-lucide="settings" class="text-cyan-300 w-8 h-8"></i>
-</div>
-</div>
-</div>
-<div class="settings-section">
-<h3><i data-lucide="user" class="w-5 h-5 text-cyan-400"></i>Profil Akun</h3>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Username</div>
-<div class="settings-row-desc">Nama pengguna Anda</div>
-</div>
-<div class="text-white font-semibold">Fery Muliawan</div>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Email</div>
-<div class="settings-row-desc">Email terdaftar</div>
-</div>
-<div class="text-white font-semibold">fery@bossx.io</div>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Validator ID</div>
-<div class="settings-row-desc">ID unik validator Anda</div>
-</div>
-<div class="text-cyan-400 font-mono font-semibold frost-text">8055x</div>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Status KYC</div>
-<div class="settings-row-desc">Verifikasi identitas</div>
-</div>
-<span class="px-3 py-1 bg-emerald-400/20 text-emerald-400 rounded-full text-xs font-semibold border border-emerald-400/40">✓ Verified</span>
-</div>
-</div>
-<div class="settings-section">
-<h3><i data-lucide="bell" class="w-5 h-5 text-cyan-400"></i>Notifikasi</h3>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Notifikasi Email</div>
-<div class="settings-row-desc">Terima update via email</div>
-</div>
-<div class="toggle-switch active" onclick="toggleSetting(this, 'email_notif')"></div>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Notifikasi Push</div>
-<div class="settings-row-desc">Notifikasi browser</div>
-</div>
-<div class="toggle-switch active" onclick="toggleSetting(this, 'push_notif')"></div>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Alert Harga</div>
-<div class="settings-row-desc">Notifikasi perubahan harga signifikan</div>
-</div>
-<div class="toggle-switch" onclick="toggleSetting(this, 'price_alert')"></div>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Marketing Email</div>
-<div class="settings-row-desc">Promo & announcement</div>
-</div>
-<div class="toggle-switch" onclick="toggleSetting(this, 'marketing')"></div>
-</div>
-</div>
-<div class="settings-section">
-<h3><i data-lucide="shield" class="w-5 h-5 text-cyan-400"></i>Keamanan</h3>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Two-Factor Authentication (2FA)</div>
-<div class="settings-row-desc">Lapisan keamanan tambahan</div>
-</div>
-<div class="toggle-switch" onclick="toggleSetting(this, '2fa')"></div>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Login Alert</div>
-<div class="settings-row-desc">Notifikasi saat login dari device baru</div>
-</div>
-<div class="toggle-switch active" onclick="toggleSetting(this, 'login_alert')"></div>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Ubah Password</div>
-<div class="settings-row-desc">Terakhir diubah: 30 hari lalu</div>
-</div>
-<button onclick="showSuccessMessage('Fitur ubah password akan segera hadir!')" class="px-4 py-2 bg-cyan-400/20 hover:bg-cyan-400/30 text-cyan-300 rounded-lg text-sm transition-colors border border-cyan-400/40">Ubah</button>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Session Aktif</div>
-<div class="settings-row-desc">Device yang sedang login</div>
-</div>
-<button onclick="showSuccessMessage('1 session aktif (device ini)')" class="px-4 py-2 bg-cyan-400/20 hover:bg-cyan-400/30 text-cyan-300 rounded-lg text-sm transition-colors border border-cyan-400/40">Lihat</button>
-</div>
-</div>
-<div class="settings-section">
-<h3><i data-lucide="globe" class="w-5 h-5 text-cyan-400"></i>Preferensi</h3>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Bahasa</div>
-<div class="settings-row-desc">Bahasa tampilan aplikasi</div>
-</div>
-<select class="node-input" style="width: auto; min-width: 150px;" onchange="showSuccessMessage('Bahasa diubah ke: ' + this.value)">
-<option value="Indonesia">🇮🇩 Indonesia</option>
-<option value="English">🇬🇧 English</option>
-<option value="中文">🇨🇳 中文</option>
-</select>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Zona Waktu</div>
-<div class="settings-row-desc">Untuk tampilan waktu</div>
-</div>
-<select class="node-input" style="width: auto; min-width: 150px;" onchange="showSuccessMessage('Zona waktu diubah')">
-<option>UTC+7 (WIB)</option>
-<option>UTC+8 (WITA)</option>
-<option>UTC+9 (WIT)</option>
-<option>UTC+0 (GMT)</option>
-</select>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label">Tema</div>
-<div class="settings-row-desc">Tampilan aplikasi</div>
-</div>
-<select class="node-input" style="width: auto; min-width: 150px;" onchange="showSuccessMessage('Tema diubah')">
-<option>🌙 Dark (Default)</option>
-<option>⚡ Glacier (Cyan)</option>
-<option>🔥 Sunset (Coming Soon)</option>
-</select>
-</div>
-</div>
-<div class="settings-section">
-<h3><i data-lucide="info" class="w-5 h-5 text-cyan-400"></i>Tentang Aplikasi</h3>
-<div class="settings-row">
-<div><div class="settings-row-label">Versi</div></div>
-<div class="text-cyan-300 font-mono">v1.6.1</div>
-</div>
-<div class="settings-row">
-<div><div class="settings-row-label">Build</div></div>
-<div class="text-cyan-300 font-mono">2026.10.31</div>
-</div>
-<div class="settings-row">
-<div><div class="settings-row-label">Website</div></div>
-<a href="https://www.bossx.io" target="_blank" class="text-cyan-400 hover:text-cyan-300 text-sm">www.bossx.io ↗</a>
-</div>
-<div class="settings-row">
-<div><div class="settings-row-label">Kontak Support</div></div>
-<a href="mailto:admin@bossx.io" class="text-cyan-400 hover:text-cyan-300 text-sm">admin@bossx.io</a>
-</div>
-</div>
-<div class="settings-section" style="border-color: rgba(255, 0, 110, 0.3);">
-<h3 style="color: #FF006E;"><i data-lucide="log-out" class="w-5 h-5"></i>Zona Bahaya</h3>
-<div class="settings-row">
-<div>
-<div class="settings-row-label" style="color: #FF006E;">Hapus Data Lokal</div>
-<div class="settings-row-desc">Hapus semua data tersimpan di browser</div>
-</div>
-<button onclick="clearLocalData()" class="px-4 py-2 bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 rounded-lg text-sm transition-colors border border-rose-500/40">Hapus</button>
-</div>
-<div class="settings-row">
-<div>
-<div class="settings-row-label" style="color: #FF006E;">Logout</div>
-<div class="settings-row-desc">Keluar dari akun Anda</div>
-</div>
-<button onclick="handleLogout()" class="px-4 py-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white rounded-lg text-sm font-semibold transition-colors" style="box-shadow: 0 0 15px rgba(255, 0, 110, 0.4);">Logout</button>
-</div>
-</div>
-</div>
 </div>
 </main>
 </div>
 </div>
-<!-- BOSSX AI AGENT -->
+<!-- ============================================ -->
+<!-- BOSSX AI AGENT - FLOATING CHATBOT HTML       -->
+<!-- ============================================ -->
 <div id="bossx-ai-fab" class="bossx-ai-fab" onclick="toggleBossxAI()" title="BossX AI AGENT">
 <span class="bossx-ai-fab-icon">🤖</span>
 <span id="bossx-ai-badge" class="bossx-ai-fab-badge" style="display: none;">1</span>
@@ -1431,15 +1566,23 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 <div class="bossx-ai-header-actions">
-<button class="bossx-ai-header-btn" onclick="minimizeBossxAI()" title="Minimize"><i data-lucide="minus" style="width:14px;height:14px;"></i></button>
-<button class="bossx-ai-header-btn" onclick="closeBossxAI()" title="Tutup"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+<button class="bossx-ai-header-btn" onclick="minimizeBossxAI()" title="Minimize">
+<i data-lucide="minus" style="width:14px;height:14px;"></i>
+</button>
+<button class="bossx-ai-header-btn" onclick="closeBossxAI()" title="Tutup">
+<i data-lucide="x" style="width:14px;height:14px;"></i>
+</button>
 </div>
 </div>
 <div id="bossx-ai-body" class="bossx-ai-body"></div>
 <div class="bossx-ai-footer">
-<button class="bossx-ai-clear-btn" onclick="clearBossxAIChat()" title="Hapus chat"><i data-lucide="trash-2" style="width:16px;height:16px;"></i></button>
+<button class="bossx-ai-clear-btn" onclick="clearBossxAIChat()" title="Hapus chat">
+<i data-lucide="trash-2" style="width:16px;height:16px;"></i>
+</button>
 <input id="bossx-ai-input" type="text" class="bossx-ai-input" placeholder="Tanyakan seputar BossX..." onkeypress="handleBossxAIKey(event)" />
-<button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
+<button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim">
+<i data-lucide="send" style="width:16px;height:16px;"></i>
+</button>
 </div>
 </div>
 <script>
@@ -1539,7 +1682,6 @@ let logInterval;
 let lastClaimTime = 0;
 let masaBerlaku = 40000000;
 let masaInterval;
-let exchangeInitialized = false;
 const walletAddresses = {
 USDT: { address: 'TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM&color=00E5FF' },
 BOSSX: { address: 'TTfKjrU18mi223ukVmz6FMNgBkma13kVA3', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTfKjrU18mi223ukVmz6FMNgBkma13kVA3&color=00E5FF' }
@@ -1557,20 +1699,11 @@ USDT: [
 BOSSX: [
 { id: '4', amount: 1000.0, txHash: 'd4e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3', fromAddress: 'TAbcd456789012345678901234567890123', status: 'confirmed', timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), confirmationCount: 1 },
 { id: '5', amount: 500.0, txHash: 'e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4', fromAddress: 'TBcde567890123456789012345678901234', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '6', amount: 2000.0, txHash: 'f678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
+{ id: '6', amount: 2000.0, txHash: 'f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
 ]
 };
 const withdrawalHistory = { USDT: [], BOSSX: [] };
 const p2pHistory = [];
-const P2P_USERS = [
-{ username: '@alice_trader', name: 'Alice Trader', balance: 5000 },
-{ username: '@bob_investor', name: 'Bob Investor', balance: 12000 },
-{ username: '@charlie_whale', name: 'Charlie Whale', balance: 50000 },
-{ username: '@diana_holder', name: 'Diana Holder', balance: 8500 },
-{ username: '@eric_miner', name: 'Eric Miner', balance: 3200 },
-{ username: '@fiona_dev', name: 'Fiona Dev', balance: 15000 },
-{ username: '@george_analyst', name: 'George Analyst', balance: 7800 }
-];
 function initializeMainApp() {
 try {
 updateClock();
@@ -1582,9 +1715,6 @@ updatePKStatistics();
 updatePrivateKeysList();
 updatePKSummary();
 initSocialFi();
-initTeamDeveloper();
-initReferral();
-initSettings();
 lucide.createIcons();
 startMasaCountdown();
 setupEventListeners();
@@ -1643,9 +1773,6 @@ else if (pageId === 'withdrawal') updateWithdrawalContent();
 else if (pageId === 'p2p') updateP2PContent();
 else if (pageId === 'exchange') initExchangePage();
 else if (pageId === 'socialfi') renderSocialFi();
-else if (pageId === 'referral') renderReferralPage();
-else if (pageId === 'team-developer') initTeamDeveloper();
-else if (pageId === 'settings') initSettings();
 else if (pageId === 'private-key') {
 updatePKStatistics();
 updatePrivateKeysList();
@@ -1988,19 +2115,76 @@ const keys = loadPrivateKeys();
 const listContainer = document.getElementById('private-keys-list');
 if (!listContainer) return;
 if (keys.length === 0) {
-listContainer.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="key" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada Access Key</h4><p class="text-cyan-300">Generate Access Key pertama Anda di tab "Generate"</p></div>`;
+listContainer.innerHTML = `
+<div class="text-center py-12">
+<div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
+<i data-lucide="key" class="text-cyan-300 w-6 h-6"></i>
+</div>
+<h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada Access Key</h4>
+<p class="text-cyan-300">Generate Access Key pertama Anda di tab "Generate"</p>
+</div>
+`;
 } else {
-let tableHTML = `<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-cyan-400/30"><th class="text-left p-3 text-cyan-300 font-semibold">Access Key</th><th class="text-left p-3 text-cyan-300 font-semibold">Stake</th><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th><th class="text-left p-3 text-cyan-300 font-semibold">Aksi</th></tr></thead><tbody>`;
+let tableHTML = `
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="border-b-2 border-cyan-400/30">
+<th class="text-left p-3 text-cyan-300 font-semibold">Access Key</th>
+<th class="text-left p-3 text-cyan-300 font-semibold">Stake</th>
+<th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th>
+<th class="text-left p-3 text-cyan-300 font-semibold">Status</th>
+<th class="text-left p-3 text-cyan-300 font-semibold">Aksi</th>
+</tr>
+</thead>
+<tbody>
+`;
 keys.forEach(key => {
 const isHighlighted = key.id === highlightId;
 const highlightClass = isHighlighted ? 'pk-highlight-new' : '';
 const rowClass = key.status === 'AVAILABLE' ? 'pk-key-row-available' : 'pk-key-row-redeemed';
-const statusIcon = key.status === 'AVAILABLE' ? '<i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i>' : '<i data-lucide="check-check" class="text-cyan-300 w-4 h-4"></i>';
+const statusIcon = key.status === 'AVAILABLE'
+? '<i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i>'
+: '<i data-lucide="check-check" class="text-cyan-300 w-4 h-4"></i>';
 const statusColor = key.status === 'AVAILABLE' ? 'text-emerald-400' : 'text-cyan-300';
 const statusText = key.status === 'AVAILABLE' ? 'AVAILABLE' : 'REDEEMED';
-const createdDate = new Date(key.createdAt).toLocaleString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-const actionButton = key.status === 'AVAILABLE' ? `<button onclick="copyPrivateKey('${key.code}')" class="flex items-center px-3 py-1 bg-cyan-300 hover:bg-cyan-400 text-[#000814] rounded text-xs font-semibold transition-colors" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);"><i data-lucide="copy" class="w-3 h-3 mr-1"></i>Copy</button>` : `<span class="text-cyan-300 text-xs">-</span>`;
-tableHTML += `<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors ${rowClass} ${highlightClass}"><td class="p-3"><div class="font-mono text-sm text-cyan-300 break-all tracking-wider frost-text">${key.code}</div></td><td class="p-3"><div class="font-semibold text-white">${key.stake.toFixed(2)} BossX</div><div class="text-xs text-cyan-300">Fee: ${key.fee} BossX</div></td><td class="p-3"><div class="flex items-center text-white text-sm"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>${createdDate}</div></td><td class="p-3"><div class="flex items-center ${statusColor}">${statusIcon}<span class="ml-2 capitalize font-semibold text-sm">${statusText}</span></div></td><td class="p-3">${actionButton}</td></tr>`;
+const createdDate = new Date(key.createdAt).toLocaleString('id-ID', {
+year: 'numeric', month: 'short', day: 'numeric',
+hour: '2-digit', minute: '2-digit'
+});
+const actionButton = key.status === 'AVAILABLE'
+? `<button onclick="copyPrivateKey('${key.code}')" class="flex items-center px-3 py-1 bg-cyan-300 hover:bg-cyan-400 text-[#000814] rounded text-xs font-semibold transition-colors" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">
+<i data-lucide="copy" class="w-3 h-3 mr-1"></i>Copy
+</button>`
+: `<span class="text-cyan-300 text-xs">-</span>`;
+tableHTML += `
+<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors ${rowClass} ${highlightClass}">
+<td class="p-3">
+<div class="font-mono text-sm text-cyan-300 break-all tracking-wider frost-text">
+${key.code}
+</div>
+</td>
+<td class="p-3">
+<div class="font-semibold text-white">${key.stake.toFixed(2)} BossX</div>
+<div class="text-xs text-cyan-300">Fee: ${key.fee} BossX</div>
+</td>
+<td class="p-3">
+<div class="flex items-center text-white text-sm">
+<i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>
+${createdDate}
+</div>
+</td>
+<td class="p-3">
+<div class="flex items-center ${statusColor}">
+${statusIcon}
+<span class="ml-2 capitalize font-semibold text-sm">${statusText}</span>
+</div>
+</td>
+<td class="p-3">
+${actionButton}
+</td>
+</tr>
+`;
 });
 tableHTML += `</tbody></table></div>`;
 listContainer.innerHTML = tableHTML;
@@ -2022,7 +2206,11 @@ if (badgeEl) badgeEl.textContent = keys.length;
 }
 function copyPrivateKey(code) {
 if (navigator.clipboard) {
-navigator.clipboard.writeText(code).then(() => showSuccessMessage(`Access Key disalin: ${code}`)).catch(() => fallbackCopyPK(code));
+navigator.clipboard.writeText(code).then(() => {
+showSuccessMessage(`Access Key disalin: ${code}`);
+}).catch(() => {
+fallbackCopyPK(code);
+});
 } else {
 fallbackCopyPK(code);
 }
@@ -2032,7 +2220,12 @@ const textArea = document.createElement('textarea');
 textArea.value = text;
 document.body.appendChild(textArea);
 textArea.select();
-try { document.execCommand('copy'); showSuccessMessage(`Access Key disalin: ${text}`); } catch (err) { showErrorMessage('Gagal menyalin. Silakan copy manual.'); }
+try {
+document.execCommand('copy');
+showSuccessMessage(`Access Key disalin: ${text}`);
+} catch (err) {
+showErrorMessage('Gagal menyalin. Silakan copy manual.');
+}
 document.body.removeChild(textArea);
 }
 function switchPKTab(tab) {
@@ -2296,42 +2489,13 @@ function updateP2PContent() {
 updateBalanceDisplays();
 updateP2PStatistics();
 updateP2PHistory();
-renderP2PUserList();
-}
-function renderP2PUserList() {
-const listEl = document.getElementById('p2p-user-list');
-if (!listEl) return;
-listEl.innerHTML = P2P_USERS.map(u => `<div class="p2p-user-item" onclick="selectP2PUser('${u.username}')">${u.username}</div>`).join('');
-}
-function selectP2PUser(username) {
-document.getElementById('p2p-username').value = username;
-document.getElementById('p2p-user-suggestions').classList.remove('show');
-}
-function onP2PUsernameInput() {
-const input = document.getElementById('p2p-username');
-const suggestions = document.getElementById('p2p-user-suggestions');
-const value = input.value.trim().toLowerCase();
-if (!value) {
-suggestions.classList.remove('show');
-return;
-}
-const filtered = P2P_USERS.filter(u => u.username.toLowerCase().includes(value) || u.name.toLowerCase().includes(value));
-if (filtered.length === 0) {
-suggestions.classList.remove('show');
-return;
-}
-suggestions.innerHTML = filtered.map(u => `<div class="p2p-user-item" onclick="selectP2PUser('${u.username}')"><strong>${u.username}</strong> <span class="text-cyan-300 text-xs ml-2">${u.name}</span></div>`).join('');
-suggestions.classList.add('show');
 }
 function submitP2PTransfer() {
 const username = document.getElementById('p2p-username').value.trim();
 const amount = parseFloat(document.getElementById('p2p-amount').value) || 0;
 if (!username || !username.startsWith('@')) { showErrorMessage('Username harus diawali dengan @ dan tidak boleh kosong!'); return; }
-const userExists = P2P_USERS.some(u => u.username.toLowerCase() === username.toLowerCase());
-if (!userExists) { showErrorMessage(`User ${username} tidak ditemukan! Pilih dari daftar user aktif.`); return; }
 if (amount < 1) { showErrorMessage('Minimal transfer 1 BossX!'); return; }
 if (amount > bossxBalance) { showErrorMessage('Saldo BossX tidak mencukupi!'); return; }
-if (!confirm(`Kirim ${amount.toFixed(9)} BossX ke ${username}?`)) return;
 bossxBalance -= amount;
 p2pHistory.unshift({ id: Date.now().toString(), type: 'out', username, amount, timestamp: new Date(), status: 'completed' });
 document.getElementById('p2p-username').value = '';
@@ -2367,73 +2531,18 @@ document.getElementById('p2p-total-sent').textContent = formatAmount(totalSent) 
 document.getElementById('p2p-total-received').textContent = formatAmount(totalReceived) + ' BossX';
 }
 // ============ REFERRAL FUNCTIONS ============
-const REF_STORAGE_KEY = 'bossx_referral_data';
-function getReferralData() {
-try {
-const data = localStorage.getItem(REF_STORAGE_KEY);
-if (data) return JSON.parse(data);
-} catch (e) {}
-const defaultData = {
-code: 'REF-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
-list: [],
-totalReward: 0
-};
-localStorage.setItem(REF_STORAGE_KEY, JSON.stringify(defaultData));
-return defaultData;
-}
-function saveReferralData(data) {
-try { localStorage.setItem(REF_STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
-}
-function initReferral() {
-const data = getReferralData();
-document.getElementById('referral-code-display').textContent = data.code;
-if (data.list.length === 0) {
-const demoRefs = [
-{ id: '1', username: '@alice_trader', name: 'Alice Trader', purchaseAmount: 100, reward: 5, timestamp: Date.now() - 5 * 86400000, status: 'active' },
-{ id: '2', username: '@bob_investor', name: 'Bob Investor', purchaseAmount: 500, reward: 25, timestamp: Date.now() - 3 * 86400000, status: 'active' },
-{ id: '3', username: '@charlie_whale', name: 'Charlie Whale', purchaseAmount: 1000, reward: 50, timestamp: Date.now() - 1 * 86400000, status: 'active' }
-];
-data.list = demoRefs;
-data.totalReward = demoRefs.reduce((sum, r) => sum + r.reward, 0);
-saveReferralData(data);
-}
-renderReferralPage();
-}
-function renderReferralPage() {
-const data = getReferralData();
-document.getElementById('referral-code-display').textContent = data.code;
-document.getElementById('ref-total-count').textContent = data.list.length;
-document.getElementById('ref-total-reward').textContent = data.totalReward.toFixed(2);
-document.getElementById('ref-active-count').textContent = data.list.filter(r => r.status === 'active').length;
-renderReferralList();
-}
-function renderReferralList() {
-const data = getReferralData();
-const listEl = document.getElementById('referral-list');
-if (!listEl) return;
-if (data.list.length === 0) {
-listEl.innerHTML = `<div class="text-center py-8"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="users" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada referral</h4><p class="text-cyan-300">Bagikan kode referral Anda untuk mulai mendapatkan bonus!</p></div>`;
-return;
-}
-listEl.innerHTML = data.list.map(ref => {
-const statusBadge = ref.status === 'active' ? '<span class="px-2 py-1 bg-emerald-400/20 text-emerald-400 rounded-full text-xs font-semibold border border-emerald-400/40">Aktif</span>' : '<span class="px-2 py-1 bg-cyan-400/20 text-cyan-300 rounded-full text-xs font-semibold border border-cyan-400/40">Pending</span>';
-return `<div class="referral-item"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-[#000814] font-bold text-sm" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">${ref.name.charAt(0)}</div><div><div class="text-white font-semibold">${ref.name}</div><div class="text-cyan-300 text-xs">${ref.username} • ${formatTimeAgo(ref.timestamp)}</div></div></div><div class="text-right"><div class="text-emerald-400 font-bold frost-text">+${ref.reward.toFixed(2)} BossX</div><div class="text-cyan-300 text-xs">Pembelian: ${ref.purchaseAmount} BossX</div>${statusBadge}</div></div>`;
-}).join('');
-lucide.createIcons();
-}
 function generateReferralCode() {
-if (!confirm('Generate kode referral baru? Kode lama akan hangus.')) return;
-const data = getReferralData();
-data.code = 'REF-' + Math.random().toString(36).substring(2, 8).toUpperCase();
-saveReferralData(data);
-document.getElementById('referral-code-display').textContent = data.code;
+const code = 'REF-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+document.getElementById('referral-code').value = code;
 showSuccessMessage('Kode referral baru berhasil digenerate!');
 }
 function copyReferralCode() {
-const data = getReferralData();
-const text = data.code;
+const code = document.getElementById('referral-code').value;
+copyToClipboard(code);
+}
+function copyToClipboard(text) {
 if (navigator.clipboard) {
-navigator.clipboard.writeText(text).then(() => showSuccessMessage('Kode referral disalin: ' + text)).catch(() => fallbackCopy(text));
+navigator.clipboard.writeText(text).then(() => showSuccessMessage('Berhasil disalin ke clipboard!')).catch(() => fallbackCopy(text));
 } else fallbackCopy(text);
 }
 function fallbackCopy(text) {
@@ -2441,26 +2550,13 @@ const textArea = document.createElement('textarea');
 textArea.value = text;
 document.body.appendChild(textArea);
 textArea.select();
-try { document.execCommand('copy'); showSuccessMessage('Berhasil disalin ke clipboard!'); } catch (err) { showSuccessMessage('Gagal menyalin. Silakan copy manual.'); }
+try {
+document.execCommand('copy');
+showSuccessMessage('Berhasil disalin ke clipboard!');
+} catch (err) {
+showSuccessMessage('Gagal menyalin. Silakan copy manual.');
+}
 document.body.removeChild(textArea);
-}
-function shareReferral(platform) {
-const data = getReferralData();
-const link = `https://www.bossx.io/?ref=${data.code}`;
-const text = `Gabung BossX & dapatkan reward masternode! Gunakan kode referral saya: ${data.code}\n${link}`;
-let url = '';
-switch (platform) {
-case 'whatsapp': url = `https://wa.me/?text=${encodeURIComponent(text)}`; break;
-case 'telegram': url = `https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent(text)}`; break;
-case 'twitter': url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`; break;
-case 'facebook': url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`; break;
-case 'copy':
-if (navigator.clipboard) {
-navigator.clipboard.writeText(link).then(() => showSuccessMessage('Link referral disalin!')).catch(() => fallbackCopy(link));
-} else fallbackCopy(link);
-return;
-}
-if (url) window.open(url, '_blank');
 }
 function downloadQRCode() {
 const link = document.createElement('a');
@@ -2468,73 +2564,6 @@ link.download = `${activeTab}_QRCode.png`;
 link.href = walletAddresses[activeTab].qrCode;
 link.click();
 showSuccessMessage(`QR Code ${activeTab} berhasil didownload!`);
-}
-// ============ TEAM DEVELOPER ============
-const TEAM_MEMBERS = [
-{ name: 'Fery Muliawan', role: 'CEO (Chief Executive Officer)', desc: 'Pendiri dan visioner BossX.', image: 'https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png', social: { twitter: '#', linkedin: '#' } },
-{ name: 'Mr.Ramadhan', role: 'CFO (Chief Financial Officer)', desc: 'Mengawasi operasi harian & keuangan.', image: 'https://i.ibb.co.com/xKDSrKYw/Picsart-25-10-03-12-44-06-927.png', social: { twitter: '#', linkedin: '#' } },
-{ name: 'Michael Johnson', role: 'Manager', desc: 'Mengatur tim operasional & strategi bisnis.', image: null, initials: 'MJ', gradient: 'from-purple-500 to-pink-500', social: { twitter: '#', linkedin: '#' } },
-{ name: 'Lee', role: 'CTO (Chief Technology Officer)', desc: 'Infrastruktur teknis & keamanan blockchain.', image: 'https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg', social: { twitter: '#', github: '#' } },
-{ name: 'Emily Brown', role: 'Secretary', desc: 'Administrasi & komunikasi internal.', image: null, initials: 'EB', gradient: 'from-amber-500 to-orange-500', social: { twitter: '#', linkedin: '#' } }
-];
-function initTeamDeveloper() {
-const grid = document.getElementById('team-grid');
-if (!grid) return;
-grid.innerHTML = TEAM_MEMBERS.map(m => {
-let avatarHtml;
-if (m.image) {
-avatarHtml = `<img src="${m.image}" alt="${m.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#00E5FF,#00B8D4);color:#000814;font-weight:bold;font-size:2rem;\\'>${m.name.charAt(0)}</div>'">`;
-} else {
-avatarHtml = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,var(--tw-gradient-stops));" class="bg-gradient-to-br ${m.gradient} text-white font-bold text-4xl">${m.initials}</div>`;
-}
-const socialHtml = Object.entries(m.social).map(([platform, url]) => {
-const icons = { twitter: 'twitter', linkedin: 'linkedin', github: 'github' };
-return `<a href="${url}" target="_blank" class="w-8 h-8 rounded-full bg-[#001845] hover:bg-cyan-400/20 border border-cyan-400/30 flex items-center justify-center text-cyan-300 hover:text-cyan-400 transition-colors"><i data-lucide="${icons[platform]}" class="w-4 h-4"></i></a>`;
-}).join('');
-return `<div class="exchange-card p-6 text-center relative overflow-hidden"><div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div><div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-cyan-400" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);">${avatarHtml}</div><h3 class="text-xl font-bold text-white mb-2">${m.name}</h3><p class="text-cyan-400 mb-3 frost-text text-sm">${m.role}</p><p class="text-cyan-100 text-sm mb-4">${m.desc}</p><div class="flex justify-center gap-2">${socialHtml}</div></div>`;
-}).join('');
-lucide.createIcons();
-}
-// ============ SETTINGS FUNCTIONS ============
-const SETTINGS_KEY = 'bossx_settings';
-function getSettings() {
-try {
-const data = localStorage.getItem(SETTINGS_KEY);
-if (data) return JSON.parse(data);
-} catch (e) {}
-const defaults = { email_notif: true, push_notif: true, price_alert: false, marketing: false, '2fa': false, login_alert: true };
-localStorage.setItem(SETTINGS_KEY, JSON.stringify(defaults));
-return defaults;
-}
-function saveSettings(settings) {
-try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); } catch (e) {}
-}
-function initSettings() {
-const settings = getSettings();
-document.querySelectorAll('.toggle-switch').forEach(toggle => {
-const key = toggle.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
-if (key && settings[key] !== undefined) {
-if (settings[key]) toggle.classList.add('active');
-else toggle.classList.remove('active');
-}
-});
-}
-function toggleSetting(el, key) {
-const settings = getSettings();
-settings[key] = !settings[key];
-saveSettings(settings);
-el.classList.toggle('active');
-showSuccessMessage(`Setting "${key}" ${settings[key] ? 'diaktifkan' : 'dinonaktifkan'}`);
-}
-function clearLocalData() {
-if (!confirm('Hapus semua data lokal? Ini akan menghapus Access Keys, Referral, SocialFi posts, dan settings. Tindakan ini tidak dapat dibatalkan!')) return;
-const keysToKeep = ['bossx_logged_in', 'bossx_username'];
-const kept = {};
-keysToKeep.forEach(k => { const v = localStorage.getItem(k); if (v) kept[k] = v; });
-localStorage.clear();
-keysToKeep.forEach(k => { if (kept[k]) localStorage.setItem(k, kept[k]); });
-showSuccessMessage('Data lokal berhasil dihapus! Halaman akan di-reload.');
-setTimeout(() => location.reload(), 1500);
 }
 // ============ EXCHANGE FUNCTIONS ============
 let currentSymbol = 'BTCUSDT';
@@ -2544,7 +2573,6 @@ function isBossXPair(symbol) {
 return symbol.toUpperCase() === 'BOSSXUSDT';
 }
 function initExchangePage() {
-if (!exchangeInitialized) {
 document.querySelectorAll('.pair-button').forEach(btn => {
 btn.onclick = function() {
 document.querySelectorAll('.pair-button').forEach(b => b.classList.remove('active'));
@@ -2560,8 +2588,6 @@ loadOrderBook(symbol);
 loadRecentTrades(symbol);
 };
 });
-exchangeInitialized = true;
-}
 const defaultPair = 'BTC/USDT';
 const defaultSymbol = 'BTCUSDT';
 const defaultBtn = document.querySelector(`[data-pair="${defaultPair}"]`);
@@ -2800,10 +2826,6 @@ if (!e.target) return;
 if (e.target.id === 'max-withdrawal') setMaxWithdrawal();
 if (e.target.id === 'refresh-withdrawal-history') { showSuccessMessage('History withdrawal berhasil diperbarui!'); updateWithdrawalHistory(); }
 if (e.target.id === 'p2p-max') setMaxP2P();
-if (!e.target.closest('#p2p-username') && !e.target.closest('#p2p-user-suggestions')) {
-const suggestions = document.getElementById('p2p-user-suggestions');
-if (suggestions) suggestions.classList.remove('show');
-}
 });
 document.addEventListener('input', function(e) {
 if (!e.target) return;
@@ -2837,12 +2859,13 @@ if (priceInput) priceInput.style.display = e.target.value === 'market' ? 'none' 
 setInterval(updateClock, 1000);
 setInterval(checkSixAMStop, 1000);
 // ============================================
-// SOCIALFI MODULE
+// SOCIALFI MODULE (Modul Terpisah - Prefix sfi)
 // ============================================
 const SFI_STORAGE_KEY = 'bossx_socialfi_posts';
 const SFI_SUB_KEY = 'bossx_socialfi_subscription';
 const SFI_COST = 1;
 const SFI_DURATION_DAYS = 30;
+// Team developer data untuk dummy posts
 const SFI_TEAM = {
 'Fery Muliawan': { role: 'CEO • BossX', avatar: 'FM', image: 'https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png' },
 'Mr.Ramadhan': { role: 'CFO • BossX', avatar: 'MR', image: 'https://i.ibb.co.com/xKDSrKYw/Picsart-25-10-03-12-44-06-927.png' },
@@ -2852,11 +2875,13 @@ const SFI_TEAM = {
 };
 let sfiCurrentMedia = { type: null, url: '' };
 function initSocialFi() {
+// Load subscription
 let sub = null;
 try {
 const saved = localStorage.getItem(SFI_SUB_KEY);
 if (saved) sub = JSON.parse(saved);
 } catch (e) {}
+// Jika belum ada subscription, buat dummy posts pertama kali
 if (!localStorage.getItem(SFI_STORAGE_KEY)) {
 seedDummyPosts();
 }
@@ -2864,43 +2889,126 @@ seedDummyPosts();
 function seedDummyPosts() {
 const now = Date.now();
 const dummyPosts = [
-{ id: 'dummy-1', author: 'Fery Muliawan', role: 'CEO • BossX', avatar: 'FM', avatarImage: SFI_TEAM['Fery Muliawan'].image, content: '🧊 Selamat datang di BossX SocialFi! Platform sosial eksklusif untuk komunitas BossX. Mari bangun ekosistem crypto yang solid dan saling mendukung. Let\'s grow together! 🚀', media: null, mediaType: null, timestamp: now - 2 * 3600000, likes: ['Admin', 'Lee', 'Mr.Ramadhan', 'Michael Johnson', 'Emily Brown', 'TraderPro', 'CryptoKing'], comments: [{ id: 'c1', author: 'Lee', avatar: 'LE', avatarImage: SFI_TEAM['Lee'].image, text: 'Excited to be part of this journey, Bos! 🚀', timestamp: now - 1.5 * 3600000, replies: [] }, { id: 'c2', author: 'Mr.Ramadhan', avatar: 'MR', avatarImage: SFI_TEAM['Mr.Ramadhan'].image, text: 'Platform yang sangat inovatif! Salut dengan visi BossX.', timestamp: now - 1 * 3600000, replies: [{ id: 'r1', author: 'Fery Muliawan', avatar: 'FM', text: 'Terima kasih! Ini baru permulaan, kita masih punya banyak rencana besar.', timestamp: now - 0.5 * 3600000 }] }] },
-{ id: 'dummy-2', author: 'Lee', role: 'CTO • BossX', avatar: 'LE', avatarImage: SFI_TEAM['Lee'].image, content: '💻 Update teknis: Sistem masternode validator BossX sudah berjalan stabil. Tim engineering sedang mengerjakan peningkatan performa untuk auto-claim yang lebih cepat. Stay tuned untuk update berikutnya!', media: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800', mediaType: 'image', timestamp: now - 5 * 3600000, likes: ['Fery Muliawan', 'Admin', 'TraderPro', 'CryptoKing'], comments: [{ id: 'c3', author: 'Fery Muliawan', avatar: 'FM', avatarImage: SFI_TEAM['Fery Muliawan'].image, text: 'Great work, Lee! Keep it up 🔥', timestamp: now - 4 * 3600000, replies: [] }] },
-{ id: 'dummy-3', author: 'Mr.Ramadhan', role: 'CFO • BossX', avatar: 'MR', avatarImage: SFI_TEAM['Mr.Ramadhan'].image, content: '📊 Financial Update: Volume transaksi BossX meningkat 45% minggu ini! Terima kasih kepada seluruh komunitas yang telah mendukung. Mari kita pertahankan momentum ini dan capai target Q4. Numbers don\'t lie! 💪', media: null, mediaType: null, timestamp: now - 10 * 3600000, likes: ['Fery Muliawan', 'Lee', 'Admin', 'CryptoKing'], comments: [{ id: 'c4', author: 'Michael Johnson', avatar: 'MJ', text: 'Angka yang luar biasa! Tim marketing sudah siap untuk campaign berikutnya.', timestamp: now - 9 * 3600000, replies: [] }] },
-{ id: 'dummy-4', author: 'Emily Brown', role: 'Secretary', avatar: 'EB', avatarImage: null, content: '📢 Pengumuman: Community meetup BossX akan diadakan bulan depan! Detail akan diumumkan segera. Siapkan pertanyaan terbaik Anda untuk tim developer. Jangan sampai terlewat! ✨', media: null, mediaType: null, timestamp: now - 24 * 3600000, likes: ['Fery Muliawan', 'Lee', 'Mr.Ramadhan', 'Michael Johnson'], comments: [] },
-{ id: 'dummy-5', author: 'Michael Johnson', role: 'Manager', avatar: 'MJ', avatarImage: null, content: '🎯 Tips untuk validator baru: Pastikan Access Key Anda sudah di-redeem sebelum memulai validasi. Jangan lupa aktifkan power button dan pantau log engine secara berkala. Sukses untuk semua validator BossX! 💎', media: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800', mediaType: 'image', timestamp: now - 30 * 3600000, likes: ['Fery Muliawan', 'Lee', 'Admin'], comments: [{ id: 'c5', author: 'TraderPro', avatar: 'TP', text: 'Mantap tipsnya, sangat membantu untuk pemula!', timestamp: now - 28 * 3600000, replies: [] }] }
+{
+id: 'dummy-1',
+author: 'Fery Muliawan',
+role: 'CEO • BossX',
+avatar: 'FM',
+avatarImage: SFI_TEAM['Fery Muliawan'].image,
+content: '🧊 Selamat datang di BossX SocialFi! Platform sosial eksklusif untuk komunitas BossX. Di sini kita bisa berbagi analisis, strategi trading, dan momen-momen berharga bersama. Mari bangun ekosistem crypto yang solid dan saling mendukung. Let\'s grow together! 🚀',
+media: null,
+mediaType: null,
+timestamp: now - 2 * 3600000,
+likes: ['Admin', 'Lee', 'Mr.Ramadhan', 'Michael Johnson', 'Emily Brown', 'TraderPro', 'CryptoKing'],
+comments: [
+{ id: 'c1', author: 'Lee', avatar: 'LE', text: 'Excited to be part of this journey, Bos! 🚀', timestamp: now - 1.5 * 3600000, replies: [] },
+{ id: 'c2', author: 'Mr.Ramadhan', avatar: 'MR', text: 'Platform yang sangat inovatif! Salut dengan visi BossX.', timestamp: now - 1 * 3600000, replies: [
+{ id: 'r1', author: 'Fery Muliawan', avatar: 'FM', text: 'Terima kasih! Ini baru permulaan, kita masih punya banyak rencana besar.', timestamp: now - 0.5 * 3600000 }
+]}
+]
+},
+{
+id: 'dummy-2',
+author: 'Lee',
+role: 'CTO • BossX',
+avatar: 'LE',
+avatarImage: SFI_TEAM['Lee'].image,
+content: '💻 Update teknis: Sistem masternode validator BossX sudah berjalan stabil. Tim engineering sedang mengerjakan peningkatan performa untuk auto-claim yang lebih cepat. Stay tuned untuk update berikutnya!',
+media: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800',
+mediaType: 'image',
+timestamp: now - 5 * 3600000,
+likes: ['Fery Muliawan', 'Admin', 'TraderPro', 'CryptoKing'],
+comments: [
+{ id: 'c3', author: 'Fery Muliawan', avatar: 'FM', text: 'Great work, Lee! Keep it up 🔥', timestamp: now - 4 * 3600000, replies: [] }
+]
+},
+{
+id: 'dummy-3',
+author: 'Mr.Ramadhan',
+role: 'CFO • BossX',
+avatar: 'MR',
+avatarImage: SFI_TEAM['Mr.Ramadhan'].image,
+content: '📊 Financial Update: Volume transaksi BossX meningkat 45% minggu ini! Terima kasih kepada seluruh komunitas yang telah mendukung. Mari kita pertahankan momentum ini dan capai target Q4. Numbers don\'t lie! 💪',
+media: null,
+mediaType: null,
+timestamp: now - 10 * 3600000,
+likes: ['Fery Muliawan', 'Lee', 'Admin', 'CryptoKing'],
+comments: [
+{ id: 'c4', author: 'Michael Johnson', avatar: 'MJ', text: 'Angka yang luar biasa! Tim marketing sudah siap untuk campaign berikutnya.', timestamp: now - 9 * 3600000, replies: [] }
+]
+},
+{
+id: 'dummy-4',
+author: 'Emily Brown',
+role: 'Secretary',
+avatar: 'EB',
+avatarImage: null,
+content: '📢 Pengumuman: Community meetup BossX akan diadakan bulan depan! Detail akan diumumkan segera. Siapkan pertanyaan terbaik Anda untuk tim developer. Jangan sampai terlewat! ✨',
+media: null,
+mediaType: null,
+timestamp: now - 24 * 3600000,
+likes: ['Fery Muliawan', 'Lee', 'Mr.Ramadhan', 'Michael Johnson'],
+comments: []
+},
+{
+id: 'dummy-5',
+author: 'Michael Johnson',
+role: 'Manager',
+avatar: 'MJ',
+avatarImage: null,
+content: '🎯 Tips untuk validator baru: Pastikan Access Key Anda sudah di-redeem sebelum memulai validasi. Jangan lupa aktifkan power button dan pantau log engine secara berkala. Sukses untuk semua validator BossX! 💎',
+media: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800',
+mediaType: 'image',
+timestamp: now - 30 * 3600000,
+likes: ['Fery Muliawan', 'Lee', 'Admin'],
+comments: [
+{ id: 'c5', author: 'TraderPro', avatar: 'TP', text: 'Mantap tipsnya, sangat membantu untuk pemula!', timestamp: now - 28 * 3600000, replies: [] }
+]
+}
 ];
-try { localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(dummyPosts)); } catch (e) { console.error('Error seeding dummy posts:', e); }
+try {
+localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(dummyPosts));
+} catch (e) {
+console.error('Error seeding dummy posts:', e);
+}
 }
 function loadSfiPosts() {
 try {
 const data = localStorage.getItem(SFI_STORAGE_KEY);
 return data ? JSON.parse(data) : [];
-} catch (e) { return []; }
+} catch (e) {
+return [];
+}
 }
 function saveSfiPosts(posts) {
-try { localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(posts)); } catch (e) { showErrorMessage('Gagal menyimpan postingan!'); }
+try {
+localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(posts));
+} catch (e) {
+showErrorMessage('Gagal menyimpan postingan!');
+}
 }
 function getSfiSubscription() {
 try {
 const data = localStorage.getItem(SFI_SUB_KEY);
 if (!data) return null;
 const sub = JSON.parse(data);
-if (sub.expiresAt < Date.now()) { localStorage.removeItem(SFI_SUB_KEY); return null; }
+// Cek expired
+if (sub.expiresAt < Date.now()) {
+localStorage.removeItem(SFI_SUB_KEY);
+return null;
+}
 return sub;
-} catch (e) { return null; }
+} catch (e) {
+return null;
+}
 }
 function renderSocialFi() {
-const feed = document.getElementById('sfi-feed');
-if (feed) {
-feed.innerHTML = `<div class="sfi-loading"><div class="sfi-loading-spinner"></div><div>Memuat feed SocialFi...</div></div>`;
-}
-setTimeout(() => {
 const sub = getSfiSubscription();
 const statusEl = document.getElementById('sfi-subscription-status');
 const actionEl = document.getElementById('sfi-subscription-action');
 const mainContent = document.getElementById('sfi-main-content');
 if (sub) {
+// Aktif
 const daysLeft = Math.ceil((sub.expiresAt - Date.now()) / 86400000);
 statusEl.innerHTML = `<div class="sfi-status-badge active"><i data-lucide="check-circle" class="w-3 h-3"></i>AKTIF • ${daysLeft} hari tersisa</div>`;
 actionEl.innerHTML = `<p class="text-cyan-200 text-sm mt-2">Berlangganan hingga: ${new Date(sub.expiresAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>`;
@@ -2908,19 +3016,34 @@ mainContent.style.display = 'block';
 renderSfiFeed();
 updateSfiStats();
 } else {
+// Tidak aktif
 statusEl.innerHTML = `<div class="sfi-status-badge inactive"><i data-lucide="x-circle" class="w-3 h-3"></i>TIDAK AKTIF</div>`;
-actionEl.innerHTML = `<p class="text-cyan-200 text-sm mb-4">Aktifkan akses SocialFi dengan biaya <strong class="text-cyan-300">1 BossX / 30 hari</strong></p><button class="node-button" style="max-width: 300px; margin: 0 auto;" onclick="subscribeSfi()"><i data-lucide="crown" class="w-4 h-4 inline mr-1"></i>Aktifkan Akses (1 BossX)</button><p class="text-xs text-cyan-300 mt-3">Saldo Anda: <strong class="text-emerald-400">${bossxBalance.toFixed(9)} BossX</strong></p>`;
+actionEl.innerHTML = `
+<p class="text-cyan-200 text-sm mb-4">Aktifkan akses SocialFi dengan biaya <strong class="text-cyan-300">1 BossX / 30 hari</strong></p>
+<button class="node-button" style="max-width: 300px; margin: 0 auto;" onclick="subscribeSfi()">
+<i data-lucide="crown" class="w-4 h-4 inline mr-1"></i>Aktifkan Akses (1 BossX)
+</button>
+<p class="text-xs text-cyan-300 mt-3">Saldo Anda: <strong class="text-emerald-400">${bossxBalance.toFixed(9)} BossX</strong></p>
+`;
 mainContent.style.display = 'none';
 }
 lucide.createIcons();
-}, 500);
 }
 function subscribeSfi() {
-if (bossxBalance < SFI_COST) { showErrorMessage(`Saldo tidak mencukupi! Dibutuhkan ${SFI_COST} BossX.`); return; }
+if (bossxBalance < SFI_COST) {
+showErrorMessage(`Saldo tidak mencukupi! Dibutuhkan ${SFI_COST} BossX.`);
+return;
+}
 if (!confirm(`Aktifkan akses SocialFi selama ${SFI_DURATION_DAYS} hari dengan biaya ${SFI_COST} BossX?`)) return;
 bossxBalance -= SFI_COST;
-const sub = { active: true, purchasedAt: Date.now(), expiresAt: Date.now() + (SFI_DURATION_DAYS * 86400000) };
-try { localStorage.setItem(SFI_SUB_KEY, JSON.stringify(sub)); } catch (e) {}
+const sub = {
+active: true,
+purchasedAt: Date.now(),
+expiresAt: Date.now() + (SFI_DURATION_DAYS * 86400000)
+};
+try {
+localStorage.setItem(SFI_SUB_KEY, JSON.stringify(sub));
+} catch (e) {}
 updateBalanceDisplays();
 showSuccessMessage(`SocialFi berhasil diaktifkan selama ${SFI_DURATION_DAYS} hari!`);
 renderSocialFi();
@@ -2938,6 +3061,7 @@ lucide.createIcons();
 function renderSfiPost(post) {
 const isLiked = post.likes.includes('Fery Muliawan');
 const likeClass = isLiked ? 'liked' : '';
+const likeIcon = isLiked ? 'heart' : 'heart';
 const likeText = post.likes.length;
 let mediaHtml = '';
 if (post.media) {
@@ -2947,19 +3071,86 @@ mediaHtml = `<video class="sfi-post-media-video" controls src="${escapeHtml(post
 mediaHtml = `<img class="sfi-post-media" src="${escapeHtml(post.media)}" alt="Media" onerror="this.style.display='none'" />`;
 }
 }
-const avatarHtml = post.avatarImage ? `<div class="sfi-post-avatar"><img src="${post.avatarImage}" alt="${post.author}" onerror="this.style.display='none'; this.parentNode.textContent='${post.avatar}'"></div>` : `<div class="sfi-post-avatar">${post.avatar}</div>`;
+const avatarHtml = post.avatarImage
+? `<div class="sfi-post-avatar"><img src="${post.avatarImage}" alt="${post.author}" onerror="this.style.display='none'; this.parentNode.textContent='${post.avatar}'"></div>`
+: `<div class="sfi-post-avatar">${post.avatar}</div>`;
 const commentsHtml = renderSfiComments(post);
-return `<div class="sfi-post-card" data-post-id="${post.id}"><div class="sfi-post-header">${avatarHtml}<div class="sfi-post-meta"><div class="sfi-post-author">${escapeHtml(post.author)}</div><div class="sfi-post-role">${escapeHtml(post.role)}</div></div><div class="sfi-post-time">${formatTimeAgo(post.timestamp)}</div></div><div class="sfi-post-content">${escapeHtml(post.content)}</div>${mediaHtml}<div class="sfi-post-actions"><button class="sfi-action-btn ${likeClass}" onclick="toggleSfiLike('${post.id}')"><i data-lucide="heart" class="w-4 h-4"></i><span>${likeText}</span></button><button class="sfi-action-btn" onclick="toggleSfiComments('${post.id}')"><i data-lucide="message-circle" class="w-4 h-4"></i><span>${post.comments.length}</span></button><button class="sfi-action-btn" onclick="shareSfiPost('${post.id}')"><i data-lucide="share-2" class="w-4 h-4"></i><span>Share</span></button></div><div class="sfi-comments-section" id="sfi-comments-${post.id}" style="display: none;">${commentsHtml}<div class="sfi-comment-input-wrap"><input type="text" class="sfi-comment-input" id="sfi-comment-input-${post.id}" placeholder="Tulis komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiComment('${post.id}')" /><button class="sfi-comment-send" onclick="submitSfiComment('${post.id}')"><i data-lucide="send" class="w-4 h-4"></i></button></div></div></div>`;
+return `
+<div class="sfi-post-card" data-post-id="${post.id}">
+<div class="sfi-post-header">
+${avatarHtml}
+<div class="sfi-post-meta">
+<div class="sfi-post-author">${escapeHtml(post.author)}</div>
+<div class="sfi-post-role">${escapeHtml(post.role)}</div>
+</div>
+<div class="sfi-post-time">${formatTimeAgo(post.timestamp)}</div>
+</div>
+<div class="sfi-post-content">${escapeHtml(post.content)}</div>
+${mediaHtml}
+<div class="sfi-post-actions">
+<button class="sfi-action-btn ${likeClass}" onclick="toggleSfiLike('${post.id}')">
+<i data-lucide="${likeIcon}" class="w-4 h-4"></i>
+<span>${likeText}</span>
+</button>
+<button class="sfi-action-btn" onclick="toggleSfiComments('${post.id}')">
+<i data-lucide="message-circle" class="w-4 h-4"></i>
+<span>${post.comments.length}</span>
+</button>
+<button class="sfi-action-btn" onclick="shareSfiPost('${post.id}')">
+<i data-lucide="share-2" class="w-4 h-4"></i>
+<span>Share</span>
+</button>
+</div>
+<div class="sfi-comments-section" id="sfi-comments-${post.id}" style="display: none;">
+${commentsHtml}
+<div class="sfi-comment-input-wrap">
+<input type="text" class="sfi-comment-input" id="sfi-comment-input-${post.id}" placeholder="Tulis komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiComment('${post.id}')" />
+<button class="sfi-comment-send" onclick="submitSfiComment('${post.id}')">
+<i data-lucide="send" class="w-4 h-4"></i>
+</button>
+</div>
+</div>
+</div>
+`;
 }
 function renderSfiComments(post) {
-if (post.comments.length === 0) return '<p class="text-cyan-300 text-xs text-center py-2">Belum ada komentar. Jadilah yang pertama!</p>';
+if (post.comments.length === 0) {
+return '<p class="text-cyan-300 text-xs text-center py-2">Belum ada komentar. Jadilah yang pertama!</p>';
+}
 return post.comments.map(c => {
-const avatarHtml = c.avatarImage ? `<div class="sfi-comment-avatar"><img src="${c.avatarImage}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none'; this.parentNode.textContent='${c.avatar}'"></div>` : `<div class="sfi-comment-avatar">${c.avatar}</div>`;
-const repliesHtml = (c.replies || []).map(r => {
-const rAvatarHtml = r.avatarImage ? `<div class="sfi-comment-avatar"><img src="${r.avatarImage}" onerror="this.style.display='none'; this.parentNode.textContent='${r.avatar}'"></div>` : `<div class="sfi-comment-avatar">${r.avatar}</div>`;
-return `<div class="sfi-comment sfi-reply">${rAvatarHtml}<div class="sfi-comment-body"><div class="sfi-comment-author">${escapeHtml(r.author)}</div><div class="sfi-comment-text">${escapeHtml(r.text)}</div><div class="sfi-comment-time">${formatTimeAgo(r.timestamp)}</div></div></div>`;
-}).join('');
-return `<div class="sfi-comment">${avatarHtml}<div class="sfi-comment-body"><div class="sfi-comment-author">${escapeHtml(c.author)}</div><div class="sfi-comment-text">${escapeHtml(c.text)}</div><div class="sfi-comment-time">${formatTimeAgo(c.timestamp)}<button class="sfi-reply-btn" onclick="showSfiReplyInput('${post.id}', '${c.id}')">Balas</button></div><div id="sfi-reply-input-${post.id}-${c.id}" style="display:none;" class="sfi-comment-input-wrap" style="margin-top:8px;"><input type="text" class="sfi-comment-input" placeholder="Balas komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiReply('${post.id}','${c.id}')" /><button class="sfi-comment-send" onclick="submitSfiReply('${post.id}','${c.id}')"><i data-lucide="send" class="w-3 h-3"></i></button></div></div></div>${repliesHtml}`;
+const avatarHtml = c.avatarImage
+? `<div class="sfi-comment-avatar"><img src="${c.avatarImage}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none'; this.parentNode.textContent='${c.avatar}'"></div>`
+: `<div class="sfi-comment-avatar">${c.avatar}</div>`;
+const repliesHtml = (c.replies || []).map(r => `
+<div class="sfi-comment sfi-reply">
+<div class="sfi-comment-avatar">${r.avatar}</div>
+<div class="sfi-comment-body">
+<div class="sfi-comment-author">${escapeHtml(r.author)}</div>
+<div class="sfi-comment-text">${escapeHtml(r.text)}</div>
+<div class="sfi-comment-time">${formatTimeAgo(r.timestamp)}</div>
+</div>
+</div>
+`).join('');
+return `
+<div class="sfi-comment">
+${avatarHtml}
+<div class="sfi-comment-body">
+<div class="sfi-comment-author">${escapeHtml(c.author)}</div>
+<div class="sfi-comment-text">${escapeHtml(c.text)}</div>
+<div class="sfi-comment-time">
+${formatTimeAgo(c.timestamp)}
+<button class="sfi-reply-btn" onclick="showSfiReplyInput('${post.id}', '${c.id}')">Balas</button>
+</div>
+<div id="sfi-reply-input-${post.id}-${c.id}" style="display:none;" class="sfi-comment-input-wrap" style="margin-top:8px;">
+<input type="text" class="sfi-comment-input" placeholder="Balas komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiReply('${post.id}','${c.id}')" />
+<button class="sfi-comment-send" onclick="submitSfiReply('${post.id}','${c.id}')">
+<i data-lucide="send" class="w-3 h-3"></i>
+</button>
+</div>
+</div>
+</div>
+${repliesHtml}
+`;
 }).join('');
 }
 function toggleSfiLike(postId) {
@@ -2968,15 +3159,20 @@ const post = posts.find(p => p.id === postId);
 if (!post) return;
 const user = 'Fery Muliawan';
 const idx = post.likes.indexOf(user);
-if (idx > -1) post.likes.splice(idx, 1);
-else post.likes.push(user);
+if (idx > -1) {
+post.likes.splice(idx, 1);
+} else {
+post.likes.push(user);
+}
 saveSfiPosts(posts);
 renderSfiFeed();
 updateSfiStats();
 }
 function toggleSfiComments(postId) {
 const section = document.getElementById(`sfi-comments-${postId}`);
-if (section) section.style.display = section.style.display === 'none' ? 'block' : 'none';
+if (section) {
+section.style.display = section.style.display === 'none' ? 'block' : 'none';
+}
 }
 function submitSfiComment(postId) {
 const input = document.getElementById(`sfi-comment-input-${postId}`);
@@ -2985,17 +3181,31 @@ if (!text) return;
 const posts = loadSfiPosts();
 const post = posts.find(p => p.id === postId);
 if (!post) return;
-post.comments.push({ id: 'c' + Date.now(), author: 'Fery Muliawan', avatar: 'FM', avatarImage: SFI_TEAM['Fery Muliawan'].image, text: text, timestamp: Date.now(), replies: [] });
+post.comments.push({
+id: 'c' + Date.now(),
+author: 'Fery Muliawan',
+avatar: 'FM',
+avatarImage: SFI_TEAM['Fery Muliawan'].image,
+text: text,
+timestamp: Date.now(),
+replies: []
+});
 saveSfiPosts(posts);
 input.value = '';
 renderSfiFeed();
 updateSfiStats();
-setTimeout(() => { const section = document.getElementById(`sfi-comments-${postId}`); if (section) section.style.display = 'block'; }, 50);
+// Re-open comments section
+setTimeout(() => {
+const section = document.getElementById(`sfi-comments-${postId}`);
+if (section) section.style.display = 'block';
+}, 50);
 showSuccessMessage('Komentar berhasil ditambahkan!');
 }
 function showSfiReplyInput(postId, commentId) {
 const el = document.getElementById(`sfi-reply-input-${postId}-${commentId}`);
-if (el) el.style.display = el.style.display === 'none' ? 'flex' : 'none';
+if (el) {
+el.style.display = el.style.display === 'none' ? 'flex' : 'none';
+}
 }
 function submitSfiReply(postId, commentId) {
 const wrap = document.getElementById(`sfi-reply-input-${postId}-${commentId}`);
@@ -3008,11 +3218,20 @@ if (!post) return;
 const comment = post.comments.find(c => c.id === commentId);
 if (!comment) return;
 if (!comment.replies) comment.replies = [];
-comment.replies.push({ id: 'r' + Date.now(), author: 'Fery Muliawan', avatar: 'FM', avatarImage: SFI_TEAM['Fery Muliawan'].image, text: text, timestamp: Date.now() });
+comment.replies.push({
+id: 'r' + Date.now(),
+author: 'Fery Muliawan',
+avatar: 'FM',
+text: text,
+timestamp: Date.now()
+});
 saveSfiPosts(posts);
 renderSfiFeed();
 updateSfiStats();
-setTimeout(() => { const section = document.getElementById(`sfi-comments-${postId}`); if (section) section.style.display = 'block'; }, 50);
+setTimeout(() => {
+const section = document.getElementById(`sfi-comments-${postId}`);
+if (section) section.style.display = 'block';
+}, 50);
 showSuccessMessage('Balasan berhasil ditambahkan!');
 }
 function shareSfiPost(postId) {
@@ -3024,6 +3243,7 @@ const btnVideo = document.getElementById('sfi-btn-video');
 const urlInput = document.getElementById('sfi-media-url');
 const preview = document.getElementById('sfi-media-preview');
 if (sfiCurrentMedia.type === type) {
+// Toggle off
 sfiCurrentMedia = { type: null, url: '' };
 btnImage.classList.remove('active');
 btnVideo.classList.remove('active');
@@ -3037,7 +3257,9 @@ sfiCurrentMedia.url = '';
 btnImage.classList.toggle('active', type === 'image');
 btnVideo.classList.toggle('active', type === 'video');
 urlInput.classList.add('show');
-urlInput.placeholder = type === 'image' ? 'Paste URL gambar (contoh: https://images.unsplash.com/...)' : 'Paste URL video (contoh: https://...mp4)';
+urlInput.placeholder = type === 'image'
+? 'Paste URL gambar (contoh: https://images.unsplash.com/...)'
+: 'Paste URL video (contoh: https://...mp4)';
 preview.classList.remove('show');
 urlInput.focus();
 }
@@ -3045,15 +3267,40 @@ function submitSfiPost() {
 const textarea = document.getElementById('sfi-compose-text');
 const content = textarea.value.trim();
 const mediaUrl = document.getElementById('sfi-media-url').value.trim();
-if (!content && !mediaUrl) { showErrorMessage('Tulis sesuatu atau tambahkan media!'); return; }
-if (content.length > 500) { showErrorMessage('Postingan maksimal 500 karakter!'); return; }
+if (!content && !mediaUrl) {
+showErrorMessage('Tulis sesuatu atau tambahkan media!');
+return;
+}
+if (content.length > 500) {
+showErrorMessage('Postingan maksimal 500 karakter!');
+return;
+}
+// Validasi URL media
 if (mediaUrl && sfiCurrentMedia.type) {
-try { new URL(mediaUrl); } catch (e) { showErrorMessage('URL media tidak valid!'); return; }
+try {
+new URL(mediaUrl);
+} catch (e) {
+showErrorMessage('URL media tidak valid!');
+return;
+}
 }
 const posts = loadSfiPosts();
-const newPost = { id: 'post-' + Date.now(), author: 'Fery Muliawan', role: 'CEO • BossX', avatar: 'FM', avatarImage: SFI_TEAM['Fery Muliawan'].image, content: content, media: mediaUrl || null, mediaType: sfiCurrentMedia.type, timestamp: Date.now(), likes: [], comments: [] };
+const newPost = {
+id: 'post-' + Date.now(),
+author: 'Fery Muliawan',
+role: 'CEO • BossX',
+avatar: 'FM',
+avatarImage: SFI_TEAM['Fery Muliawan'].image,
+content: content,
+media: mediaUrl || null,
+mediaType: sfiCurrentMedia.type,
+timestamp: Date.now(),
+likes: [],
+comments: []
+};
 posts.unshift(newPost);
 saveSfiPosts(posts);
+// Reset form
 textarea.value = '';
 document.getElementById('sfi-char-count').textContent = '0';
 document.getElementById('sfi-media-url').value = '';
@@ -3089,48 +3336,67 @@ div.textContent = text;
 return div.innerHTML;
 }
 // ============================================
-// BOSSX AI AGENT - KNOWLEDGE BASE (35+ ENTRI)
+// BOSSX AI AGENT - KNOWLEDGE BASE & LOGIC
 // ============================================
 const BOSSX_AI_KB = [
-{ keywords: ['apa itu bossx', 'bossx itu apa', 'tentang bossx', 'pengertian bossx', 'bossx cryptocurrency', 'bossx token'], question: 'Apa itu BossX?', answer: '<strong>BossX</strong> adalah aset kripto (token) yang dibangun di jaringan <strong>TRON</strong> dengan standar <strong>TRC20</strong>. BossX dirancang sebagai token utama untuk ekosistem: transaksi internal, utilitas fitur aplikasi (SocialFi, Internal Market, P2P), serta mekanisme insentif berbasis aturan yang transparan.<br><br><strong>📊 Parameter Supply:</strong><br>• Jaringan: TRC20 (TRON)<br>• Total Supply: <strong>100.000.000 BOSSX</strong><br>• Genesis Mint: 1.000.000 BOSSX (1%)<br>• Reward Pool: 99.000.000 BOSSX (99%)' },
-{ keywords: ['jaringan bossx', 'blockchain bossx', 'tron bossx', 'trc20'], question: 'BossX menggunakan jaringan apa?', answer: 'BossX dibangun di atas jaringan <strong>TRON (TRC20)</strong>. TRON dipilih karena:<br><br>• <strong>Biaya transaksi rendah</strong> dibanding Ethereum<br>• <strong>Kecepatan tinggi</strong> untuk transaksi real-time<br>• <strong>Kompatibel</strong> dengan ekosistem DeFi TRON<br>• <strong>Skalabel</strong> untuk pertumbuhan ekosistem BossX' },
-{ keywords: ['website bossx', 'link bossx', 'bossx io', 'alamat website'], question: 'Apa website resmi BossX?', answer: 'Website resmi BossX adalah:<br><br>🌐 <strong>www.bossx.io</strong><br><br><strong>📧 Kontak:</strong><br>• Admin: admin@bossx.io<br>• Developer: dev@bossx.io<br><br>Selalu pastikan Anda mengakses website resmi untuk menghindari phishing!' },
-{ keywords: ['access key', 'apa itu access key', 'fungsi access key', 'masternode', 'private key'], question: 'Apa itu Access Key?', answer: '<strong>Access Key</strong> adalah kode digital unik yang dibentuk menggunakan prinsip kriptografi dan enkripsi ketat (mengadopsi standar <strong>STS - Standard Transfer Specification</strong>). Access Key berfungsi sebagai <strong>lisensi partisipasi</strong> dalam sistem distribusi reward BossX.<br><br><strong>⚠️ PENTING:</strong> Access Key BUKAN perangkat mining dan BUKAN validator TRON. Access Key adalah mekanisme <em>rule-based emissions</em> (distribusi reward berbasis aturan).<br><br><strong>🔑 Spesifikasi:</strong><br>• Kode kriptografis unik (sulit dipalsukan)<br>• Berlaku untuk 1x redeem/aktivasi (anti-reuse)<br>• Memiliki masa berlaku (countdown timer)<br>• Dapat divalidasi secara deterministik oleh sistem' },
-{ keywords: ['cara beli access key', 'beli access key', 'harga access key', 'minimal beli'], question: 'Bagaimana cara membeli Access Key?', answer: 'Untuk membeli Access Key:<br><br><strong>1.</strong> Deposit USDT/BOSSX ke akun Anda<br><strong>2.</strong> Beli BOSSX di Internal Market<br><strong>3.</strong> Gunakan saldo BOSSX untuk membeli Access Key<br><br><strong>💰 Harga & Ketentuan:</strong><br>• Minimal pembelian: <strong>$10</strong> (≈ 10 BOSSX, asumsi 1 BOSSX = 1 USDT)<br>• User bebas memilih nominal lebih besar<br>• Dapat membeli beberapa Access Key dalam 1 akun<br>• Setiap pembelian menghasilkan 1 Access Key unik<br><br><strong>💡 Tips:</strong> Semakin besar nilai Access Key, semakin besar reward yang dihasilkan!' },
-{ keywords: ['cara redeem access key', 'aktivasi access key', 'redeem key', 'cara aktivasi'], question: 'Bagaimana cara redeem/aktivasi Access Key?', answer: 'Setelah membeli Access Key, lakukan aktivasi:<br><br><strong>1.</strong> Sistem menerbitkan Access Key (kode kriptografis)<br><strong>2.</strong> <strong>Simpan kode tersebut dengan aman!</strong><br><strong>3.</strong> Masuk ke Dashboard → masukkan kode Access Key<br><strong>4.</strong> Klik "Redeem Now"<br><strong>5.</strong> Sistem memvalidasi: kode valid, belum terpakai, akun memenuhi syarat<br><strong>6.</strong> Jika lolos, status Access Key menjadi <strong>AKTIF</strong><br><br><strong>⚠️ Peringatan:</strong><br>• Access Key hanya bisa diredeem <strong>1 kali</strong><br>• Setelah redeem, kode hangus<br>• Jangan bagikan kode ke siapapun!' },
-{ keywords: ['power on', 'tombol power', 'cara aktifkan validasi', 'start validation'], question: 'Apa itu tombol Power On?', answer: 'Tombol <strong>Power On</strong> adalah aksi pengguna untuk memulai proses validasi running pada hari itu.<br><br><strong>📋 Cara Kerja:</strong><br>1. Setelah Access Key aktif, tekan tombol Power On<br>2. Sistem menjalankan validasi terus-menerus<br>3. Reward dihitung setiap detik<br>4. Setiap 1 menit, hasil validasi terkonfirmasi ke saldo Reward Validasi<br><br><strong>⏰ Aturan Penting:</strong><br>• Tekan Power On pada <strong>06:01 UTC</strong> setiap hari<br>• Jika terlambat, AccessKey dianggap tidak aktif selama periode keterlambatan<br>• Anda kehilangan reward sebesar durasi keterlambatan<br>• Timer 40.000.000 detik tetap berjalan meski terlambat' },
-{ keywords: ['durasi access key', 'masa berlaku', '40 juta detik', 'timer access key'], question: 'Berapa lama masa berlaku Access Key?', answer: 'Access Key memiliki durasi <strong>40.000.000 detik</strong> (sekitar <strong>463 hari</strong> atau ±15 bulan) sejak momen redeem/aktivasi.<br><br><strong>⏱️ Detail:</strong><br>• Timer mulai berjalan saat redeem berhasil<br>• Timer tetap berjalan meski Anda terlambat Power On<br>• Keterlambatan Power On mengurangi reward dan waktu efektif<br>• Setelah 40.000.000 detik, Access Key berakhir<br><br><strong>💡 Catatan:</strong> Parameter ini dapat berubah sesuai kebijakan final proyek.' },
-{ keywords: ['bagaimana reward bekerja', 'cara dapat reward', 'reward validasi', 'sistem reward', 'mekanisme reward'], question: 'Bagaimana sistem reward BossX bekerja?', answer: 'Sistem reward BossX menggunakan mekanisme <strong>akumulasi kontinu per detik</strong>:<br><br><strong>📊 Base Reward:</strong><br>• <strong>10% per bulan</strong> dari nilai pembelian Access Key (A)<br>• Tanpa pengembalian modal (principal)<br>• Dihitung sebagai akumulasi per detik<br><br><strong>⚙️ Cara Kerja:</strong><br>1. Access Key aktif + Power On → validasi berjalan<br>2. Reward dihitung setiap detik<br>3. Setiap 1 menit → Auto-Validation Claim ke saldo Reward Validasi<br>4. Reward terakumulasi sampai di-claim/withdraw<br><br><strong>💰 Contoh:</strong><br>• Access Key senilai 1.000 BOSSX<br>• Base reward bulanan: 100 BOSSX<br>• Rate per detik: ≈ 0.00003858 BOSSX/detik<br>• Jika bulan 30 hari (2.592.000 detik)' },
-{ keywords: ['auto claim', 'auto validation', 'klaim otomatis', '1 menit'], question: 'Apa itu Auto-Validation Claim?', answer: '<strong>Auto-Validation Claim</strong> adalah proses otomatis yang terjadi setiap <strong>1 menit</strong>:<br><br><strong>🔄 Proses:</strong><br>1. Selama validasi running, reward dihitung per detik<br>2. Setiap 1 menit, sistem mengkonsolidasikan hasil perhitungan<br>3. Hasil dikonfirmasi ke saldo <strong>Reward Validasi</strong> di dalam platform<br>4. Jika ada pembulatan, sisa pecahan dibawa ke menit berikutnya<br><br><strong>⚠️ PENTING:</strong><br>• Auto-claim per 1 menit adalah <strong>pencatatan saldo di dalam platform</strong><br>• BUKAN transfer on-chain setiap menit<br>• Transfer on-chain hanya terjadi saat claim/withdraw<br>• Ini untuk efisiensi biaya transaksi' },
-{ keywords: ['checkpoint', '06:00 utc', 'berhenti harian', 'auto stop'], question: 'Mengapa validasi berhenti jam 06:00 UTC?', answer: 'Validasi/reward berhenti setiap hari pada <strong>06:00 UTC</strong> untuk proses <strong>checkpoint</strong>.<br><br><strong>🎯 Tujuan Checkpoint:</strong><br>• Sinkronisasi data<br>• Validasi status AccessKey<br>• Mitigasi penyalahgunaan (anti-abuse)<br>• Pembaruan parameter jika diperlukan<br><br><strong>⏰ Aturan:</strong><br>• Validasi berhenti: 06:00 UTC<br>• Power On kembali: <strong>06:01 UTC</strong><br>• Jika terlambat Power On, kehilangan reward selama durasi keterlambatan<br><br><strong>💡 Rekomendasi:</strong> Set alarm/pengingat untuk Power On tepat waktu!' },
-{ keywords: ['dari mana reward', 'sumber reward', 'reward pool', '99 juta'], question: 'Dari mana reward BossX berasal?', answer: 'Reward BossX berasal dari <strong>Reward Pool</strong> sebesar <strong>99.000.000 BOSSX</strong> (99% dari total supply).<br><br><strong>📦 Detail Reward Pool:</strong><br>• Total Supply: 100.000.000 BOSSX<br>• Genesis Mint (sudah beredar): 1.000.000 BOSSX (1%)<br>• Reward Pool (belum beredar): 99.000.000 BOSSX (99%)<br><br><strong>🔄 Mekanisme Emisi:</strong><br>• Token dilepas <strong>bertahap</strong> mengikuti reward yang terbentuk dari validasi pengguna aktif<br>• Tidak ada tanggal pasti kapan 99 juta BOSSX habis<br>• Kecepatan distribusi bergantung pada: jumlah AccessKey eligible, nilai pembelian, kedisiplinan Power On, kebijakan proyek<br><br><strong>💡 Catatan:</strong> "Per detik" mengacu pada perhitungan akumulasi, bukan transfer on-chain per detik.' },
-{ keywords: ['klaim reward', 'cara claim', 'withdraw reward', 'tarik reward'], question: 'Bagaimana cara claim reward?', answer: 'Ada beberapa cara untuk mengklaim reward:<br><br><strong>1. Auto-Validation Claim (Otomatis):</strong><br>• Terjadi setiap 1 menit<br>• Masuk ke saldo Reward Validasi di platform<br><br><strong>2. Internal Market:</strong><br>• Jual reward BOSSX di Internal Market<br>• Dapat USDT atau BOSSX lain<br><br><strong>3. Withdraw ke Wallet On-chain:</strong><br>• Buka menu Withdrawal<br>• Masukkan alamat wallet TRC20<br>• Token berpindah ke wallet pribadi Anda<br><br><strong>⚠️ Catatan:</strong><br>• Batas minimum interval withdraw (mis. 1x per hari)<br>• Fee withdraw kecil untuk treasury<br>• Periksa alamat wallet sebelum konfirmasi!' },
-{ keywords: ['tokenomics', 'alokasi token', 'distribusi token', 'supply bossx'], question: 'Bagaimana tokenomics BossX?', answer: '<strong>📊 Total Supply: 100.000.000 BOSSX</strong><br><br><strong>A. Genesis Mint (1%) - 1.000.000 BOSSX:</strong><br>• Liquidity Bootstrap: 250.000 (0.25%) - Lock 6-12 bulan<br>• Treasury Operasional: 200.000 (0.20%) - Vesting 12 bulan<br>• Development & Security: 200.000 (0.20%) - Vesting 18-24 bulan<br>• Team Allocation: 200.000 (0.20%) - Cliff 6 bulan + vesting 36 bulan<br>• Marketing & Community: 100.000 (0.10%) - Release bertahap 6-12 bulan<br>• Advisors/Partners: 50.000 (0.05%) - Cliff 3 bulan + vesting 12 bulan<br><br><strong>B. Reward Pool (99%) - 99.000.000 BOSSX:</strong><br>• AccessKey Base Reward Emission<br>• Emisi dinamis sesuai parameter AccessKey<br><br><strong>💎 Prinsip:</strong> Fairness, kontrol emisi, keberlanjutan jangka panjang.' },
-{ keywords: ['alokasi dana', 'flow dana', 'pembelian access key', 'dana pembelian'], question: 'Ke mana dana pembelian Access Key dialokasikan?', answer: 'Dana dari pembelian Access Key dialokasikan untuk mendukung keberlanjutan ekosistem:<br><br><strong>💰 Alokasi Dana Pembelian Access Key:</strong><br><br>• <strong>50% - Trading Bot:</strong><br>  Modal dikelola robot trading. Profit dapat dibagikan sebagai bonus variabel.<br><br>• <strong>25% - Liquidity:</strong><br>  Menambah liquidity BOSSX untuk stabilitas pasar.<br><br>• <strong>5% - Charity:</strong><br>  Program sosial dengan transparansi & laporan.<br><br>• <strong>20% - Dev/Ops:</strong><br>  Pengembangan, operasional, audit, dan kebutuhan proyek.<br><br><strong>💡 Catatan:</strong> Selain base reward dari reward pool, alokasi ini menambah pilar keberlanjutan ekosistem.' },
-{ keywords: ['vesting', 'lock up', 'kapan token cair', 'tim vesting'], question: 'Bagaimana sistem vesting dan lock-up?', answer: 'Untuk menjaga kepercayaan publik dan mengurangi risiko tekanan jual, setiap kategori Genesis Mint mengikuti aturan vesting/lock-up:<br><br><strong>🔒 Vesting Schedule:</strong><br><br>• <strong>Liquidity Bootstrap:</strong> Lock minimum 6-12 bulan<br>• <strong>Treasury Operasional:</strong> Vesting linear 12 bulan<br>• <strong>Development & Security:</strong> Vesting linear 18-24 bulan<br>• <strong>Team Allocation:</strong> Cliff 6 bulan + vesting linear 36 bulan<br>• <strong>Marketing & Community:</strong> Release bertahap 6-12 bulan<br>• <strong>Advisors/Partners:</strong> Cliff 3 bulan + vesting linear 12 bulan<br><br><strong>💎 Tujuan:</strong> Memastikan insentif tim selaras dengan eksekusi jangka panjang dan mencegah pelepasan token dalam waktu singkat.' },
-{ keywords: ['internal market', 'marketplace', 'tempat trading', 'jual beli bossx'], question: 'Apa itu Internal Market?', answer: '<strong>Internal Market</strong> adalah modul perdagangan internal untuk memfasilitasi transaksi jual-beli aset di dalam ekosistem BossX.<br><br><strong>📊 Fase Awal:</strong><br>• Pair: <strong>BOSSX/USDT</strong> (satu-satunya pair)<br>• Maker fee: 0.5% per transaksi<br>• Taker fee: 0.5% per transaksi<br>• Fee dipotong dari aset yang diterima<br>• Alokasi fee: ke treasury proyek<br><br><strong>✨ Fitur:</strong><br>• Order book real-time<br>• Chart harga (TradingView untuk pair eksternal)<br>• History transaksi lengkap<br>• Terintegrasi dengan wallet BossX<br><br><strong>💡 Catatan:</strong> Pembatasan pair dilakukan untuk menjaga fokus pengembangan dan kontrol risiko di tahap awal.' },
-{ keywords: ['p2p', 'peer to peer', 'transfer bossx', 'kirim ke teman'], question: 'Bagaimana cara transfer P2P?', answer: 'Fitur <strong>Peer to Peer (P2P)</strong> memungkinkan transfer BOSSX antar sesama pengguna di dalam platform.<br><br><strong>📤 Cara Transfer:</strong><br>1. Buka menu "Peer to Peer"<br>2. Masukkan username penerima (format: @username)<br>3. Masukkan jumlah BOSSX (minimal 1 BOSSX)<br>4. Klik "Kirim BossX"<br><br><strong>✅ Fitur:</strong><br>• Transfer instan antar user BossX<br>• <strong>Gratis</strong> (no transfer fee) di fase awal<br>• History transfer tercatat lengkap<br>• Statistik total dikirim & diterima<br><br><strong>⚠️ Pengendalian Risiko:</strong><br>• Batas nominal/limit harian<br>• Verifikasi akun (bila diperlukan)<br>• Pemantauan pola transaksi tidak wajar' },
-{ keywords: ['socialfi', 'sosial', 'media sosial', 'fitur sosial', 'bossx social'], question: 'Apa itu SocialFi BossX?', answer: '<strong>SocialFi BossX</strong> adalah platform sosial eksklusif untuk holder token BossX, berfungsi sebagai ruang komunitas dan diskusi.<br><br><strong>💎 Akses Berlangganan:</strong><br>• User aktif ekosistem BossX: <strong>$1/bulan</strong><br>• Non-user aktif: <strong>$25/bulan</strong><br><br><strong>✨ Fitur Utama:</strong><br>• Posting konten (teks, gambar, video)<br>• Like & komentar<br>• Gift Emoji (menggunakan BOSSX)<br>• Feed komunitas yang aktif<br><br><strong>⚠️ Fase Awal:</strong><br>• TIDAK ADA reward untuk posting/like/komentar<br>• Fokus: membangun komunitas sehat & diskusi relevan<br>• Moderasi ketat untuk anti-spam<br><br><strong>📍 Lokasi:</strong> Menu "SocialFi" di sidebar' },
-{ keywords: ['7 program', 'program bossx', 'tap to earn', 'share to earn', 'play to earn'], question: 'Apa saja 7 program terbaik BossX?', answer: 'BossX memiliki <strong>7 Program Utama</strong>:<br><br><strong>1. Tap-to-Earn:</strong> Aktivitas dalam aplikasi untuk meningkatkan engagement<br><strong>2. Share-to-Earn (Affiliate):</strong> Program referral untuk pertumbuhan komunitas<br><strong>3. Play-to-Earn:</strong> Game/NFT/metaverse (draft)<br><strong>4. Internal Market:</strong> Tempat transaksi jual-beli BOSSX + P2P<br><strong>5. Cryptocurrency:</strong> Ekosistem aset BOSSX Token + BOSSX Point<br><strong>6. AI (Artificial Intelligence):</strong> Fitur berbasis AI untuk edukasi & otomasi<br><strong>7. BOSSX Hot Wallet:</strong> Dompet internal/eksternal untuk transaksi harian<br><br><strong>💡 Catatan:</strong> Program-program ini dirancang untuk mendorong utilitas token di luar spekulasi.' },
-{ keywords: ['referral', 'kode referral', 'ajak teman', 'komisi referral', 'bonus referral'], question: 'Bagaimana sistem referral BossX?', answer: 'Program <strong>Referral BossX</strong> memungkinkan Anda mendapatkan bonus dengan mengajak pengguna lain bergabung.<br><br><strong>🎯 Cara Kerja:</strong><br>1. Dapatkan kode referral unik Anda<br>2. Bagikan kode ke teman/komunitas<br>3. Teman daftar menggunakan link/kode referral Anda<br>4. Teman membeli Access Key<br>5. Anda mendapat bonus referral!<br><br><strong>💰 Bonus Referral:</strong><br>• Besaran: <strong>5%</strong> dari jumlah pembelian Access Key<br>• Mata uang: dibayar dalam <strong>BOSSX</strong><br>• Pembelian berulang: tetap mendapat 5% bonus<br><br><strong>⚠️ Ketentuan:</strong><br>• Bonus hanya diberikan jika referred user membeli Access Key<br>• Platform dapat menerapkan pencegahan multi-akun & anti-penyalahgunaan' },
-{ keywords: ['cara deposit', 'deposit bagaimana', 'deposit usdt', 'deposit bossx', 'cara top up'], question: 'Bagaimana cara deposit?', answer: 'Untuk melakukan deposit ke akun BossX:<br><br><strong>1.</strong> Buka menu <strong>"Deposit"</strong> di sidebar<br><strong>2.</strong> Pilih currency: <strong>USDT</strong> atau <strong>BOSSX</strong><br><strong>3.</strong> Copy alamat wallet yang ditampilkan<br><strong>4.</strong> Kirim crypto dari wallet eksternal Anda<br><br><strong>⚠️ Penting:</strong><br>• USDT: Network <strong>TRC20 (TRON)</strong>, minimal deposit <strong>10 USDT</strong><br>• BOSSX: Network internal, minimal deposit <strong>1 BOSSX</strong><br>• Deposit dikonfirmasi setelah 1 konfirmasi network<br>• Pastikan alamat wallet benar sebelum kirim!<br><br><strong>💡 Tips:</strong> Gunakan QR Code untuk kemudahan.' },
-{ keywords: ['cara withdrawal', 'withdrawal bagaimana', 'tarik dana', 'withdraw usdt', 'withdraw bossx'], question: 'Bagaimana cara withdrawal?', answer: 'Untuk menarik dana dari akun BossX:<br><br><strong>1.</strong> Buka menu <strong>"Withdrawal"</strong><br><strong>2.</strong> Pilih currency (USDT/BOSSX)<br><strong>3.</strong> Pilih network:<br>  • USDT: <strong>TRC20</strong> atau <strong>BEP20</strong><br>  • BOSSX: <strong>TRC20</strong><br><strong>4.</strong> Masukkan alamat wallet tujuan<br><strong>5.</strong> Masukkan jumlah withdrawal<br><strong>6.</strong> Klik "Submit Withdrawal"<br><br><strong>💰 Fee & Minimal:</strong><br>• USDT: Fee <strong>1 USDT</strong>, minimal <strong>10 USDT</strong><br>• BOSSX: Fee <strong>0.1 BOSSX</strong>, minimal <strong>1 BOSSX</strong><br><br><strong>⏱️ Proses:</strong> 1-24 jam setelah submit<br><br><strong>⚠️ Perhatian:</strong> Periksa kembali alamat tujuan sebelum konfirmasi!' },
-{ keywords: ['team developer', 'siapa team', 'tim developer', 'founder', 'ceo bossx', 'tim bossx'], question: 'Siapa team developer BossX?', answer: 'Tim di balik BossX Crypto Exchange Platform:<br><br><strong>👑 Fery Muliawan</strong> — CEO (Chief Executive Officer)<br>Pendiri dan visioner BossX<br><br><strong>💰 Mr.Ramadhan</strong> — CFO (Chief Financial Officer)<br>Mengawasi operasi harian & keuangan<br><br><strong>📊 Michael Johnson</strong> — Manager<br>Mengatur tim operasional<br><br><strong>💻 Lee</strong> — CTO (Chief Technology Officer)<br>Infrastruktur teknis & keamanan<br><br><strong>📝 Emily Brown</strong> — Secretary<br>Administrasi & komunikasi<br><br><strong>💡 Visi Tim:</strong> Membangun ekosistem crypto yang transparan, terukur, dan berkelanjutan.' },
-{ keywords: ['roadmap', 'rencana pengembangan', 'milestone', 'timeline bossx'], question: 'Bagaimana roadmap BossX?', answer: '<strong>🗺️ Roadmap BossX:</strong><br><br><strong>Q1 2025:</strong> Konsep proyek, Whitepaper v1.0, kanal sosial<br><strong>Q2 2025:</strong> Pengembangan token TRC20, modul AccessKey, website beta<br><strong>Q3 2025:</strong> Beta app, internal market, explorer & hot wallet<br><strong>Q4 2025:</strong> Growth, audit CertiK, listing agregator (CMC/CoinGecko)<br><strong>Q1 2026:</strong> Finalisasi Whitepaper v2.0, testnet publik, desain multi-chain<br><strong>Q2 2026:</strong> Launch mainnet, listing DEX SunSwap, program utama<br><strong>Q4 2026:</strong> Scale, audit lanjutan, listing CEX preparation<br><strong>Q2 2027:</strong> Compliance, listing CEX tier 1/tier 2<br><strong>Q3-Q4 2027:</strong> Product expansion, ekspansi global<br><br><strong>💡 Catatan:</strong> Roadmap dapat berubah sesuai perkembangan proyek.' },
-{ keywords: ['keamanan', 'risiko', 'mitigasi', 'aman tidak', 'audit'], question: 'Bagaimana keamanan dan mitigasi risiko BossX?', answer: '<strong>🔒 Risiko Utama:</strong><br>1. Risiko ekonomi: emisi terlalu tinggi → inflasi<br>2. Risiko konsentrasi: whale membeli banyak AccessKey<br>3. Risiko manipulasi: redeem/power-on/claim disalahgunakan<br>4. Risiko smart contract: bug pada modul reward/registry<br>5. Risiko legal/regulasi: program reward bisa ditafsir sebagai produk investasi<br><br><strong>🛡️ Mitigasi:</strong><br>• Jadwal emisi menurun (decay/halving)<br>• Limit AccessKey per wallet / tier dengan kurva biaya<br>• Audit smart contract & bug bounty<br>• Pemisahan treasury + multi-sig<br>• Publikasi parameter emisi + changelog<br>• Dashboard publik: total AccessKey aktif, emisi harian, total reward<br><br><strong>💡 Transparansi:</strong> Audit sebelum rilis dan audit ulang setelah perubahan besar.' },
-{ keywords: ['verifikasi kepemilikan', 'hybrid verification', 'sts standard'], question: 'Bagaimana verifikasi kepemilikan Access Key?', answer: 'Verifikasi kepemilikan Access Key dilakukan secara <strong>hybrid</strong> untuk menjaga integritas sistem:<br><br><strong>🔐 3 Lapis Verifikasi:</strong><br><br><strong>1. Validasi kode AccessKey saat redeem:</strong><br>• Kode valid, sesuai format/aturan<br>• Belum pernah digunakan<br><br><strong>2. Pembuktian kontrol wallet:</strong><br>• Tanda tangan (signature) atas pesan redeem<br>• Kombinasi: hash AccessKey + alamat wallet + nonce<br>• Hanya pemilik wallet sah yang bisa aktivasi<br><br><strong>3. Auditability:</strong><br>• Publikasi hash/Merkle root harian<br>• Data ringkas (agregat AccessKey aktif, aktivitas klaim)<br>• Untuk audit tanpa membuka detail kode AccessKey<br><br><strong>💡 Standar:</strong> Mengadopsi prinsip <strong>STS (Standard Transfer Specification)</strong> - standar internasional terbuka.' },
-{ keywords: ['governance', 'tata kelola', 'keputusan', 'perubahan parameter'], question: 'Bagaimana governance BossX?', answer: '<strong>🏛️ Governance BossX:</strong><br><br><strong>Fase Awal:</strong><br>• Terpusat (tim developer)<br>• Transparansi penuh<br>• Pengumuman perubahan parameter<br><br><strong>Fase Lanjut:</strong><br>• Multi-sig komunitas<br>• Voting (bila dipilih)<br><br><strong>📋 Contoh Kebijakan:</strong><br>• Perubahan emisi maksimal 1x per bulan<br>• Pengumuman minimal 7 hari sebelum perubahan<br>• Perubahan fee internal market dibatasi rentang tertentu<br>• Setiap perubahan besar disertai laporan dampak (simulasi)<br><br><strong>💡 Prinsip:</strong> Keputusan transparan, terukur, dan dapat dipertanggungjawabkan.' },
-{ keywords: ['apakah reward transfer setiap detik', 'reward per detik', 'transfer on chain'], question: 'Apakah reward ditransfer setiap detik?', answer: '<strong>TIDAK.</strong> Transfer on-chain setiap detik tidak efisien.<br><br><strong>✅ Yang terjadi setiap detik:</strong><br>• Perhitungan akumulasi reward<br>• Pencatatan di dalam sistem platform<br><br><strong>✅ Kapan token berpindah?</strong><br>• Saat klaim/withdraw<br>• Nilainya dihitung berdasarkan durasi (detik) yang telah berlalu<br><br><strong>💡 Analogi:</strong> Seperti tabungan bank yang menghitung bunga per detik, tetapi penarikan dilakukan saat Anda butuh.<br><br><strong>⚙️ Auto-Validation Claim:</strong><br>• Setiap 1 menit → konsolidasi ke saldo Reward Validasi<br>• Ini pencatatan internal, bukan transfer on-chain' },
-{ keywords: ['apakah bossx mining', 'mining bossx', 'staking bossx'], question: 'Apakah BossX menggunakan mining atau staking?', answer: '<strong>BUKAN mining tradisional dan BUKAN staking pasif konvensional.</strong><br><br><strong>❌ BossX BUKAN:</strong><br>• Mining tradisional (butuh GPU/ASIC, listrik)<br>• Validator TRON<br>• Staking pasif yang kurang intuitif<br><br><strong>✅ BossX ADALAH:</strong><br>• Mekanisme <strong>rule-based emissions</strong><br>• Distribusi reward berbasis aturan<br>• Lebih mudah diakses (tanpa hardware/listrik)<br>• Lebih terukur & transparan<br><br><strong>💡 Konsep:</strong><br>• Beli token → Beli AccessKey → Redeem → Power On → Akumulasi → Claim/Withdraw<br>• Alur yang jelas dan dapat dipantau<br>• Reward dihitung sebagai akumulasi kontinu per detik' },
-{ keywords: ['login', 'cara login', 'masuk akun', 'akun demo', 'password'], question: 'Bagaimana cara login?', answer: 'Untuk login ke BossX Masternode:<br><br><strong>🔐 Demo Credentials:</strong><br>• Username: <code>admin</code><br>• Password: <code>admin123</code><br><br><strong>📝 Langkah:</strong><br>1. Buka halaman login BossX<br>2. Masukkan username & password<br>3. Klik "Masuk"<br>4. Anda akan diarahkan ke Dashboard<br><br><strong>💾 Session:</strong> Login tersimpan di browser (localStorage), jadi Anda tidak perlu login ulang setiap kali membuka website.<br><br><strong>⚠️ Keamanan:</strong> Jangan bagikan kredensial Anda ke siapapun!' },
-{ keywords: ['disclaimer', 'penafian', 'nasihat investasi', 'risiko kripto'], question: 'Apa disclaimer BossX?', answer: '<strong>⚠️ DISCLAIMER PENTING:</strong><br><br>Dokumen whitepaper BossX <strong>BUKAN</strong> nasihat investasi, hukum, atau pajak. Semua informasi disediakan untuk tujuan edukasi dan diskusi.<br><br><strong>🔴 Risiko Kripto:</strong><br>• Cryptocurrency memiliki risiko tinggi<br>• Harga dapat berfluktuasi drastis<br>• Parameter tokenomics dapat berubah<br>• Lakukan riset mandiri (DYOR)<br>• Konsultasi profesional sebelum mengambil keputusan<br><br><strong>💡 Prinsip:</strong><br>• Investasikan hanya uang yang siap Anda risikokan<br>• Pahami mekanisme sebelum berpartisipasi<br>• Jangan FOMO (Fear Of Missing Out)<br><br><strong>📧 Kontak:</strong> admin@bossx.io untuk pertanyaan lebih lanjut.' },
-{ keywords: ['tier access key', 'basic pro elite', 'bobot access key'], question: 'Apakah ada tier Access Key?', answer: '<strong>Ya (Opsional/Rencana):</strong> Access Key dapat memiliki tier dengan bobot berbeda untuk mencegah konsentrasi kepemilikan dan emisi tidak terkendali.<br><br><strong>📊 Contoh Ilustrasi (bukan final):</strong><br>• <strong>AccessKey Basic:</strong> bobot 1x<br>• <strong>AccessKey Pro:</strong> bobot 3x<br>• <strong>AccessKey Elite:</strong> bobot 8x<br><br><strong>💡 Cara Kerja:</strong><br>• Pembagian reward tetap proporsional terhadap kontribusi (harga/tier)<br>• Tidak mengubah emisi total<br>• Perlu dipadukan dengan batas supply AccessKey<br><br><strong>⚠️ Catatan:</strong> Desain tier masih dalam tahap perencanaan dan dapat berubah sesuai kebijakan final proyek.' },
-{ keywords: ['trading bot', 'robot trading', 'bonus trading', 'profit bot'], question: 'Apa itu Trading Bot BossX?', answer: '<strong>Trading Bot</strong> adalah salah satu pilar keberlanjutan ekosistem BossX.<br><br><strong>🤖 Konsep:</strong><br>• 50% dana pembelian Access Key dialokasikan untuk modal trading bot<br>• Bot dikelola secara profesional<br>• Profit dari trading dapat dibagikan sebagai <strong>bonus variabel</strong> kepada pengguna<br><br><strong>💰 Sumber Insentif:</strong><br>1. <strong>Base reward</strong> dari reward pool (emisi token)<br>2. <strong>Bonus variabel</strong> dari profit robot trading (non-emisi)<br><br><strong>📊 Transparansi:</strong><br>• Laporan profit/loss trading bot akan dipublikasikan<br>• Skema pembagian bonus sesuai kebijakan proyek<br><br><strong>💡 Tujuan:</strong> Mengurangi tekanan jual dan meningkatkan daya tahan ekonomi ekosistem.' },
-{ keywords: ['charity', 'amal', 'program sosial', 'donasi'], question: 'Apakah BossX memiliki program charity?', answer: '<strong>Ya!</strong> BossX mengalokasikan <strong>5%</strong> dari dana pembelian Access Key untuk program charity.<br><br><strong>💝 Program Charity:</strong><br>• Alokasi: 5% dari dana pembelian Access Key<br>• Fokus: Program sosial<br>• Transparansi: Laporan penggunaan dana dipublikasikan<br><br><strong>🎯 Visi:</strong><br>• Memberikan dampak positif bagi masyarakat<br>• Membangun ekosistem yang tidak hanya profit-oriented<br>• Kontribusi nyata untuk komunitas<br><br><strong>💡 Catatan:</strong> Detail program charity akan diumumkan melalui kanal resmi BossX.' },
-{ keywords: ['multi chain', 'ekspansi', 'future plan', 'rencana masa depan'], question: 'Apakah BossX akan ekspansi ke blockchain lain?', answer: '<strong>Ya!</strong> BossX memiliki rencana ekspansi multi-chain.<br><br><strong>🗺️ Roadmap Ekspansi:</strong><br>• <strong>Q1 2026:</strong> Desain multi-chain<br>• <strong>Q4 2026:</strong> Ekspansi multi-chain<br>• <strong>Q3-Q4 2027:</strong> Ekspansi global ke market baru<br><br><strong>💡 Tujuan:</strong><br>• Meningkatkan aksesibilitas<br>• Diversifikasi risiko<br>• Memperluas ekosistem BossX<br>• Integrasi dengan blockchain populer lain<br><br><strong>⚠️ Catatan:</strong> Saat ini BossX masih fokus di jaringan TRON (TRC20). Ekspansi multi-chain akan diumumkan secara resmi.' }
+{
+keywords: ['apa itu bossx', 'bossx itu apa', 'tentang bossx', 'pengertian bossx', 'bossx cryptocurrency'],
+question: 'Apa itu BossX?',
+answer: '<strong>BossX</strong> adalah salah satu cryptocurrency yang berjalan pada jaringan blockchain <strong>TRC20</strong> (TRON). BossX merupakan token internal platform BossX Masternode yang dirancang untuk sistem validator masternode dengan reward mechanism yang unik. Platform ini mengusung tema <strong>"Glacier/Ice"</strong> dengan warna khas cyan yang merepresentasikan kekuatan, kecepatan, dan transparansi.'
+},
+{
+keywords: ['cara deposit', 'deposit bagaimana', 'deposit usdt', 'deposit bossx', 'cara top up'],
+question: 'Bagaimana cara deposit?',
+answer: 'Untuk melakukan deposit ke akun BossX Anda:<br><br><strong>1.</strong> Buka menu <strong>"Deposit"</strong> di sidebar<br><strong>2.</strong> Pilih currency: <strong>USDT</strong> atau <strong>BOSSX</strong><br><strong>3.</strong> Copy alamat wallet yang ditampilkan<br><strong>4.</strong> Kirim crypto dari wallet eksternal Anda<br><br><strong>⚠️ Penting:</strong><br>• USDT: Network <strong>TRC20</strong> (TRON), minimal deposit <strong>10 USDT</strong><br>• BOSSX: Network internal, minimal deposit <strong>1 BOSSX</strong><br>• Deposit dikonfirmasi setelah 1 konfirmasi network'
+},
+{
+keywords: ['access key', 'apa itu access key', 'fungsi access key', 'private key'],
+question: 'Apa itu Access Key?',
+answer: '<strong>Access Key</strong> adalah kode unik sepanjang <strong>25 karakter</strong> (kombinasi huruf A-Z dan angka 0-9) yang digunakan untuk mengaktivasi node validator BossX.<br><br><strong>Spesifikasi:</strong><br>• Format: 25 karakter (A-Z, 0-9)<br>• Minimal stake: <strong>10 BossX</strong><br>• Fee generate: <strong>1 BossX</strong> (dipotong otomatis)<br>• Status: <strong>One-time use</strong> (hangus setelah redeem)<br><br><strong>Cara pakai:</strong> Generate di menu "Access Key" → Copy kode → Paste di Dashboard → Klik "Redeem Now"'
+},
+{
+keywords: ['reward', 'bagaimana reward', 'cara dapat reward', 'reward validasi', 'auto claim'],
+question: 'Bagaimana reward bekerja?',
+answer: 'Sistem reward BossX bekerja dengan mekanisme <strong>Masternode Validator</strong>:<br><br><strong>📊 Rate Reward:</strong><br>• <code>0.000000038580246913580247 BossX/detik</code> per 1 BossX stake<br>• Auto claim setiap <strong>60 detik</strong> (masuk ke Pending Reward)<br><br><strong>⏰ Sistem:</strong><br>• Auto claim berjalan otomatis saat validasi aktif<br>• Manual claim: Kapan saja tanpa minimal ke wallet<br>• Auto stop: Setiap hari jam <strong>06:00</strong><br>• Masa berlaku: <strong>40.000.000 detik</strong><br><br><strong>💡 Tips:</strong> Semakin besar stake, semakin besar reward per detik!'
+},
+{
+keywords: ['cara withdrawal', 'withdrawal bagaimana', 'tarik dana', 'withdraw usdt', 'withdraw bossx'],
+question: 'Bagaimana cara withdrawal?',
+answer: 'Untuk menarik dana dari akun BossX:<br><br><strong>1.</strong> Buka menu <strong>"Withdrawal"</strong><br><strong>2.</strong> Pilih currency (USDT/BOSSX)<br><strong>3.</strong> Pilih network:<br>  • USDT: <strong>TRC20</strong> atau <strong>BEP20</strong><br>  • BOSSX: <strong>TRC20</strong><br><strong>4.</strong> Masukkan alamat wallet tujuan<br><strong>5.</strong> Masukkan jumlah withdrawal<br><strong>6.</strong> Klik "Submit Withdrawal"<br><br><strong>💰 Fee & Minimal:</strong><br>• USDT: Fee <strong>1 USDT</strong>, minimal <strong>10 USDT</strong><br>• BOSSX: Fee <strong>0.1 BOSSX</strong>, minimal <strong>1 BOSSX</strong><br><br><strong>⏱️ Proses:</strong> 1-24 jam setelah submit'
+},
+{
+keywords: ['team developer', 'siapa team', 'tim developer', 'founder', 'ceo bossx'],
+question: 'Siapa team developer BossX?',
+answer: 'Tim di balik BossX Crypto Exchange Platform:<br><br><strong>👑 Fery Muliawan</strong> — CEO (Chief Executive Officer)<br>Pendiri dan visioner BossX<br><br><strong>💰 Mr.Ramadhan</strong> — CFO (Chief Financial Officer)<br>Mengawasi operasi harian<br><br><strong>📊 Michael Johnson</strong> — Manager<br>Mengatur tim operasional<br><br><strong>💻 Lee</strong> — CTO (Chief Technology Officer)<br>Infrastruktur teknis & keamanan<br><br><strong>📝 Emily Brown</strong> — Secretary<br>Administrasi & komunikasi'
+},
+{
+keywords: ['masternode', 'validator', 'apa itu masternode', 'cara kerja masternode'],
+question: 'Apa itu Masternode Validator?',
+answer: '<strong>Masternode Validator</strong> adalah node khusus di jaringan BossX yang bertugas memvalidasi transaksi dan menjaga keamanan blockchain. Sebagai imbalannya, validator mendapatkan reward BossX.<br><br><strong>🔧 Cara Kerja:</strong><br>1. Generate Access Key (minimal stake 10 BossX)<br>2. Redeem Access Key di Dashboard<br>3. Aktifkan Power Button (ON)<br>4. Reward mengalir otomatis setiap detik<br><br><strong>⚙️ Fitur:</strong><br>• Auto claim setiap 60 detik<br>• Auto stop jam 06:00 setiap hari<br>• Masa berlaku 40.000.000 detik<br>• Log engine real-time'
+},
+{
+keywords: ['login', 'cara login', 'masuk akun', 'akun demo'],
+question: 'Bagaimana cara login?',
+answer: 'Untuk login ke BossX Masternode:<br><br><strong>🔐 Demo Credentials:</strong><br>• Username: <code>admin</code><br>• Password: <code>admin123</code><br><br><strong>📝 Langkah:</strong><br>1. Buka halaman login BossX<br>2. Masukkan username & password<br>3. Klik "Masuk"<br>4. Anda akan diarahkan ke Dashboard<br><br><strong>💾 Session:</strong> Login tersimpan di browser (localStorage), jadi Anda tidak perlu login ulang setiap kali membuka website.'
+},
+{
+keywords: ['p2p', 'peer to peer', 'transfer bossx', 'kirim bossx'],
+question: 'Bagaimana cara transfer P2P?',
+answer: 'Fitur <strong>Peer to Peer (P2P)</strong> memungkinkan Anda transfer BossX ke sesama pengguna BossX:<br><br><strong>📤 Cara Transfer:</strong><br>1. Buka menu <strong>"Peer to Peer"</strong><br>2. Masukkan username penerima (format: <code>@username</code>)<br>3. Masukkan jumlah BossX (minimal 1 BossX)<br>4. Klik "Kirim BossX"<br><br><strong>✅ Fitur:</strong><br>• Transfer instan antar user BossX<br>• Tanpa fee<br>• History transfer tercatat lengkap<br>• Statistik total dikirim & diterima'
+},
+{
+keywords: ['referral', 'kode referral', 'ajak teman', 'komisi referral'],
+question: 'Bagaimana sistem referral?',
+answer: 'Sistem <strong>Referral BossX</strong> memungkinkan Anda mendapatkan reward dengan mengajak teman bergabung:<br><br><strong>🎯 Cara Kerja:</strong><br>1. Dapatkan kode referral unik Anda<br>2. Bagikan kode ke teman/komunitas<br>3. Setiap orang yang daftar pakai kode Anda = referral aktif<br>4. Dapatkan reward BossX dari setiap referral<br><br><strong>💡 Tips:</strong><br>• Klik "Generate Kode Baru" untuk refresh kode<br>• Bagikan via sosial media, grup chat, dll<br>• Statistik referral tersedia di menu Referral'
+},
+{
+keywords: ['socialfi', 'sosial', 'media sosial', 'fitur sosial', 'bossx social'],
+question: 'Apa itu SocialFi BossX?',
+answer: '<strong>SocialFi BossX</strong> adalah platform sosial eksklusif untuk holder token BossX. Mirip dengan Binance Square, tetapi khusus untuk komunitas BossX.<br><br><strong>✨ Fitur:</strong><br>• Posting teks, gambar, dan video<br>• Like & komentar pada postingan<br>• Balas komentar user lain<br>• Feed komunitas yang aktif<br><br><strong>💎 Akses:</strong><br>• Biaya: <strong>1 BossX / 30 hari</strong><br>• User aktif bisa menikmati semua fitur<br>• Utilitas token BossX yang nyata<br><br><strong>📍 Lokasi:</strong> Menu "SocialFi" di sidebar'
+}
 ];
-const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>belum tersedia di database saya</strong>. Saya dapat membantu menjawab pertanyaan seputar:<br><br>• Tentang BossX & jaringan TRON<br>• Access Key & Masternode<br>• Mekanisme Reward & Auto-Claim<br>• Tokenomics & Alokasi Dana<br>• Deposit & Withdrawal<br>• Internal Market, P2P, SocialFi<br>• Referral & 7 Program Utama<br>• Team Developer & Roadmap<br>• Keamanan, Governance, Charity<br><br>Silakan coba pertanyaan lain atau hubungi admin@bossx.io untuk bantuan lebih lanjut.';
-const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX v1.6.1.<br><br>Silakan ketik pertanyaan Anda untuk memulai!';
+const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>tidak tersedia di whitepaper BossX</strong>. Saya hanya dapat menjawab pertanyaan seputar:<br><br>• Tentang BossX & Masternode<br>• Access Key & Validasi<br>• Deposit & Withdrawal<br>• Reward & Claim<br>• P2P & Referral<br>• SocialFi<br>• Team Developer<br><br>Silakan coba pertanyaan lain atau hubungi tim support untuk bantuan lebih lanjut.';
+const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX.<br><br>Silakan ketik pertanyaan Anda untuk memulai!';
 let bossxAIHistory = [];
 let bossxAIIsOpen = false;
 let bossxAIIsMinimized = false;
@@ -3151,13 +3417,19 @@ document.getElementById('bossx-ai-badge').style.display = 'block';
 function loadBossxAIHistory() {
 try {
 const saved = localStorage.getItem('bossx_ai_chat_history');
-if (saved) bossxAIHistory = JSON.parse(saved);
-} catch (e) { bossxAIHistory = []; }
+if (saved) {
+bossxAIHistory = JSON.parse(saved);
+}
+} catch (e) {
+bossxAIHistory = [];
+}
 }
 function saveBossxAIHistory() {
 try {
 localStorage.setItem('bossx_ai_chat_history', JSON.stringify(bossxAIHistory.slice(-50)));
-} catch (e) { console.error('Error saving AI chat history:', e); }
+} catch (e) {
+console.error('Error saving AI chat history:', e);
+}
 }
 function toggleBossxAI() {
 if (bossxAIIsMinimized) {
@@ -3167,8 +3439,11 @@ document.getElementById('bossx-ai-fab').classList.remove('minimized');
 document.getElementById('bossx-ai-badge').style.display = 'none';
 return;
 }
-if (bossxAIIsOpen) closeBossxAI();
-else openBossxAI();
+if (bossxAIIsOpen) {
+closeBossxAI();
+} else {
+openBossxAI();
+}
 }
 function openBossxAI() {
 bossxAIIsOpen = true;
@@ -3178,8 +3453,11 @@ win.classList.add('active');
 win.classList.remove('minimized');
 document.getElementById('bossx-ai-badge').style.display = 'none';
 lucide.createIcons();
-if (!bossxAIWelcomeShown || bossxAIHistory.length === 0) renderBossxAIWelcome();
-else renderBossxAIHistory();
+if (!bossxAIWelcomeShown || bossxAIHistory.length === 0) {
+renderBossxAIWelcome();
+} else {
+renderBossxAIHistory();
+}
 document.getElementById('bossx-ai-input').focus();
 }
 function closeBossxAI() {
@@ -3192,7 +3470,10 @@ document.getElementById('bossx-ai-window').classList.add('minimized');
 document.getElementById('bossx-ai-fab').classList.add('minimized');
 }
 function clearBossxAIChat() {
-if (bossxAIHistory.length === 0) { showSuccessMessage('Chat sudah kosong!'); return; }
+if (bossxAIHistory.length === 0) {
+showSuccessMessage('Chat sudah kosong!');
+return;
+}
 if (confirm('Hapus semua riwayat chat?')) {
 bossxAIHistory = [];
 saveBossxAIHistory();
@@ -3209,7 +3490,9 @@ bossxAIWelcomeShown = true;
 function renderBossxAIHistory() {
 const body = document.getElementById('bossx-ai-body');
 body.innerHTML = '';
-bossxAIHistory.forEach(msg => addBossxAIMessage(msg.role, msg.content, false));
+bossxAIHistory.forEach(msg => {
+addBossxAIMessage(msg.role, msg.content, false);
+});
 scrollBossxAIToBottom();
 }
 function addBossxAIMessage(role, content, animate = true) {
@@ -3218,7 +3501,10 @@ const msgDiv = document.createElement('div');
 msgDiv.className = `bossx-ai-msg ${role}`;
 if (animate) msgDiv.style.opacity = '0';
 const avatar = role === 'bot' ? '🤖' : 'U';
-msgDiv.innerHTML = `<div class="bossx-ai-msg-avatar">${avatar}</div><div class="bossx-ai-msg-content">${content}</div>`;
+msgDiv.innerHTML = `
+<div class="bossx-ai-msg-avatar">${avatar}</div>
+<div class="bossx-ai-msg-content">${content}</div>
+`;
 body.appendChild(msgDiv);
 if (animate) {
 requestAnimationFrame(() => {
@@ -3230,14 +3516,25 @@ scrollBossxAIToBottom();
 }
 function scrollBossxAIToBottom() {
 const body = document.getElementById('bossx-ai-body');
-setTimeout(() => { body.scrollTop = body.scrollHeight; }, 50);
+setTimeout(() => {
+body.scrollTop = body.scrollHeight;
+}, 50);
 }
 function showBossxAITyping() {
 const body = document.getElementById('bossx-ai-body');
 const typingDiv = document.createElement('div');
 typingDiv.className = 'bossx-ai-msg bot';
 typingDiv.id = 'bossx-ai-typing-indicator';
-typingDiv.innerHTML = `<div class="bossx-ai-msg-avatar">🤖</div><div class="bossx-ai-msg-content" style="padding: 12px 14px;"><div class="bossx-ai-typing"><div class="bossx-ai-typing-dot"></div><div class="bossx-ai-typing-dot"></div><div class="bossx-ai-typing-dot"></div></div></div>`;
+typingDiv.innerHTML = `
+<div class="bossx-ai-msg-avatar">🤖</div>
+<div class="bossx-ai-msg-content" style="padding: 12px 14px;">
+<div class="bossx-ai-typing">
+<div class="bossx-ai-typing-dot"></div>
+<div class="bossx-ai-typing-dot"></div>
+<div class="bossx-ai-typing-dot"></div>
+</div>
+</div>
+`;
 body.appendChild(typingDiv);
 scrollBossxAIToBottom();
 }
@@ -3261,7 +3558,9 @@ gain.gain.setValueAtTime(0.15, ctx.currentTime);
 gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
 osc.start(ctx.currentTime);
 osc.stop(ctx.currentTime + 0.2);
-} catch (e) { console.error('Audio error:', e); }
+} catch (e) {
+console.error('Audio error:', e);
+}
 }
 function findBossxAIAnswer(userInput) {
 const input = userInput.toLowerCase().trim();
@@ -3299,14 +3598,16 @@ addBossxAIMessage('user', escapeHtml(text));
 bossxAIHistory.push({ role: 'user', content: escapeHtml(text) });
 saveBossxAIHistory();
 showBossxAITyping();
-// 🔥 PERUBAHAN: Delay respons AI menjadi 10 detik (10000ms)
-const delay = 10000;
+const delay = 800 + Math.random() * 800;
 setTimeout(() => {
 hideBossxAITyping();
 const match = findBossxAIAnswer(text);
 let answer;
-if (match) answer = '<strong>💡 ' + match.question + '</strong><br><br>' + match.answer;
-else answer = BOSSX_AI_FALLBACK;
+if (match) {
+answer = match.answer;
+} else {
+answer = BOSSX_AI_FALLBACK;
+}
 addBossxAIMessage('bot', answer);
 bossxAIHistory.push({ role: 'bot', content: answer });
 saveBossxAIHistory();
@@ -3319,7 +3620,7 @@ event.preventDefault();
 sendBossxAIMessage();
 }
 }
-console.log('🚀 BossX v1.6.1 - AI Quick Reply Dihapus, Delay 10 detik');
+console.log('🚀 Script dimulai');
 checkAuth();
 lucide.createIcons();
 </script>
