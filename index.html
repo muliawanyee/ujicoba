@@ -997,6 +997,8 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+</div>
+</div>
 <!-- DEPOSIT PAGE -->
 <div id="deposit-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -1281,9 +1283,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="p2p-history-content" class="overflow-x-auto"></div>
 </div>
 </div>
-<!-- ============================================ -->
-<!-- SOCIALFI PAGE (MODUL BARU)                   -->
-<!-- ============================================ -->
+<!-- SOCIALFI PAGE -->
 <div id="socialfi-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between flex-wrap gap-4">
@@ -1298,7 +1298,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-<!-- Subscription Status Card -->
 <div id="sfi-subscription-card" class="sfi-subscribe-card mb-6">
 <div class="sfi-subscribe-icon">
 <i data-lucide="crown" class="w-10 h-10 text-[#000814]"></i>
@@ -1308,9 +1307,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="sfi-subscription-status" class="mb-4"></div>
 <div id="sfi-subscription-action"></div>
 </div>
-<!-- Main Content (hanya muncul jika subscribed) -->
 <div id="sfi-main-content" style="display: none;">
-<!-- Stats Grid -->
 <div class="sfi-stats-grid">
 <div class="sfi-stat-card">
 <div class="sfi-stat-value" id="sfi-stat-posts">0</div>
@@ -1329,7 +1326,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div class="sfi-stat-label">Member Aktif</div>
 </div>
 </div>
-<!-- Compose Post -->
 <div class="sfi-compose-card">
 <div class="flex items-center gap-3 mb-3">
 <div class="sfi-post-avatar">FM</div>
@@ -1356,7 +1352,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </button>
 </div>
 </div>
-<!-- Feed -->
 <div id="sfi-feed"></div>
 </div>
 </div>
@@ -1546,9 +1541,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </main>
 </div>
 </div>
-<!-- ============================================ -->
-<!-- BOSSX AI AGENT - FLOATING CHATBOT HTML       -->
-<!-- ============================================ -->
+<!-- BOSSX AI AGENT - FLOATING CHATBOT HTML -->
 <div id="bossx-ai-fab" class="bossx-ai-fab" onclick="toggleBossxAI()" title="BossX AI AGENT">
 <span class="bossx-ai-fab-icon">🤖</span>
 <span id="bossx-ai-badge" class="bossx-ai-fab-badge" style="display: none;">1</span>
@@ -2859,13 +2852,12 @@ if (priceInput) priceInput.style.display = e.target.value === 'market' ? 'none' 
 setInterval(updateClock, 1000);
 setInterval(checkSixAMStop, 1000);
 // ============================================
-// SOCIALFI MODULE (Modul Terpisah - Prefix sfi)
+// SOCIALFI MODULE
 // ============================================
 const SFI_STORAGE_KEY = 'bossx_socialfi_posts';
 const SFI_SUB_KEY = 'bossx_socialfi_subscription';
 const SFI_COST = 1;
 const SFI_DURATION_DAYS = 30;
-// Team developer data untuk dummy posts
 const SFI_TEAM = {
 'Fery Muliawan': { role: 'CEO • BossX', avatar: 'FM', image: 'https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png' },
 'Mr.Ramadhan': { role: 'CFO • BossX', avatar: 'MR', image: 'https://i.ibb.co.com/xKDSrKYw/Picsart-25-10-03-12-44-06-927.png' },
@@ -2875,13 +2867,11 @@ const SFI_TEAM = {
 };
 let sfiCurrentMedia = { type: null, url: '' };
 function initSocialFi() {
-// Load subscription
 let sub = null;
 try {
 const saved = localStorage.getItem(SFI_SUB_KEY);
 if (saved) sub = JSON.parse(saved);
 } catch (e) {}
-// Jika belum ada subscription, buat dummy posts pertama kali
 if (!localStorage.getItem(SFI_STORAGE_KEY)) {
 seedDummyPosts();
 }
@@ -2992,7 +2982,6 @@ try {
 const data = localStorage.getItem(SFI_SUB_KEY);
 if (!data) return null;
 const sub = JSON.parse(data);
-// Cek expired
 if (sub.expiresAt < Date.now()) {
 localStorage.removeItem(SFI_SUB_KEY);
 return null;
@@ -3008,7 +2997,6 @@ const statusEl = document.getElementById('sfi-subscription-status');
 const actionEl = document.getElementById('sfi-subscription-action');
 const mainContent = document.getElementById('sfi-main-content');
 if (sub) {
-// Aktif
 const daysLeft = Math.ceil((sub.expiresAt - Date.now()) / 86400000);
 statusEl.innerHTML = `<div class="sfi-status-badge active"><i data-lucide="check-circle" class="w-3 h-3"></i>AKTIF • ${daysLeft} hari tersisa</div>`;
 actionEl.innerHTML = `<p class="text-cyan-200 text-sm mt-2">Berlangganan hingga: ${new Date(sub.expiresAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>`;
@@ -3016,7 +3004,6 @@ mainContent.style.display = 'block';
 renderSfiFeed();
 updateSfiStats();
 } else {
-// Tidak aktif
 statusEl.innerHTML = `<div class="sfi-status-badge inactive"><i data-lucide="x-circle" class="w-3 h-3"></i>TIDAK AKTIF</div>`;
 actionEl.innerHTML = `
 <p class="text-cyan-200 text-sm mb-4">Aktifkan akses SocialFi dengan biaya <strong class="text-cyan-300">1 BossX / 30 hari</strong></p>
@@ -3194,7 +3181,6 @@ saveSfiPosts(posts);
 input.value = '';
 renderSfiFeed();
 updateSfiStats();
-// Re-open comments section
 setTimeout(() => {
 const section = document.getElementById(`sfi-comments-${postId}`);
 if (section) section.style.display = 'block';
@@ -3243,7 +3229,6 @@ const btnVideo = document.getElementById('sfi-btn-video');
 const urlInput = document.getElementById('sfi-media-url');
 const preview = document.getElementById('sfi-media-preview');
 if (sfiCurrentMedia.type === type) {
-// Toggle off
 sfiCurrentMedia = { type: null, url: '' };
 btnImage.classList.remove('active');
 btnVideo.classList.remove('active');
@@ -3275,7 +3260,6 @@ if (content.length > 500) {
 showErrorMessage('Postingan maksimal 500 karakter!');
 return;
 }
-// Validasi URL media
 if (mediaUrl && sfiCurrentMedia.type) {
 try {
 new URL(mediaUrl);
@@ -3300,7 +3284,6 @@ comments: []
 };
 posts.unshift(newPost);
 saveSfiPosts(posts);
-// Reset form
 textarea.value = '';
 document.getElementById('sfi-char-count').textContent = '0';
 document.getElementById('sfi-media-url').value = '';
@@ -3598,7 +3581,8 @@ addBossxAIMessage('user', escapeHtml(text));
 bossxAIHistory.push({ role: 'user', content: escapeHtml(text) });
 saveBossxAIHistory();
 showBossxAITyping();
-const delay = 800 + Math.random() * 800;
+// ⬇️ DELAY 9 DETIK (9000 ms)
+const delay = 9000;
 setTimeout(() => {
 hideBossxAITyping();
 const match = findBossxAIAnswer(text);
