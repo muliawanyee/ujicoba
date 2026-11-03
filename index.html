@@ -194,7 +194,8 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 /* ============================================ */
 /* BOSSX AI AGENT - FLOATING CHATBOT STYLES     */
 /* ============================================ */
-.bossx-ai-fab { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); border: 3px solid rgba(224, 255, 255, 0.6); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 229, 255, 0.7), 0 0 60px rgba(0, 229, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.2); z-index: 9999; transition: all 0.3s ease; animation: fabPulse 3s ease-in-out infinite; }
+.bossx-ai-fab { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); border: 3px solid rgba(224, 255, 255, 0.6); cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 229, 255, 0.7), 0 0 60px rgba(0, 229, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.2); z-index: 9999; transition: all 0.3s ease; animation: fabPulse 3s ease-in-out infinite; }
+.bossx-ai-fab.visible { display: flex; }
 .bossx-ai-fab:hover { transform: scale(1.08) rotate(8deg); box-shadow: 0 0 40px rgba(0, 229, 255, 0.9), 0 0 80px rgba(0, 229, 255, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.3); }
 .bossx-ai-fab.minimized { animation: fabPulse 3s ease-in-out infinite; }
 @keyframes fabPulse { 0%, 100% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.7), 0 0 60px rgba(0, 229, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.2); } 50% { box-shadow: 0 0 40px rgba(0, 229, 255, 0.9), 0 0 80px rgba(0, 229, 255, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.3); } }
@@ -253,374 +254,59 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 /* ============================================ */
 /* SOCIALFI STYLES (Modul Terpisah - Prefix sfi) */
 /* ============================================ */
-.sfi-subscribe-card {
-background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
-border: 2px solid rgba(0, 229, 255, 0.4);
-border-radius: 1rem;
-padding: 2rem;
-text-align: center;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3);
-}
-.sfi-subscribe-icon {
-width: 80px;
-height: 80px;
-margin: 0 auto 1rem;
-background: linear-gradient(145deg, #00E5FF, #00B8D4);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2);
-border: 3px solid rgba(224, 255, 255, 0.6);
-animation: fabPulse 3s ease-in-out infinite;
-}
-.sfi-status-badge {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-padding: 4px 12px;
-border-radius: 12px;
-font-size: 11px;
-font-weight: bold;
-}
-.sfi-status-badge.active {
-background: rgba(0, 255, 200, 0.15);
-color: #00FFC8;
-border: 1px solid rgba(0, 255, 200, 0.4);
-box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
-}
-.sfi-status-badge.inactive {
-background: rgba(255, 0, 110, 0.15);
-color: #FF006E;
-border: 1px solid rgba(255, 0, 110, 0.4);
-}
-.sfi-post-card {
-background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
-border: 2px solid rgba(0, 229, 255, 0.3);
-border-radius: 1rem;
-padding: 1.25rem;
-margin-bottom: 1rem;
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03);
-transition: all 0.3s ease;
-animation: msgFadeIn 0.4s ease-out;
-}
-.sfi-post-card:hover {
-border-color: rgba(0, 229, 255, 0.6);
-box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.3);
-}
-.sfi-post-header {
-display: flex;
-align-items: center;
-gap: 12px;
-margin-bottom: 12px;
-}
-.sfi-post-avatar {
-width: 44px;
-height: 44px;
-border-radius: 50%;
-overflow: hidden;
-border: 2px solid rgba(0, 229, 255, 0.5);
-box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-flex-shrink: 0;
-background: linear-gradient(145deg, #00E5FF, #00B8D4);
-display: flex;
-align-items: center;
-justify-content: center;
-color: #000814;
-font-weight: bold;
-font-size: 16px;
-}
-.sfi-post-avatar img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
-.sfi-post-meta {
-flex: 1;
-}
-.sfi-post-author {
-color: #E0FFFF;
-font-weight: 600;
-font-size: 14px;
-text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
-}
-.sfi-post-role {
-color: #7DF9FF;
-font-size: 11px;
-margin-top: 2px;
-}
-.sfi-post-time {
-color: #7DF9FF;
-font-size: 11px;
-opacity: 0.7;
-}
-.sfi-post-content {
-color: #E0FFFF;
-font-size: 14px;
-line-height: 1.6;
-margin-bottom: 12px;
-word-wrap: break-word;
-}
-.sfi-post-media {
-width: 100%;
-max-height: 400px;
-border-radius: 0.75rem;
-margin-bottom: 12px;
-border: 2px solid rgba(0, 229, 255, 0.3);
-object-fit: cover;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-.sfi-post-media-video {
-width: 100%;
-max-height: 400px;
-border-radius: 0.75rem;
-margin-bottom: 12px;
-border: 2px solid rgba(0, 229, 255, 0.3);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-.sfi-post-actions {
-display: flex;
-gap: 12px;
-padding-top: 12px;
-border-top: 1px solid rgba(0, 229, 255, 0.15);
-}
-.sfi-action-btn {
-display: flex;
-align-items: center;
-gap: 6px;
-padding: 6px 12px;
-background: rgba(0, 24, 69, 0.6);
-border: 1px solid rgba(0, 229, 255, 0.2);
-border-radius: 20px;
-color: #7DF9FF;
-font-size: 12px;
-cursor: pointer;
-transition: all 0.2s ease;
-}
-.sfi-action-btn:hover {
-background: rgba(0, 229, 255, 0.15);
-border-color: #00E5FF;
-color: #E0FFFF;
-box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
-}
-.sfi-action-btn.liked {
-background: rgba(255, 0, 110, 0.15);
-border-color: rgba(255, 0, 110, 0.5);
-color: #FF006E;
-box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
-}
-.sfi-comments-section {
-margin-top: 12px;
-padding-top: 12px;
-border-top: 1px solid rgba(0, 229, 255, 0.15);
-}
-.sfi-comment {
-display: flex;
-gap: 10px;
-padding: 8px 0;
-animation: msgFadeIn 0.3s ease-out;
-}
-.sfi-comment-avatar {
-width: 32px;
-height: 32px;
-border-radius: 50%;
-background: linear-gradient(145deg, #7DF9FF, #00E5FF);
-color: #000814;
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: bold;
-font-size: 12px;
-flex-shrink: 0;
-border: 1px solid rgba(0, 229, 255, 0.4);
-}
-.sfi-comment-body {
-flex: 1;
-background: rgba(0, 24, 69, 0.6);
-border: 1px solid rgba(0, 229, 255, 0.2);
-border-radius: 12px;
-padding: 8px 12px;
-}
-.sfi-comment-author {
-color: #00E5FF;
-font-weight: 600;
-font-size: 12px;
-margin-bottom: 2px;
-}
-.sfi-comment-text {
-color: #E0FFFF;
-font-size: 13px;
-line-height: 1.4;
-}
-.sfi-comment-time {
-color: #7DF9FF;
-font-size: 10px;
-opacity: 0.6;
-margin-top: 4px;
-}
-.sfi-reply-btn {
-background: none;
-border: none;
-color: #7DF9FF;
-font-size: 11px;
-cursor: pointer;
-padding: 2px 6px;
-margin-left: 8px;
-}
-.sfi-reply-btn:hover {
-color: #00E5FF;
-text-decoration: underline;
-}
-.sfi-reply {
-margin-left: 42px;
-padding: 6px 0;
-}
-.sfi-reply .sfi-comment-avatar {
-width: 26px;
-height: 26px;
-font-size: 10px;
-background: linear-gradient(145deg, #00E5FF, #00B8D4);
-}
-.sfi-comment-input-wrap {
-display: flex;
-gap: 8px;
-margin-top: 10px;
-}
-.sfi-comment-input {
-flex: 1;
-padding: 8px 12px;
-background: rgba(0, 24, 69, 0.8);
-border: 1px solid rgba(0, 229, 255, 0.3);
-border-radius: 20px;
-color: #fff;
-font-size: 13px;
-outline: none;
-}
-.sfi-comment-input:focus {
-border-color: #00E5FF;
-box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
-}
-.sfi-comment-send {
-width: 34px;
-height: 34px;
-border-radius: 50%;
-background: linear-gradient(145deg, #00E5FF, #00B8D4);
-color: #000814;
-border: none;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-}
-.sfi-comment-send:hover {
-background: linear-gradient(145deg, #00F5FF, #00E5FF);
-box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
-}
-.sfi-compose-card {
-background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
-border: 2px solid rgba(0, 229, 255, 0.4);
-border-radius: 1rem;
-padding: 1.25rem;
-margin-bottom: 1.5rem;
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.2);
-}
-.sfi-compose-textarea {
-width: 100%;
-min-height: 80px;
-padding: 12px;
-background: rgba(0, 24, 69, 0.8);
-border: 2px solid rgba(0, 229, 255, 0.3);
-border-radius: 0.75rem;
-color: #fff;
-font-size: 14px;
-resize: vertical;
-outline: none;
-font-family: inherit;
-}
-.sfi-compose-textarea:focus {
-border-color: #00E5FF;
-box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
-}
-.sfi-media-toggle {
-display: flex;
-gap: 8px;
-margin-top: 10px;
-flex-wrap: wrap;
-}
-.sfi-media-btn {
-padding: 6px 12px;
-background: rgba(0, 24, 69, 0.8);
-border: 1px solid rgba(0, 229, 255, 0.3);
-border-radius: 20px;
-color: #7DF9FF;
-font-size: 12px;
-cursor: pointer;
-transition: all 0.2s ease;
-display: flex;
-align-items: center;
-gap: 6px;
-}
-.sfi-media-btn:hover {
-background: rgba(0, 229, 255, 0.15);
-border-color: #00E5FF;
-color: #E0FFFF;
-}
-.sfi-media-btn.active {
-background: rgba(0, 229, 255, 0.25);
-border-color: #00E5FF;
-color: #E0FFFF;
-}
-.sfi-media-url-input {
-width: 100%;
-padding: 8px 12px;
-margin-top: 10px;
-background: rgba(0, 24, 69, 0.8);
-border: 1px solid rgba(0, 229, 255, 0.3);
-border-radius: 0.5rem;
-color: #fff;
-font-size: 13px;
-outline: none;
-display: none;
-}
+.sfi-subscribe-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3); }
+.sfi-subscribe-icon { width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(145deg, #00E5FF, #00B8D4); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2); border: 3px solid rgba(224, 255, 255, 0.6); animation: fabPulse 3s ease-in-out infinite; }
+.sfi-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+.sfi-status-badge.active { background: rgba(0, 255, 200, 0.15); color: #00FFC8; border: 1px solid rgba(0, 255, 200, 0.4); box-shadow: 0 0 10px rgba(0, 255, 200, 0.3); }
+.sfi-status-badge.inactive { background: rgba(255, 0, 110, 0.15); color: #FF006E; border: 1px solid rgba(255, 0, 110, 0.4); }
+.sfi-post-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03); transition: all 0.3s ease; animation: msgFadeIn 0.4s ease-out; }
+.sfi-post-card:hover { border-color: rgba(0, 229, 255, 0.6); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.3); }
+.sfi-post-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.sfi-post-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(0, 229, 255, 0.5); box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); flex-shrink: 0; background: linear-gradient(145deg, #00E5FF, #00B8D4); display: flex; align-items: center; justify-content: center; color: #000814; font-weight: bold; font-size: 16px; }
+.sfi-post-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.sfi-post-meta { flex: 1; }
+.sfi-post-author { color: #E0FFFF; font-weight: 600; font-size: 14px; text-shadow: 0 0 8px rgba(0, 229, 255, 0.5); }
+.sfi-post-role { color: #7DF9FF; font-size: 11px; margin-top: 2px; }
+.sfi-post-time { color: #7DF9FF; font-size: 11px; opacity: 0.7; }
+.sfi-post-content { color: #E0FFFF; font-size: 14px; line-height: 1.6; margin-bottom: 12px; word-wrap: break-word; }
+.sfi-post-media { width: 100%; max-height: 400px; border-radius: 0.75rem; margin-bottom: 12px; border: 2px solid rgba(0, 229, 255, 0.3); object-fit: cover; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
+.sfi-post-media-video { width: 100%; max-height: 400px; border-radius: 0.75rem; margin-bottom: 12px; border: 2px solid rgba(0, 229, 255, 0.3); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
+.sfi-post-actions { display: flex; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(0, 229, 255, 0.15); }
+.sfi-action-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(0, 24, 69, 0.6); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 20px; color: #7DF9FF; font-size: 12px; cursor: pointer; transition: all 0.2s ease; }
+.sfi-action-btn:hover { background: rgba(0, 229, 255, 0.15); border-color: #00E5FF; color: #E0FFFF; box-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
+.sfi-action-btn.liked { background: rgba(255, 0, 110, 0.15); border-color: rgba(255, 0, 110, 0.5); color: #FF006E; box-shadow: 0 0 10px rgba(255, 0, 110, 0.3); }
+.sfi-comments-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0, 229, 255, 0.15); }
+.sfi-comment { display: flex; gap: 10px; padding: 8px 0; animation: msgFadeIn 0.3s ease-out; }
+.sfi-comment-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(145deg, #7DF9FF, #00E5FF); color: #000814; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; flex-shrink: 0; border: 1px solid rgba(0, 229, 255, 0.4); }
+.sfi-comment-body { flex: 1; background: rgba(0, 24, 69, 0.6); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 12px; padding: 8px 12px; }
+.sfi-comment-author { color: #00E5FF; font-weight: 600; font-size: 12px; margin-bottom: 2px; }
+.sfi-comment-text { color: #E0FFFF; font-size: 13px; line-height: 1.4; }
+.sfi-comment-time { color: #7DF9FF; font-size: 10px; opacity: 0.6; margin-top: 4px; }
+.sfi-reply-btn { background: none; border: none; color: #7DF9FF; font-size: 11px; cursor: pointer; padding: 2px 6px; margin-left: 8px; }
+.sfi-reply-btn:hover { color: #00E5FF; text-decoration: underline; }
+.sfi-reply { margin-left: 42px; padding: 6px 0; }
+.sfi-reply .sfi-comment-avatar { width: 26px; height: 26px; font-size: 10px; background: linear-gradient(145deg, #00E5FF, #00B8D4); }
+.sfi-comment-input-wrap { display: flex; gap: 8px; margin-top: 10px; }
+.sfi-comment-input { flex: 1; padding: 8px 12px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #fff; font-size: 13px; outline: none; }
+.sfi-comment-input:focus { border-color: #00E5FF; box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2); }
+.sfi-comment-send { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #000814; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
+.sfi-comment-send:hover { background: linear-gradient(145deg, #00F5FF, #00E5FF); box-shadow: 0 0 15px rgba(0, 229, 255, 0.6); }
+.sfi-compose-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.2); }
+.sfi-compose-textarea { width: 100%; min-height: 80px; padding: 12px; background: rgba(0, 24, 69, 0.8); border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 0.75rem; color: #fff; font-size: 14px; resize: vertical; outline: none; font-family: inherit; }
+.sfi-compose-textarea:focus { border-color: #00E5FF; box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2); }
+.sfi-media-toggle { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.sfi-media-btn { padding: 6px 12px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #7DF9FF; font-size: 12px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
+.sfi-media-btn:hover { background: rgba(0, 229, 255, 0.15); border-color: #00E5FF; color: #E0FFFF; }
+.sfi-media-btn.active { background: rgba(0, 229, 255, 0.25); border-color: #00E5FF; color: #E0FFFF; }
+.sfi-media-url-input { width: 100%; padding: 8px 12px; margin-top: 10px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 0.5rem; color: #fff; font-size: 13px; outline: none; display: none; }
 .sfi-media-url-input.show { display: block; }
-.sfi-media-url-input:focus {
-border-color: #00E5FF;
-}
-.sfi-media-preview {
-margin-top: 10px;
-max-width: 100%;
-max-height: 200px;
-border-radius: 0.5rem;
-border: 1px solid rgba(0, 229, 255, 0.3);
-display: none;
-}
+.sfi-media-url-input:focus { border-color: #00E5FF; }
+.sfi-media-preview { margin-top: 10px; max-width: 100%; max-height: 200px; border-radius: 0.5rem; border: 1px solid rgba(0, 229, 255, 0.3); display: none; }
 .sfi-media-preview.show { display: block; }
-.sfi-stats-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-gap: 1rem;
-margin-bottom: 1.5rem;
-}
-.sfi-stat-card {
-background: linear-gradient(145deg, #001233, #001845);
-border: 2px solid rgba(0, 229, 255, 0.2);
-border-radius: 0.75rem;
-padding: 1rem;
-text-align: center;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-.sfi-stat-value {
-font-size: 1.5rem;
-font-weight: bold;
-color: #00E5FF;
-text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
-}
-.sfi-stat-label {
-font-size: 12px;
-color: #7DF9FF;
-margin-top: 4px;
-}
+.sfi-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.sfi-stat-card { background: linear-gradient(145deg, #001233, #001845); border: 2px solid rgba(0, 229, 255, 0.2); border-radius: 0.75rem; padding: 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
+.sfi-stat-value { font-size: 1.5rem; font-weight: bold; color: #00E5FF; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
+.sfi-stat-label { font-size: 12px; color: #7DF9FF; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -997,6 +683,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+</div>
 <!-- DEPOSIT PAGE -->
 <div id="deposit-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -1281,9 +968,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="p2p-history-content" class="overflow-x-auto"></div>
 </div>
 </div>
-<!-- ============================================ -->
-<!-- SOCIALFI PAGE (MODUL BARU)                   -->
-<!-- ============================================ -->
+<!-- SOCIALFI PAGE -->
 <div id="socialfi-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between flex-wrap gap-4">
@@ -1298,7 +983,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-<!-- Subscription Status Card -->
 <div id="sfi-subscription-card" class="sfi-subscribe-card mb-6">
 <div class="sfi-subscribe-icon">
 <i data-lucide="crown" class="w-10 h-10 text-[#000814]"></i>
@@ -1308,28 +992,13 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="sfi-subscription-status" class="mb-4"></div>
 <div id="sfi-subscription-action"></div>
 </div>
-<!-- Main Content (hanya muncul jika subscribed) -->
 <div id="sfi-main-content" style="display: none;">
-<!-- Stats Grid -->
 <div class="sfi-stats-grid">
-<div class="sfi-stat-card">
-<div class="sfi-stat-value" id="sfi-stat-posts">0</div>
-<div class="sfi-stat-label">Total Postingan</div>
+<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-posts">0</div><div class="sfi-stat-label">Total Postingan</div></div>
+<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-likes">0</div><div class="sfi-stat-label">Total Likes</div></div>
+<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-comments">0</div><div class="sfi-stat-label">Total Komentar</div></div>
+<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-members">1,247</div><div class="sfi-stat-label">Member Aktif</div></div>
 </div>
-<div class="sfi-stat-card">
-<div class="sfi-stat-value" id="sfi-stat-likes">0</div>
-<div class="sfi-stat-label">Total Likes</div>
-</div>
-<div class="sfi-stat-card">
-<div class="sfi-stat-value" id="sfi-stat-comments">0</div>
-<div class="sfi-stat-label">Total Komentar</div>
-</div>
-<div class="sfi-stat-card">
-<div class="sfi-stat-value" id="sfi-stat-members">1,247</div>
-<div class="sfi-stat-label">Member Aktif</div>
-</div>
-</div>
-<!-- Compose Post -->
 <div class="sfi-compose-card">
 <div class="flex items-center gap-3 mb-3">
 <div class="sfi-post-avatar">FM</div>
@@ -1340,23 +1009,16 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 <textarea id="sfi-compose-text" class="sfi-compose-textarea" placeholder="Apa yang sedang Anda pikirkan, Bos? Bagikan dengan komunitas BossX..." maxlength="500"></textarea>
 <div class="sfi-media-toggle">
-<button class="sfi-media-btn" onclick="toggleSfiMedia('image')" id="sfi-btn-image">
-<i data-lucide="image" class="w-4 h-4"></i> Gambar
-</button>
-<button class="sfi-media-btn" onclick="toggleSfiMedia('video')" id="sfi-btn-video">
-<i data-lucide="video" class="w-4 h-4"></i> Video
-</button>
+<button class="sfi-media-btn" onclick="toggleSfiMedia('image')" id="sfi-btn-image"><i data-lucide="image" class="w-4 h-4"></i> Gambar</button>
+<button class="sfi-media-btn" onclick="toggleSfiMedia('video')" id="sfi-btn-video"><i data-lucide="video" class="w-4 h-4"></i> Video</button>
 </div>
 <input type="text" id="sfi-media-url" class="sfi-media-url-input" placeholder="Paste URL gambar/video di sini (contoh: https://...)" />
 <img id="sfi-media-preview" class="sfi-media-preview" alt="Preview" />
 <div class="flex justify-between items-center mt-3">
 <span class="text-xs text-cyan-300"><span id="sfi-char-count">0</span>/500</span>
-<button class="node-button" style="width: auto; padding: 0.5rem 1.5rem;" onclick="submitSfiPost()">
-<i data-lucide="send" class="w-4 h-4 inline mr-1"></i>Posting
-</button>
+<button class="node-button" style="width: auto; padding: 0.5rem 1.5rem;" onclick="submitSfiPost()"><i data-lucide="send" class="w-4 h-4 inline mr-1"></i>Posting</button>
 </div>
 </div>
-<!-- Feed -->
 <div id="sfi-feed"></div>
 </div>
 </div>
@@ -1368,9 +1030,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <h3 class="text-xl font-bold text-white mb-4">Kode Referral Anda</h3>
 <div class="flex items-center space-x-2 mb-4">
 <input id="referral-code" type="text" class="node-input flex-1" readonly value="REF-XXXXXX" />
-<button onclick="copyReferralCode()" class="copy-button flex items-center px-3 py-2 bg-gradient-to-r from-cyan-400 to-cyan-300 text-[#000814] rounded-lg font-semibold" style="box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);">
-<i data-lucide="copy" class="mr-1 w-4 h-4"></i>Copy
-</button>
+<button onclick="copyReferralCode()" class="copy-button flex items-center px-3 py-2 bg-gradient-to-r from-cyan-400 to-cyan-300 text-[#000814] rounded-lg font-semibold" style="box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);"><i data-lucide="copy" class="mr-1 w-4 h-4"></i>Copy</button>
 </div>
 <button onclick="generateReferralCode()" class="node-button mb-4">Generate Kode Baru</button>
 <p class="text-cyan-200">Bagikan kode referral Anda untuk mendapatkan reward.</p>
@@ -1463,57 +1123,39 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4" style="height: 90vh;">
 <div class="exchange-card p-4 col-span-3">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="trending-up" class="w-5 h-5 mr-2 text-cyan-400"></i>Price Chart
-</h2>
-<div id="chart-container" class="h-full w-full">
-<div id="tradingview-chart" class="h-full w-full"></div>
-</div>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="trending-up" class="w-5 h-5 mr-2 text-cyan-400"></i>Price Chart</h2>
+<div id="chart-container" class="h-full w-full"><div id="tradingview-chart" class="h-full w-full"></div></div>
 </div>
 <div class="exchange-card p-4 col-span-1">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="book-open" class="w-5 h-5 mr-2 text-emerald-400"></i>Buy Orders
-</h2>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="book-open" class="w-5 h-5 mr-2 text-emerald-400"></i>Buy Orders</h2>
 <div class="order-book-section mb-4">
 <table class="w-full order-book">
 <thead><tr><th>Price(USDT)</th><th>Amount</th><th>Total</th></tr></thead>
-<tbody id="buy-orders" class="buy-order">
-<tr class="skeleton-loading"><td colspan="3" class="h-4 bg-cyan-400/10 rounded"></td></tr>
-</tbody>
+<tbody id="buy-orders" class="buy-order"><tr class="skeleton-loading"><td colspan="3" class="h-4 bg-cyan-400/10 rounded"></td></tr></tbody>
 </table>
 </div>
 </div>
 <div class="exchange-card p-4 col-span-1">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="activity" class="w-5 h-5 mr-2 text-cyan-400"></i>Recent Trades
-</h2>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="activity" class="w-5 h-5 mr-2 text-cyan-400"></i>Recent Trades</h2>
 <div id="spread" class="text-center py-2 mb-3 bg-[#001845]/70 rounded-lg text-cyan-400 font-semibold">Spread: Loading...</div>
 <div class="order-book-section">
 <table class="w-full order-book">
 <thead><tr><th>Price</th><th>Amount</th><th>Time</th></tr></thead>
-<tbody id="recent-trades">
-<tr class="skeleton-loading"><td colspan="3" class="h-4 bg-cyan-400/10 rounded"></td></tr>
-</tbody>
+<tbody id="recent-trades"><tr class="skeleton-loading"><td colspan="3" class="h-4 bg-cyan-400/10 rounded"></td></tr></tbody>
 </table>
 </div>
 </div>
 <div class="exchange-card p-4 col-span-1">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="book-open" class="w-5 h-5 mr-2 text-rose-400"></i>Sell Orders
-</h2>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="book-open" class="w-5 h-5 mr-2 text-rose-400"></i>Sell Orders</h2>
 <div class="order-book-section mb-4">
 <table class="w-full order-book">
 <thead><tr><th>Price(USDT)</th><th>Amount</th><th>Total</th></tr></thead>
-<tbody id="sell-orders" class="sell-order">
-<tr class="skeleton-loading"><td colspan="3" class="h-4 bg-rose-400/10 rounded"></td></tr>
-</tbody>
+<tbody id="sell-orders" class="sell-order"><tr class="skeleton-loading"><td colspan="3" class="h-4 bg-rose-400/10 rounded"></td></tr></tbody>
 </table>
 </div>
 </div>
 <div class="exchange-card p-4 col-span-3">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="shopping-cart" class="w-5 h-5 mr-2 text-cyan-400"></i>Trade
-</h2>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="shopping-cart" class="w-5 h-5 mr-2 text-cyan-400"></i>Trade</h2>
 <div class="grid grid-cols-2 gap-4">
 <div class="space-y-4">
 <select id="buy-order-type" class="node-input"><option value="limit">Limit</option><option value="market">Market</option></select>
@@ -1528,7 +1170,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <input id="sell-price" type="number" placeholder="Price (Limit)" class="node-input" min="0" step="0.01" />
 <p class="text-sm text-cyan-200">AVBL: <span id="sell-avbl">1000 BossX</span></p>
 <button class="trade-button sell node-button w-full" onclick="demoTrade('sell')">Sell</button>
-</div>
 </div>
 </div>
 </div>
@@ -1558,24 +1199,15 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 <div class="bossx-ai-header-actions">
-<button class="bossx-ai-header-btn" onclick="minimizeBossxAI()" title="Minimize">
-<i data-lucide="minus" style="width:14px;height:14px;"></i>
-</button>
-<button class="bossx-ai-header-btn" onclick="closeBossxAI()" title="Tutup">
-<i data-lucide="x" style="width:14px;height:14px;"></i>
-</button>
+<button class="bossx-ai-header-btn" onclick="minimizeBossxAI()" title="Minimize"><i data-lucide="minus" style="width:14px;height:14px;"></i></button>
+<button class="bossx-ai-header-btn" onclick="closeBossxAI()" title="Tutup"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
 </div>
 </div>
 <div id="bossx-ai-body" class="bossx-ai-body"></div>
-
 <div class="bossx-ai-footer">
-<button class="bossx-ai-clear-btn" onclick="clearBossxAIChat()" title="Hapus chat">
-<i data-lucide="trash-2" style="width:16px;height:16px;"></i>
-</button>
+<button class="bossx-ai-clear-btn" onclick="clearBossxAIChat()" title="Hapus chat"><i data-lucide="trash-2" style="width:16px;height:16px;"></i></button>
 <input id="bossx-ai-input" type="text" class="bossx-ai-input" placeholder="Tanyakan seputar BossX..." onkeypress="handleBossxAIKey(event)" />
-<button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim">
-<i data-lucide="send" style="width:16px;height:16px;"></i>
-</button>
+<button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
 </div>
 </div>
 <script>
@@ -1607,10 +1239,12 @@ else showLoginPage();
 function showLoginPage() {
 document.getElementById('login-page').style.display = 'flex';
 document.getElementById('main-app').style.display = 'none';
+hideBossxAIFab(); // Sembunyikan AI di halaman login
 }
 function showMainApp() {
 document.getElementById('login-page').style.display = 'none';
 document.getElementById('main-app').style.display = 'flex';
+showBossxAIFab(); // Tampilkan AI hanya setelah login
 initializeMainApp();
 }
 function handleLogin(event) {
@@ -2108,76 +1742,19 @@ const keys = loadPrivateKeys();
 const listContainer = document.getElementById('private-keys-list');
 if (!listContainer) return;
 if (keys.length === 0) {
-listContainer.innerHTML = `
-<div class="text-center py-12">
-<div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
-<i data-lucide="key" class="text-cyan-300 w-6 h-6"></i>
-</div>
-<h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada Access Key</h4>
-<p class="text-cyan-300">Generate Access Key pertama Anda di tab "Generate"</p>
-</div>
-`;
+listContainer.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="key" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada Access Key</h4><p class="text-cyan-300">Generate Access Key pertama Anda di tab "Generate"</p></div>`;
 } else {
-let tableHTML = `
-<div class="overflow-x-auto">
-<table class="w-full">
-<thead>
-<tr class="border-b-2 border-cyan-400/30">
-<th class="text-left p-3 text-cyan-300 font-semibold">Access Key</th>
-<th class="text-left p-3 text-cyan-300 font-semibold">Stake</th>
-<th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th>
-<th class="text-left p-3 text-cyan-300 font-semibold">Status</th>
-<th class="text-left p-3 text-cyan-300 font-semibold">Aksi</th>
-</tr>
-</thead>
-<tbody>
-`;
+let tableHTML = `<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-cyan-400/30"><th class="text-left p-3 text-cyan-300 font-semibold">Access Key</th><th class="text-left p-3 text-cyan-300 font-semibold">Stake</th><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th><th class="text-left p-3 text-cyan-300 font-semibold">Aksi</th></tr></thead><tbody>`;
 keys.forEach(key => {
 const isHighlighted = key.id === highlightId;
 const highlightClass = isHighlighted ? 'pk-highlight-new' : '';
 const rowClass = key.status === 'AVAILABLE' ? 'pk-key-row-available' : 'pk-key-row-redeemed';
-const statusIcon = key.status === 'AVAILABLE'
-? '<i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i>'
-: '<i data-lucide="check-check" class="text-cyan-300 w-4 h-4"></i>';
+const statusIcon = key.status === 'AVAILABLE' ? '<i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i>' : '<i data-lucide="check-check" class="text-cyan-300 w-4 h-4"></i>';
 const statusColor = key.status === 'AVAILABLE' ? 'text-emerald-400' : 'text-cyan-300';
 const statusText = key.status === 'AVAILABLE' ? 'AVAILABLE' : 'REDEEMED';
-const createdDate = new Date(key.createdAt).toLocaleString('id-ID', {
-year: 'numeric', month: 'short', day: 'numeric',
-hour: '2-digit', minute: '2-digit'
-});
-const actionButton = key.status === 'AVAILABLE'
-? `<button onclick="copyPrivateKey('${key.code}')" class="flex items-center px-3 py-1 bg-cyan-300 hover:bg-cyan-400 text-[#000814] rounded text-xs font-semibold transition-colors" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">
-<i data-lucide="copy" class="w-3 h-3 mr-1"></i>Copy
-</button>`
-: `<span class="text-cyan-300 text-xs">-</span>`;
-tableHTML += `
-<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors ${rowClass} ${highlightClass}">
-<td class="p-3">
-<div class="font-mono text-sm text-cyan-300 break-all tracking-wider frost-text">
-${key.code}
-</div>
-</td>
-<td class="p-3">
-<div class="font-semibold text-white">${key.stake.toFixed(2)} BossX</div>
-<div class="text-xs text-cyan-300">Fee: ${key.fee} BossX</div>
-</td>
-<td class="p-3">
-<div class="flex items-center text-white text-sm">
-<i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>
-${createdDate}
-</div>
-</td>
-<td class="p-3">
-<div class="flex items-center ${statusColor}">
-${statusIcon}
-<span class="ml-2 capitalize font-semibold text-sm">${statusText}</span>
-</div>
-</td>
-<td class="p-3">
-${actionButton}
-</td>
-</tr>
-`;
+const createdDate = new Date(key.createdAt).toLocaleString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+const actionButton = key.status === 'AVAILABLE' ? `<button onclick="copyPrivateKey('${key.code}')" class="flex items-center px-3 py-1 bg-cyan-300 hover:bg-cyan-400 text-[#000814] rounded text-xs font-semibold transition-colors" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);"><i data-lucide="copy" class="w-3 h-3 mr-1"></i>Copy</button>` : `<span class="text-cyan-300 text-xs">-</span>`;
+tableHTML += `<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors ${rowClass} ${highlightClass}"><td class="p-3"><div class="font-mono text-sm text-cyan-300 break-all tracking-wider frost-text">${key.code}</div></td><td class="p-3"><div class="font-semibold text-white">${key.stake.toFixed(2)} BossX</div><div class="text-xs text-cyan-300">Fee: ${key.fee} BossX</div></td><td class="p-3"><div class="flex items-center text-white text-sm"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>${createdDate}</div></td><td class="p-3"><div class="flex items-center ${statusColor}">${statusIcon}<span class="ml-2 capitalize font-semibold text-sm">${statusText}</span></div></td><td class="p-3">${actionButton}</td></tr>`;
 });
 tableHTML += `</tbody></table></div>`;
 listContainer.innerHTML = tableHTML;
@@ -2852,13 +2429,12 @@ if (priceInput) priceInput.style.display = e.target.value === 'market' ? 'none' 
 setInterval(updateClock, 1000);
 setInterval(checkSixAMStop, 1000);
 // ============================================
-// SOCIALFI MODULE (Modul Terpisah - Prefix sfi)
+// SOCIALFI MODULE
 // ============================================
 const SFI_STORAGE_KEY = 'bossx_socialfi_posts';
 const SFI_SUB_KEY = 'bossx_socialfi_subscription';
 const SFI_COST = 1;
 const SFI_DURATION_DAYS = 30;
-// Team developer data untuk dummy posts
 const SFI_TEAM = {
 'Fery Muliawan': { role: 'CEO • BossX', avatar: 'FM', image: 'https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png' },
 'Lee': { role: 'CTO • BossX', avatar: 'LE', image: 'https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg' },
@@ -2867,13 +2443,11 @@ const SFI_TEAM = {
 };
 let sfiCurrentMedia = { type: null, url: '' };
 function initSocialFi() {
-// Load subscription
 let sub = null;
 try {
 const saved = localStorage.getItem(SFI_SUB_KEY);
 if (saved) sub = JSON.parse(saved);
 } catch (e) {}
-// Jika belum ada subscription, buat dummy posts pertama kali
 if (!localStorage.getItem(SFI_STORAGE_KEY)) {
 seedDummyPosts();
 }
@@ -2967,7 +2541,6 @@ try {
 const data = localStorage.getItem(SFI_SUB_KEY);
 if (!data) return null;
 const sub = JSON.parse(data);
-// Cek expired
 if (sub.expiresAt < Date.now()) {
 localStorage.removeItem(SFI_SUB_KEY);
 return null;
@@ -2983,7 +2556,6 @@ const statusEl = document.getElementById('sfi-subscription-status');
 const actionEl = document.getElementById('sfi-subscription-action');
 const mainContent = document.getElementById('sfi-main-content');
 if (sub) {
-// Aktif
 const daysLeft = Math.ceil((sub.expiresAt - Date.now()) / 86400000);
 statusEl.innerHTML = `<div class="sfi-status-badge active"><i data-lucide="check-circle" class="w-3 h-3"></i>AKTIF • ${daysLeft} hari tersisa</div>`;
 actionEl.innerHTML = `<p class="text-cyan-200 text-sm mt-2">Berlangganan hingga: ${new Date(sub.expiresAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>`;
@@ -2991,15 +2563,8 @@ mainContent.style.display = 'block';
 renderSfiFeed();
 updateSfiStats();
 } else {
-// Tidak aktif
 statusEl.innerHTML = `<div class="sfi-status-badge inactive"><i data-lucide="x-circle" class="w-3 h-3"></i>TIDAK AKTIF</div>`;
-actionEl.innerHTML = `
-<p class="text-cyan-200 text-sm mb-4">Aktifkan akses SocialFi dengan biaya <strong class="text-cyan-300">1 BossX / 30 hari</strong></p>
-<button class="node-button" style="max-width: 300px; margin: 0 auto;" onclick="subscribeSfi()">
-<i data-lucide="crown" class="w-4 h-4 inline mr-1"></i>Aktifkan Akses (1 BossX)
-</button>
-<p class="text-xs text-cyan-300 mt-3">Saldo Anda: <strong class="text-emerald-400">${bossxBalance.toFixed(9)} BossX</strong></p>
-`;
+actionEl.innerHTML = `<p class="text-cyan-200 text-sm mb-4">Aktifkan akses SocialFi dengan biaya <strong class="text-cyan-300">1 BossX / 30 hari</strong></p><button class="node-button" style="max-width: 300px; margin: 0 auto;" onclick="subscribeSfi()"><i data-lucide="crown" class="w-4 h-4 inline mr-1"></i>Aktifkan Akses (1 BossX)</button><p class="text-xs text-cyan-300 mt-3">Saldo Anda: <strong class="text-emerald-400">${bossxBalance.toFixed(9)} BossX</strong></p>`;
 mainContent.style.display = 'none';
 }
 lucide.createIcons();
@@ -3036,7 +2601,7 @@ lucide.createIcons();
 function renderSfiPost(post) {
 const isLiked = post.likes.includes('Fery Muliawan');
 const likeClass = isLiked ? 'liked' : '';
-const likeIcon = isLiked ? 'heart' : 'heart';
+const likeIcon = 'heart';
 const likeText = post.likes.length;
 let mediaHtml = '';
 if (post.media) {
@@ -3050,43 +2615,7 @@ const avatarHtml = post.avatarImage
 ? `<div class="sfi-post-avatar"><img src="${post.avatarImage}" alt="${post.author}" onerror="this.style.display='none'; this.parentNode.textContent='${post.avatar}'"></div>`
 : `<div class="sfi-post-avatar">${post.avatar}</div>`;
 const commentsHtml = renderSfiComments(post);
-return `
-<div class="sfi-post-card" data-post-id="${post.id}">
-<div class="sfi-post-header">
-${avatarHtml}
-<div class="sfi-post-meta">
-<div class="sfi-post-author">${escapeHtml(post.author)}</div>
-<div class="sfi-post-role">${escapeHtml(post.role)}</div>
-</div>
-<div class="sfi-post-time">${formatTimeAgo(post.timestamp)}</div>
-</div>
-<div class="sfi-post-content">${escapeHtml(post.content)}</div>
-${mediaHtml}
-<div class="sfi-post-actions">
-<button class="sfi-action-btn ${likeClass}" onclick="toggleSfiLike('${post.id}')">
-<i data-lucide="${likeIcon}" class="w-4 h-4"></i>
-<span>${likeText}</span>
-</button>
-<button class="sfi-action-btn" onclick="toggleSfiComments('${post.id}')">
-<i data-lucide="message-circle" class="w-4 h-4"></i>
-<span>${post.comments.length}</span>
-</button>
-<button class="sfi-action-btn" onclick="shareSfiPost('${post.id}')">
-<i data-lucide="share-2" class="w-4 h-4"></i>
-<span>Share</span>
-</button>
-</div>
-<div class="sfi-comments-section" id="sfi-comments-${post.id}" style="display: none;">
-${commentsHtml}
-<div class="sfi-comment-input-wrap">
-<input type="text" class="sfi-comment-input" id="sfi-comment-input-${post.id}" placeholder="Tulis komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiComment('${post.id}')" />
-<button class="sfi-comment-send" onclick="submitSfiComment('${post.id}')">
-<i data-lucide="send" class="w-4 h-4"></i>
-</button>
-</div>
-</div>
-</div>
-`;
+return `<div class="sfi-post-card" data-post-id="${post.id}"><div class="sfi-post-header">${avatarHtml}<div class="sfi-post-meta"><div class="sfi-post-author">${escapeHtml(post.author)}</div><div class="sfi-post-role">${escapeHtml(post.role)}</div></div><div class="sfi-post-time">${formatTimeAgo(post.timestamp)}</div></div><div class="sfi-post-content">${escapeHtml(post.content)}</div>${mediaHtml}<div class="sfi-post-actions"><button class="sfi-action-btn ${likeClass}" onclick="toggleSfiLike('${post.id}')"><i data-lucide="${likeIcon}" class="w-4 h-4"></i><span>${likeText}</span></button><button class="sfi-action-btn" onclick="toggleSfiComments('${post.id}')"><i data-lucide="message-circle" class="w-4 h-4"></i><span>${post.comments.length}</span></button><button class="sfi-action-btn" onclick="shareSfiPost('${post.id}')"><i data-lucide="share-2" class="w-4 h-4"></i><span>Share</span></button></div><div class="sfi-comments-section" id="sfi-comments-${post.id}" style="display: none;">${commentsHtml}<div class="sfi-comment-input-wrap"><input type="text" class="sfi-comment-input" id="sfi-comment-input-${post.id}" placeholder="Tulis komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiComment('${post.id}')" /><button class="sfi-comment-send" onclick="submitSfiComment('${post.id}')"><i data-lucide="send" class="w-4 h-4"></i></button></div></div></div>`;
 }
 function renderSfiComments(post) {
 if (post.comments.length === 0) {
@@ -3096,36 +2625,8 @@ return post.comments.map(c => {
 const avatarHtml = c.avatarImage
 ? `<div class="sfi-comment-avatar"><img src="${c.avatarImage}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none'; this.parentNode.textContent='${c.avatar}'"></div>`
 : `<div class="sfi-comment-avatar">${c.avatar}</div>`;
-const repliesHtml = (c.replies || []).map(r => `
-<div class="sfi-comment sfi-reply">
-<div class="sfi-comment-avatar">${r.avatar}</div>
-<div class="sfi-comment-body">
-<div class="sfi-comment-author">${escapeHtml(r.author)}</div>
-<div class="sfi-comment-text">${escapeHtml(r.text)}</div>
-<div class="sfi-comment-time">${formatTimeAgo(r.timestamp)}</div>
-</div>
-</div>
-`).join('');
-return `
-<div class="sfi-comment">
-${avatarHtml}
-<div class="sfi-comment-body">
-<div class="sfi-comment-author">${escapeHtml(c.author)}</div>
-<div class="sfi-comment-text">${escapeHtml(c.text)}</div>
-<div class="sfi-comment-time">
-${formatTimeAgo(c.timestamp)}
-<button class="sfi-reply-btn" onclick="showSfiReplyInput('${post.id}', '${c.id}')">Balas</button>
-</div>
-<div id="sfi-reply-input-${post.id}-${c.id}" style="display:none;" class="sfi-comment-input-wrap" style="margin-top:8px;">
-<input type="text" class="sfi-comment-input" placeholder="Balas komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiReply('${post.id}','${c.id}')" />
-<button class="sfi-comment-send" onclick="submitSfiReply('${post.id}','${c.id}')">
-<i data-lucide="send" class="w-3 h-3"></i>
-</button>
-</div>
-</div>
-</div>
-${repliesHtml}
-`;
+const repliesHtml = (c.replies || []).map(r => `<div class="sfi-comment sfi-reply"><div class="sfi-comment-avatar">${r.avatar}</div><div class="sfi-comment-body"><div class="sfi-comment-author">${escapeHtml(r.author)}</div><div class="sfi-comment-text">${escapeHtml(r.text)}</div><div class="sfi-comment-time">${formatTimeAgo(r.timestamp)}</div></div></div>`).join('');
+return `<div class="sfi-comment">${avatarHtml}<div class="sfi-comment-body"><div class="sfi-comment-author">${escapeHtml(c.author)}</div><div class="sfi-comment-text">${escapeHtml(c.text)}</div><div class="sfi-comment-time">${formatTimeAgo(c.timestamp)}<button class="sfi-reply-btn" onclick="showSfiReplyInput('${post.id}', '${c.id}')">Balas</button></div><div id="sfi-reply-input-${post.id}-${c.id}" style="display:none;" class="sfi-comment-input-wrap"><input type="text" class="sfi-comment-input" placeholder="Balas komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiReply('${post.id}','${c.id}')" /><button class="sfi-comment-send" onclick="submitSfiReply('${post.id}','${c.id}')"><i data-lucide="send" class="w-3 h-3"></i></button></div></div></div>${repliesHtml}`;
 }).join('');
 }
 function toggleSfiLike(postId) {
@@ -3169,7 +2670,6 @@ saveSfiPosts(posts);
 input.value = '';
 renderSfiFeed();
 updateSfiStats();
-// Re-open comments section
 setTimeout(() => {
 const section = document.getElementById(`sfi-comments-${postId}`);
 if (section) section.style.display = 'block';
@@ -3218,7 +2718,6 @@ const btnVideo = document.getElementById('sfi-btn-video');
 const urlInput = document.getElementById('sfi-media-url');
 const preview = document.getElementById('sfi-media-preview');
 if (sfiCurrentMedia.type === type) {
-// Toggle off
 sfiCurrentMedia = { type: null, url: '' };
 btnImage.classList.remove('active');
 btnVideo.classList.remove('active');
@@ -3232,9 +2731,7 @@ sfiCurrentMedia.url = '';
 btnImage.classList.toggle('active', type === 'image');
 btnVideo.classList.toggle('active', type === 'video');
 urlInput.classList.add('show');
-urlInput.placeholder = type === 'image'
-? 'Paste URL gambar (contoh: https://images.unsplash.com/...)'
-: 'Paste URL video (contoh: https://...mp4)';
+urlInput.placeholder = type === 'image' ? 'Paste URL gambar (contoh: https://images.unsplash.com/...)' : 'Paste URL video (contoh: https://...mp4)';
 preview.classList.remove('show');
 urlInput.focus();
 }
@@ -3250,7 +2747,6 @@ if (content.length > 500) {
 showErrorMessage('Postingan maksimal 500 karakter!');
 return;
 }
-// Validasi URL media
 if (mediaUrl && sfiCurrentMedia.type) {
 try {
 new URL(mediaUrl);
@@ -3275,7 +2771,6 @@ comments: []
 };
 posts.unshift(newPost);
 saveSfiPosts(posts);
-// Reset form
 textarea.value = '';
 document.getElementById('sfi-char-count').textContent = '0';
 document.getElementById('sfi-media-url').value = '';
@@ -3371,23 +2866,33 @@ answer: '<strong>SocialFi BossX</strong> adalah platform sosial eksklusif untuk 
 }
 ];
 const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>tidak tersedia di whitepaper BossX</strong>. Saya hanya dapat menjawab pertanyaan seputar:<br><br>• Tentang BossX & Masternode<br>• Access Key & Validasi<br>• Deposit & Withdrawal<br>• Reward & Claim<br>• P2P & Referral<br>• SocialFi<br>• Team Developer<br><br>Silakan coba pertanyaan lain atau hubungi tim support untuk bantuan lebih lanjut.';
-const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX.<br><br>Silakan ketik pertanyaan Anda atau pilih <strong>quick reply</strong> di bawah untuk memulai!';
+// Welcome message tanpa referensi "quick reply"
+const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX.<br><br>Silakan ketik pertanyaan Anda di kolom input bawah untuk memulai! 💬';
 let bossxAIHistory = [];
 let bossxAIIsOpen = false;
 let bossxAIIsMinimized = false;
 let bossxAIIsInitialized = false;
 let bossxAIWelcomeShown = false;
+
+// ============ BOSSX AI VISIBILITY CONTROL ============
+function showBossxAIFab() {
+const fab = document.getElementById('bossx-ai-fab');
+if (fab) fab.classList.add('visible');
+}
+function hideBossxAIFab() {
+const fab = document.getElementById('bossx-ai-fab');
+const win = document.getElementById('bossx-ai-window');
+if (fab) fab.classList.remove('visible');
+if (win) win.classList.remove('active');
+bossxAIIsOpen = false;
+bossxAIIsMinimized = false;
+}
+
 function initBossxAI() {
 if (bossxAIIsInitialized) return;
 bossxAIIsInitialized = true;
 loadBossxAIHistory();
 lucide.createIcons();
-setTimeout(() => {
-const fab = document.getElementById('bossx-ai-fab');
-if (fab && !bossxAIWelcomeShown) {
-document.getElementById('bossx-ai-badge').style.display = 'block';
-}
-}, 2000);
 }
 function loadBossxAIHistory() {
 try {
@@ -3410,7 +2915,6 @@ function toggleBossxAI() {
 if (bossxAIIsMinimized) {
 bossxAIIsMinimized = false;
 document.getElementById('bossx-ai-window').classList.remove('minimized');
-document.getElementById('bossx-ai-fab').classList.remove('minimized');
 document.getElementById('bossx-ai-badge').style.display = 'none';
 return;
 }
@@ -3442,7 +2946,6 @@ document.getElementById('bossx-ai-window').classList.remove('active');
 function minimizeBossxAI() {
 bossxAIIsMinimized = true;
 document.getElementById('bossx-ai-window').classList.add('minimized');
-document.getElementById('bossx-ai-fab').classList.add('minimized');
 }
 function clearBossxAIChat() {
 if (bossxAIHistory.length === 0) {
@@ -3476,10 +2979,7 @@ const msgDiv = document.createElement('div');
 msgDiv.className = `bossx-ai-msg ${role}`;
 if (animate) msgDiv.style.opacity = '0';
 const avatar = role === 'bot' ? '🤖' : 'U';
-msgDiv.innerHTML = `
-<div class="bossx-ai-msg-avatar">${avatar}</div>
-<div class="bossx-ai-msg-content">${content}</div>
-`;
+msgDiv.innerHTML = `<div class="bossx-ai-msg-avatar">${avatar}</div><div class="bossx-ai-msg-content">${content}</div>`;
 body.appendChild(msgDiv);
 if (animate) {
 requestAnimationFrame(() => {
@@ -3500,16 +3000,7 @@ const body = document.getElementById('bossx-ai-body');
 const typingDiv = document.createElement('div');
 typingDiv.className = 'bossx-ai-msg bot';
 typingDiv.id = 'bossx-ai-typing-indicator';
-typingDiv.innerHTML = `
-<div class="bossx-ai-msg-avatar">🤖</div>
-<div class="bossx-ai-msg-content" style="padding: 12px 14px;">
-<div class="bossx-ai-typing">
-<div class="bossx-ai-typing-dot"></div>
-<div class="bossx-ai-typing-dot"></div>
-<div class="bossx-ai-typing-dot"></div>
-</div>
-</div>
-`;
+typingDiv.innerHTML = `<div class="bossx-ai-msg-avatar">🤖</div><div class="bossx-ai-msg-content" style="padding: 12px 14px;"><div class="bossx-ai-typing"><div class="bossx-ai-typing-dot"></div><div class="bossx-ai-typing-dot"></div><div class="bossx-ai-typing-dot"></div></div></div>`;
 body.appendChild(typingDiv);
 scrollBossxAIToBottom();
 }
@@ -3589,7 +3080,6 @@ saveBossxAIHistory();
 playBossxAISound();
 }, delay);
 }
-
 function handleBossxAIKey(event) {
 if (event.key === 'Enter') {
 event.preventDefault();
