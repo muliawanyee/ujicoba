@@ -51,7 +51,7 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .login-footer a:hover { text-decoration: underline; color: #E0FFFF; }
 
 /* ============================================ */
-/* MULTI-METHOD LOGIN STYLES                    */
+/* MULTI-METHOD LOGIN STYLES (TAMBAHAN)         */
 /* ============================================ */
 .login-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: rgba(0, 24, 69, 0.6); padding: 0.4rem; border-radius: 0.75rem; border: 1px solid rgba(0, 229, 255, 0.2); }
 .login-tab-btn { flex: 1; padding: 0.6rem 0.5rem; background: transparent; border: none; color: #7DF9FF; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
@@ -343,7 +343,7 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 <h1 class="login-title">BossX Masternode</h1>
 <p class="login-subtitle">Masuk ke akun Validator Masternode Anda</p>
 
-<!-- TAB SWITCHER -->
+<!-- TAB SWITCHER (TAMBAHAN) -->
 <div class="login-tabs">
 <button type="button" class="login-tab-btn active" onclick="switchLoginTab('username')">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -361,7 +361,7 @@ Gmail
 
 <div id="login-error" class="login-error">Username atau password salah!</div>
 
-<!-- FORM USERNAME -->
+<!-- FORM USERNAME (ASLI - TETAP BERFUNGSI) -->
 <div id="login-form-username" class="login-form-wrapper active">
 <form id="login-form" onsubmit="return handleLogin(event)">
 <input type="text" id="login-username" class="login-input" placeholder="Username" required autocomplete="username" />
@@ -370,7 +370,7 @@ Gmail
 </form>
 </div>
 
-<!-- FORM EMAIL -->
+<!-- FORM EMAIL (TAMBAHAN - FITUR SAJA) -->
 <div id="login-form-email" class="login-form-wrapper">
 <form id="login-form-email-form" onsubmit="return handleEmailLogin(event)">
 <input type="email" id="login-email" class="login-input" placeholder="Email Anda (contoh: user@bossx.com)" required autocomplete="email" />
@@ -383,7 +383,7 @@ Gmail
 </div>
 </div>
 
-<!-- FORM GMAIL -->
+<!-- FORM GMAIL (TAMBAHAN - FITUR SAJA) -->
 <div id="login-form-gmail" class="login-form-wrapper">
 <div class="login-info-box">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
@@ -408,7 +408,6 @@ Dengan melanjutkan, Anda menyetujui <a href="#" style="color: #00E5FF;">Syarat &
 </div>
 </div>
 </div>
-
 <div id="main-app" class="min-h-screen text-white flex main-container" style="display: none; background: #000814;">
 <div id="sidebar" class="sidebar h-screen">
 <div class="p-3 border-b border-cyan-400/30">
@@ -645,7 +644,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 <!-- PRIVATE KEY PAGE -->
 <div id="private-key-page" class="page-content active">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-300/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -764,8 +762,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-</div>
-
 <!-- DEPOSIT PAGE -->
 <div id="deposit-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -870,7 +866,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 <!-- WITHDRAWAL PAGE -->
 <div id="withdrawal-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-rose-500/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(255, 0, 110, 0.2);">
@@ -998,7 +993,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 <!-- P2P PAGE -->
 <div id="p2p-page" class="page-content exchange-bg">
 <div class="exchange-card p-6 mb-6">
@@ -1052,7 +1046,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="p2p-history-content" class="overflow-x-auto"></div>
 </div>
 </div>
-
 <!-- SOCIALFI PAGE -->
 <div id="socialfi-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -1107,7 +1100,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="sfi-feed"></div>
 </div>
 </div>
-
 <!-- REFERRAL PAGE -->
 <div id="referral-page" class="page-content">
 <div class="p-6">
@@ -1130,7 +1122,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 <!-- TEAM DEVELOPER PAGE -->
 <div id="team-developer-page" class="page-content">
 <div class="p-6">
@@ -1176,7 +1167,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 <!-- SETTINGS PAGE -->
 <div id="settings-page" class="page-content">
 <div class="p-6">
@@ -1184,7 +1174,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <p class="text-cyan-200">Fitur Settings akan segera hadir...</p>
 </div>
 </div>
-
 <!-- EXCHANGE PAGE -->
 <div id="exchange-page" class="page-content exchange-bg">
 <div class="exchange-card p-4 mb-4">
@@ -1268,7 +1257,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </main>
 </div>
 </div>
-
 <!-- ============================================ -->
 <!-- BOSSX AI AGENT - FLOATING CHATBOT HTML       -->
 <!-- ============================================ -->
@@ -1300,7 +1288,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
 </div>
 </div>
-
 <script>
 // ============ UTILITY FUNCTIONS ============
 function showSuccessMessage(message) {
@@ -1312,7 +1299,6 @@ messageDiv.textContent = message;
 document.body.appendChild(messageDiv);
 setTimeout(() => messageDiv.remove(), 3000);
 }
-
 function showErrorMessage(message) {
 const existingMessage = document.querySelector('.error-message');
 if (existingMessage) existingMessage.remove();
@@ -1322,21 +1308,17 @@ messageDiv.textContent = message;
 document.body.appendChild(messageDiv);
 setTimeout(() => messageDiv.remove(), 3000);
 }
-
 const DEMO_CREDENTIALS = { username: 'admin', password: 'admin123' };
-
 function checkAuth() {
 const isLoggedIn = localStorage.getItem('bossx_logged_in') === 'true';
 if (isLoggedIn) showMainApp();
 else showLoginPage();
 }
-
 function showLoginPage() {
 document.getElementById('login-page').style.display = 'flex';
 document.getElementById('main-app').style.display = 'none';
 hideBossxAIFab();
 }
-
 function showMainApp() {
 document.getElementById('login-page').style.display = 'none';
 document.getElementById('main-app').style.display = 'flex';
@@ -1344,7 +1326,7 @@ showBossxAIFab();
 initializeMainApp();
 }
 
-// ============ MULTI-METHOD LOGIN ============
+// ============ MULTI-METHOD LOGIN (TAMBAHAN) ============
 function switchLoginTab(tab) {
 document.querySelectorAll('.login-tab-btn').forEach(btn => btn.classList.remove('active'));
 document.querySelectorAll('.login-form-wrapper').forEach(form => form.classList.remove('active'));
@@ -1360,33 +1342,6 @@ document.getElementById('login-form-email').classList.add('active');
 document.querySelectorAll('.login-tab-btn')[2].classList.add('active');
 document.getElementById('login-form-gmail').classList.add('active');
 }
-}
-
-function handleLogin(event) {
-event.preventDefault();
-const username = document.getElementById('login-username').value.trim();
-const password = document.getElementById('login-password').value;
-const errorDiv = document.getElementById('login-error');
-const loginButton = document.getElementById('login-button');
-
-loginButton.disabled = true;
-loginButton.textContent = 'Memverifikasi...';
-
-setTimeout(() => {
-if (username === DEMO_CREDENTIALS.username && password === DEMO_CREDENTIALS.password) {
-localStorage.setItem('bossx_logged_in', 'true');
-localStorage.setItem('bossx_username', username);
-errorDiv.classList.remove('show');
-showSuccessMessage('Login berhasil! Selamat datang di BossX.');
-setTimeout(() => showMainApp(), 500);
-} else {
-errorDiv.textContent = 'Username atau password salah!';
-errorDiv.classList.add('show');
-loginButton.disabled = false;
-loginButton.textContent = 'Masuk';
-}
-}, 800);
-return false;
 }
 
 function handleEmailLogin(event) {
@@ -1434,6 +1389,30 @@ errorDiv.classList.add('show');
 }, 1500);
 }
 
+function handleLogin(event) {
+event.preventDefault();
+const username = document.getElementById('login-username').value.trim();
+const password = document.getElementById('login-password').value;
+const errorDiv = document.getElementById('login-error');
+const loginButton = document.getElementById('login-button');
+loginButton.disabled = true;
+loginButton.textContent = 'Memverifikasi...';
+setTimeout(() => {
+if (username === DEMO_CREDENTIALS.username && password === DEMO_CREDENTIALS.password) {
+localStorage.setItem('bossx_logged_in', 'true');
+localStorage.setItem('bossx_username', username);
+errorDiv.classList.remove('show');
+showSuccessMessage('Login berhasil! Selamat datang di BossX.');
+setTimeout(() => showMainApp(), 500);
+} else {
+errorDiv.textContent = 'Username atau password salah!';
+errorDiv.classList.add('show');
+loginButton.disabled = false;
+loginButton.textContent = 'Masuk';
+}
+}, 800);
+return false;
+}
 function handleLogout(event) {
 if (event) event.preventDefault();
 if (confirm('Apakah Anda yakin ingin logout?')) {
@@ -1446,16 +1425,15 @@ document.getElementById('login-form').reset();
 document.getElementById('login-error').classList.remove('show');
 document.getElementById('login-button').disabled = false;
 document.getElementById('login-button').textContent = 'Masuk';
+switchLoginTab('username');
 }, 500);
 }
 return false;
 }
-
 function showRegisterInfo() {
 alert('Fitur registrasi akan segera hadir!\nSilakan hubungi admin untuk pendaftaran.');
 return false;
 }
-
 // ============ STATE VARIABLES ============
 let currentPage = 'private-key';
 let activeTab = 'USDT';
@@ -1474,17 +1452,14 @@ let logInterval;
 let lastClaimTime = 0;
 let masaBerlaku = 40000000;
 let masaInterval;
-
 const walletAddresses = {
 USDT: { address: 'TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM&color=00E5FF' },
 BOSSX: { address: 'TTfKjrU18mi223ukVmz6FMNgBkma13kVA3', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTfKjrU18mi223ukVmz6FMNgBkma13kVA3&color=00E5FF' }
 };
-
 const withdrawalConfig = {
 USDT: { networks: { TRC20: { fee: 1, min: 10 }, BEP20: { fee: 1, min: 10 } } },
 BOSSX: { networks: { TRC20: { fee: 0.1, min: 1 } } }
 };
-
 const depositHistory = {
 USDT: [
 { id: '1', amount: 100.50, txHash: 'a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234', fromAddress: 'TXyza123456789012345678901234567890', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), confirmationCount: 1 },
@@ -1497,10 +1472,8 @@ BOSSX: [
 { id: '6', amount: 2000.0, txHash: 'f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
 ]
 };
-
 const withdrawalHistory = { USDT: [], BOSSX: [] };
 const p2pHistory = [];
-
 function initializeMainApp() {
 try {
 updateClock();
@@ -1521,7 +1494,6 @@ setTimeout(() => showSuccessMessage('Selamat datang di BossX Crypto Exchange Pla
 console.error('Error di initializeMainApp:', err);
 }
 }
-
 function updateClock() {
 const now = new Date();
 const timeOptions = { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -1531,20 +1503,16 @@ const dateEl = document.getElementById('date');
 if (timeEl) timeEl.textContent = now.toLocaleTimeString('id-ID', timeOptions);
 if (dateEl) dateEl.textContent = now.toLocaleDateString('id-ID', dateOptions);
 }
-
 function getTimestamp() {
 const now = new Date();
 return `[${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}]`;
 }
-
 function formatDate(date) {
 return date.toLocaleString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 }
-
 function formatAmount(amount) {
 return new Intl.NumberFormat('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 8 }).format(amount);
 }
-
 function formatTimeAgo(timestamp) {
 const diff = Date.now() - timestamp;
 const minutes = Math.floor(diff / 60000);
@@ -1556,25 +1524,20 @@ if (hours < 24) return `${hours} jam lalu`;
 if (days < 7) return `${days} hari lalu`;
 return new Date(timestamp).toLocaleDateString('id-ID');
 }
-
 function showPage(pageId) {
 document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
 const targetPage = document.getElementById(pageId + '-page');
 if (targetPage) targetPage.classList.add('active');
-
 document.querySelectorAll('.menu-item').forEach(item => {
 item.classList.remove('active');
 item.classList.add('text-cyan-200');
 });
-
 const activeMenuItem = document.querySelector(`[data-page="${pageId}"]`);
 if (activeMenuItem) {
 activeMenuItem.classList.add('active');
 activeMenuItem.classList.remove('text-cyan-200');
 }
-
 currentPage = pageId;
-
 if (pageId === 'deposit') updateDepositContent();
 else if (pageId === 'withdrawal') updateWithdrawalContent();
 else if (pageId === 'p2p') updateP2PContent();
@@ -1585,13 +1548,11 @@ updatePKStatistics();
 updatePrivateKeysList();
 updatePKSummary();
 }
-
 if (pageId !== 'exchange') {
 if (typeof wsDepth !== 'undefined' && wsDepth) { wsDepth.close(); wsDepth = null; }
 if (typeof wsTrades !== 'undefined' && wsTrades) { wsTrades.close(); wsTrades = null; }
 }
 }
-
 const logTemplates = [
 '[WARNING] High temp on GPU#0: 79°C | Fan: 90%',
 '[INFO] GPU#0: 48.4 MH/s | Temp: 78°C | Fan: 89%',
@@ -1602,11 +1563,9 @@ const logTemplates = [
 'Authorized worker: miner_002.worker1',
 'Cooling system active'
 ];
-
 function appendLog(message, logType = 'normal') {
 const logOutput = document.getElementById('log-output');
 if (!logOutput) return;
-
 if (message.includes('GPU#0')) {
 const randomTemp = Math.floor(Math.random() * 15) + 65;
 const randomHash = (Math.random() * 3 + 47).toFixed(1);
@@ -1619,29 +1578,23 @@ message = message.replace(/112/, randomLatency);
 const randomPower = Math.floor(Math.random() * 200) + 3200;
 message = message.replace(/3416/, randomPower);
 }
-
 const fullMessage = `${getTimestamp()} ${message}`;
 const logEntry = document.createElement('p');
 logEntry.classList.add('log-entry');
 if (logType === 'pk-success') logEntry.classList.add('pk-success');
 else if (logType === 'pk-error') logEntry.classList.add('pk-error');
 else if (message.includes('auto claim') || message.includes('Accepted Share')) logEntry.classList.add('auto-claim');
-
 logEntry.textContent = fullMessage;
 logOutput.appendChild(logEntry);
-
 while (logOutput.children.length > 100) logOutput.removeChild(logOutput.firstChild);
 logOutput.scrollTop = logOutput.scrollHeight;
 }
-
 function updateMasaBerlaku() {
 const el = document.getElementById('masa-berlaku');
 if (!el) return;
-
 el.textContent = masaBerlaku.toLocaleString('id-ID') + ' detik';
 el.style.color = '#FF006E';
 el.style.fontWeight = '600';
-
 if (masaBerlaku <= 0) {
 clearInterval(masaInterval);
 el.textContent = '0 detik (Kontrak Berakhir)';
@@ -1651,7 +1604,6 @@ appendLog('[STATUS] Masa berlaku validasi berakhir (0 detik)');
 showErrorMessage('Kontrak validasi berakhir! Aktivasi ulang diperlukan.');
 }
 }
-
 function startMasaCountdown() {
 if (masaInterval) clearInterval(masaInterval);
 masaInterval = setInterval(() => {
@@ -1662,34 +1614,24 @@ updateMasaBerlaku();
 }, 1000);
 updateMasaBerlaku();
 }
-
 function startValidationRunning() {
 if (!isNodeActive) { showErrorMessage('Aktivasi node terlebih dahulu!'); return; }
-
 const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
 lastClaimTime = Date.now() / 1000;
-
 validationInterval = setInterval(() => {
 if (!isValidationRunning) return;
-
 const currentTime = Date.now() / 1000;
 const timeDelta = currentTime - lastClaimTime;
-
 currentValidationReward = rewardPerSecond * timeDelta;
-
 document.getElementById('validation-balance').textContent = currentValidationReward.toFixed(9) + ' BossX';
-
 const remaining = 60 - Math.floor(timeDelta % 60);
 document.getElementById('auto-claim-timer').textContent = remaining;
-
 if (timeDelta >= 60) performAutoClaim();
 }, 1000);
-
 setTimeout(() => appendLog('[STATUS] Connected successfully to masternode Validasi Running'), Math.random() * 2000 + 1000);
 setTimeout(() => appendLog('[INFO] Connecting to master pool BossXPool.com:4444...'), Math.random() * 2000 + 3000);
 setTimeout(() => appendLog('[STATUS] Network sync: 100%'), Math.random() * 2000 + 5000);
 setTimeout(() => appendLog('[INFO] GPU#0: 48.3 MH/s | Temp: 68°C | Fan: 82%'), Math.random() * 2000 + 7000);
-
 function addRandomLog() {
 if (!isValidationRunning) return;
 const randomIndex = Math.floor(Math.random() * logTemplates.length);
@@ -1697,72 +1639,55 @@ appendLog(logTemplates[randomIndex]);
 logInterval = setTimeout(addRandomLog, Math.floor(Math.random() * 4000) + 1000);
 }
 addRandomLog();
-
 showSuccessMessage('Validasi dimulai! Reward mengalir per detik.');
 }
-
 function stopValidationRunning() {
 if (validationInterval) { clearInterval(validationInterval); validationInterval = null; }
 if (logInterval) { clearTimeout(logInterval); logInterval = null; }
 document.getElementById('auto-claim-timer').textContent = '--';
 }
-
 function performAutoClaim() {
 if (!isValidationRunning || currentValidationReward <= 0) return;
-
 const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
 const fixedReward = rewardPerSecond * 60;
-
 totalRewardBalance += fixedReward;
 shareCounter++;
-
 showSuccessMessage(`Auto Claim: +${fixedReward.toFixed(9)} BossX (Pending)`);
 appendLog('[SUCCESS] Auto claim Accepted Share #' + shareCounter.toString().padStart(2, '0') + ' (Diff: 12000) - Reward: ' + fixedReward.toFixed(9) + ' BossX (Pending)');
-
 lastClaimTime = Date.now() / 1000;
 currentValidationReward = 0;
 updateBalanceDisplays();
 }
-
 function claimToWallet() {
 if (totalRewardBalance <= 0) {
 showErrorMessage('Belum ada reward untuk di-claim! Tunggu validasi berjalan.');
 return;
 }
-
 const claimAmount = totalRewardBalance;
 bossxBalance += claimAmount;
 totalRewardBalance = 0;
-
 updateBalanceDisplays();
 showSuccessMessage(`Berhasil claim ${claimAmount.toFixed(9)} BossX ke Wallet!`);
 appendLog(`[SUCCESS] Claimed ${claimAmount.toFixed(9)} BossX to wallet (tanpa minimal)`, 'pk-success');
 }
-
 function updateBalanceDisplays() {
 const el1 = document.getElementById('bossx-balance');
 const el2 = document.getElementById('validation-balance');
 const el3 = document.getElementById('reward-balance');
 const el4 = document.getElementById('usdt-balance');
-
 if (el1) el1.textContent = bossxBalance.toFixed(9);
 if (el2) el2.textContent = currentValidationReward.toFixed(9) + ' BossX';
 if (el3) el3.textContent = totalRewardBalance.toFixed(9) + ' BossX';
 if (el4) el4.textContent = usdtBalance.toFixed(2);
-
 if (currentPage === 'exchange') updateAvbl();
 if (currentPage === 'private-key') updatePKSummary();
 }
-
 function togglePower() {
 if (!isNodeActive) { showErrorMessage('Aktivasi node terlebih dahulu!'); return; }
-
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
-
 isValidationRunning = !isValidationRunning;
-
 if (isValidationRunning) {
 powerBtn.classList.remove('off');
 powerBtn.classList.add('on');
@@ -1786,15 +1711,12 @@ showSuccessMessage('Validasi dihentikan manual.');
 }
 lucide.createIcons();
 }
-
 function forceStopValidation(reason = 'otomatis pada jam 06:00') {
 if (!isValidationRunning) return;
-
 isValidationRunning = false;
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
-
 powerBtn.classList.remove('on');
 powerBtn.classList.add('off');
 if (statusText) statusText.textContent = 'Belum berjalan';
@@ -1802,43 +1724,36 @@ countdownDisplay.style.display = 'none';
 if (countdownInterval) clearInterval(countdownInterval);
 stopValidationRunning();
 if (masaInterval) clearInterval(masaInterval);
-
 appendLog(`[STATUS] Validasi dihentikan ${reason}`);
 showSuccessMessage(`Validasi dihentikan ${reason}. Silakan aktifkan kembali untuk melanjutkan.`);
 lucide.createIcons();
 }
-
 function startCountdown() {
 function updateCountdown() {
 const now = new Date();
 const target = new Date();
 target.setHours(6, 0, 0, 0);
 if (now >= target) target.setDate(target.getDate() + 1);
-
 const diff = target.getTime() - now.getTime();
 const hours = Math.floor(diff / (1000 * 60 * 60));
 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
 document.getElementById('countdown-time').textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 updateCountdown();
 countdownInterval = setInterval(updateCountdown, 1000);
 }
-
 function checkSixAMStop() {
 const now = new Date();
 if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() === 0) {
 if (isValidationRunning) forceStopValidation('otomatis pada jam 06:00');
 }
 }
-
 // ============ PRIVATE KEY FUNCTIONS ============
 const PK_STORAGE_KEY = 'bossx_private_keys';
 const PK_FEE = 1;
 const PK_MIN_STAKE = 10;
 const PK_CODE_LENGTH = 25;
-
 function generateUniqueCode() {
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 let code = '';
@@ -1847,7 +1762,6 @@ code += chars.charAt(Math.floor(Math.random() * chars.length));
 }
 return code;
 }
-
 function loadPrivateKeys() {
 try {
 const data = localStorage.getItem(PK_STORAGE_KEY);
@@ -1857,7 +1771,6 @@ console.error('Error loading private keys:', e);
 return [];
 }
 }
-
 function savePrivateKeys(keys) {
 try {
 localStorage.setItem(PK_STORAGE_KEY, JSON.stringify(keys));
@@ -1866,28 +1779,23 @@ console.error('Error saving private keys:', e);
 showErrorMessage('Gagal menyimpan data!');
 }
 }
-
 function generatePrivateKey() {
 const stakeInput = document.getElementById('pk-stake-amount');
 const stakeAmount = parseFloat(stakeInput.value) || 0;
-
 if (stakeAmount < PK_MIN_STAKE) {
 showErrorMessage(`Minimal stake adalah ${PK_MIN_STAKE} BossX!`);
 appendLog(`[ERROR] Generate failed: Stake minimal ${PK_MIN_STAKE} BossX (input: ${stakeAmount})`, 'pk-error');
 return;
 }
-
 const totalRequired = stakeAmount + PK_FEE;
 if (bossxBalance < totalRequired) {
 showErrorMessage(`Saldo tidak mencukupi! Dibutuhkan ${totalRequired} BossX (stake + fee)`);
 appendLog(`[ERROR] Generate failed: Saldo tidak cukup (${bossxBalance.toFixed(9)} BossX < ${totalRequired} BossX)`, 'pk-error');
 return;
 }
-
 const existingKeys = loadPrivateKeys();
 let newCode;
 let attempts = 0;
-
 do {
 newCode = generateUniqueCode();
 attempts++;
@@ -1896,9 +1804,7 @@ showErrorMessage('Gagal generate kode unik. Coba lagi.');
 return;
 }
 } while (existingKeys.some(k => k.code === newCode));
-
 bossxBalance -= totalRequired;
-
 const newKey = {
 id: Date.now().toString() + '-' + Math.random().toString(36).substr(2, 9),
 code: newCode,
@@ -1908,102 +1814,80 @@ status: 'AVAILABLE',
 createdAt: new Date().toISOString(),
 redeemedAt: null
 };
-
 existingKeys.unshift(newKey);
 savePrivateKeys(existingKeys);
-
 appendLog(`[SUCCESS] Access Key generated: ${newCode} | Stake: ${stakeAmount} BossX | Fee: ${PK_FEE} BossX | Total: ${totalRequired} BossX`, 'pk-success');
-
 updateBalanceDisplays();
 updatePKStatistics();
 stakeInput.value = '';
 updatePKSummary();
-
 showSuccessMessage(`Access Key berhasil digenerate! Kode: ${newCode}`);
 switchPKTab('mykeys');
 updatePrivateKeysList(newKey.id);
 }
-
 function redeemPrivateKey() {
 const redeemInput = document.getElementById('redeem-input');
 const code = redeemInput.value.trim().toUpperCase();
-
 if (!code) {
 showErrorMessage('Masukkan Access Key terlebih dahulu!');
 appendLog('[ERROR] Redeem failed: Kode kosong', 'pk-error');
 return;
 }
-
 if (code.length !== PK_CODE_LENGTH) {
 showErrorMessage(`Access Key tidak valid! Harus ${PK_CODE_LENGTH} karakter (saat ini: ${code.length})`);
 appendLog(`[ERROR] Redeem failed: Format invalid (${code.length}/${PK_CODE_LENGTH} karakter)`, 'pk-error');
 return;
 }
-
 const keys = loadPrivateKeys();
 const keyIndex = keys.findIndex(k => k.code === code);
-
 if (keyIndex === -1) {
 showErrorMessage('Access Key tidak ditemukan! Pastikan kode benar.');
 appendLog(`[ERROR] Redeem failed: Kode tidak ditemukan (${code})`, 'pk-error');
 return;
 }
-
 const key = keys[keyIndex];
 if (key.status === 'REDEEMED') {
 showErrorMessage('Access Key sudah digunakan! Gunakan key yang lain.');
 appendLog(`[ERROR] Redeem failed: Key sudah diredeem (${code})`, 'pk-error');
 return;
 }
-
 if (isNodeActive) {
 showErrorMessage('Node sudah aktif! Nonaktifkan node terlebih dahulu.');
 appendLog(`[ERROR] Redeem failed: Node sudah aktif`, 'pk-error');
 return;
 }
-
 key.status = 'REDEEMED';
 key.redeemedAt = new Date().toISOString();
 keys[keyIndex] = key;
 savePrivateKeys(keys);
-
 isNodeActive = true;
 stakedAmount = key.stake;
-
 const redeemButton = document.getElementById('redeem-button');
 const redeemInputEl = document.getElementById('redeem-input');
 redeemButton.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4 inline mr-1"></i>Node Aktif ✓';
 redeemButton.style.background = 'linear-gradient(145deg, #00FFC8, #00D4A8)';
 redeemButton.disabled = true;
 redeemInputEl.disabled = true;
-
 document.getElementById('node-status').textContent = 'Aktif';
 document.getElementById('node-status').style.color = '#00FFC8';
-
 currentValidationReward = 0;
 totalRewardBalance = 0;
-
 appendLog(`[SUCCESS] Access Key redeemed: ${code} | Node activated with ${key.stake} BossX stake`, 'pk-success');
 appendLog(`[INFO] Reward rate: ${(key.stake * 0.000000038580246913580247).toFixed(12)} BossX/detik`);
-
 updateBalanceDisplays();
 updatePKStatistics();
 lucide.createIcons();
-
 showSuccessMessage(`Node berhasil diaktifkan dengan stake ${key.stake} BossX! Tekan Power ON untuk mulai validasi.`);
 redeemInputEl.value = '';
 }
-
 function updatePrivateKeysList(highlightId = null) {
 const keys = loadPrivateKeys();
 const listContainer = document.getElementById('private-keys-list');
 if (!listContainer) return;
-
 if (keys.length === 0) {
 listContainer.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="key" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada Access Key</h4><p class="text-cyan-300">Generate Access Key pertama Anda di tab "Generate"</p></div>`;
 } else {
 let tableHTML = `<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-cyan-400/30"><th class="text-left p-3 text-cyan-300 font-semibold">Access Key</th><th class="text-left p-3 text-cyan-300 font-semibold">Stake</th><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th><th class="text-left p-3 text-cyan-300 font-semibold">Aksi</th></tr></thead><tbody>`;
-
 keys.forEach(key => {
 const isHighlighted = key.id === highlightId;
 const highlightClass = isHighlighted ? 'pk-highlight-new' : '';
@@ -2013,32 +1897,26 @@ const statusColor = key.status === 'AVAILABLE' ? 'text-emerald-400' : 'text-cyan
 const statusText = key.status === 'AVAILABLE' ? 'AVAILABLE' : 'REDEEMED';
 const createdDate = new Date(key.createdAt).toLocaleString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 const actionButton = key.status === 'AVAILABLE' ? `<button onclick="copyPrivateKey('${key.code}')" class="flex items-center px-3 py-1 bg-cyan-300 hover:bg-cyan-400 text-[#000814] rounded text-xs font-semibold transition-colors" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);"><i data-lucide="copy" class="w-3 h-3 mr-1"></i>Copy</button>` : `<span class="text-cyan-300 text-xs">-</span>`;
-
 tableHTML += `<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors ${rowClass} ${highlightClass}"><td class="p-3"><div class="font-mono text-sm text-cyan-300 break-all tracking-wider frost-text">${key.code}</div></td><td class="p-3"><div class="font-semibold text-white">${key.stake.toFixed(2)} BossX</div><div class="text-xs text-cyan-300">Fee: ${key.fee} BossX</div></td><td class="p-3"><div class="flex items-center text-white text-sm"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>${createdDate}</div></td><td class="p-3"><div class="flex items-center ${statusColor}">${statusIcon}<span class="ml-2 capitalize font-semibold text-sm">${statusText}</span></div></td><td class="p-3">${actionButton}</td></tr>`;
 });
-
 tableHTML += `</tbody></table></div>`;
 listContainer.innerHTML = tableHTML;
 }
 lucide.createIcons();
 }
-
 function updatePKStatistics() {
 const keys = loadPrivateKeys();
 const available = keys.filter(k => k.status === 'AVAILABLE').length;
 const redeemed = keys.filter(k => k.status === 'REDEEMED').length;
-
 const totalEl = document.getElementById('pk-total-keys');
 const availEl = document.getElementById('pk-available-keys');
 const redeemedEl = document.getElementById('pk-redeemed-keys');
 const badgeEl = document.getElementById('keys-count-badge');
-
 if (totalEl) totalEl.textContent = keys.length;
 if (availEl) availEl.textContent = available;
 if (redeemedEl) redeemedEl.textContent = redeemed;
 if (badgeEl) badgeEl.textContent = keys.length;
 }
-
 function copyPrivateKey(code) {
 if (navigator.clipboard) {
 navigator.clipboard.writeText(code).then(() => {
@@ -2050,7 +1928,6 @@ fallbackCopyPK(code);
 fallbackCopyPK(code);
 }
 }
-
 function fallbackCopyPK(text) {
 const textArea = document.createElement('textarea');
 textArea.value = text;
@@ -2064,15 +1941,12 @@ showErrorMessage('Gagal menyalin. Silakan copy manual.');
 }
 document.body.removeChild(textArea);
 }
-
 function switchPKTab(tab) {
 const generateTab = document.getElementById('generate-tab');
 const mykeysTab = document.getElementById('mykeys-tab');
 const generateContent = document.getElementById('generate-content');
 const mykeysContent = document.getElementById('mykeys-content');
-
 if (!generateTab || !mykeysTab) return;
-
 if (tab === 'generate') {
 generateTab.className = 'tab-button active relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-cyan-300 to-cyan-400 text-[#000814]';
 mykeysTab.className = 'tab-button relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-[#001845] text-cyan-200 hover:bg-[#001233] hover:text-white border-2 border-cyan-400/30';
@@ -2087,36 +1961,29 @@ updatePrivateKeysList();
 updatePKStatistics();
 }
 }
-
 function updatePKSummary() {
 const stakeInput = document.getElementById('pk-stake-amount');
 if (!stakeInput) return;
-
 const stakeAmount = parseFloat(stakeInput.value) || 0;
 const fee = PK_FEE;
 const total = stakeAmount + fee;
-
 const stakeEl = document.getElementById('pk-summary-stake');
 const feeEl = document.getElementById('pk-summary-fee');
 const totalEl = document.getElementById('pk-summary-total');
 const balanceEl = document.getElementById('pk-summary-balance');
-
 if (stakeEl) stakeEl.textContent = `${stakeAmount.toFixed(2)} BossX`;
 if (feeEl) feeEl.textContent = `${fee.toFixed(2)} BossX`;
 if (totalEl) totalEl.textContent = `${total.toFixed(2)} BossX`;
 if (balanceEl) balanceEl.textContent = `${bossxBalance.toFixed(9)} BossX`;
 }
-
 function setMaxPKStake() {
 const maxStake = Math.max(0, bossxBalance - PK_FEE);
 document.getElementById('pk-stake-amount').value = maxStake.toFixed(9);
 updatePKSummary();
 }
-
 // ============ DEPOSIT FUNCTIONS ============
 function updateDepositContent() {
 const wallet = walletAddresses[activeTab];
-
 document.getElementById('qr-currency').textContent = activeTab;
 document.getElementById('wallet-currency').textContent = activeTab;
 document.getElementById('history-currency').textContent = activeTab;
@@ -2125,10 +1992,8 @@ document.getElementById('wallet-address').textContent = wallet.address;
 document.getElementById('warning-currency').textContent = `• Hanya kirim ${activeTab} ke alamat ini`;
 document.getElementById('min-deposit').textContent = `• Minimal deposit: ${activeTab === 'USDT' ? '10 USDT' : '1 BOSSX'}`;
 document.getElementById('amount-currency').textContent = activeTab;
-
 const usdtTab = document.getElementById('usdt-tab');
 const bossxTab = document.getElementById('bossx-tab');
-
 if (activeTab === 'USDT') {
 usdtTab.className = 'tab-button active relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-cyan-400 to-cyan-300 text-[#000814]';
 bossxTab.className = 'tab-button relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-[#001845] text-cyan-200 hover:bg-[#001233] hover:text-white border-2 border-cyan-400/30';
@@ -2136,46 +2001,37 @@ bossxTab.className = 'tab-button relative px-8 py-3 rounded-xl font-semibold tra
 bossxTab.className = 'tab-button active relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-cyan-400 to-cyan-300 text-[#000814]';
 usdtTab.className = 'tab-button relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-[#001845] text-cyan-200 hover:bg-[#001233] hover:text-white border-2 border-cyan-400/30';
 }
-
 updateDepositHistory();
 updateDepositStatistics();
 }
-
 function updateDepositHistory() {
 const history = depositHistory[activeTab] || [];
 const historyContent = document.getElementById('history-content');
 if (!historyContent) return;
-
 if (history.length === 0) {
 historyContent.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="calendar" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada history deposit</h4><p class="text-cyan-300">History deposit ${activeTab} Anda akan muncul di sini</p></div>`;
 } else {
 let tableHTML = `<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-cyan-400/30"><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Jumlah</th><th class="text-left p-3 text-cyan-300 font-semibold">TX Hash</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th><th class="text-left p-3 text-cyan-300 font-semibold">Konfirmasi</th></tr></thead><tbody>`;
-
 history.forEach(deposit => {
 const statusIcon = getStatusIcon(deposit.status);
 const statusColor = getStatusColor(deposit.status);
 const statusText = getStatusText(deposit.status);
-
 tableHTML += `<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors"><td class="p-3"><div class="flex items-center text-white"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>${formatDate(deposit.timestamp)}</div></td><td class="p-3"><div class="font-semibold text-cyan-400 frost-text">${formatAmount(deposit.amount)} ${activeTab}</div></td><td class="p-3"><div class="font-mono text-sm text-cyan-100 max-w-32 truncate">${deposit.txHash}</div></td><td class="p-3"><div class="flex items-center ${statusColor}">${statusIcon}<span class="ml-2 capitalize font-semibold">${statusText}</span></div></td><td class="p-3"><div class="text-cyan-100">${deposit.confirmationCount}/1</div></td></tr>`;
 });
-
 tableHTML += `</tbody></table></div>`;
 historyContent.innerHTML = tableHTML;
 }
 lucide.createIcons();
 }
-
 function updateDepositStatistics() {
 const history = depositHistory[activeTab] || [];
 const confirmedDeposits = history.filter(d => d.status === 'confirmed');
 const pendingDeposits = history.filter(d => d.status === 'pending');
 const totalAmount = confirmedDeposits.reduce((sum, d) => sum + d.amount, 0);
-
 document.getElementById('total-deposits').textContent = confirmedDeposits.length;
 document.getElementById('total-amount').textContent = formatAmount(totalAmount);
 document.getElementById('pending-deposits').textContent = pendingDeposits.length;
 }
-
 function getStatusIcon(status) {
 switch (status) {
 case 'confirmed': return '<i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i>';
@@ -2183,7 +2039,6 @@ case 'failed': return '<i data-lucide="x-circle" class="text-rose-400 w-4 h-4"><
 default: return '<i data-lucide="loader" class="text-cyan-300 w-4 h-4 animate-spin"></i>';
 }
 }
-
 function getStatusColor(status) {
 switch (status) {
 case 'confirmed': return 'text-emerald-400';
@@ -2191,7 +2046,6 @@ case 'failed': return 'text-rose-400';
 default: return 'text-cyan-300';
 }
 }
-
 function getStatusText(status) {
 switch (status) {
 case 'confirmed': return 'Terkonfirmasi';
@@ -2199,18 +2053,14 @@ case 'failed': return 'Gagal';
 default: return 'Pending';
 }
 }
-
 // ============ WITHDRAWAL FUNCTIONS ============
 function updateWithdrawalContent() {
 const balance = activeWithdrawalTab === 'USDT' ? usdtBalance : bossxBalance;
-
 document.getElementById('withdrawal-balance').textContent = `${formatAmount(balance)} ${activeWithdrawalTab}`;
 document.getElementById('withdrawal-currency').textContent = activeWithdrawalTab;
 document.getElementById('withdrawal-history-currency').textContent = activeWithdrawalTab;
 document.getElementById('withdrawal-amount-currency').textContent = activeWithdrawalTab;
-
 const networkSelection = document.getElementById('network-selection');
-
 if (activeWithdrawalTab === 'USDT') {
 networkSelection.style.display = 'block';
 networkSelection.innerHTML = `<label class="text-sm text-cyan-200">Pilih Network:</label><div class="grid grid-cols-2 gap-3"><label class="network-option selected"><input type="radio" name="withdrawal-network" value="TRC20" checked><div class="flex items-center justify-between"><span class="font-semibold text-white">TRC20</span><span class="text-xs text-cyan-200">TRON</span></div><div class="text-xs text-cyan-300 mt-1">Fee: 1 USDT</div></label><label class="network-option"><input type="radio" name="withdrawal-network" value="BEP20"><div class="flex items-center justify-between"><span class="font-semibold text-white">BEP20</span><span class="text-xs text-cyan-200">BSC</span></div><div class="text-xs text-cyan-300 mt-1">Fee: 1 USDT</div></label></div>`;
@@ -2222,10 +2072,8 @@ networkSelection.innerHTML = `<label class="text-sm text-cyan-200">Network:</lab
 document.getElementById('withdrawal-min').textContent = '• Minimal withdrawal: 1 BOSSX';
 document.getElementById('withdrawal-fee').textContent = '• Fee withdrawal: 0.1 BOSSX';
 }
-
 const usdtTab = document.getElementById('withdrawal-usdt-tab');
 const bossxTab = document.getElementById('withdrawal-bossx-tab');
-
 if (activeWithdrawalTab === 'USDT') {
 usdtTab.className = 'tab-button active relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-rose-500 to-rose-600 text-white';
 bossxTab.className = 'tab-button relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-[#001845] text-cyan-200 hover:bg-[#001233] hover:text-white border-2 border-rose-500/30';
@@ -2233,13 +2081,11 @@ bossxTab.className = 'tab-button relative px-8 py-3 rounded-xl font-semibold tra
 bossxTab.className = 'tab-button active relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-rose-500 to-rose-600 text-white';
 usdtTab.className = 'tab-button relative px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-[#001845] text-cyan-200 hover:bg-[#001233] hover:text-white border-2 border-rose-500/30';
 }
-
 setupNetworkSelection();
 updateWithdrawalSummary();
 updateWithdrawalHistory();
 updateWithdrawalStatistics();
 }
-
 function setupNetworkSelection() {
 document.querySelectorAll('.network-option').forEach(option => {
 option.addEventListener('click', function() {
@@ -2251,31 +2097,26 @@ updateWithdrawalSummary();
 });
 });
 }
-
 function updateWithdrawalSummary() {
 const amount = parseFloat(document.getElementById('withdrawal-amount').value) || 0;
 const selectedNetwork = document.querySelector('input[name="withdrawal-network"]:checked')?.value || 'TRC20';
 const config = withdrawalConfig[activeWithdrawalTab].networks[selectedNetwork];
 const fee = config.fee;
 const received = Math.max(0, amount - fee);
-
 document.getElementById('summary-network').textContent = selectedNetwork;
 document.getElementById('summary-amount').textContent = `${formatAmount(amount)} ${activeWithdrawalTab}`;
 document.getElementById('summary-fee').textContent = `${formatAmount(fee)} ${activeWithdrawalTab}`;
 document.getElementById('summary-received').textContent = `${formatAmount(received)} ${activeWithdrawalTab}`;
 }
-
 function setMaxWithdrawal() {
 const balance = activeWithdrawalTab === 'USDT' ? usdtBalance : bossxBalance;
 const selectedNetwork = document.querySelector('input[name="withdrawal-network"]:checked')?.value || 'TRC20';
 const config = withdrawalConfig[activeWithdrawalTab].networks[selectedNetwork];
 const fee = config.fee;
 const maxAmount = Math.max(0, balance - fee);
-
 document.getElementById('withdrawal-amount').value = maxAmount.toFixed(activeWithdrawalTab === 'USDT' ? 2 : 8);
 updateWithdrawalSummary();
 }
-
 function submitWithdrawal() {
 const address = document.getElementById('withdrawal-address').value.trim();
 const amount = parseFloat(document.getElementById('withdrawal-amount').value) || 0;
@@ -2284,83 +2125,57 @@ const config = withdrawalConfig[activeWithdrawalTab].networks[selectedNetwork];
 const balance = activeWithdrawalTab === 'USDT' ? usdtBalance : bossxBalance;
 const fee = config.fee;
 const minAmount = config.min;
-
 if (!address) { showErrorMessage('Alamat wallet tujuan tidak boleh kosong!'); return; }
 if (address.length < 30) { showErrorMessage('Alamat wallet tidak valid!'); return; }
 if (amount < minAmount) { showErrorMessage(`Minimal withdrawal adalah ${minAmount} ${activeWithdrawalTab}!`); return; }
 if (amount > balance) { showErrorMessage('Saldo tidak mencukupi!'); return; }
 if ((amount + fee) > balance) { showErrorMessage(`Saldo tidak cukup untuk membayar fee ${fee} ${activeWithdrawalTab}!`); return; }
-
 const received = amount - fee;
-
 if (activeWithdrawalTab === 'USDT') usdtBalance -= amount;
 else bossxBalance -= amount;
-
-const newWithdrawal = {
-id: Date.now().toString(),
-amount,
-fee,
-received,
-address,
-network: selectedNetwork,
-status: 'processing',
-timestamp: new Date(),
-txHash: generateFakeTxHash()
-};
-
+const newWithdrawal = { id: Date.now().toString(), amount, fee, received, address, network: selectedNetwork, status: 'processing', timestamp: new Date(), txHash: generateFakeTxHash() };
 if (!withdrawalHistory[activeWithdrawalTab]) withdrawalHistory[activeWithdrawalTab] = [];
 withdrawalHistory[activeWithdrawalTab].unshift(newWithdrawal);
-
 document.getElementById('withdrawal-address').value = '';
 document.getElementById('withdrawal-amount').value = '';
-
 updateBalanceDisplays();
 updateWithdrawalContent();
 showSuccessMessage(`Withdrawal ${amount} ${activeWithdrawalTab} berhasil disubmit!`);
 }
-
 function generateFakeTxHash() {
 const chars = '0123456789abcdef';
 let result = '';
 for (let i = 0; i < 64; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
 return result;
 }
-
 function updateWithdrawalHistory() {
 const history = withdrawalHistory[activeWithdrawalTab] || [];
 const historyContent = document.getElementById('withdrawal-history-content');
 if (!historyContent) return;
-
 if (history.length === 0) {
 historyContent.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);"><i data-lucide="calendar" class="text-rose-400 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada history withdrawal</h4><p class="text-cyan-300">History withdrawal ${activeWithdrawalTab} Anda akan muncul di sini</p></div>`;
 } else {
 let tableHTML = `<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-rose-500/30"><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Jumlah</th><th class="text-left p-3 text-cyan-300 font-semibold">Network</th><th class="text-left p-3 text-cyan-300 font-semibold">Alamat</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th></tr></thead><tbody>`;
-
 history.forEach(withdrawal => {
 const statusIcon = getWithdrawalStatusIcon(withdrawal.status);
 const statusColor = getWithdrawalStatusColor(withdrawal.status);
 const statusText = getWithdrawalStatusText(withdrawal.status);
-
 tableHTML += `<tr class="border-b border-rose-500/10 hover:bg-rose-500/5 transition-colors"><td class="p-3"><div class="flex items-center text-white"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>${formatDate(withdrawal.timestamp)}</div></td><td class="p-3"><div class="font-semibold text-rose-400">${formatAmount(withdrawal.amount)} ${activeWithdrawalTab}</div><div class="text-xs text-cyan-200">Fee: ${formatAmount(withdrawal.fee)} ${activeWithdrawalTab}</div></td><td class="p-3"><div class="text-white font-mono text-sm">${withdrawal.network}</div></td><td class="p-3"><div class="font-mono text-sm text-cyan-100 max-w-32 truncate">${withdrawal.address}</div></td><td class="p-3"><div class="flex items-center ${statusColor}">${statusIcon}<span class="ml-2 capitalize font-semibold">${statusText}</span></div></td></tr>`;
 });
-
 tableHTML += `</tbody></table></div>`;
 historyContent.innerHTML = tableHTML;
 }
 lucide.createIcons();
 }
-
 function updateWithdrawalStatistics() {
 const history = withdrawalHistory[activeWithdrawalTab] || [];
 const completedWithdrawals = history.filter(w => w.status === 'completed');
 const processingWithdrawals = history.filter(w => w.status === 'processing');
 const totalAmount = completedWithdrawals.reduce((sum, w) => sum + w.amount, 0);
-
 document.getElementById('total-withdrawals').textContent = completedWithdrawals.length;
 document.getElementById('total-withdrawal-amount').textContent = formatAmount(totalAmount);
 document.getElementById('processing-withdrawals').textContent = processingWithdrawals.length;
 }
-
 function getWithdrawalStatusIcon(status) {
 switch (status) {
 case 'completed': return '<i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i>';
@@ -2368,7 +2183,6 @@ case 'failed': return '<i data-lucide="x-circle" class="text-rose-400 w-4 h-4"><
 default: return '<i data-lucide="loader" class="text-cyan-300 w-4 h-4 animate-spin"></i>';
 }
 }
-
 function getWithdrawalStatusColor(status) {
 switch (status) {
 case 'completed': return 'text-emerald-400';
@@ -2376,7 +2190,6 @@ case 'failed': return 'text-rose-400';
 default: return 'text-cyan-300';
 }
 }
-
 function getWithdrawalStatusText(status) {
 switch (status) {
 case 'completed': return 'Selesai';
@@ -2384,92 +2197,67 @@ case 'failed': return 'Gagal';
 default: return 'Diproses';
 }
 }
-
 // ============ P2P FUNCTIONS ============
 function updateP2PContent() {
 updateBalanceDisplays();
 updateP2PStatistics();
 updateP2PHistory();
 }
-
 function submitP2PTransfer() {
 const username = document.getElementById('p2p-username').value.trim();
 const amount = parseFloat(document.getElementById('p2p-amount').value) || 0;
-
 if (!username || !username.startsWith('@')) { showErrorMessage('Username harus diawali dengan @ dan tidak boleh kosong!'); return; }
 if (amount < 1) { showErrorMessage('Minimal transfer 1 BossX!'); return; }
 if (amount > bossxBalance) { showErrorMessage('Saldo BossX tidak mencukupi!'); return; }
-
 bossxBalance -= amount;
-p2pHistory.unshift({
-id: Date.now().toString(),
-type: 'out',
-username,
-amount,
-timestamp: new Date(),
-status: 'completed'
-});
-
+p2pHistory.unshift({ id: Date.now().toString(), type: 'out', username, amount, timestamp: new Date(), status: 'completed' });
 document.getElementById('p2p-username').value = '';
 document.getElementById('p2p-amount').value = '';
-
 updateBalanceDisplays();
 updateP2PContent();
 showSuccessMessage(`Transfer ${amount.toFixed(9)} BossX ke ${username} berhasil!`);
 }
-
 function setMaxP2P() {
 document.getElementById('p2p-amount').value = bossxBalance.toFixed(9);
 }
-
 function updateP2PHistory() {
 const historyContent = document.getElementById('p2p-history-content');
 if (!historyContent) return;
-
 if (p2pHistory.length === 0) {
 historyContent.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="calendar" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada history transfer</h4><p class="text-cyan-300">History transfer P2P Anda akan muncul di sini</p></div>`;
 } else {
 let tableHTML = `<table class="w-full history-table text-sm"><thead><tr><th class="text-left">Tanggal</th><th class="text-left">Tipe</th><th class="text-left">Username</th><th class="text-left">Jumlah</th><th class="text-left">Status</th></tr></thead><tbody>`;
-
 p2pHistory.forEach(transfer => {
 const typeText = transfer.type === 'out' ? 'Keluar' : 'Masuk';
 const typeColor = transfer.type === 'out' ? 'text-rose-400' : 'text-emerald-400';
-
 tableHTML += `<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors"><td class="p-3"><div class="flex items-center text-white"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>${formatDate(transfer.timestamp)}</div></td><td class="p-3 ${typeColor} font-semibold">${typeText}</td><td class="p-3 text-white">${transfer.username}</td><td class="p-3 ${typeColor}">${formatAmount(transfer.amount)} BossX</td><td class="p-3 flex items-center text-emerald-400"><i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i><span class="ml-2">Selesai</span></td></tr>`;
 });
-
 tableHTML += `</tbody></table>`;
 historyContent.innerHTML = tableHTML;
 }
 lucide.createIcons();
 }
-
 function updateP2PStatistics() {
 const totalSent = p2pHistory.filter(t => t.type === 'out').reduce((sum, t) => sum + t.amount, 0);
 const totalReceived = p2pHistory.filter(t => t.type === 'in').reduce((sum, t) => sum + t.amount, 0);
-
 document.getElementById('p2p-total-sent').textContent = formatAmount(totalSent) + ' BossX';
 document.getElementById('p2p-total-received').textContent = formatAmount(totalReceived) + ' BossX';
 }
-
 // ============ REFERRAL FUNCTIONS ============
 function generateReferralCode() {
 const code = 'REF-' + Math.random().toString(36).substring(2, 8).toUpperCase();
 document.getElementById('referral-code').value = code;
 showSuccessMessage('Kode referral baru berhasil digenerate!');
 }
-
 function copyReferralCode() {
 const code = document.getElementById('referral-code').value;
 copyToClipboard(code);
 }
-
 function copyToClipboard(text) {
 if (navigator.clipboard) {
 navigator.clipboard.writeText(text).then(() => showSuccessMessage('Berhasil disalin ke clipboard!')).catch(() => fallbackCopy(text));
 } else fallbackCopy(text);
 }
-
 function fallbackCopy(text) {
 const textArea = document.createElement('textarea');
 textArea.value = text;
@@ -2483,7 +2271,6 @@ showSuccessMessage('Gagal menyalin. Silakan copy manual.');
 }
 document.body.removeChild(textArea);
 }
-
 function downloadQRCode() {
 const link = document.createElement('a');
 link.download = `${activeTab}_QRCode.png`;
@@ -2491,16 +2278,13 @@ link.href = walletAddresses[activeTab].qrCode;
 link.click();
 showSuccessMessage(`QR Code ${activeTab} berhasil didownload!`);
 }
-
 // ============ EXCHANGE FUNCTIONS ============
 let currentSymbol = 'BTCUSDT';
 let wsDepth = null;
 let wsTrades = null;
-
 function isBossXPair(symbol) {
 return symbol.toUpperCase() === 'BOSSXUSDT';
 }
-
 function initExchangePage() {
 document.querySelectorAll('.pair-button').forEach(btn => {
 btn.onclick = function() {
@@ -2509,26 +2293,21 @@ this.classList.add('active');
 const pair = this.dataset.pair;
 const symbol = pair.replace('/', '').toUpperCase();
 currentSymbol = symbol;
-
 if (wsDepth) { wsDepth.close(); wsDepth = null; }
 if (wsTrades) { wsTrades.close(); wsTrades = null; }
-
 loadChart(symbol);
 debouncedLoadMarketData(pair);
 loadOrderBook(symbol);
 loadRecentTrades(symbol);
 };
 });
-
 const defaultPair = 'BTC/USDT';
 const defaultSymbol = 'BTCUSDT';
 const defaultBtn = document.querySelector(`[data-pair="${defaultPair}"]`);
-
 if (defaultBtn) {
 document.querySelectorAll('.pair-button').forEach(b => b.classList.remove('active'));
 defaultBtn.classList.add('active');
 }
-
 currentSymbol = defaultSymbol;
 loadChart(defaultSymbol);
 debouncedLoadMarketData(defaultPair);
@@ -2536,17 +2315,14 @@ loadOrderBook(defaultSymbol);
 loadRecentTrades(defaultSymbol);
 updateBalanceDisplays();
 }
-
 function loadChart(symbol) {
 const chartContainer = document.getElementById('tradingview-chart');
 chartContainer.innerHTML = '';
-
 if (isBossXPair(symbol)) {
 chartContainer.innerHTML = `<div class="flex items-center justify-center h-full bg-[#001845]/70 rounded-lg border-2 border-cyan-400/30" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);"><div class="text-center p-8 max-w-md"><i data-lucide="info" class="w-16 h-16 text-cyan-400 mx-auto mb-4"></i><h3 class="text-xl font-bold text-white mb-2 frost-text">BossX - Internal Token</h3><p class="text-cyan-200 mb-3">BossX adalah token internal platform BossX.<br>Data chart real-time dari Binance tidak tersedia.</p><p class="text-cyan-400 text-sm frost-text">💡 Pilih pasangan lain untuk melihat chart real-time.</p></div></div>`;
 lucide.createIcons();
 return;
 }
-
 new TradingView.widget({
 "width": "100%", "height": "100%",
 "symbol": `BINANCE:${symbol}`,
@@ -2556,7 +2332,6 @@ new TradingView.widget({
 "container_id": "tradingview-chart"
 });
 }
-
 function debounce(func, delay) {
 let timeout;
 return function(...args) {
@@ -2564,12 +2339,9 @@ clearTimeout(timeout);
 timeout = setTimeout(() => func.apply(this, args), delay);
 };
 }
-
 const debouncedLoadMarketData = debounce(loadMarketData, 300);
-
 function loadMarketData(pair) {
 const symbol = pair.replace('/', '').toUpperCase();
-
 if (isBossXPair(symbol)) {
 document.getElementById('current-price').innerHTML = '<span class="text-cyan-300 text-sm">Internal Token</span>';
 document.getElementById('price-change').textContent = '—';
@@ -2578,26 +2350,22 @@ document.getElementById('volume').textContent = '—';
 document.getElementById('high-low').textContent = '— / —';
 return;
 }
-
 fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbol}`)
 .then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
 .then(data => {
 const changePercent = data.priceChangePercent > 0 ? `+${parseFloat(data.priceChangePercent).toFixed(2)}%` : `${parseFloat(data.priceChangePercent).toFixed(2)}%`;
 const changeColor = data.priceChangePercent > 0 ? 'text-emerald-400' : 'text-rose-400';
-
 document.getElementById('current-price').textContent = `$${parseFloat(data.lastPrice).toLocaleString()}`;
 document.getElementById('price-change').textContent = changePercent;
 document.getElementById('price-change').className = `text-lg font-bold ${changeColor}`;
 document.getElementById('volume').textContent = `$${parseFloat(data.quoteVolume).toLocaleString()}`;
 document.getElementById('high-low').textContent = `${parseFloat(data.highPrice).toFixed(2)} / ${parseFloat(data.lowPrice).toFixed(2)}`;
-
 try { localStorage.setItem(`marketData_${symbol}`, JSON.stringify(data)); } catch (e) {}
 })
 .catch(err => {
 console.error('Error fetching market data:', err);
 let cachedData = {};
 try { cachedData = JSON.parse(localStorage.getItem(`marketData_${symbol}`)) || {}; } catch (e) {}
-
 if (cachedData.lastPrice) {
 document.getElementById('current-price').textContent = `$${parseFloat(cachedData.lastPrice).toLocaleString()}`;
 document.getElementById('price-change').textContent = `${parseFloat(cachedData.priceChangePercent || 0).toFixed(2)}%`;
@@ -2611,10 +2379,8 @@ document.getElementById('high-low').textContent = '$0.00 / $0.00';
 }
 });
 }
-
 function loadOrderBook(symbol) {
 if (wsDepth) { wsDepth.close(); wsDepth = null; }
-
 if (isBossXPair(symbol)) {
 document.getElementById('buy-orders').innerHTML = `<tr><td colspan="3" class="text-center text-cyan-300 py-8 text-sm"><i data-lucide="info" class="w-8 h-8 mx-auto mb-2 text-cyan-400"></i><br>Order book tidak tersedia untuk BossX</td></tr>`;
 document.getElementById('sell-orders').innerHTML = `<tr><td colspan="3" class="text-center text-cyan-300 py-8 text-sm"><i data-lucide="info" class="w-8 h-8 mx-auto mb-2 text-cyan-400"></i><br>Order book tidak tersedia untuk BossX</td></tr>`;
@@ -2622,61 +2388,49 @@ document.getElementById('spread').textContent = 'Spread: N/A';
 lucide.createIcons();
 return;
 }
-
 try {
 wsDepth = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@depth@100ms`);
 wsDepth.onmessage = function(event) { updateOrderBook(JSON.parse(event.data)); };
 wsDepth.onerror = function(error) { console.error('WebSocket depth error:', error); fetchOrderBook(symbol); };
 } catch (e) { fetchOrderBook(symbol); }
 }
-
 function fetchOrderBook(symbol) {
 fetch(`https://api.binance.com/api/v3/depth?symbol=${symbol}&limit=50`)
 .then(response => response.json())
 .then(data => updateOrderBook(data))
 .catch(err => console.error('Error fetching order book:', err));
 }
-
 function updateOrderBook(data) {
 requestAnimationFrame(() => {
 const asks = data.a || data.asks || [];
 const bids = data.b || data.bids || [];
-
 const buyOrdersEl = document.getElementById('buy-orders');
 const sellOrdersEl = document.getElementById('sell-orders');
-
 buyOrdersEl.innerHTML = '';
 sellOrdersEl.innerHTML = '';
-
 if (asks.length === 0 && bids.length === 0) return;
-
 const allVolumes = [...asks.map(a => parseFloat(a[1])), ...bids.map(b => parseFloat(b[1]))];
 const maxVolume = Math.max(...allVolumes, 1);
-
 asks.slice(0, 15).reverse().forEach(ask => {
 const price = parseFloat(ask[0]);
 const amount = parseFloat(ask[1]);
 const total = price * amount;
 const width = (amount / maxVolume * 100) + '%';
-
 const row = document.createElement('tr');
 row.className = 'relative';
 row.innerHTML = `<td class="sell-order">${price.toFixed(2)}</td><td>${amount.toFixed(6)}</td><td>${total.toFixed(2)}</td><div class="depth-bar sell-depth" style="width: ${width};"></div>`;
 sellOrdersEl.appendChild(row);
 });
-
 bids.slice(0, 15).forEach(bid => {
 const price = parseFloat(bid[0]);
 const amount = parseFloat(bid[1]);
 const total = price * amount;
 const width = (amount / maxVolume * 100) + '%';
-
 const row = document.createElement('tr');
 row.className = 'relative';
 row.innerHTML = `<td class="buy-order">${price.toFixed(2)}</td><td>${amount.toFixed(6)}</td><td>${total.toFixed(2)}</td><div class="depth-bar buy-depth" style="width: ${width};"></div>`;
 buyOrdersEl.appendChild(row);
 });
-
 if (asks.length > 0 && bids.length > 0) {
 const bestBid = parseFloat(bids[0][0]);
 const bestAsk = parseFloat(asks[0][0]);
@@ -2688,10 +2442,8 @@ document.getElementById('spread').textContent = 'Spread: Loading...';
 }
 });
 }
-
 function loadRecentTrades(symbol) {
 if (wsTrades) { wsTrades.close(); wsTrades = null; }
-
 if (isBossXPair(symbol)) {
 const tradesBody = document.getElementById('recent-trades');
 if (tradesBody) {
@@ -2700,42 +2452,32 @@ lucide.createIcons();
 }
 return;
 }
-
 try {
 wsTrades = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@trade`);
 wsTrades.onmessage = function(event) { addRecentTrade(JSON.parse(event.data)); };
 } catch (e) { console.error('Failed to connect trades WebSocket:', e); }
 }
-
 function addRecentTrade(trade) {
 const tradesBody = document.getElementById('recent-trades');
 if (!tradesBody) return;
-
 const placeholder = tradesBody.querySelector('.skeleton-loading');
 if (placeholder) placeholder.remove();
-
 const infoRow = tradesBody.querySelector('td[colspan]');
 if (infoRow && infoRow.textContent.includes('tidak tersedia')) infoRow.parentElement.remove();
-
 const row = document.createElement('tr');
 const sideColor = trade.m ? 'text-rose-400' : 'text-emerald-400';
 const time = new Date(trade.T).toLocaleTimeString();
-
 row.innerHTML = `<td class="${sideColor}">${parseFloat(trade.p).toFixed(2)}</td><td class="text-white">${parseFloat(trade.q).toFixed(4)}</td><td class="text-cyan-200 text-xs">${time}</td>`;
 tradesBody.prepend(row);
-
 while (tradesBody.children.length > 50) tradesBody.removeChild(tradesBody.lastChild);
 }
-
 function demoTrade(type) {
 showSuccessMessage(`${type.toUpperCase()} order demo berhasil! (Tidak ada transaksi nyata)`);
 }
-
 function updateAvbl() {
 document.getElementById('buy-avbl').textContent = usdtBalance.toFixed(2) + ' USDT';
 document.getElementById('sell-avbl').textContent = bossxBalance.toFixed(9) + ' BossX';
 }
-
 // ============ EVENT LISTENERS ============
 function setupEventListeners() {
 const toggleBtn = document.getElementById('toggle-sidebar');
@@ -2745,7 +2487,6 @@ const sidebar = document.getElementById('sidebar');
 const logoText = document.getElementById('logo-text');
 const menuTexts = document.querySelectorAll('.menu-text');
 const toggleIcon = this.querySelector('[data-lucide]');
-
 if (sidebar.classList.contains('collapsed')) {
 sidebar.classList.remove('collapsed');
 logoText.style.display = 'block';
@@ -2760,7 +2501,6 @@ toggleIcon.setAttribute('data-lucide', 'chevron-right');
 lucide.createIcons();
 });
 }
-
 document.querySelectorAll('.menu-item').forEach(item => {
 item.addEventListener('click', function(e) {
 const page = this.getAttribute('data-page');
@@ -2770,46 +2510,36 @@ showPage(page);
 }
 });
 });
-
 const usdtTab = document.getElementById('usdt-tab');
 const bossxTab = document.getElementById('bossx-tab');
 if (usdtTab) usdtTab.addEventListener('click', function() { activeTab = 'USDT'; updateDepositContent(); });
 if (bossxTab) bossxTab.addEventListener('click', function() { activeTab = 'BOSSX'; updateDepositContent(); });
-
 const wUsdtTab = document.getElementById('withdrawal-usdt-tab');
 const wBossxTab = document.getElementById('withdrawal-bossx-tab');
 if (wUsdtTab) wUsdtTab.addEventListener('click', function() { activeWithdrawalTab = 'USDT'; updateWithdrawalContent(); });
 if (wBossxTab) wBossxTab.addEventListener('click', function() { activeWithdrawalTab = 'BOSSX'; updateWithdrawalContent(); });
-
 const copyAddrBtn = document.getElementById('copy-address');
 const downloadQrBtn = document.getElementById('download-qr');
 const refreshHistBtn = document.getElementById('refresh-history');
-
 if (copyAddrBtn) copyAddrBtn.addEventListener('click', function() { copyToClipboard(walletAddresses[activeTab].address); });
 if (downloadQrBtn) downloadQrBtn.addEventListener('click', function() { downloadQRCode(); });
 if (refreshHistBtn) refreshHistBtn.addEventListener('click', function() { showSuccessMessage('History deposit berhasil diperbarui!'); updateDepositHistory(); });
-
 const clearLogBtn = document.getElementById('clear-log');
 if (clearLogBtn) clearLogBtn.addEventListener('click', function() { document.getElementById('log-output').innerHTML = ''; showSuccessMessage('Log berhasil di-clear!'); });
-
 const genTab = document.getElementById('generate-tab');
 const myTab = document.getElementById('mykeys-tab');
 if (genTab) genTab.addEventListener('click', function() { switchPKTab('generate'); });
 if (myTab) myTab.addEventListener('click', function() { switchPKTab('mykeys'); });
-
 const pkStakeInput = document.getElementById('pk-stake-amount');
 if (pkStakeInput) pkStakeInput.addEventListener('input', function() { updatePKSummary(); });
-
 const pkMaxBtn = document.getElementById('pk-max-stake');
 if (pkMaxBtn) pkMaxBtn.addEventListener('click', function() { setMaxPKStake(); });
-
 document.addEventListener('click', function(e) {
 if (!e.target) return;
 if (e.target.id === 'max-withdrawal') setMaxWithdrawal();
 if (e.target.id === 'refresh-withdrawal-history') { showSuccessMessage('History withdrawal berhasil diperbarui!'); updateWithdrawalHistory(); }
 if (e.target.id === 'p2p-max') setMaxP2P();
 });
-
 document.addEventListener('input', function(e) {
 if (!e.target) return;
 if (e.target.id === 'withdrawal-amount') updateWithdrawalSummary();
@@ -2828,7 +2558,6 @@ preview.classList.remove('show');
 }
 }
 });
-
 document.addEventListener('change', function(e) {
 if (e.target.id === 'buy-order-type') {
 const priceInput = document.getElementById('buy-price');
@@ -2840,10 +2569,8 @@ if (priceInput) priceInput.style.display = e.target.value === 'market' ? 'none' 
 }
 });
 }
-
 setInterval(updateClock, 1000);
 setInterval(checkSixAMStop, 1000);
-
 // ============================================
 // SOCIALFI MODULE
 // ============================================
@@ -2851,28 +2578,23 @@ const SFI_STORAGE_KEY = 'bossx_socialfi_posts';
 const SFI_SUB_KEY = 'bossx_socialfi_subscription';
 const SFI_COST = 1;
 const SFI_DURATION_DAYS = 30;
-
 const SFI_TEAM = {
 'Fery Muliawan': { role: 'CEO • BossX', avatar: 'FM', image: 'https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png' },
 'Lee': { role: 'CTO • BossX', avatar: 'LE', image: 'https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg' },
 'Michael Johnson': { role: 'Manager', avatar: 'MJ', image: null },
 'Emily Brown': { role: 'Secretary', avatar: 'EB', image: null }
 };
-
 let sfiCurrentMedia = { type: null, url: '' };
-
 function initSocialFi() {
 let sub = null;
 try {
 const saved = localStorage.getItem(SFI_SUB_KEY);
 if (saved) sub = JSON.parse(saved);
 } catch (e) {}
-
 if (!localStorage.getItem(SFI_STORAGE_KEY)) {
 seedDummyPosts();
 }
 }
-
 function seedDummyPosts() {
 const now = Date.now();
 const dummyPosts = [
@@ -2936,14 +2658,12 @@ comments: [
 ]
 }
 ];
-
 try {
 localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(dummyPosts));
 } catch (e) {
 console.error('Error seeding dummy posts:', e);
 }
 }
-
 function loadSfiPosts() {
 try {
 const data = localStorage.getItem(SFI_STORAGE_KEY);
@@ -2952,7 +2672,6 @@ return data ? JSON.parse(data) : [];
 return [];
 }
 }
-
 function saveSfiPosts(posts) {
 try {
 localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(posts));
@@ -2960,7 +2679,6 @@ localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(posts));
 showErrorMessage('Gagal menyimpan postingan!');
 }
 }
-
 function getSfiSubscription() {
 try {
 const data = localStorage.getItem(SFI_SUB_KEY);
@@ -2975,13 +2693,11 @@ return sub;
 return null;
 }
 }
-
 function renderSocialFi() {
 const sub = getSfiSubscription();
 const statusEl = document.getElementById('sfi-subscription-status');
 const actionEl = document.getElementById('sfi-subscription-action');
 const mainContent = document.getElementById('sfi-main-content');
-
 if (sub) {
 const daysLeft = Math.ceil((sub.expiresAt - Date.now()) / 86400000);
 statusEl.innerHTML = `<div class="sfi-status-badge active"><i data-lucide="check-circle" class="w-3 h-3"></i>AKTIF • ${daysLeft} hari tersisa</div>`;
@@ -2996,51 +2712,40 @@ mainContent.style.display = 'none';
 }
 lucide.createIcons();
 }
-
 function subscribeSfi() {
 if (bossxBalance < SFI_COST) {
 showErrorMessage(`Saldo tidak mencukupi! Dibutuhkan ${SFI_COST} BossX.`);
 return;
 }
-
 if (!confirm(`Aktifkan akses SocialFi selama ${SFI_DURATION_DAYS} hari dengan biaya ${SFI_COST} BossX?`)) return;
-
 bossxBalance -= SFI_COST;
-
 const sub = {
 active: true,
 purchasedAt: Date.now(),
 expiresAt: Date.now() + (SFI_DURATION_DAYS * 86400000)
 };
-
 try {
 localStorage.setItem(SFI_SUB_KEY, JSON.stringify(sub));
 } catch (e) {}
-
 updateBalanceDisplays();
 showSuccessMessage(`SocialFi berhasil diaktifkan selama ${SFI_DURATION_DAYS} hari!`);
 renderSocialFi();
 }
-
 function renderSfiFeed() {
 const feed = document.getElementById('sfi-feed');
 const posts = loadSfiPosts().sort((a, b) => b.timestamp - a.timestamp);
-
 if (posts.length === 0) {
 feed.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="message-circle" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada postingan</h4><p class="text-cyan-300">Jadilah yang pertama membagikan sesuatu!</p></div>`;
 return;
 }
-
 feed.innerHTML = posts.map(post => renderSfiPost(post)).join('');
 lucide.createIcons();
 }
-
 function renderSfiPost(post) {
 const isLiked = post.likes.includes('Fery Muliawan');
 const likeClass = isLiked ? 'liked' : '';
 const likeIcon = 'heart';
 const likeText = post.likes.length;
-
 let mediaHtml = '';
 if (post.media) {
 if (post.mediaType === 'video') {
@@ -3049,37 +2754,28 @@ mediaHtml = `<video class="sfi-post-media-video" controls src="${escapeHtml(post
 mediaHtml = `<img class="sfi-post-media" src="${escapeHtml(post.media)}" alt="Media" onerror="this.style.display='none'" />`;
 }
 }
-
 const avatarHtml = post.avatarImage
 ? `<div class="sfi-post-avatar"><img src="${post.avatarImage}" alt="${post.author}" onerror="this.style.display='none'; this.parentNode.textContent='${post.avatar}'"></div>`
 : `<div class="sfi-post-avatar">${post.avatar}</div>`;
-
 const commentsHtml = renderSfiComments(post);
-
 return `<div class="sfi-post-card" data-post-id="${post.id}"><div class="sfi-post-header">${avatarHtml}<div class="sfi-post-meta"><div class="sfi-post-author">${escapeHtml(post.author)}</div><div class="sfi-post-role">${escapeHtml(post.role)}</div></div><div class="sfi-post-time">${formatTimeAgo(post.timestamp)}</div></div><div class="sfi-post-content">${escapeHtml(post.content)}</div>${mediaHtml}<div class="sfi-post-actions"><button class="sfi-action-btn ${likeClass}" onclick="toggleSfiLike('${post.id}')"><i data-lucide="${likeIcon}" class="w-4 h-4"></i><span>${likeText}</span></button><button class="sfi-action-btn" onclick="toggleSfiComments('${post.id}')"><i data-lucide="message-circle" class="w-4 h-4"></i><span>${post.comments.length}</span></button><button class="sfi-action-btn" onclick="shareSfiPost('${post.id}')"><i data-lucide="share-2" class="w-4 h-4"></i><span>Share</span></button></div><div class="sfi-comments-section" id="sfi-comments-${post.id}" style="display: none;">${commentsHtml}<div class="sfi-comment-input-wrap"><input type="text" class="sfi-comment-input" id="sfi-comment-input-${post.id}" placeholder="Tulis komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiComment('${post.id}')" /><button class="sfi-comment-send" onclick="submitSfiComment('${post.id}')"><i data-lucide="send" class="w-4 h-4"></i></button></div></div></div>`;
 }
-
 function renderSfiComments(post) {
 if (post.comments.length === 0) {
 return '<p class="text-cyan-300 text-xs text-center py-2">Belum ada komentar. Jadilah yang pertama!</p>';
 }
-
 return post.comments.map(c => {
 const avatarHtml = c.avatarImage
 ? `<div class="sfi-comment-avatar"><img src="${c.avatarImage}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none'; this.parentNode.textContent='${c.avatar}'"></div>`
 : `<div class="sfi-comment-avatar">${c.avatar}</div>`;
-
 const repliesHtml = (c.replies || []).map(r => `<div class="sfi-comment sfi-reply"><div class="sfi-comment-avatar">${r.avatar}</div><div class="sfi-comment-body"><div class="sfi-comment-author">${escapeHtml(r.author)}</div><div class="sfi-comment-text">${escapeHtml(r.text)}</div><div class="sfi-comment-time">${formatTimeAgo(r.timestamp)}</div></div></div>`).join('');
-
 return `<div class="sfi-comment">${avatarHtml}<div class="sfi-comment-body"><div class="sfi-comment-author">${escapeHtml(c.author)}</div><div class="sfi-comment-text">${escapeHtml(c.text)}</div><div class="sfi-comment-time">${formatTimeAgo(c.timestamp)}<button class="sfi-reply-btn" onclick="showSfiReplyInput('${post.id}', '${c.id}')">Balas</button></div><div id="sfi-reply-input-${post.id}-${c.id}" style="display:none;" class="sfi-comment-input-wrap"><input type="text" class="sfi-comment-input" placeholder="Balas komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiReply('${post.id}','${c.id}')" /><button class="sfi-comment-send" onclick="submitSfiReply('${post.id}','${c.id}')"><i data-lucide="send" class="w-3 h-3"></i></button></div></div></div>${repliesHtml}`;
 }).join('');
 }
-
 function toggleSfiLike(postId) {
 const posts = loadSfiPosts();
 const post = posts.find(p => p.id === postId);
 if (!post) return;
-
 const user = 'Fery Muliawan';
 const idx = post.likes.indexOf(user);
 if (idx > -1) {
@@ -3087,28 +2783,23 @@ post.likes.splice(idx, 1);
 } else {
 post.likes.push(user);
 }
-
 saveSfiPosts(posts);
 renderSfiFeed();
 updateSfiStats();
 }
-
 function toggleSfiComments(postId) {
 const section = document.getElementById(`sfi-comments-${postId}`);
 if (section) {
 section.style.display = section.style.display === 'none' ? 'block' : 'none';
 }
 }
-
 function submitSfiComment(postId) {
 const input = document.getElementById(`sfi-comment-input-${postId}`);
 const text = input.value.trim();
 if (!text) return;
-
 const posts = loadSfiPosts();
 const post = posts.find(p => p.id === postId);
 if (!post) return;
-
 post.comments.push({
 id: 'c' + Date.now(),
 author: 'Fery Muliawan',
@@ -3118,42 +2809,33 @@ text: text,
 timestamp: Date.now(),
 replies: []
 });
-
 saveSfiPosts(posts);
 input.value = '';
 renderSfiFeed();
 updateSfiStats();
-
 setTimeout(() => {
 const section = document.getElementById(`sfi-comments-${postId}`);
 if (section) section.style.display = 'block';
 }, 50);
-
 showSuccessMessage('Komentar berhasil ditambahkan!');
 }
-
 function showSfiReplyInput(postId, commentId) {
 const el = document.getElementById(`sfi-reply-input-${postId}-${commentId}`);
 if (el) {
 el.style.display = el.style.display === 'none' ? 'flex' : 'none';
 }
 }
-
 function submitSfiReply(postId, commentId) {
 const wrap = document.getElementById(`sfi-reply-input-${postId}-${commentId}`);
 const input = wrap.querySelector('input');
 const text = input.value.trim();
 if (!text) return;
-
 const posts = loadSfiPosts();
 const post = posts.find(p => p.id === postId);
 if (!post) return;
-
 const comment = post.comments.find(c => c.id === commentId);
 if (!comment) return;
-
 if (!comment.replies) comment.replies = [];
-
 comment.replies.push({
 id: 'r' + Date.now(),
 author: 'Fery Muliawan',
@@ -3161,29 +2843,23 @@ avatar: 'FM',
 text: text,
 timestamp: Date.now()
 });
-
 saveSfiPosts(posts);
 renderSfiFeed();
 updateSfiStats();
-
 setTimeout(() => {
 const section = document.getElementById(`sfi-comments-${postId}`);
 if (section) section.style.display = 'block';
 }, 50);
-
 showSuccessMessage('Balasan berhasil ditambahkan!');
 }
-
 function shareSfiPost(postId) {
 showSuccessMessage('Link postingan disalin ke clipboard!');
 }
-
 function toggleSfiMedia(type) {
 const btnImage = document.getElementById('sfi-btn-image');
 const btnVideo = document.getElementById('sfi-btn-video');
 const urlInput = document.getElementById('sfi-media-url');
 const preview = document.getElementById('sfi-media-preview');
-
 if (sfiCurrentMedia.type === type) {
 sfiCurrentMedia = { type: null, url: '' };
 btnImage.classList.remove('active');
@@ -3193,7 +2869,6 @@ urlInput.value = '';
 preview.classList.remove('show');
 return;
 }
-
 sfiCurrentMedia.type = type;
 sfiCurrentMedia.url = '';
 btnImage.classList.toggle('active', type === 'image');
@@ -3203,22 +2878,18 @@ urlInput.placeholder = type === 'image' ? 'Paste URL gambar (contoh: https://ima
 preview.classList.remove('show');
 urlInput.focus();
 }
-
 function submitSfiPost() {
 const textarea = document.getElementById('sfi-compose-text');
 const content = textarea.value.trim();
 const mediaUrl = document.getElementById('sfi-media-url').value.trim();
-
 if (!content && !mediaUrl) {
 showErrorMessage('Tulis sesuatu atau tambahkan media!');
 return;
 }
-
 if (content.length > 500) {
 showErrorMessage('Postingan maksimal 500 karakter!');
 return;
 }
-
 if (mediaUrl && sfiCurrentMedia.type) {
 try {
 new URL(mediaUrl);
@@ -3227,7 +2898,6 @@ showErrorMessage('URL media tidak valid!');
 return;
 }
 }
-
 const posts = loadSfiPosts();
 const newPost = {
 id: 'post-' + Date.now(),
@@ -3242,10 +2912,8 @@ timestamp: Date.now(),
 likes: [],
 comments: []
 };
-
 posts.unshift(newPost);
 saveSfiPosts(posts);
-
 textarea.value = '';
 document.getElementById('sfi-char-count').textContent = '0';
 document.getElementById('sfi-media-url').value = '';
@@ -3254,12 +2922,10 @@ document.getElementById('sfi-media-preview').classList.remove('show');
 document.getElementById('sfi-btn-image').classList.remove('active');
 document.getElementById('sfi-btn-video').classList.remove('active');
 sfiCurrentMedia = { type: null, url: '' };
-
 renderSfiFeed();
 updateSfiStats();
 showSuccessMessage('Postingan berhasil dipublikasikan!');
 }
-
 function updateSfiStats() {
 const posts = loadSfiPosts();
 const totalPosts = posts.length;
@@ -3269,23 +2935,19 @@ const c = p.comments.length;
 const r = p.comments.reduce((s, cm) => s + (cm.replies ? cm.replies.length : 0), 0);
 return sum + c + r;
 }, 0);
-
 const el1 = document.getElementById('sfi-stat-posts');
 const el2 = document.getElementById('sfi-stat-likes');
 const el3 = document.getElementById('sfi-stat-comments');
-
 if (el1) el1.textContent = totalPosts;
 if (el2) el2.textContent = totalLikes;
 if (el3) el3.textContent = totalComments;
 }
-
 function escapeHtml(text) {
 if (!text) return '';
 const div = document.createElement('div');
 div.textContent = text;
 return div.innerHTML;
 }
-
 // ============================================
 // BOSSX AI AGENT - KNOWLEDGE BASE & LOGIC
 // ============================================
@@ -3328,7 +2990,7 @@ answer: '<strong>Masternode Validator</strong> adalah node khusus di jaringan Bo
 {
 keywords: ['login', 'cara login', 'masuk akun', 'akun demo'],
 question: 'Bagaimana cara login?',
-answer: 'Untuk login ke BossX Masternode:<br><br><strong>📝 Langkah:</strong><br>1. Buka halaman login BossX<br>2. Masukkan username & password<br>3. Klik "Masuk"<br>4. Anda akan diarahkan ke Dashboard<br><br><strong>💾 Session:</strong> Login tersimpan di browser (localStorage), jadi Anda tidak perlu login ulang setiap kali membuka website.'
+answer: 'Untuk login ke BossX Masternode:<br><br><strong>🔐 Demo Credentials:</strong><br>• Username: <code>admin</code><br>• Password: <code>admin123</code><br><br><strong>📝 Langkah:</strong><br>1. Buka halaman login BossX<br>2. Masukkan username & password<br>3. Klik "Masuk"<br>4. Anda akan diarahkan ke Dashboard<br><br><strong>💾 Session:</strong> Login tersimpan di browser (localStorage), jadi Anda tidak perlu login ulang setiap kali membuka website.'
 },
 {
 keywords: ['p2p', 'peer to peer', 'transfer bossx', 'kirim bossx'],
@@ -3346,23 +3008,18 @@ question: 'Apa itu SocialFi BossX?',
 answer: '<strong>SocialFi BossX</strong> adalah platform sosial eksklusif untuk holder token BossX. Mirip dengan Binance Square, tetapi khusus untuk komunitas BossX.<br><br><strong>✨ Fitur:</strong><br>• Posting teks, gambar, dan video<br>• Like & komentar pada postingan<br>• Balas komentar user lain<br>• Feed komunitas yang aktif<br><br><strong>💎 Akses:</strong><br>• Biaya: <strong>1 BossX / 30 hari</strong><br>• User aktif bisa menikmati semua fitur<br>• Utilitas token BossX yang nyata<br><br><strong>📍 Lokasi:</strong> Menu "SocialFi" di sidebar'
 }
 ];
-
 const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>tidak tersedia di whitepaper BossX</strong>. Saya hanya dapat menjawab pertanyaan seputar:<br><br>• Tentang BossX & Masternode<br>• Access Key & Validasi<br>• Deposit & Withdrawal<br>• Reward & Claim<br>• P2P & Referral<br>• SocialFi<br>• Team Developer<br><br>Silakan coba pertanyaan lain atau hubungi tim support untuk bantuan lebih lanjut.';
-
 const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX.<br><br>Silakan ketik pertanyaan Anda di kolom input bawah untuk memulai! 💬';
-
 let bossxAIHistory = [];
 let bossxAIIsOpen = false;
 let bossxAIIsMinimized = false;
 let bossxAIIsInitialized = false;
 let bossxAIWelcomeShown = false;
-
 // ============ BOSSX AI VISIBILITY CONTROL ============
 function showBossxAIFab() {
 const fab = document.getElementById('bossx-ai-fab');
 if (fab) fab.classList.add('visible');
 }
-
 function hideBossxAIFab() {
 const fab = document.getElementById('bossx-ai-fab');
 const win = document.getElementById('bossx-ai-window');
@@ -3371,14 +3028,12 @@ if (win) win.classList.remove('active');
 bossxAIIsOpen = false;
 bossxAIIsMinimized = false;
 }
-
 function initBossxAI() {
 if (bossxAIIsInitialized) return;
 bossxAIIsInitialized = true;
 loadBossxAIHistory();
 lucide.createIcons();
 }
-
 function loadBossxAIHistory() {
 try {
 const saved = localStorage.getItem('bossx_ai_chat_history');
@@ -3389,7 +3044,6 @@ bossxAIHistory = JSON.parse(saved);
 bossxAIHistory = [];
 }
 }
-
 function saveBossxAIHistory() {
 try {
 localStorage.setItem('bossx_ai_chat_history', JSON.stringify(bossxAIHistory.slice(-50)));
@@ -3397,7 +3051,6 @@ localStorage.setItem('bossx_ai_chat_history', JSON.stringify(bossxAIHistory.slic
 console.error('Error saving AI chat history:', e);
 }
 }
-
 function toggleBossxAI() {
 if (bossxAIIsMinimized) {
 bossxAIIsMinimized = false;
@@ -3405,50 +3058,40 @@ document.getElementById('bossx-ai-window').classList.remove('minimized');
 document.getElementById('bossx-ai-badge').style.display = 'none';
 return;
 }
-
 if (bossxAIIsOpen) {
 closeBossxAI();
 } else {
 openBossxAI();
 }
 }
-
 function openBossxAI() {
 bossxAIIsOpen = true;
 bossxAIIsMinimized = false;
-
 const win = document.getElementById('bossx-ai-window');
 win.classList.add('active');
 win.classList.remove('minimized');
 document.getElementById('bossx-ai-badge').style.display = 'none';
-
 lucide.createIcons();
-
 if (!bossxAIWelcomeShown || bossxAIHistory.length === 0) {
 renderBossxAIWelcome();
 } else {
 renderBossxAIHistory();
 }
-
 document.getElementById('bossx-ai-input').focus();
 }
-
 function closeBossxAI() {
 bossxAIIsOpen = false;
 document.getElementById('bossx-ai-window').classList.remove('active');
 }
-
 function minimizeBossxAI() {
 bossxAIIsMinimized = true;
 document.getElementById('bossx-ai-window').classList.add('minimized');
 }
-
 function clearBossxAIChat() {
 if (bossxAIHistory.length === 0) {
 showSuccessMessage('Chat sudah kosong!');
 return;
 }
-
 if (confirm('Hapus semua riwayat chat?')) {
 bossxAIHistory = [];
 saveBossxAIHistory();
@@ -3456,112 +3099,88 @@ renderBossxAIWelcome();
 showSuccessMessage('Riwayat chat berhasil dihapus!');
 }
 }
-
 function renderBossxAIWelcome() {
 const body = document.getElementById('bossx-ai-body');
 body.innerHTML = '';
 addBossxAIMessage('bot', BOSSX_AI_WELCOME, false);
 bossxAIWelcomeShown = true;
 }
-
 function renderBossxAIHistory() {
 const body = document.getElementById('bossx-ai-body');
 body.innerHTML = '';
-
 bossxAIHistory.forEach(msg => {
 addBossxAIMessage(msg.role, msg.content, false);
 });
-
 scrollBossxAIToBottom();
 }
-
 function addBossxAIMessage(role, content, animate = true) {
 const body = document.getElementById('bossx-ai-body');
 const msgDiv = document.createElement('div');
 msgDiv.className = `bossx-ai-msg ${role}`;
 if (animate) msgDiv.style.opacity = '0';
-
 const avatar = role === 'bot' ? '🤖' : 'U';
 msgDiv.innerHTML = `<div class="bossx-ai-msg-avatar">${avatar}</div><div class="bossx-ai-msg-content">${content}</div>`;
-
 body.appendChild(msgDiv);
-
 if (animate) {
 requestAnimationFrame(() => {
 msgDiv.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
 msgDiv.style.opacity = '1';
 });
 }
-
 scrollBossxAIToBottom();
 }
-
 function scrollBossxAIToBottom() {
 const body = document.getElementById('bossx-ai-body');
 setTimeout(() => {
 body.scrollTop = body.scrollHeight;
 }, 50);
 }
-
 function showBossxAITyping() {
 const body = document.getElementById('bossx-ai-body');
 const typingDiv = document.createElement('div');
 typingDiv.className = 'bossx-ai-msg bot';
 typingDiv.id = 'bossx-ai-typing-indicator';
 typingDiv.innerHTML = `<div class="bossx-ai-msg-avatar">🤖</div><div class="bossx-ai-msg-content" style="padding: 12px 14px;"><div class="bossx-ai-typing"><div class="bossx-ai-typing-dot"></div><div class="bossx-ai-typing-dot"></div><div class="bossx-ai-typing-dot"></div></div></div>`;
-
 body.appendChild(typingDiv);
 scrollBossxAIToBottom();
 }
-
 function hideBossxAITyping() {
 const typing = document.getElementById('bossx-ai-typing-indicator');
 if (typing) typing.remove();
 }
-
 function playBossxAISound() {
 try {
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 if (!AudioContext) return;
-
 const ctx = new AudioContext();
 const osc = ctx.createOscillator();
 const gain = ctx.createGain();
-
 osc.connect(gain);
 gain.connect(ctx.destination);
-
 osc.type = 'sine';
 osc.frequency.setValueAtTime(880, ctx.currentTime);
 osc.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime + 0.08);
-
 gain.gain.setValueAtTime(0.15, ctx.currentTime);
 gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
-
 osc.start(ctx.currentTime);
 osc.stop(ctx.currentTime + 0.2);
 } catch (e) {
 console.error('Audio error:', e);
 }
 }
-
 function findBossxAIAnswer(userInput) {
 const input = userInput.toLowerCase().trim();
 if (!input) return null;
-
 let bestMatch = null;
 let bestScore = 0;
-
 BOSSX_AI_KB.forEach(entry => {
 let score = 0;
-
 entry.keywords.forEach(keyword => {
 if (input.includes(keyword)) {
 score += keyword.length;
 if (input === keyword) score += 10;
 }
 });
-
 const inputWords = input.split(/\s+/);
 entry.keywords.forEach(keyword => {
 const kwWords = keyword.split(/\s+/);
@@ -3569,59 +3188,44 @@ kwWords.forEach(kw => {
 if (inputWords.includes(kw)) score += 2;
 });
 });
-
 if (score > bestScore) {
 bestScore = score;
 bestMatch = entry;
 }
 });
-
 return bestScore > 0 ? bestMatch : null;
 }
-
 function sendBossxAIMessage() {
 const input = document.getElementById('bossx-ai-input');
 const text = input.value.trim();
-
 if (!text) return;
-
 input.value = '';
 addBossxAIMessage('user', escapeHtml(text));
-
 bossxAIHistory.push({ role: 'user', content: escapeHtml(text) });
 saveBossxAIHistory();
-
 showBossxAITyping();
-
 const delay = 800 + Math.random() * 800;
 setTimeout(() => {
 hideBossxAITyping();
-
 const match = findBossxAIAnswer(text);
 let answer;
-
 if (match) {
 answer = match.answer;
 } else {
 answer = BOSSX_AI_FALLBACK;
 }
-
 addBossxAIMessage('bot', answer);
-
 bossxAIHistory.push({ role: 'bot', content: answer });
 saveBossxAIHistory();
-
 playBossxAISound();
 }, delay);
 }
-
 function handleBossxAIKey(event) {
 if (event.key === 'Enter') {
 event.preventDefault();
 sendBossxAIMessage();
 }
 }
-
 console.log('🚀 Script dimulai');
 checkAuth();
 lucide.createIcons();
