@@ -276,7 +276,7 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .bossx-ai-clear-btn:hover { background: rgba(255, 0, 110, 0.25); box-shadow: 0 0 12px rgba(255, 0, 110, 0.4); }
 @media (max-width: 480px) { .bossx-ai-window { width: calc(100vw - 24px); right: 12px; bottom: 90px; height: calc(100vh - 120px); } .bossx-ai-fab { bottom: 16px; right: 16px; width: 56px; height: 56px; } }
 /* ============================================ */
-/* SOCIALFI STYLES (Modul Terpisah - Prefix sfi) */
+/* SOCIALFI STYLES                              */
 /* ============================================ */
 .sfi-subscribe-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3); }
 .sfi-subscribe-icon { width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(145deg, #00E5FF, #00B8D4); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2); border: 3px solid rgba(224, 255, 255, 0.6); animation: fabPulse 3s ease-in-out infinite; }
@@ -408,6 +408,7 @@ Dengan melanjutkan, Anda menyetujui <a href="#" style="color: #00E5FF;">Syarat &
 </div>
 </div>
 </div>
+
 <div id="main-app" class="min-h-screen text-white flex main-container" style="display: none; background: #000814;">
 <div id="sidebar" class="sidebar h-screen">
 <div class="p-3 border-b border-cyan-400/30">
@@ -1257,9 +1258,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </main>
 </div>
 </div>
-<!-- ============================================ -->
-<!-- BOSSX AI AGENT - FLOATING CHATBOT HTML       -->
-<!-- ============================================ -->
+<!-- BOSSX AI AGENT -->
 <div id="bossx-ai-fab" class="bossx-ai-fab" onclick="toggleBossxAI()" title="BossX AI AGENT">
 <span class="bossx-ai-fab-icon">🤖</span>
 <span id="bossx-ai-badge" class="bossx-ai-fab-badge" style="display: none;">1</span>
@@ -1288,6 +1287,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
 </div>
 </div>
+
 <script>
 // ============ UTILITY FUNCTIONS ============
 function showSuccessMessage(message) {
@@ -1415,6 +1415,7 @@ function showRegisterInfo() {
 alert('Fitur registrasi akan segera hadir!\nSilakan hubungi admin untuk pendaftaran.');
 return false;
 }
+
 // ============ STATE VARIABLES ============
 let currentPage = 'private-key';
 let activeTab = 'USDT';
@@ -1433,6 +1434,9 @@ let logInterval;
 let lastClaimTime = 0;
 let masaBerlaku = 40000000;
 let masaInterval;
+let validationStartTime = null;
+const VALIDATION_STORAGE_KEY = 'bossx_validation_state';
+
 const walletAddresses = {
 USDT: { address: 'TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM&color=00E5FF' },
 BOSSX: { address: 'TTfKjrU18mi223ukVmz6FMNgBkma13kVA3', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTfKjrU18mi223ukVmz6FMNgBkma13kVA3&color=00E5FF' }
@@ -1455,9 +1459,116 @@ BOSSX: [
 };
 const withdrawalHistory = { USDT: [], BOSSX: [] };
 const p2pHistory = [];
+
+// ============ VALIDATION STATE PERSISTENCE ============
+function saveValidationState() {
+try {
+const state = {
+isValidationRunning: isValidationRunning,
+stakedAmount: stakedAmount,
+validationStartTime: validationStartTime,
+totalRewardBalance: totalRewardBalance,
+shareCounter: shareCounter,
+masaBerlaku: masaBerlaku,
+bossxBalance: bossxBalance,
+usdtBalance: usdtBalance,
+isNodeActive: isNodeActive,
+savedAt: Date.now()
+};
+localStorage.setItem(VALIDATION_STORAGE_KEY, JSON.stringify(state));
+} catch (e) {
+console.error('Error saving validation state:', e);
+}
+}
+
+function loadValidationState() {
+try {
+const saved = localStorage.getItem(VALIDATION_STORAGE_KEY);
+if (!saved) return false;
+const state = JSON.parse(saved);
+isValidationRunning = state.isValidationRunning || false;
+stakedAmount = state.stakedAmount || 0;
+validationStartTime = state.validationStartTime || null;
+totalRewardBalance = state.totalRewardBalance || 0;
+shareCounter = state.shareCounter || 0;
+masaBerlaku = state.masaBerlaku !== undefined ? state.masaBerlaku : 40000000;
+bossxBalance = state.bossxBalance !== undefined ? state.bossxBalance : 1000;
+usdtBalance = state.usdtBalance !== undefined ? state.usdtBalance : 1000;
+isNodeActive = state.isNodeActive || false;
+return true;
+} catch (e) {
+console.error('Error loading validation state:', e);
+return false;
+}
+}
+
+function resumeValidation() {
+if (!isValidationRunning || !validationStartTime) return;
+
+const now = Date.now();
+const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
+const startTime = new Date(validationStartTime);
+const nowDate = new Date(now);
+
+const todaySixAM = new Date(nowDate);
+todaySixAM.setHours(6, 0, 0, 0);
+
+if (startTime < todaySixAM && nowDate >= todaySixAM) {
+const secondsUntilSixAM = (todaySixAM.getTime() - validationStartTime) / 1000;
+if (secondsUntilSixAM >= 60) {
+const fullCycles = Math.floor(secondsUntilSixAM / 60);
+const fullReward = rewardPerSecond * 60 * fullCycles;
+totalRewardBalance += fullReward;
+shareCounter += fullCycles;
+appendLog(`[INFO] Resume: ${fullCycles} auto claim terhitung sampai 06:00`);
+}
+isValidationRunning = false;
+validationStartTime = null;
+const powerBtn = document.getElementById('power-btn');
+const statusText = document.getElementById('validation-status');
+const countdownDisplay = document.getElementById('countdown-display');
+if (powerBtn) { powerBtn.classList.remove('on'); powerBtn.classList.add('off'); }
+if (statusText) { statusText.textContent = 'Dihentikan otomatis jam 06:00 - Klik ON untuk lanjut'; statusText.style.display = 'block'; }
+if (countdownDisplay) countdownDisplay.style.display = 'none';
+appendLog(`[STATUS] Validasi dihentikan otomatis pada jam 06:00 (saat resume)`);
+saveValidationState();
+updateBalanceDisplays();
+return;
+}
+
+const elapsedSeconds = (now - validationStartTime) / 1000;
+currentValidationReward = rewardPerSecond * (elapsedSeconds % 60);
+
+const fullCycles = Math.floor(elapsedSeconds / 60);
+if (fullCycles > shareCounter) {
+const missedCycles = fullCycles - shareCounter;
+const missedReward = rewardPerSecond * 60 * missedCycles;
+totalRewardBalance += missedReward;
+shareCounter = fullCycles;
+appendLog(`[INFO] Resume: ${missedCycles} auto claim terlewat ditambahkan ke pending reward`);
+}
+
+const powerBtn = document.getElementById('power-btn');
+const statusText = document.getElementById('validation-status');
+const countdownDisplay = document.getElementById('countdown-display');
+if (powerBtn) { powerBtn.classList.remove('off'); powerBtn.classList.add('on'); }
+if (statusText) { statusText.textContent = 'Auto-stop setiap jam 06:00 (tidak bisa stop manual)'; statusText.style.display = 'block'; }
+if (countdownDisplay) countdownDisplay.style.display = 'block';
+
+startCountdown();
+startValidationRunning();
+startMasaCountdown();
+
+appendLog(`[INFO] Validasi diresume dari ${formatDate(startTime)}`);
+saveValidationState();
+updateBalanceDisplays();
+}
+
 function initializeMainApp() {
 try {
 updateClock();
+loadValidationState();
+resumeValidation();
 updateBalanceDisplays();
 updateDepositContent();
 updateWithdrawalContent();
@@ -1467,7 +1578,7 @@ updatePrivateKeysList();
 updatePKSummary();
 initSocialFi();
 lucide.createIcons();
-startMasaCountdown();
+if (!isValidationRunning) startMasaCountdown();
 setupEventListeners();
 initBossxAI();
 setTimeout(() => showSuccessMessage('Selamat datang di BossX Masternode Platform!'), 500);
@@ -1638,6 +1749,7 @@ appendLog('[SUCCESS] Auto claim Accepted Share #' + shareCounter.toString().padS
 lastClaimTime = Date.now() / 1000;
 currentValidationReward = 0;
 updateBalanceDisplays();
+saveValidationState();
 }
 function claimToWallet() {
 if (totalRewardBalance <= 0) {
@@ -1650,6 +1762,7 @@ totalRewardBalance = 0;
 updateBalanceDisplays();
 showSuccessMessage(`Berhasil claim ${claimAmount.toFixed(9)} BossX ke Wallet!`);
 appendLog(`[SUCCESS] Claimed ${claimAmount.toFixed(9)} BossX to wallet (tanpa minimal)`, 'pk-success');
+saveValidationState();
 }
 function updateBalanceDisplays() {
 const el1 = document.getElementById('bossx-balance');
@@ -1664,25 +1777,24 @@ if (currentPage === 'exchange') updateAvbl();
 if (currentPage === 'private-key') updatePKSummary();
 }
 
-// ============ PERUBAHAN: TOGGLE POWER (TIDAK BISA STOP MANUAL) ============
+// ============ TOGGLE POWER (TIDAK BISA STOP MANUAL) ============
 function togglePower() {
 if (!isNodeActive) { 
-    showErrorMessage('Aktivasi node terlebih dahulu!'); 
-    return; 
+showErrorMessage('Aktivasi node terlebih dahulu!'); 
+return; 
 }
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
 
-// ✅ User mencoba mematikan saat running → TOLAK
 if (isValidationRunning) {
-    showErrorMessage('⚠️ Validasi tidak dapat dihentikan manual! Sistem akan auto-stop pada jam 06:00.');
-    appendLog('[WARNING] Attempt to manual stop rejected - Auto-stop only at 06:00');
-    return;
+showErrorMessage('⚠️ Validasi tidak dapat dihentikan manual! Sistem akan auto-stop pada jam 06:00.');
+appendLog('[WARNING] Attempt to manual stop rejected - Auto-stop only at 06:00');
+return;
 }
 
-// ✅ User mengaktifkan (ON) → IZINKAN
 isValidationRunning = true;
+validationStartTime = Date.now();
 powerBtn.classList.remove('off');
 powerBtn.classList.add('on');
 if (statusText) statusText.textContent = 'Auto-stop setiap jam 06:00 (tidak bisa stop manual)';
@@ -1692,12 +1804,14 @@ startValidationRunning();
 startMasaCountdown();
 appendLog('[INFO] Power ON - Validasi dimulai (auto-stop 06:00)');
 showSuccessMessage('Validasi dimulai! Auto-claim aktif setiap 60 detik. Auto-stop jam 06:00.');
+saveValidationState();
 lucide.createIcons();
 }
 
 function forceStopValidation(reason = 'otomatis pada jam 06:00') {
 if (!isValidationRunning) return;
 isValidationRunning = false;
+validationStartTime = null;
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
@@ -1710,37 +1824,35 @@ stopValidationRunning();
 if (masaInterval) clearInterval(masaInterval);
 appendLog(`[STATUS] Validasi dihentikan ${reason}`);
 showSuccessMessage(`Validasi dihentikan ${reason}. Silakan aktifkan kembali untuk melanjutkan.`);
+saveValidationState();
 lucide.createIcons();
 }
 
-// ============ PERUBAHAN: COUNTDOWN SEKARANG TRIGGER AUTO-STOP ============
 function startCountdown() {
 function updateCountdown() {
-    const now = new Date();
-    const target = new Date();
-    target.setHours(6, 0, 0, 0);
-    if (now >= target) target.setDate(target.getDate() + 1);
-    const diff = target.getTime() - now.getTime();
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    document.getElementById('countdown-time').textContent = 
-        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    // ✅ FIX: Trigger auto-stop ketika countdown mencapai 0
-    if (diff <= 0 && isValidationRunning) {
-        forceStopValidation('otomatis pada jam 06:00');
-        return;
-    }
+const now = new Date();
+const target = new Date();
+target.setHours(6, 0, 0, 0);
+if (now >= target) target.setDate(target.getDate() + 1);
+const diff = target.getTime() - now.getTime();
+const hours = Math.floor(diff / (1000 * 60 * 60));
+const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+document.getElementById('countdown-time').textContent = 
+`${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+if (diff <= 0 && isValidationRunning) {
+forceStopValidation('otomatis pada jam 06:00');
+return;
+}
 }
 updateCountdown();
 countdownInterval = setInterval(updateCountdown, 1000);
 }
 
-// ============ PERUBAHAN: CHECK 6AM LEBIH TOLERAN (RANGE 5 DETIK) ============
 function checkSixAMStop() {
 const now = new Date();
 if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() < 5) {
-    if (isValidationRunning) forceStopValidation('otomatis pada jam 06:00');
+if (isValidationRunning) forceStopValidation('otomatis pada jam 06:00');
 }
 }
 
@@ -1819,6 +1931,7 @@ updatePKSummary();
 showSuccessMessage(`Access Key berhasil digenerate! Kode: ${newCode}`);
 switchPKTab('mykeys');
 updatePrivateKeysList(newKey.id);
+saveValidationState();
 }
 function redeemPrivateKey() {
 const redeemInput = document.getElementById('redeem-input');
@@ -1874,6 +1987,7 @@ updatePKStatistics();
 lucide.createIcons();
 showSuccessMessage(`Node berhasil diaktifkan dengan stake ${key.stake} BossX! Tekan Power ON untuk mulai validasi.`);
 redeemInputEl.value = '';
+saveValidationState();
 }
 function updatePrivateKeysList(highlightId = null) {
 const keys = loadPrivateKeys();
@@ -2136,6 +2250,7 @@ document.getElementById('withdrawal-amount').value = '';
 updateBalanceDisplays();
 updateWithdrawalContent();
 showSuccessMessage(`Withdrawal ${amount} ${activeWithdrawalTab} berhasil disubmit!`);
+saveValidationState();
 }
 function generateFakeTxHash() {
 const chars = '0123456789abcdef';
@@ -2211,6 +2326,7 @@ document.getElementById('p2p-amount').value = '';
 updateBalanceDisplays();
 updateP2PContent();
 showSuccessMessage(`Transfer ${amount.toFixed(9)} BossX ke ${username} berhasil!`);
+saveValidationState();
 }
 function setMaxP2P() {
 document.getElementById('p2p-amount').value = bossxBalance.toFixed(9);
@@ -2725,6 +2841,7 @@ localStorage.setItem(SFI_SUB_KEY, JSON.stringify(sub));
 updateBalanceDisplays();
 showSuccessMessage(`SocialFi berhasil diaktifkan selama ${SFI_DURATION_DAYS} hari!`);
 renderSocialFi();
+saveValidationState();
 }
 function renderSfiFeed() {
 const feed = document.getElementById('sfi-feed');
@@ -3010,7 +3127,6 @@ let bossxAIIsOpen = false;
 let bossxAIIsMinimized = false;
 let bossxAIIsInitialized = false;
 let bossxAIWelcomeShown = false;
-// ============ BOSSX AI VISIBILITY CONTROL ============
 function showBossxAIFab() {
 const fab = document.getElementById('bossx-ai-fab');
 if (fab) fab.classList.add('visible');
@@ -3221,7 +3337,7 @@ event.preventDefault();
 sendBossxAIMessage();
 }
 }
-console.log('🚀 Script dimulai');
+console.log('🚀 BossX Masternode Platform - Final Build Loaded');
 checkAuth();
 lucide.createIcons();
 </script>
