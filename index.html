@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BossX - Masternode Platform | Validator Masternode System</title>
+<meta name="theme-color" content="#000814">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BossX">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="BossX">
+<meta name="msapplication-TileColor" content="#000814">
+<meta name="msapplication-tap-highlight" content="no">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMEU1RkYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEI4RDQiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjI1NiIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjI1NiIgeT0iMzIwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDgxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Qlg8L3RleHQ+PC9zdmc+">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script src="https://s3.tradingview.com/tv.js"></script>
@@ -256,6 +266,57 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .bossx-ai-typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .bossx-ai-typing-dot:nth-child(3) { animation-delay: 0.4s; }
 @keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-8px); opacity: 1; } }
+/* 🧠 DEEP THINKING ANIMATION STYLES */
+.bossx-ai-thinking-stage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #E0FFFF;
+  font-size: 13.5px;
+  font-weight: 500;
+  min-height: 20px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.bossx-ai-thinking-stage.fade-out {
+  opacity: 0;
+  transform: translateX(-5px);
+}
+.bossx-ai-thinking-stage.fade-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+.bossx-ai-thinking-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 229, 255, 0.2);
+  border-top-color: #00E5FF;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+.bossx-ai-context-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 20px;
+  font-size: 11px;
+  color: #7DF9FF;
+  margin-top: 8px;
+}
+.bossx-ai-context-badge.active {
+  background: rgba(0, 255, 200, 0.1);
+  border-color: rgba(0, 255, 200, 0.4);
+  color: #00FFC8;
+}
+.bossx-ai-context-badge.inactive {
+  background: rgba(255, 0, 110, 0.1);
+  border-color: rgba(255, 0, 110, 0.3);
+  color: #FF006E;
+}
 .bossx-ai-footer { border-top: 2px solid rgba(0, 229, 255, 0.3); padding: 12px; display: flex; gap: 8px; align-items: center; background: rgba(0, 8, 20, 0.6); flex-shrink: 0; }
 .bossx-ai-input { flex: 1; padding: 10px 14px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #fff; font-size: 13.5px; outline: none; transition: all 0.2s ease; }
 .bossx-ai-input:focus { border-color: #00E5FF; box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2), 0 0 15px rgba(0, 229, 255, 0.3); }
@@ -320,6 +381,20 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .sfi-stat-card { background: linear-gradient(145deg, #001233, #001845); border: 2px solid rgba(0, 229, 255, 0.2); border-radius: 0.75rem; padding: 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
 .sfi-stat-value { font-size: 1.5rem; font-weight: bold; color: #00E5FF; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
 .sfi-stat-label { font-size: 12px; color: #7DF9FF; margin-top: 4px; }
+.pwa-install-banner { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(150%); background: linear-gradient(145deg, rgba(0, 18, 51, 0.98), rgba(0, 24, 69, 0.98)); border: 2px solid rgba(0, 229, 255, 0.5); border-radius: 1rem; padding: 1rem 1.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 229, 255, 0.4); backdrop-filter: blur(20px); z-index: 9997; display: none; align-items: center; gap: 1rem; max-width: 90vw; animation: pwaSlideUp 0.5s ease-out forwards; }
+.pwa-install-banner.show { display: flex; transform: translateX(-50%) translateY(0); }
+@keyframes pwaSlideUp { from { transform: translateX(-50%) translateY(150%); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }
+.pwa-install-icon { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 20px rgba(0, 229, 255, 0.6); border: 2px solid rgba(224, 255, 255, 0.6); }
+.pwa-install-icon svg { width: 28px; height: 28px; color: #000814; }
+.pwa-install-content { flex: 1; min-width: 0; }
+.pwa-install-title { color: #E0FFFF; font-size: 14px; font-weight: bold; margin: 0 0 4px 0; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
+.pwa-install-desc { color: #7DF9FF; font-size: 12px; margin: 0; line-height: 1.4; }
+.pwa-install-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.pwa-install-btn { padding: 8px 16px; background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #000814; border: none; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; box-shadow: 0 0 15px rgba(0, 229, 255, 0.5); transition: all 0.2s ease; white-space: nowrap; }
+.pwa-install-btn:hover { background: linear-gradient(145deg, #00F5FF, #00E5FF); box-shadow: 0 0 25px rgba(0, 229, 255, 0.8); transform: translateY(-1px); }
+.pwa-install-close { width: 28px; height: 28px; background: rgba(255, 0, 110, 0.15); border: 1px solid rgba(255, 0, 110, 0.4); border-radius: 50%; color: #FF006E; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0; }
+.pwa-install-close:hover { background: rgba(255, 0, 110, 0.25); box-shadow: 0 0 12px rgba(255, 0, 110, 0.4); }
+@media (max-width: 480px) { .pwa-install-banner { bottom: 80px; padding: 0.75rem 1rem; gap: 0.75rem; } .pwa-install-icon { width: 40px; height: 40px; } .pwa-install-icon svg { width: 24px; height: 24px; } .pwa-install-title { font-size: 13px; } .pwa-install-desc { font-size: 11px; } .pwa-install-btn { padding: 6px 12px; font-size: 12px; } }
 </style>
 </head>
 <body>
@@ -622,7 +697,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-<div id="private-key-page" class="page-content active">
+<div id="private-key-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-300/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between">
 <div>
@@ -733,6 +808,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Redeemed</h4><i data-lucide="check-check" class="text-cyan-300 w-5 h-5"></i></div>
 <div id="pk-redeemed-keys" class="text-2xl font-bold text-white">0</div>
 <p class="text-sm text-cyan-300 mt-1">Sudah digunakan</p>
+</div>
 </div>
 </div>
 </div>
@@ -1253,6 +1329,29 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
 </div>
 </div>
+<div id="pwa-install-banner" class="pwa-install-banner">
+<div class="pwa-install-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+<polyline points="7 10 12 15 17 10"/>
+<line x1="12" y1="15" x2="12" y2="3"/>
+</svg>
+</div>
+<div class="pwa-install-content">
+<p class="pwa-install-title">Install BossX App 🧊</p>
+<p class="pwa-install-desc">Pasang di HP untuk akses cepat & pengalaman seperti aplikasi native</p>
+</div>
+<div class="pwa-install-actions">
+<button id="pwa-install-btn" class="pwa-install-btn">Install</button>
+<button id="pwa-install-close" class="pwa-install-close" title="Tutup">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;">
+<line x1="18" y1="6" x2="6" y2="18"/>
+<line x1="6" y1="6" x2="18" y2="18"/>
+</svg>
+</button>
+</div>
+</div>
+
 <script>
 function showSuccessMessage(message) {
 const existingMessage = document.querySelector('.success-message');
@@ -1403,11 +1502,7 @@ const withdrawalConfig = {
 USDT: { networks: { TRC20: { fee: 1, min: 10 }, BEP20: { fee: 1, min: 10 } } },
 BOSSX: { networks: { TRC20: { fee: 0.1, min: 1 } } }
 };
-// ✅ DATA HISTORY DEPOSIT SUDAH DIKOSONGKAN
-const depositHistory = {
-USDT: [],
-BOSSX: []
-};
+const depositHistory = { USDT: [], BOSSX: [] };
 const withdrawalHistory = { USDT: [], BOSSX: [] };
 const p2pHistory = [];
 function saveValidationState() {
@@ -2980,281 +3075,513 @@ const div = document.createElement('div');
 div.textContent = text;
 return div.innerHTML;
 }
-const BOSSX_AI_KB = [
-{
-keywords: ['apa itu bossx', 'bossx itu apa', 'tentang bossx', 'pengertian bossx', 'bossx cryptocurrency'],
-question: 'Apa itu BossX?',
-answer: '<strong>BossX</strong> adalah salah satu cryptocurrency yang berjalan pada jaringan blockchain <strong>TRC20</strong> (TRON). BossX merupakan token internal platform BossX Masternode yang dirancang untuk sistem validator masternode dengan reward mechanism yang unik. Platform ini mengusung tema <strong>"Glacier/Ice"</strong> dengan warna khas cyan yang merepresentasikan kekuatan, kecepatan, dan transparansi.'
-},
-{
-keywords: ['cara deposit', 'deposit bagaimana', 'deposit usdt', 'deposit bossx', 'cara top up'],
-question: 'Bagaimana cara deposit?',
-answer: 'Untuk melakukan deposit ke akun BossX Anda:<br><br><strong>1.</strong> Buka menu <strong>"Deposit"</strong> di sidebar<br><strong>2.</strong> Pilih currency: <strong>USDT</strong> atau <strong>BOSSX</strong><br><strong>3.</strong> Copy alamat wallet yang ditampilkan<br><strong>4.</strong> Kirim crypto dari wallet eksternal Anda<br><br><strong>⚠️ Penting:</strong><br>• USDT: Network <strong>TRC20</strong> (TRON), minimal deposit <strong>10 USDT</strong><br>• BOSSX: Network internal, minimal deposit <strong>1 BOSSX</strong><br>• Deposit dikonfirmasi setelah 1 konfirmasi network'
-},
-{
-keywords: ['access key', 'apa itu access key', 'fungsi access key', 'private key'],
-question: 'Apa itu Access Key?',
-answer: '<strong>Access Key</strong> adalah kode unik sepanjang <strong>25 karakter</strong> (kombinasi huruf A-Z dan angka 0-9) yang digunakan untuk mengaktivasi node validator BossX.<br><br><strong>Spesifikasi:</strong><br>• Format: 25 karakter (A-Z, 0-9)<br>• Minimal stake: <strong>10 BossX</strong><br>• Fee generate: <strong>1 BossX</strong> (dipotong otomatis)<br>• Status: <strong>One-time use</strong> (hangus setelah redeem)<br><br><strong>Cara pakai:</strong> Generate di menu "Access Key" → Copy kode → Paste di Dashboard → Klik "Redeem Now"'
-},
-{
-keywords: ['reward', 'bagaimana reward', 'cara dapat reward', 'reward validasi', 'auto claim'],
-question: 'Bagaimana reward bekerja?',
-answer: 'Sistem reward BossX bekerja dengan mekanisme <strong>Masternode Validator</strong>:<br><br><strong>📊 Rate Reward:</strong><br>• <code>0.000000038580246913580247 BossX/detik</code> per 1 BossX stake<br>• Auto claim setiap <strong>60 detik</strong> (masuk ke Pending Reward)<br><br><strong>⏰ Sistem:</strong><br>• Auto claim berjalan otomatis saat validasi aktif<br>• Manual claim: Kapan saja tanpa minimal ke wallet<br>• Auto stop: Setiap hari jam <strong>06:00</strong><br>• Masa berlaku: <strong>40.000.000 detik</strong><br><br><strong>💡 Tips:</strong> Semakin besar stake, semakin besar reward per detik!'
-},
-{
-keywords: ['cara withdrawal', 'withdrawal bagaimana', 'tarik dana', 'withdraw usdt', 'withdraw bossx'],
-question: 'Bagaimana cara withdrawal?',
-answer: 'Untuk menarik dana dari akun BossX:<br><br><strong>1.</strong> Buka menu <strong>"Withdrawal"</strong><br><strong>2.</strong> Pilih currency (USDT/BOSSX)<br><strong>3.</strong> Pilih network:<br>  • USDT: <strong>TRC20</strong> atau <strong>BEP20</strong><br>  • BOSSX: <strong>TRC20</strong><br><strong>4.</strong> Masukkan alamat wallet tujuan<br><strong>5.</strong> Masukkan jumlah withdrawal<br><strong>6.</strong> Klik "Submit Withdrawal"<br><br><strong>💰 Fee & Minimal:</strong><br>• USDT: Fee <strong>1 USDT</strong>, minimal <strong>10 USDT</strong><br>• BOSSX: Fee <strong>0.1 BOSSX</strong>, minimal <strong>1 BOSSX</strong><br><br><strong>⏱️ Proses:</strong> 1-24 jam setelah submit'
-},
-{
-keywords: ['team developer', 'siapa team', 'tim developer', 'founder', 'ceo bossx'],
-question: 'Siapa team developer BossX?',
-answer: 'Tim di balik BossX Masternode Platform:<br><br><strong>👑 Fery Muliawan</strong> — CEO (Chief Executive Officer)<br>Pendiri dan visioner BossX<br><br><strong>📊 Michael Johnson</strong> — Manager<br>Mengatur tim operasional<br><br><strong>💻 Lee</strong> — CTO (Chief Technology Officer)<br>Infrastruktur teknis & keamanan<br><br><strong>📝 Emily Brown</strong> — Secretary<br>Administrasi & komunikasi'
-},
-{
-keywords: ['masternode', 'validator', 'apa itu masternode', 'cara kerja masternode'],
-question: 'Apa itu Masternode Validator?',
-answer: '<strong>Masternode Validator</strong> adalah node khusus di jaringan BossX yang bertugas memvalidasi transaksi dan menjaga keamanan blockchain. Sebagai imbalannya, validator mendapatkan reward BossX.<br><br><strong>🔧 Cara Kerja:</strong><br>1. Generate Access Key (minimal stake 10 BossX)<br>2. Redeem Access Key di Dashboard<br>3. Aktifkan Power Button (ON)<br>4. Reward mengalir otomatis setiap detik<br><br><strong>⚙️ Fitur:</strong><br>• Auto claim setiap 60 detik<br>• Auto stop jam 06:00 setiap hari<br>• Masa berlaku 40.000.000 detik<br>• Log engine real-time'
-},
-{
-keywords: ['login', 'cara login', 'masuk akun', 'akun demo'],
-question: 'Bagaimana cara login?',
-answer: 'Untuk login ke BossX Masternode:<br><br><strong>📝 Langkah:</strong><br>1. Buka halaman login BossX<br>2. Masukkan username & password<br>3. Klik "Masuk"<br>4. Anda akan diarahkan ke Dashboard<br><br><strong>💾 Session:</strong> Login tersimpan di browser (localStorage), jadi Anda tidak perlu login ulang setiap kali membuka website.'
-},
-{
-keywords: ['p2p', 'peer to peer', 'transfer bossx', 'kirim bossx'],
-question: 'Bagaimana cara transfer P2P?',
-answer: 'Fitur <strong>Peer to Peer (P2P)</strong> memungkinkan Anda transfer BossX ke sesama pengguna BossX:<br><br><strong>📤 Cara Transfer:</strong><br>1. Buka menu <strong>"Peer to Peer"</strong><br>2. Masukkan username penerima (format: <code>@username</code>)<br>3. Masukkan jumlah BossX (minimal 1 BossX)<br>4. Klik "Kirim BossX"<br><br><strong>✅ Fitur:</strong><br>• Transfer instan antar user BossX<br>• Tanpa fee<br>• History transfer tercatat lengkap<br>• Statistik total dikirim & diterima'
-},
-{
-keywords: ['referral', 'kode referral', 'ajak teman', 'komisi referral'],
-question: 'Bagaimana sistem referral?',
-answer: 'Sistem <strong>Referral BossX</strong> memungkinkan Anda mendapatkan reward dengan mengajak teman bergabung:<br><br><strong>🎯 Cara Kerja:</strong><br>1. Dapatkan kode referral unik Anda<br>2. Bagikan kode ke teman/komunitas<br>3. Setiap orang yang daftar pakai kode Anda = referral aktif<br>4. Dapatkan reward BossX dari setiap referral<br><br><strong>💡 Tips:</strong><br>• Klik "Generate Kode Baru" untuk refresh kode<br>• Bagikan via sosial media, grup chat, dll<br>• Statistik referral tersedia di menu Referral'
-},
-{
-keywords: ['socialfi', 'sosial', 'media sosial', 'fitur sosial', 'bossx social'],
-question: 'Apa itu SocialFi BossX?',
-answer: '<strong>SocialFi BossX</strong> adalah platform sosial eksklusif untuk holder token BossX. Mirip dengan Binance Square, tetapi khusus untuk komunitas BossX.<br><br><strong>✨ Fitur:</strong><br>• Posting teks, gambar, dan video<br>• Like & komentar pada postingan<br>• Balas komentar user lain<br>• Feed komunitas yang aktif<br><br><strong>💎 Akses:</strong><br>• Biaya: <strong>1 BossX / 30 hari</strong><br>• User aktif bisa menikmati semua fitur<br>• Utilitas token BossX yang nyata<br><br><strong>📍 Lokasi:</strong> Menu "SocialFi" di sidebar'
-}
+
+// ============================================
+// 🧠 BOSSX AI AGENT - PREMIUM FEATURES
+// ============================================
+
+// 🧠 DEEP THINKING STAGES - Berubah setiap 2 detik
+const THINKING_STAGES = [
+  { icon: '🔍', text: 'Menganalisis pertanyaan Anda...' },
+  { icon: '🧠', text: 'Membaca data blockchain & whitepaper...' },
+  { icon: '⚡', text: 'Memproses konteks akun Anda...' },
+  { icon: '📊', text: 'Menyusun jawaban terbaik...' }
 ];
-const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>tidak tersedia di whitepaper BossX</strong>. Saya hanya dapat menjawab pertanyaan seputar:<br><br>• Tentang BossX & Masternode<br>• Access Key & Validasi<br>• Deposit & Withdrawal<br>• Reward & Claim<br>• P2P & Referral<br>• SocialFi<br>• Team Developer<br><br>Silakan coba pertanyaan lain atau hubungi tim support untuk bantuan lebih lanjut.';
-const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX.<br><br>Silakan ketik pertanyaan Anda di kolom input bawah untuk memulai! 💬';
+
+const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>tidak tersedia di whitepaper BossX</strong>. Saya hanya dapat menjawab pertanyaan seputar:<br><br>• Tentang BossX & Masternode<br>• Access Key & Validasi<br>• Deposit & Withdrawal<br>• Reward & Claim<br>• P2P & Referral<br>• SocialFi<br>• Team Developer<br>• <strong>Status akun Anda</strong> (coba tanya: "status saya", "saldo saya")<br><br>Silakan coba pertanyaan lain atau hubungi tim support untuk bantuan lebih lanjut.';
+
+// 🎯 CONTEXTUAL GREETING - Menyapa user dengan nama & status akun
+function getContextualGreeting() {
+  const username = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+  let statusBadge = '';
+  let statusInfo = '';
+  
+  if (isNodeActive) {
+    if (isValidationRunning) {
+      statusBadge = '<span class="bossx-ai-context-badge active"><i data-lucide="zap" style="width:12px;height:12px;"></i> Node AKTIF • Validasi Berjalan</span>';
+      statusInfo = `Node Anda sedang <strong style="color:#00FFC8;">AKTIF</strong> dengan stake <strong>${stakedAmount.toFixed(2)} BossX</strong>. Reward mengalir setiap detik! 🚀`;
+    } else {
+      statusBadge = '<span class="bossx-ai-context-badge"><i data-lucide="power" style="width:12px;height:12px;"></i> Node Siap</span>';
+      statusInfo = `Node Anda <strong style="color:#00E5FF;">siap</strong> dengan stake <strong>${stakedAmount.toFixed(2)} BossX</strong>. Tekan Power ON untuk mulai validasi.`;
+    }
+  } else {
+    statusBadge = '<span class="bossx-ai-context-badge inactive"><i data-lucide="x-circle" style="width:12px;height:12px;"></i> Node Belum Aktif</span>';
+    statusInfo = `Node Anda <strong style="color:#FF006E;">belum aktif</strong>. Redeem Access Key untuk mulai mendapatkan reward!`;
+  }
+  
+  return `🧊 Halo, <strong>${username}</strong>! 👋<br><br>Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX dan membantu Anda.<br><br>${statusBadge}<br><br><em style="color:#7DF9FF;font-size:12px;">${statusInfo}</em><br><br>Silakan ketik pertanyaan Anda di kolom input bawah untuk memulai! 💬`;
+}
+
+const BOSSX_AI_KB = [
+  {
+    keywords: ['apa itu bossx', 'bossx itu apa', 'tentang bossx', 'pengertian bossx', 'bossx cryptocurrency'],
+    question: 'Apa itu BossX?',
+    answer: '<strong>BossX</strong> adalah salah satu cryptocurrency yang berjalan pada jaringan blockchain <strong>TRC20</strong> (TRON). BossX merupakan token internal platform BossX Masternode yang dirancang untuk sistem validator masternode dengan reward mechanism yang unik. Platform ini mengusung tema <strong>"Glacier/Ice"</strong> dengan warna khas cyan yang merepresentasikan kekuatan, kecepatan, dan transparansi.'
+  },
+  {
+    keywords: ['cara deposit', 'deposit bagaimana', 'deposit usdt', 'deposit bossx', 'cara top up'],
+    question: 'Bagaimana cara deposit?',
+    answer: 'Untuk melakukan deposit ke akun BossX Anda:<br><br><strong>1.</strong> Buka menu <strong>"Deposit"</strong> di sidebar<br><strong>2.</strong> Pilih currency: <strong>USDT</strong> atau <strong>BOSSX</strong><br><strong>3.</strong> Copy alamat wallet yang ditampilkan<br><strong>4.</strong> Kirim crypto dari wallet eksternal Anda<br><br><strong>⚠️ Penting:</strong><br>• USDT: Network <strong>TRC20</strong> (TRON), minimal deposit <strong>10 USDT</strong><br>• BOSSX: Network internal, minimal deposit <strong>1 BOSSX</strong><br>• Deposit dikonfirmasi setelah 1 konfirmasi network'
+  },
+  {
+    keywords: ['access key', 'apa itu access key', 'fungsi access key', 'private key'],
+    question: 'Apa itu Access Key?',
+    answer: '<strong>Access Key</strong> adalah kode unik sepanjang <strong>25 karakter</strong> (kombinasi huruf A-Z dan angka 0-9) yang digunakan untuk mengaktivasi node validator BossX.<br><br><strong>Spesifikasi:</strong><br>• Format: 25 karakter (A-Z, 0-9)<br>• Minimal stake: <strong>10 BossX</strong><br>• Fee generate: <strong>1 BossX</strong> (dipotong otomatis)<br>• Status: <strong>One-time use</strong> (hangus setelah redeem)<br><br><strong>Cara pakai:</strong> Generate di menu "Access Key" → Copy kode → Paste di Dashboard → Klik "Redeem Now"'
+  },
+  {
+    keywords: ['reward', 'bagaimana reward', 'cara dapat reward', 'reward validasi', 'auto claim'],
+    question: 'Bagaimana reward bekerja?',
+    answer: 'Sistem reward BossX bekerja dengan mekanisme <strong>Masternode Validator</strong>:<br><br><strong>📊 Rate Reward:</strong><br>• <code>0.000000038580246913580247 BossX/detik</code> per 1 BossX stake<br>• Auto claim setiap <strong>60 detik</strong> (masuk ke Pending Reward)<br><br><strong>⏰ Sistem:</strong><br>• Auto claim berjalan otomatis saat validasi aktif<br>• Manual claim: Kapan saja tanpa minimal ke wallet<br>• Auto stop: Setiap hari jam <strong>06:00</strong><br>• Masa berlaku: <strong>40.000.000 detik</strong><br><br><strong>💡 Tips:</strong> Semakin besar stake, semakin besar reward per detik!'
+  },
+  {
+    keywords: ['cara withdrawal', 'withdrawal bagaimana', 'tarik dana', 'withdraw usdt', 'withdraw bossx'],
+    question: 'Bagaimana cara withdrawal?',
+    answer: 'Untuk menarik dana dari akun BossX:<br><br><strong>1.</strong> Buka menu <strong>"Withdrawal"</strong><br><strong>2.</strong> Pilih currency (USDT/BOSSX)<br><strong>3.</strong> Pilih network:<br>  • USDT: <strong>TRC20</strong> atau <strong>BEP20</strong><br>  • BOSSX: <strong>TRC20</strong><br><strong>4.</strong> Masukkan alamat wallet tujuan<br><strong>5.</strong> Masukkan jumlah withdrawal<br><strong>6.</strong> Klik "Submit Withdrawal"<br><br><strong>💰 Fee & Minimal:</strong><br>• USDT: Fee <strong>1 USDT</strong>, minimal <strong>10 USDT</strong><br>• BOSSX: Fee <strong>0.1 BOSSX</strong>, minimal <strong>1 BOSSX</strong><br><br><strong>⏱️ Proses:</strong> 1-24 jam setelah submit'
+  },
+  {
+    keywords: ['team developer', 'siapa team', 'tim developer', 'founder', 'ceo bossx'],
+    question: 'Siapa team developer BossX?',
+    answer: 'Tim di balik BossX Masternode Platform:<br><br><strong>👑 Fery Muliawan</strong> — CEO (Chief Executive Officer)<br>Pendiri dan visioner BossX<br><br><strong>📊 Michael Johnson</strong> — Manager<br>Mengatur tim operasional<br><br><strong>💻 Lee</strong> — CTO (Chief Technology Officer)<br>Infrastruktur teknis & keamanan<br><br><strong>📝 Emily Brown</strong> — Secretary<br>Administrasi & komunikasi'
+  },
+  {
+    keywords: ['masternode', 'validator', 'apa itu masternode', 'cara kerja masternode'],
+    question: 'Apa itu Masternode Validator?',
+    answer: '<strong>Masternode Validator</strong> adalah node khusus di jaringan BossX yang bertugas memvalidasi transaksi dan menjaga keamanan blockchain. Sebagai imbalannya, validator mendapatkan reward BossX.<br><br><strong>🔧 Cara Kerja:</strong><br>1. Generate Access Key (minimal stake 10 BossX)<br>2. Redeem Access Key di Dashboard<br>3. Aktifkan Power Button (ON)<br>4. Reward mengalir otomatis setiap detik<br><br><strong>⚙️ Fitur:</strong><br>• Auto claim setiap 60 detik<br>• Auto stop jam 06:00 setiap hari<br>• Masa berlaku 40.000.000 detik<br>• Log engine real-time'
+  },
+  {
+    keywords: ['login', 'cara login', 'masuk akun', 'akun demo'],
+    question: 'Bagaimana cara login?',
+    answer: 'Untuk login ke BossX Masternode:<br><br><strong>📝 Langkah:</strong><br>1. Buka halaman login BossX<br>2. Masukkan username & password<br>3. Klik "Masuk"<br>4. Anda akan diarahkan ke Dashboard<br><br><strong>💾 Session:</strong> Login tersimpan di browser (localStorage), jadi Anda tidak perlu login ulang setiap kali membuka website.'
+  },
+  {
+    keywords: ['p2p', 'peer to peer', 'transfer bossx', 'kirim bossx'],
+    question: 'Bagaimana cara transfer P2P?',
+    answer: 'Fitur <strong>Peer to Peer (P2P)</strong> memungkinkan Anda transfer BossX ke sesama pengguna BossX:<br><br><strong>📤 Cara Transfer:</strong><br>1. Buka menu <strong>"Peer to Peer"</strong><br>2. Masukkan username penerima (format: <code>@username</code>)<br>3. Masukkan jumlah BossX (minimal 1 BossX)<br>4. Klik "Kirim BossX"<br><br><strong>✅ Fitur:</strong><br>• Transfer instan antar user BossX<br>• Tanpa fee<br>• History transfer tercatat lengkap<br>• Statistik total dikirim & diterima'
+  },
+  {
+    keywords: ['referral', 'kode referral', 'ajak teman', 'komisi referral'],
+    question: 'Bagaimana sistem referral?',
+    answer: 'Sistem <strong>Referral BossX</strong> memungkinkan Anda mendapatkan reward dengan mengajak teman bergabung:<br><br><strong>🎯 Cara Kerja:</strong><br>1. Dapatkan kode referral unik Anda<br>2. Bagikan kode ke teman/komunitas<br>3. Setiap orang yang daftar pakai kode Anda = referral aktif<br>4. Dapatkan reward BossX dari setiap referral<br><br><strong>💡 Tips:</strong><br>• Klik "Generate Kode Baru" untuk refresh kode<br>• Bagikan via sosial media, grup chat, dll<br>• Statistik referral tersedia di menu Referral'
+  },
+  {
+    keywords: ['socialfi', 'sosial', 'media sosial', 'fitur sosial', 'bossx social'],
+    question: 'Apa itu SocialFi BossX?',
+    answer: '<strong>SocialFi BossX</strong> adalah platform sosial eksklusif untuk holder token BossX. Mirip dengan Binance Square, tetapi khusus untuk komunitas BossX.<br><br><strong>✨ Fitur:</strong><br>• Posting teks, gambar, dan video<br>• Like & komentar pada postingan<br>• Balas komentar user lain<br>• Feed komunitas yang aktif<br><br><strong>💎 Akses:</strong><br>• Biaya: <strong>1 BossX / 30 hari</strong><br>• User aktif bisa menikmati semua fitur<br>• Utilitas token BossX yang nyata<br><br><strong>📍 Lokasi:</strong> Menu "SocialFi" di sidebar'
+  },
+  // 🎯 DYNAMIC KB - Status Akun
+  {
+    keywords: ['status saya', 'status akun', 'status node', 'node saya', 'validasi saya', 'apakah node aktif'],
+    question: 'Status akun saya',
+    answer: function() {
+      const username = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+      if (!isNodeActive) {
+        return `📊 <strong>Status Akun ${username}:</strong><br><br>• Node: <strong style="color:#FF006E;">Belum Aktif</strong><br>• Saldo BossX: <strong>${bossxBalance.toFixed(9)} BossX</strong><br>• Saldo USDT: <strong>${usdtBalance.toFixed(2)} USDT</strong><br><br>💡 <em>Redeem Access Key di menu Dashboard untuk mengaktifkan node dan mulai mendapatkan reward!</em>`;
+      }
+      if (isValidationRunning) {
+        return `📊 <strong>Status Akun ${username}:</strong><br><br>• Node: <strong style="color:#00FFC8;">AKTIF ✓</strong><br>• Stake: <strong>${stakedAmount.toFixed(2)} BossX</strong><br>• Reward Rate: <strong>${(stakedAmount * 0.000000038580246913580247).toFixed(12)} BossX/detik</strong><br>• Pending Reward: <strong>${totalRewardBalance.toFixed(9)} BossX</strong><br>• Saldo Wallet: <strong>${bossxBalance.toFixed(9)} BossX</strong><br>• Masa Berlaku: <strong>${masaBerlaku.toLocaleString('id-ID')} detik</strong><br><br>🚀 <em>Validasi berjalan lancar! Reward mengalir otomatis setiap 60 detik.</em>`;
+      }
+      return `📊 <strong>Status Akun ${username}:</strong><br><br>• Node: <strong style="color:#00E5FF;">Siap (Idle)</strong><br>• Stake: <strong>${stakedAmount.toFixed(2)} BossX</strong><br>• Pending Reward: <strong>${totalRewardBalance.toFixed(9)} BossX</strong><br>• Saldo Wallet: <strong>${bossxBalance.toFixed(9)} BossX</strong><br><br>💡 <em>Tekan tombol Power ON di Dashboard untuk memulai validasi!</em>`;
+    }
+  },
+  {
+    keywords: ['saldo saya', 'berapa saldo', 'balance saya', 'cek saldo', 'sisa saldo'],
+    question: 'Cek saldo',
+    answer: function() {
+      const username = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+      return `💰 <strong>Saldo ${username}:</strong><br><br>• <strong>BOSSX Wallet:</strong> ${bossxBalance.toFixed(9)} BossX<br>• <strong>USDT Wallet:</strong> ${usdtBalance.toFixed(2)} USDT<br>• <strong>Pending Reward:</strong> ${totalRewardBalance.toFixed(9)} BossX<br>• <strong>Total Staked:</strong> ${stakedAmount.toFixed(9)} BossX<br><br>💎 <em>Total kekayaan Anda di BossX: ${(bossxBalance + usdtBalance + totalRewardBalance + stakedAmount).toFixed(9)} (BOSSX equivalent)</em>`;
+    }
+  },
+  {
+    keywords: ['reward saya', 'berapa reward', 'pendapatan saya', 'earning saya'],
+    question: 'Reward saya',
+    answer: function() {
+      const username = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+      const ratePerHour = stakedAmount * 0.000000038580246913580247 * 3600;
+      const ratePerDay = ratePerHour * 24;
+      if (!isNodeActive) {
+        return `🎁 <strong>Reward ${username}:</strong><br><br>Node belum aktif. Aktifkan node untuk mulai mendapatkan reward!<br><br>💡 <em>Dengan stake 10 BossX, Anda bisa mendapatkan ~${(10 * 0.000000038580246913580247 * 3600).toFixed(6)} BossX/jam</em>`;
+      }
+      return `🎁 <strong>Reward ${username}:</strong><br><br>• <strong>Pending (belum di-claim):</strong> ${totalRewardBalance.toFixed(9)} BossX<br>• <strong>Rate saat ini:</strong> ${(stakedAmount * 0.000000038580246913580247).toFixed(12)} BossX/detik<br>• <strong>Estimasi/jam:</strong> ${ratePerHour.toFixed(6)} BossX<br>• <strong>Estimasi/hari:</strong> ${ratePerDay.toFixed(6)} BossX<br>• <strong>Stake aktif:</strong> ${stakedAmount.toFixed(2)} BossX<br><br>💎 <em>Klik "Claim to Wallet" di Dashboard untuk mencairkan reward!</em>`;
+    }
+  },
+  {
+    keywords: ['siapa saya', 'nama saya', 'profil saya', 'tentang saya'],
+    question: 'Profil saya',
+    answer: function() {
+      const username = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+      return `👤 <strong>Profil Anda:</strong><br><br>• <strong>Nama:</strong> ${username}<br>• <strong>Role:</strong> CEO • BossX<br>• <strong>Validator ID:</strong> 8055x<br>• <strong>Status Node:</strong> ${isNodeActive ? (isValidationRunning ? '<strong style="color:#00FFC8;">AKTIF</strong>' : '<strong style="color:#00E5FF;">Siap</strong>') : '<strong style="color:#FF006E;">Belum Aktif</strong>'}<br><br>🧊 <em>Selamat datang kembali, ${username}! Ada yang bisa saya bantu hari ini?</em>`;
+    }
+  }
+];
+
 let bossxAIHistory = [];
 let bossxAIIsOpen = false;
 let bossxAIIsMinimized = false;
 let bossxAIIsInitialized = false;
 let bossxAIWelcomeShown = false;
+
 function showBossxAIFab() {
-const fab = document.getElementById('bossx-ai-fab');
-if (fab) fab.classList.add('visible');
+  const fab = document.getElementById('bossx-ai-fab');
+  if (fab) fab.classList.add('visible');
 }
+
 function hideBossxAIFab() {
-const fab = document.getElementById('bossx-ai-fab');
-const win = document.getElementById('bossx-ai-window');
-if (fab) fab.classList.remove('visible');
-if (win) win.classList.remove('active');
-bossxAIIsOpen = false;
-bossxAIIsMinimized = false;
+  const fab = document.getElementById('bossx-ai-fab');
+  const win = document.getElementById('bossx-ai-window');
+  if (fab) fab.classList.remove('visible');
+  if (win) win.classList.remove('active');
+  bossxAIIsOpen = false;
+  bossxAIIsMinimized = false;
 }
+
 function initBossxAI() {
-if (bossxAIIsInitialized) return;
-bossxAIIsInitialized = true;
-loadBossxAIHistory();
-lucide.createIcons();
+  if (bossxAIIsInitialized) return;
+  bossxAIIsInitialized = true;
+  loadBossxAIHistory();
+  lucide.createIcons();
 }
+
 function loadBossxAIHistory() {
-try {
-const saved = localStorage.getItem('bossx_ai_chat_history');
-if (saved) {
-bossxAIHistory = JSON.parse(saved);
+  try {
+    const saved = localStorage.getItem('bossx_ai_chat_history');
+    if (saved) bossxAIHistory = JSON.parse(saved);
+  } catch (e) {
+    bossxAIHistory = [];
+  }
 }
-} catch (e) {
-bossxAIHistory = [];
-}
-}
+
 function saveBossxAIHistory() {
-try {
-localStorage.setItem('bossx_ai_chat_history', JSON.stringify(bossxAIHistory.slice(-50)));
-} catch (e) {
-console.error('Error saving AI chat history:', e);
+  try {
+    localStorage.setItem('bossx_ai_chat_history', JSON.stringify(bossxAIHistory.slice(-50)));
+  } catch (e) {
+    console.error('Error saving AI chat history:', e);
+  }
 }
-}
+
 function toggleBossxAI() {
-if (bossxAIIsMinimized) {
-bossxAIIsMinimized = false;
-document.getElementById('bossx-ai-window').classList.remove('minimized');
-document.getElementById('bossx-ai-badge').style.display = 'none';
-return;
+  if (bossxAIIsMinimized) {
+    bossxAIIsMinimized = false;
+    document.getElementById('bossx-ai-window').classList.remove('minimized');
+    document.getElementById('bossx-ai-badge').style.display = 'none';
+    return;
+  }
+  if (bossxAIIsOpen) closeBossxAI();
+  else openBossxAI();
 }
-if (bossxAIIsOpen) {
-closeBossxAI();
-} else {
-openBossxAI();
-}
-}
+
 function openBossxAI() {
-bossxAIIsOpen = true;
-bossxAIIsMinimized = false;
-const win = document.getElementById('bossx-ai-window');
-win.classList.add('active');
-win.classList.remove('minimized');
-document.getElementById('bossx-ai-badge').style.display = 'none';
-lucide.createIcons();
-if (!bossxAIWelcomeShown || bossxAIHistory.length === 0) {
-renderBossxAIWelcome();
-} else {
-renderBossxAIHistory();
+  bossxAIIsOpen = true;
+  bossxAIIsMinimized = false;
+  const win = document.getElementById('bossx-ai-window');
+  win.classList.add('active');
+  win.classList.remove('minimized');
+  document.getElementById('bossx-ai-badge').style.display = 'none';
+  lucide.createIcons();
+  
+  // 🎯 Gunakan contextual greeting jika belum ada chat
+  if (!bossxAIWelcomeShown || bossxAIHistory.length === 0) {
+    renderBossxAIWelcome();
+  } else {
+    renderBossxAIHistory();
+  }
+  document.getElementById('bossx-ai-input').focus();
 }
-document.getElementById('bossx-ai-input').focus();
-}
+
 function closeBossxAI() {
-bossxAIIsOpen = false;
-document.getElementById('bossx-ai-window').classList.remove('active');
+  bossxAIIsOpen = false;
+  document.getElementById('bossx-ai-window').classList.remove('active');
 }
+
 function minimizeBossxAI() {
-bossxAIIsMinimized = true;
-document.getElementById('bossx-ai-window').classList.add('minimized');
+  bossxAIIsMinimized = true;
+  document.getElementById('bossx-ai-window').classList.add('minimized');
 }
+
 function clearBossxAIChat() {
-if (bossxAIHistory.length === 0) {
-showSuccessMessage('Chat sudah kosong!');
+  if (bossxAIHistory.length === 0) {
+    showSuccessMessage('Chat sudah kosong!');
+    return;
+  }
+  if (confirm('Hapus semua riwayat chat?')) {
+    bossxAIHistory = [];
+    saveBossxAIHistory();
+    renderBossxAIWelcome();
+    showSuccessMessage('Riwayat chat berhasil dihapus!');
+  }
+}
+
+function renderBossxAIWelcome() {
+  const body = document.getElementById('bossx-ai-body');
+  body.innerHTML = '';
+  // 🎯 Gunakan contextual greeting dinamis
+  addBossxAIMessage('bot', getContextualGreeting(), false);
+  bossxAIWelcomeShown = true;
+}
+
+function renderBossxAIHistory() {
+  const body = document.getElementById('bossx-ai-body');
+  body.innerHTML = '';
+  bossxAIHistory.forEach(msg => {
+    addBossxAIMessage(msg.role, msg.content, false);
+  });
+  scrollBossxAIToBottom();
+}
+
+function addBossxAIMessage(role, content, animate = true) {
+  const body = document.getElementById('bossx-ai-body');
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `bossx-ai-msg ${role}`;
+  if (animate) msgDiv.style.opacity = '0';
+  const avatar = role === 'bot' ? '🤖' : 'U';
+  msgDiv.innerHTML = `<div class="bossx-ai-msg-avatar">${avatar}</div><div class="bossx-ai-msg-content">${content}</div>`;
+  body.appendChild(msgDiv);
+  if (animate) {
+    requestAnimationFrame(() => {
+      msgDiv.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      msgDiv.style.opacity = '1';
+    });
+  }
+  scrollBossxAIToBottom();
+}
+
+function scrollBossxAIToBottom() {
+  const body = document.getElementById('bossx-ai-body');
+  setTimeout(() => { body.scrollTop = body.scrollHeight; }, 50);
+}
+
+// 🧠 DEEP THINKING ANIMATION - Tampilkan 4 tahap berpikir
+function showBossxAITyping() {
+  const body = document.getElementById('bossx-ai-body');
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'bossx-ai-msg bot';
+  typingDiv.id = 'bossx-ai-typing-indicator';
+  
+  typingDiv.innerHTML = `
+    <div class="bossx-ai-msg-avatar">🤖</div>
+    <div class="bossx-ai-msg-content" style="padding: 12px 14px;">
+      <div class="bossx-ai-thinking-stage fade-in" id="thinking-stage-text">
+        <div class="bossx-ai-thinking-spinner"></div>
+        <span>${THINKING_STAGES[0].icon} ${THINKING_STAGES[0].text}</span>
+      </div>
+    </div>
+  `;
+  body.appendChild(typingDiv);
+  scrollBossxAIToBottom();
+  
+  let currentStage = 0;
+  const stageInterval = setInterval(() => {
+    currentStage++;
+    if (currentStage >= THINKING_STAGES.length) {
+      clearInterval(stageInterval);
+      return;
+    }
+    const stageText = document.getElementById('thinking-stage-text');
+    if (stageText) {
+      stageText.classList.remove('fade-in');
+      stageText.classList.add('fade-out');
+      setTimeout(() => {
+        stageText.innerHTML = `
+          <div class="bossx-ai-thinking-spinner"></div>
+          <span>${THINKING_STAGES[currentStage].icon} ${THINKING_STAGES[currentStage].text}</span>
+        `;
+        stageText.classList.remove('fade-out');
+        stageText.classList.add('fade-in');
+        scrollBossxAIToBottom();
+      }, 300);
+    }
+  }, 2000);
+  
+  typingDiv.dataset.intervalId = stageInterval.toString();
+}
+
+function hideBossxAITyping() {
+  const typing = document.getElementById('bossx-ai-typing-indicator');
+  if (typing) {
+    if (typing.dataset.intervalId) {
+      clearInterval(parseInt(typing.dataset.intervalId));
+    }
+    typing.remove();
+  }
+}
+
+function playBossxAISound() {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    const ctx = new AudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.2);
+  } catch (e) {
+    console.error('Audio error:', e);
+  }
+}
+
+function findBossxAIAnswer(userInput) {
+  const input = userInput.toLowerCase().trim();
+  if (!input) return null;
+  let bestMatch = null;
+  let bestScore = 0;
+  BOSSX_AI_KB.forEach(entry => {
+    let score = 0;
+    entry.keywords.forEach(keyword => {
+      if (input.includes(keyword)) {
+        score += keyword.length;
+        if (input === keyword) score += 10;
+      }
+    });
+    const inputWords = input.split(/\s+/);
+    entry.keywords.forEach(keyword => {
+      const kwWords = keyword.split(/\s+/);
+      kwWords.forEach(kw => {
+        if (inputWords.includes(kw)) score += 2;
+      });
+    });
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = entry;
+    }
+  });
+  return bestScore > 0 ? bestMatch : null;
+}
+
+function sendBossxAIMessage() {
+  const input = document.getElementById('bossx-ai-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addBossxAIMessage('user', escapeHtml(text));
+  bossxAIHistory.push({ role: 'user', content: escapeHtml(text) });
+  saveBossxAIHistory();
+  
+  // 🧠 Tampilkan Deep Thinking animation
+  showBossxAITyping();
+  
+  // ⏱️ Delay 6-8 detik agar semua thinking stages terlihat
+  const delay = 6000 + Math.random() * 2000;
+  
+  setTimeout(() => {
+    hideBossxAITyping();
+    const match = findBossxAIAnswer(text);
+    let answer;
+    if (match) {
+      // Support dynamic answer (function) untuk contextual responses
+      answer = typeof match.answer === 'function' ? match.answer() : match.answer;
+    } else {
+      answer = BOSSX_AI_FALLBACK;
+    }
+    addBossxAIMessage('bot', answer);
+    bossxAIHistory.push({ role: 'bot', content: answer });
+    saveBossxAIHistory();
+    playBossxAISound();
+  }, delay);
+}
+
+function handleBossxAIKey(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    sendBossxAIMessage();
+  }
+}
+
+// ============================================
+// PWA INSTALLATION HANDLER
+// ============================================
+let deferredPrompt = null;
+const PWA_DISMISS_KEY = 'bossx_pwa_dismissed';
+function initPWA() {
+if (!('serviceWorker' in navigator)) {
+console.log('[PWA] Service Worker tidak didukung browser ini');
 return;
 }
-if (confirm('Hapus semua riwayat chat?')) {
-bossxAIHistory = [];
-saveBossxAIHistory();
-renderBossxAIWelcome();
-showSuccessMessage('Riwayat chat berhasil dihapus!');
-}
-}
-function renderBossxAIWelcome() {
-const body = document.getElementById('bossx-ai-body');
-body.innerHTML = '';
-addBossxAIMessage('bot', BOSSX_AI_WELCOME, false);
-bossxAIWelcomeShown = true;
-}
-function renderBossxAIHistory() {
-const body = document.getElementById('bossx-ai-body');
-body.innerHTML = '';
-bossxAIHistory.forEach(msg => {
-addBossxAIMessage(msg.role, msg.content, false);
+navigator.serviceWorker.register('./sw.js')
+.then((registration) => {
+console.log('[PWA] Service Worker registered:', registration.scope);
+})
+.catch((error) => {
+console.warn('[PWA] SW registration failed:', error);
 });
-scrollBossxAIToBottom();
+window.addEventListener('beforeinstallprompt', (e) => {
+e.preventDefault();
+deferredPrompt = e;
+const dismissed = localStorage.getItem(PWA_DISMISS_KEY);
+if (dismissed) {
+const dismissedDate = new Date(parseInt(dismissed));
+const daysSinceDismiss = (Date.now() - dismissedDate.getTime()) / (1000 * 60 * 60 * 24);
+if (daysSinceDismiss < 7) return;
 }
-function addBossxAIMessage(role, content, animate = true) {
-const body = document.getElementById('bossx-ai-body');
-const msgDiv = document.createElement('div');
-msgDiv.className = `bossx-ai-msg ${role}`;
-if (animate) msgDiv.style.opacity = '0';
-const avatar = role === 'bot' ? '🤖' : 'U';
-msgDiv.innerHTML = `<div class="bossx-ai-msg-avatar">${avatar}</div><div class="bossx-ai-msg-content">${content}</div>`;
-body.appendChild(msgDiv);
-if (animate) {
-requestAnimationFrame(() => {
-msgDiv.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-msgDiv.style.opacity = '1';
+if (window.matchMedia('(display-mode: standalone)').matches) return;
+if (window.navigator.standalone === true) return;
+setTimeout(showPWAInstallBanner, 3000);
+});
+window.addEventListener('appinstalled', () => {
+console.log('[PWA] BossX App berhasil di-install!');
+hidePWAInstallBanner();
+deferredPrompt = null;
+showSuccessMessage('🎉 BossX App berhasil di-install! Buka dari home screen HP Anda.');
 });
 }
-scrollBossxAIToBottom();
+function showPWAInstallBanner() {
+const banner = document.getElementById('pwa-install-banner');
+if (banner) banner.classList.add('show');
 }
-function scrollBossxAIToBottom() {
-const body = document.getElementById('bossx-ai-body');
-setTimeout(() => {
-body.scrollTop = body.scrollHeight;
-}, 50);
+function hidePWAInstallBanner() {
+const banner = document.getElementById('pwa-install-banner');
+if (banner) banner.classList.remove('show');
 }
-function showBossxAITyping() {
-const body = document.getElementById('bossx-ai-body');
-const typingDiv = document.createElement('div');
-typingDiv.className = 'bossx-ai-msg bot';
-typingDiv.id = 'bossx-ai-typing-indicator';
-typingDiv.innerHTML = `<div class="bossx-ai-msg-avatar">🤖</div><div class="bossx-ai-msg-content" style="padding: 12px 14px;"><div class="bossx-ai-typing"><div class="bossx-ai-typing-dot"></div><div class="bossx-ai-typing-dot"></div><div class="bossx-ai-typing-dot"></div></div></div>`;
-body.appendChild(typingDiv);
-scrollBossxAIToBottom();
+async function installPWA() {
+if (!deferredPrompt) {
+showManualInstallInstructions();
+return;
 }
-function hideBossxAITyping() {
-const typing = document.getElementById('bossx-ai-typing-indicator');
-if (typing) typing.remove();
-}
-function playBossxAISound() {
 try {
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-if (!AudioContext) return;
-const ctx = new AudioContext();
-const osc = ctx.createOscillator();
-const gain = ctx.createGain();
-osc.connect(gain);
-gain.connect(ctx.destination);
-osc.type = 'sine';
-osc.frequency.setValueAtTime(880, ctx.currentTime);
-osc.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime + 0.08);
-gain.gain.setValueAtTime(0.15, ctx.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
-osc.start(ctx.currentTime);
-osc.stop(ctx.currentTime + 0.2);
-} catch (e) {
-console.error('Audio error:', e);
+deferredPrompt.prompt();
+const { outcome } = await deferredPrompt.userChoice;
+console.log(`[PWA] User response to install prompt: ${outcome}`);
+deferredPrompt = null;
+hidePWAInstallBanner();
+} catch (err) {
+console.error('[PWA] Install error:', err);
+showManualInstallInstructions();
 }
 }
-function findBossxAIAnswer(userInput) {
-const input = userInput.toLowerCase().trim();
-if (!input) return null;
-let bestMatch = null;
-let bestScore = 0;
-BOSSX_AI_KB.forEach(entry => {
-let score = 0;
-entry.keywords.forEach(keyword => {
-if (input.includes(keyword)) {
-score += keyword.length;
-if (input === keyword) score += 10;
-}
-});
-const inputWords = input.split(/\s+/);
-entry.keywords.forEach(keyword => {
-const kwWords = keyword.split(/\s+/);
-kwWords.forEach(kw => {
-if (inputWords.includes(kw)) score += 2;
-});
-});
-if (score > bestScore) {
-bestScore = score;
-bestMatch = entry;
-}
-});
-return bestScore > 0 ? bestMatch : null;
-}
-function sendBossxAIMessage() {
-const input = document.getElementById('bossx-ai-input');
-const text = input.value.trim();
-if (!text) return;
-input.value = '';
-addBossxAIMessage('user', escapeHtml(text));
-bossxAIHistory.push({ role: 'user', content: escapeHtml(text) });
-saveBossxAIHistory();
-showBossxAITyping();
-const delay = 800 + Math.random() * 800;
-setTimeout(() => {
-hideBossxAITyping();
-const match = findBossxAIAnswer(text);
-let answer;
-if (match) {
-answer = match.answer;
+function showManualInstallInstructions() {
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const isAndroid = /Android/.test(navigator.userAgent);
+let message = '';
+if (isIOS) {
+message = '📱 Cara Install di iPhone/iPad:\n1. Ketuk tombol Share (kotak dengan panah) di Safari\n2. Gulir ke bawah dan pilih "Add to Home Screen"\n3. Ketuk "Add" di pojok kanan atas\n4. BossX App akan muncul di home screen!';
+} else if (isAndroid) {
+message = '📱 Cara Install di Android:\n1. Ketuk menu (⋮) di pojok kanan atas Chrome\n2. Pilih "Install app" atau "Add to Home screen"\n3. Ketuk "Install"\n4. BossX App akan muncul di home screen!';
 } else {
-answer = BOSSX_AI_FALLBACK;
+message = '💻 Cara Install di Desktop:\n1. Klik ikon install (⊕) di address bar browser\n2. Atau tekan menu browser → "Install BossX"\n3. Konfirmasi instalasi\n4. BossX App akan muncul di desktop/start menu!';
 }
-addBossxAIMessage('bot', answer);
-bossxAIHistory.push({ role: 'bot', content: answer });
-saveBossxAIHistory();
-playBossxAISound();
-}, delay);
+alert(message);
+hidePWAInstallBanner();
 }
-function handleBossxAIKey(event) {
-if (event.key === 'Enter') {
-event.preventDefault();
-sendBossxAIMessage();
+function dismissPWAInstall() {
+hidePWAInstallBanner();
+localStorage.setItem(PWA_DISMISS_KEY, Date.now().toString());
 }
-}
-console.log('🚀 BossX Masternode Platform - Final Build Loaded');
+document.addEventListener('DOMContentLoaded', () => {
+const installBtn = document.getElementById('pwa-install-btn');
+const closeBtn = document.getElementById('pwa-install-close');
+if (installBtn) installBtn.addEventListener('click', installPWA);
+if (closeBtn) closeBtn.addEventListener('click', dismissPWAInstall);
+});
+initPWA();
+// ============================================
+// END PWA INSTALLATION HANDLER
+// ============================================
+console.log('🚀 BossX Masternode Platform - Premium AI Agent Loaded');
 checkAuth();
 lucide.createIcons();
 </script>
