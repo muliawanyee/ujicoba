@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BossX - Masternode Platform | Validator Masternode System</title>
+<title>BossX - Crypto Exchange Platform | Validator Masternode System</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script src="https://s3.tradingview.com/tv.js"></script>
@@ -49,27 +49,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .login-footer { text-align: center; margin-top: 2rem; color: #7DF9FF; font-size: 0.875rem; }
 .login-footer a { color: #00E5FF; text-decoration: none; font-weight: 600; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
 .login-footer a:hover { text-decoration: underline; color: #E0FFFF; }
-
-.login-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: rgba(0, 24, 69, 0.6); padding: 0.4rem; border-radius: 0.75rem; border: 1px solid rgba(0, 229, 255, 0.2); }
-.login-tab-btn { flex: 1; padding: 0.6rem 0.5rem; background: transparent; border: none; color: #7DF9FF; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
-.login-tab-btn:hover { background: rgba(0, 229, 255, 0.1); color: #E0FFFF; }
-.login-tab-btn.active { background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #000814; box-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
-.login-tab-btn svg { width: 16px; height: 16px; }
-.login-form-wrapper { display: none; animation: fadeIn 0.4s ease-out; }
-.login-form-wrapper.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.google-btn { width: 100%; padding: 0.875rem 1rem; background: #ffffff; border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 0.75rem; color: #000814; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.75rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); margin-top: 1rem; }
-.google-btn:hover { background: #F8F9FA; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2), 0 0 25px rgba(0, 229, 255, 0.4); border-color: #00E5FF; }
-.google-btn svg { width: 20px; height: 20px; }
-.google-btn-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2; }
-.google-btn-text span:first-child { font-size: 0.75rem; color: #5F6368; }
-.google-btn-text span:last-child { font-weight: 700; color: #000814; }
-.login-divider { display: flex; align-items: center; gap: 0.75rem; margin: 1.25rem 0; color: #7DF9FF; font-size: 0.8rem; }
-.login-divider::before, .login-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.4), transparent); }
-.login-info-box { background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.25); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 1rem; font-size: 0.8rem; color: #B0E0E6; display: flex; gap: 0.5rem; align-items: flex-start; }
-.login-info-box svg { width: 16px; height: 16px; flex-shrink: 0; color: #00E5FF; margin-top: 1px; }
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
 .gradient-bg { background: linear-gradient(to bottom, #001233, #000814); }
 .gradient-border { border: 2px solid rgba(0, 229, 255, 0.3); box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.05); }
 .hover-scale { transition: transform 0.2s ease-in-out; }
@@ -333,69 +312,18 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 </div>
 <h1 class="login-title">BossX Masternode</h1>
 <p class="login-subtitle">Masuk ke akun Validator Masternode Anda</p>
-
-<div class="login-tabs">
-<button type="button" class="login-tab-btn active" onclick="switchLoginTab('username')">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-Username
-</button>
-<button type="button" class="login-tab-btn" onclick="switchLoginTab('email')">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-Email
-</button>
-<button type="button" class="login-tab-btn" onclick="switchLoginTab('gmail')">
-<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-Gmail
-</button>
-</div>
-
 <div id="login-error" class="login-error">Username atau password salah!</div>
-
-<div id="login-form-username" class="login-form-wrapper active">
 <form id="login-form" onsubmit="return handleLogin(event)">
 <input type="text" id="login-username" class="login-input" placeholder="Username" required autocomplete="username" />
 <input type="password" id="login-password" class="login-input" placeholder="Password" required autocomplete="current-password" />
 <button type="submit" id="login-button" class="login-button">Masuk</button>
 </form>
-</div>
-
-<div id="login-form-email" class="login-form-wrapper">
-<form id="login-form-email-form" onsubmit="return handleEmailLogin(event)">
-<input type="email" id="login-email" class="login-input" placeholder="Email Anda (contoh: user@bossx.com)" required autocomplete="email" />
-<input type="password" id="login-email-password" class="login-input" placeholder="Password" required autocomplete="current-password" />
-<button type="submit" id="login-email-button" class="login-button">Masuk dengan Email</button>
-</form>
-<div class="login-info-box">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-<span>Masuk pakai email & password BossX Anda</span>
-</div>
-</div>
-
-<div id="login-form-gmail" class="login-form-wrapper">
-<div class="login-info-box">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-<span>Lanjutkan dengan akun Google Anda secara aman & cepat</span>
-</div>
-<button type="button" id="login-gmail-button" class="google-btn" onclick="handleGmailLogin()">
-<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-<div class="google-btn-text">
-<span>Continue with</span>
-<span>Google</span>
-</div>
-</button>
-<p style="text-align: center; margin-top: 1rem; font-size: 0.75rem; color: #7DF9FF; opacity: 0.8;">
-Dengan melanjutkan, Anda menyetujui <a href="#" style="color: #00E5FF;">Syarat & Ketentuan</a> BossX
-</p>
-</div>
-
-<div class="login-divider">atau</div>
 <div class="login-footer">
 <p>Belum punya akun? <a href="#" onclick="showRegisterInfo(); return false;">Daftar sekarang</a></p>
 </div>
 </div>
 </div>
 </div>
-
 <div id="main-app" class="min-h-screen text-white flex main-container" style="display: none; background: #000814;">
 <div id="sidebar" class="sidebar h-screen">
 <div class="p-3 border-b border-cyan-400/30">
@@ -406,7 +334,7 @@ Dengan melanjutkan, Anda menyetujui <a href="#" style="color: #00E5FF;">Syarat &
 </div>
 <div id="logo-text">
 <h1 class="text-lg font-bold frost-text">BossX</h1>
-<p class="text-xs text-cyan-200">Masternode Platform</p>
+<p class="text-xs text-cyan-200">Crypto Exchange</p>
 </div>
 </div>
 <button id="toggle-sidebar" class="text-cyan-200 hover:text-cyan-400 hover:bg-cyan-400/10 p-1 rounded">
@@ -541,7 +469,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 <div id="countdown-display" class="countdown-timer" style="display: none;">
 <span class="text-xs text-cyan-300 block mb-1" style="text-shadow: none;">Countdown to 06:00</span>
-<span id="countdown-time">00:00:00</span>
+<span id="countdown-time">00 - 00 - 00</span>
 </div>
 </div>
 </div>
@@ -832,21 +760,21 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Total Deposit</h4><i data-lucide="trending-up" class="text-emerald-400 w-5 h-5"></i></div>
-<div id="total-deposits" class="text-2xl font-bold text-white">2</div>
+<div id="total-deposits" class="text-2xl font-bold text-white">0</div>
 <p class="text-sm text-emerald-400 mt-1">Transaksi berhasil</p>
 </div>
 <div class="stat-card p-6">
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Total Amount</h4><i data-lucide="wallet" class="text-cyan-400 w-5 h-5"></i></div>
-<div id="total-amount" class="text-2xl font-bold text-white">351.25</div>
+<div id="total-amount" class="text-2xl font-bold text-white">0.00</div>
 <p id="amount-currency" class="text-sm text-cyan-400 mt-1">USDT</p>
 </div>
 <div class="stat-card p-6">
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Pending</h4><i data-lucide="loader" class="text-cyan-300 w-5 h-5"></i></div>
-<div id="pending-deposits" class="text-2xl font-bold text-white">1</div>
+<div id="pending-deposits" class="text-2xl font-bold text-white">0</div>
 <p class="text-sm text-cyan-300 mt-1">Menunggu konfirmasi</p>
 </div>
 </div>
@@ -1106,7 +1034,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="team-developer-page" class="page-content">
 <div class="p-6">
 <h1 class="text-3xl font-bold text-cyan-400 mb-6 frost-text">Team Developer</h1>
-<p class="text-cyan-200 mb-8">Temui tim di balik BossX Masternode Platform.</p>
+<p class="text-cyan-200 mb-8">Temui tim di balik BossX Crypto Exchange Platform.</p>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 <div class="exchange-card p-6 text-center relative overflow-hidden">
 <div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
@@ -1299,50 +1227,6 @@ document.getElementById('main-app').style.display = 'flex';
 showBossxAIFab();
 initializeMainApp();
 }
-
-function switchLoginTab(tab) {
-document.querySelectorAll('.login-tab-btn').forEach(btn => btn.classList.remove('active'));
-document.querySelectorAll('.login-form-wrapper').forEach(form => form.classList.remove('active'));
-document.getElementById('login-error').classList.remove('show');
-if (tab === 'username') {
-document.querySelectorAll('.login-tab-btn')[0].classList.add('active');
-document.getElementById('login-form-username').classList.add('active');
-} else if (tab === 'email') {
-document.querySelectorAll('.login-tab-btn')[1].classList.add('active');
-document.getElementById('login-form-email').classList.add('active');
-} else if (tab === 'gmail') {
-document.querySelectorAll('.login-tab-btn')[2].classList.add('active');
-document.getElementById('login-form-gmail').classList.add('active');
-}
-}
-function handleEmailLogin(event) {
-event.preventDefault();
-const button = document.getElementById('login-email-button');
-const errorDiv = document.getElementById('login-error');
-button.disabled = true;
-button.textContent = 'Memverifikasi...';
-setTimeout(() => {
-errorDiv.textContent = '⚠️ Fitur login email akan segera hadir! Silakan gunakan login Username untuk saat ini.';
-errorDiv.classList.add('show');
-button.disabled = false;
-button.textContent = 'Masuk dengan Email';
-}, 800);
-return false;
-}
-function handleGmailLogin() {
-const button = document.getElementById('login-gmail-button');
-const errorDiv = document.getElementById('login-error');
-errorDiv.classList.remove('show');
-button.disabled = true;
-button.innerHTML = '<svg style="animation: spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="#000814" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg><div class="google-btn-text"><span>Connecting to</span><span>Google...</span></div>';
-setTimeout(() => {
-button.disabled = false;
-button.innerHTML = '<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><div class="google-btn-text"><span>Continue with</span><span>Google</span></div>';
-errorDiv.textContent = '⚠️ Fitur login Google akan segera hadir! Silakan gunakan login Username untuk saat ini.';
-errorDiv.classList.add('show');
-}, 1500);
-}
-
 function handleLogin(event) {
 event.preventDefault();
 const username = document.getElementById('login-username').value.trim();
@@ -1379,7 +1263,6 @@ document.getElementById('login-form').reset();
 document.getElementById('login-error').classList.remove('show');
 document.getElementById('login-button').disabled = false;
 document.getElementById('login-button').textContent = 'Masuk';
-switchLoginTab('username');
 }, 500);
 }
 return false;
@@ -1388,7 +1271,6 @@ function showRegisterInfo() {
 alert('Fitur registrasi akan segera hadir!\nSilakan hubungi admin untuk pendaftaran.');
 return false;
 }
-
 let currentPage = 'private-key';
 let activeTab = 'USDT';
 let activeWithdrawalTab = 'USDT';
@@ -1406,9 +1288,6 @@ let logInterval;
 let lastClaimTime = 0;
 let masaBerlaku = 40000000;
 let masaInterval;
-let validationStartTime = null;
-const VALIDATION_STORAGE_KEY = 'bossx_validation_state';
-
 const walletAddresses = {
 USDT: { address: 'TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM&color=00E5FF' },
 BOSSX: { address: 'TTfKjrU18mi223ukVmz6FMNgBkma13kVA3', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTfKjrU18mi223ukVmz6FMNgBkma13kVA3&color=00E5FF' }
@@ -1418,128 +1297,14 @@ USDT: { networks: { TRC20: { fee: 1, min: 10 }, BEP20: { fee: 1, min: 10 } } },
 BOSSX: { networks: { TRC20: { fee: 0.1, min: 1 } } }
 };
 const depositHistory = {
-USDT: [
-{ id: '1', amount: 100.50, txHash: 'a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234', fromAddress: 'TXyza123456789012345678901234567890', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '2', amount: 250.75, txHash: 'b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234a1', fromAddress: 'TYzab234567890123456789012345678901', status: 'confirmed', timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '3', amount: 50.00, txHash: 'c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2', fromAddress: 'TZabc345678901234567890123456789012', status: 'pending', timestamp: new Date(Date.now() - 30 * 60 * 1000), confirmationCount: 0 }
-],
-BOSSX: [
-{ id: '4', amount: 1000.0, txHash: 'd4e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3', fromAddress: 'TAbcd456789012345678901234567890123', status: 'confirmed', timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '5', amount: 500.0, txHash: 'e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4', fromAddress: 'TBcde567890123456789012345678901234', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '6', amount: 2000.0, txHash: 'f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
-]
+USDT: [],
+BOSSX: []
 };
 const withdrawalHistory = { USDT: [], BOSSX: [] };
 const p2pHistory = [];
-
-function saveValidationState() {
-try {
-const state = {
-isValidationRunning: isValidationRunning,
-stakedAmount: stakedAmount,
-validationStartTime: validationStartTime,
-totalRewardBalance: totalRewardBalance,
-shareCounter: shareCounter,
-masaBerlaku: masaBerlaku,
-bossxBalance: bossxBalance,
-usdtBalance: usdtBalance,
-isNodeActive: isNodeActive,
-savedAt: Date.now()
-};
-localStorage.setItem(VALIDATION_STORAGE_KEY, JSON.stringify(state));
-} catch (e) {
-console.error('Error saving validation state:', e);
-}
-}
-
-function loadValidationState() {
-try {
-const saved = localStorage.getItem(VALIDATION_STORAGE_KEY);
-if (!saved) return false;
-const state = JSON.parse(saved);
-isValidationRunning = state.isValidationRunning || false;
-stakedAmount = state.stakedAmount || 0;
-validationStartTime = state.validationStartTime || null;
-totalRewardBalance = state.totalRewardBalance || 0;
-shareCounter = state.shareCounter || 0;
-masaBerlaku = state.masaBerlaku !== undefined ? state.masaBerlaku : 40000000;
-bossxBalance = state.bossxBalance !== undefined ? state.bossxBalance : 1000;
-usdtBalance = state.usdtBalance !== undefined ? state.usdtBalance : 1000;
-isNodeActive = state.isNodeActive || false;
-return true;
-} catch (e) {
-console.error('Error loading validation state:', e);
-return false;
-}
-}
-
-function resumeValidation() {
-if (!isValidationRunning || !validationStartTime) return;
-
-const now = Date.now();
-const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
-const startTime = new Date(validationStartTime);
-const nowDate = new Date(now);
-
-const todaySixAM = new Date(nowDate);
-todaySixAM.setHours(6, 0, 0, 0);
-
-if (startTime < todaySixAM && nowDate >= todaySixAM) {
-const secondsUntilSixAM = (todaySixAM.getTime() - validationStartTime) / 1000;
-if (secondsUntilSixAM >= 60) {
-const fullCycles = Math.floor(secondsUntilSixAM / 60);
-const fullReward = rewardPerSecond * 60 * fullCycles;
-totalRewardBalance += fullReward;
-shareCounter += fullCycles;
-appendLog(`[INFO] Resume: ${fullCycles} auto claim terhitung sampai 06:00`);
-}
-isValidationRunning = false;
-validationStartTime = null;
-const powerBtn = document.getElementById('power-btn');
-const statusText = document.getElementById('validation-status');
-const countdownDisplay = document.getElementById('countdown-display');
-if (powerBtn) { powerBtn.classList.remove('on'); powerBtn.classList.add('off'); }
-if (statusText) { statusText.textContent = 'Dihentikan otomatis jam 06:00 - Klik ON untuk lanjut'; statusText.style.display = 'block'; }
-if (countdownDisplay) countdownDisplay.style.display = 'none';
-appendLog(`[STATUS] Validasi dihentikan otomatis pada jam 06:00 (saat resume)`);
-saveValidationState();
-updateBalanceDisplays();
-return;
-}
-
-const elapsedSeconds = (now - validationStartTime) / 1000;
-currentValidationReward = rewardPerSecond * (elapsedSeconds % 60);
-
-const fullCycles = Math.floor(elapsedSeconds / 60);
-if (fullCycles > shareCounter) {
-const missedCycles = fullCycles - shareCounter;
-const missedReward = rewardPerSecond * 60 * missedCycles;
-totalRewardBalance += missedReward;
-shareCounter = fullCycles;
-appendLog(`[INFO] Resume: ${missedCycles} auto claim terlewat ditambahkan ke pending reward`);
-}
-
-const powerBtn = document.getElementById('power-btn');
-const statusText = document.getElementById('validation-status');
-const countdownDisplay = document.getElementById('countdown-display');
-if (powerBtn) { powerBtn.classList.remove('off'); powerBtn.classList.add('on'); }
-if (statusText) { statusText.textContent = 'Auto-stop setiap jam 06:00'; statusText.style.display = 'block'; }
-if (countdownDisplay) countdownDisplay.style.display = 'block';
-
-startCountdown();
-startValidationRunning();
-startMasaCountdown();
-
-appendLog(`[INFO] Validasi diresume dari ${formatDate(startTime)}`);
-saveValidationState();
-updateBalanceDisplays();
-}
-
 function initializeMainApp() {
 try {
 updateClock();
-loadValidationState();
-resumeValidation();
 updateBalanceDisplays();
 updateDepositContent();
 updateWithdrawalContent();
@@ -1549,10 +1314,10 @@ updatePrivateKeysList();
 updatePKSummary();
 initSocialFi();
 lucide.createIcons();
-if (!isValidationRunning) startMasaCountdown();
+startMasaCountdown();
 setupEventListeners();
 initBossxAI();
-setTimeout(() => showSuccessMessage('Selamat datang di BossX Masternode Platform!'), 500);
+setTimeout(() => showSuccessMessage('Selamat datang di BossX Crypto Exchange Platform!'), 500);
 } catch (err) {
 console.error('Error di initializeMainApp:', err);
 }
@@ -1720,7 +1485,6 @@ appendLog('[SUCCESS] Auto claim Accepted Share #' + shareCounter.toString().padS
 lastClaimTime = Date.now() / 1000;
 currentValidationReward = 0;
 updateBalanceDisplays();
-saveValidationState();
 }
 function claimToWallet() {
 if (totalRewardBalance <= 0) {
@@ -1733,7 +1497,6 @@ totalRewardBalance = 0;
 updateBalanceDisplays();
 showSuccessMessage(`Berhasil claim ${claimAmount.toFixed(9)} BossX ke Wallet!`);
 appendLog(`[SUCCESS] Claimed ${claimAmount.toFixed(9)} BossX to wallet (tanpa minimal)`, 'pk-success');
-saveValidationState();
 }
 function updateBalanceDisplays() {
 const el1 = document.getElementById('bossx-balance');
@@ -1747,57 +1510,52 @@ if (el4) el4.textContent = usdtBalance.toFixed(2);
 if (currentPage === 'exchange') updateAvbl();
 if (currentPage === 'private-key') updatePKSummary();
 }
-
 function togglePower() {
-if (!isNodeActive) { 
-showErrorMessage('Aktivasi node terlebih dahulu!'); 
-return; 
-}
+if (!isNodeActive) { showErrorMessage('Aktivasi node terlebih dahulu!'); return; }
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
-
+isValidationRunning = !isValidationRunning;
 if (isValidationRunning) {
-showErrorMessage('⚠️ Validasi tidak dapat dihentikan manual! Sistem akan auto-stop pada jam 06:00.');
-appendLog('[WARNING] Attempt to manual stop rejected - Auto-stop only at 06:00');
-return;
-}
-
-isValidationRunning = true;
-validationStartTime = Date.now();
 powerBtn.classList.remove('off');
 powerBtn.classList.add('on');
-if (statusText) statusText.textContent = 'Auto-stop setiap jam 06:00';
+if (statusText) statusText.textContent = 'Stop validasi setiap jam 06.00';
 countdownDisplay.style.display = 'block';
 startCountdown();
 startValidationRunning();
 startMasaCountdown();
-appendLog('[INFO] Power ON - Validasi dimulai (auto-stop 06:00)');
-showSuccessMessage('Validasi dimulai! Auto-claim aktif setiap 60 detik. Auto-stop jam 06:00.');
-saveValidationState();
+appendLog('[INFO] Power On aktiv');
+showSuccessMessage('Validasi dimulai! Auto-claim aktif setiap 60 detik.');
+} else {
+powerBtn.classList.remove('on');
+powerBtn.classList.add('off');
+if (statusText) statusText.textContent = 'Belum berjalan';
+countdownDisplay.style.display = 'none';
+if (countdownInterval) clearInterval(countdownInterval);
+stopValidationRunning();
+if (masaInterval) clearInterval(masaInterval);
+appendLog('[INFO] Validasi dihentikan manual');
+showSuccessMessage('Validasi dihentikan manual.');
+}
 lucide.createIcons();
 }
-
 function forceStopValidation(reason = 'otomatis pada jam 06:00') {
 if (!isValidationRunning) return;
 isValidationRunning = false;
-validationStartTime = null;
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
 powerBtn.classList.remove('on');
 powerBtn.classList.add('off');
-if (statusText) statusText.textContent = 'Dihentikan otomatis jam 06:00 - Klik ON untuk lanjut';
+if (statusText) statusText.textContent = 'Belum berjalan';
 countdownDisplay.style.display = 'none';
 if (countdownInterval) clearInterval(countdownInterval);
 stopValidationRunning();
 if (masaInterval) clearInterval(masaInterval);
 appendLog(`[STATUS] Validasi dihentikan ${reason}`);
 showSuccessMessage(`Validasi dihentikan ${reason}. Silakan aktifkan kembali untuk melanjutkan.`);
-saveValidationState();
 lucide.createIcons();
 }
-
 function startCountdown() {
 function updateCountdown() {
 const now = new Date();
@@ -1808,24 +1566,17 @@ const diff = target.getTime() - now.getTime();
 const hours = Math.floor(diff / (1000 * 60 * 60));
 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-document.getElementById('countdown-time').textContent = 
-`${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-if (diff <= 0 && isValidationRunning) {
-forceStopValidation('otomatis pada jam 06:00');
-return;
-}
+document.getElementById('countdown-time').textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 updateCountdown();
 countdownInterval = setInterval(updateCountdown, 1000);
 }
-
 function checkSixAMStop() {
 const now = new Date();
-if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() < 5) {
+if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() === 0) {
 if (isValidationRunning) forceStopValidation('otomatis pada jam 06:00');
 }
 }
-
 const PK_STORAGE_KEY = 'bossx_private_keys';
 const PK_FEE = 1;
 const PK_MIN_STAKE = 10;
@@ -1900,7 +1651,6 @@ updatePKSummary();
 showSuccessMessage(`Access Key berhasil digenerate! Kode: ${newCode}`);
 switchPKTab('mykeys');
 updatePrivateKeysList(newKey.id);
-saveValidationState();
 }
 function redeemPrivateKey() {
 const redeemInput = document.getElementById('redeem-input');
@@ -1956,7 +1706,6 @@ updatePKStatistics();
 lucide.createIcons();
 showSuccessMessage(`Node berhasil diaktifkan dengan stake ${key.stake} BossX! Tekan Power ON untuk mulai validasi.`);
 redeemInputEl.value = '';
-saveValidationState();
 }
 function updatePrivateKeysList(highlightId = null) {
 const keys = loadPrivateKeys();
@@ -2217,7 +1966,6 @@ document.getElementById('withdrawal-amount').value = '';
 updateBalanceDisplays();
 updateWithdrawalContent();
 showSuccessMessage(`Withdrawal ${amount} ${activeWithdrawalTab} berhasil disubmit!`);
-saveValidationState();
 }
 function generateFakeTxHash() {
 const chars = '0123456789abcdef';
@@ -2292,7 +2040,6 @@ document.getElementById('p2p-amount').value = '';
 updateBalanceDisplays();
 updateP2PContent();
 showSuccessMessage(`Transfer ${amount.toFixed(9)} BossX ke ${username} berhasil!`);
-saveValidationState();
 }
 function setMaxP2P() {
 document.getElementById('p2p-amount').value = bossxBalance.toFixed(9);
@@ -2801,7 +2548,6 @@ localStorage.setItem(SFI_SUB_KEY, JSON.stringify(sub));
 updateBalanceDisplays();
 showSuccessMessage(`SocialFi berhasil diaktifkan selama ${SFI_DURATION_DAYS} hari!`);
 renderSocialFi();
-saveValidationState();
 }
 function renderSfiFeed() {
 const feed = document.getElementById('sfi-feed');
@@ -3049,7 +2795,7 @@ answer: 'Untuk menarik dana dari akun BossX:<br><br><strong>1.</strong> Buka men
 {
 keywords: ['team developer', 'siapa team', 'tim developer', 'founder', 'ceo bossx'],
 question: 'Siapa team developer BossX?',
-answer: 'Tim di balik BossX Masternode Platform:<br><br><strong>👑 Fery Muliawan</strong> — CEO (Chief Executive Officer)<br>Pendiri dan visioner BossX<br><br><strong>📊 Michael Johnson</strong> — Manager<br>Mengatur tim operasional<br><br><strong>💻 Lee</strong> — CTO (Chief Technology Officer)<br>Infrastruktur teknis & keamanan<br><br><strong>📝 Emily Brown</strong> — Secretary<br>Administrasi & komunikasi'
+answer: 'Tim di balik BossX Crypto Exchange Platform:<br><br><strong>👑 Fery Muliawan</strong> — CEO (Chief Executive Officer)<br>Pendiri dan visioner BossX<br><br><strong>📊 Michael Johnson</strong> — Manager<br>Mengatur tim operasional<br><br><strong>💻 Lee</strong> — CTO (Chief Technology Officer)<br>Infrastruktur teknis & keamanan<br><br><strong>📝 Emily Brown</strong> — Secretary<br>Administrasi & komunikasi'
 },
 {
 keywords: ['masternode', 'validator', 'apa itu masternode', 'cara kerja masternode'],
@@ -3059,7 +2805,7 @@ answer: '<strong>Masternode Validator</strong> adalah node khusus di jaringan Bo
 {
 keywords: ['login', 'cara login', 'masuk akun', 'akun demo'],
 question: 'Bagaimana cara login?',
-answer: 'Untuk login ke BossX Masternode:<br><br><strong>📝 Langkah:</strong><br>1. Buka halaman login BossX<br>2. Masukkan username & password<br>3. Klik "Masuk"<br>4. Anda akan diarahkan ke Dashboard<br><br><strong>💾 Session:</strong> Login tersimpan di browser (localStorage), jadi Anda tidak perlu login ulang setiap kali membuka website.'
+answer: 'Untuk login ke BossX Masternode:<br><br><strong>🔐 Demo Credentials:</strong><br>• Username: <code>admin</code><br>• Password: <code>admin123</code><br><br><strong>📝 Langkah:</strong><br>1. Buka halaman login BossX<br>2. Masukkan username & password<br>3. Klik "Masuk"<br>4. Anda akan diarahkan ke Dashboard<br><br><strong>💾 Session:</strong> Login tersimpan di browser (localStorage), jadi Anda tidak perlu login ulang setiap kali membuka website.'
 },
 {
 keywords: ['p2p', 'peer to peer', 'transfer bossx', 'kirim bossx'],
@@ -3294,7 +3040,7 @@ event.preventDefault();
 sendBossxAIMessage();
 }
 }
-console.log('🚀 BossX Masternode Platform - Final Build Loaded');
+console.log('🚀 Script dimulai');
 checkAuth();
 lucide.createIcons();
 </script>
