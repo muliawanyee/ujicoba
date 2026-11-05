@@ -49,7 +49,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .login-footer { text-align: center; margin-top: 2rem; color: #7DF9FF; font-size: 0.875rem; }
 .login-footer a { color: #00E5FF; text-decoration: none; font-weight: 600; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
 .login-footer a:hover { text-decoration: underline; color: #E0FFFF; }
-
 .login-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: rgba(0, 24, 69, 0.6); padding: 0.4rem; border-radius: 0.75rem; border: 1px solid rgba(0, 229, 255, 0.2); }
 .login-tab-btn { flex: 1; padding: 0.6rem 0.5rem; background: transparent; border: none; color: #7DF9FF; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
 .login-tab-btn:hover { background: rgba(0, 229, 255, 0.1); color: #E0FFFF; }
@@ -69,7 +68,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .login-info-box { background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.25); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 1rem; font-size: 0.8rem; color: #B0E0E6; display: flex; gap: 0.5rem; align-items: flex-start; }
 .login-info-box svg { width: 16px; height: 16px; flex-shrink: 0; color: #00E5FF; margin-top: 1px; }
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
 .gradient-bg { background: linear-gradient(to bottom, #001233, #000814); }
 .gradient-border { border: 2px solid rgba(0, 229, 255, 0.3); box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.05); }
 .hover-scale { transition: transform 0.2s ease-in-out; }
@@ -333,7 +331,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 </div>
 <h1 class="login-title">BossX Masternode</h1>
 <p class="login-subtitle">Masuk ke akun Validator Masternode Anda</p>
-
 <div class="login-tabs">
 <button type="button" class="login-tab-btn active" onclick="switchLoginTab('username')">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -348,9 +345,7 @@ Email
 Gmail
 </button>
 </div>
-
 <div id="login-error" class="login-error">Username atau password salah!</div>
-
 <div id="login-form-username" class="login-form-wrapper active">
 <form id="login-form" onsubmit="return handleLogin(event)">
 <input type="text" id="login-username" class="login-input" placeholder="Username" required autocomplete="username" />
@@ -358,7 +353,6 @@ Gmail
 <button type="submit" id="login-button" class="login-button">Masuk</button>
 </form>
 </div>
-
 <div id="login-form-email" class="login-form-wrapper">
 <form id="login-form-email-form" onsubmit="return handleEmailLogin(event)">
 <input type="email" id="login-email" class="login-input" placeholder="Email Anda (contoh: user@bossx.com)" required autocomplete="email" />
@@ -370,7 +364,6 @@ Gmail
 <span>Masuk pakai email & password BossX Anda</span>
 </div>
 </div>
-
 <div id="login-form-gmail" class="login-form-wrapper">
 <div class="login-info-box">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
@@ -387,7 +380,6 @@ Gmail
 Dengan melanjutkan, Anda menyetujui <a href="#" style="color: #00E5FF;">Syarat & Ketentuan</a> BossX
 </p>
 </div>
-
 <div class="login-divider">atau</div>
 <div class="login-footer">
 <p>Belum punya akun? <a href="#" onclick="showRegisterInfo(); return false;">Daftar sekarang</a></p>
@@ -395,7 +387,6 @@ Dengan melanjutkan, Anda menyetujui <a href="#" style="color: #00E5FF;">Syarat &
 </div>
 </div>
 </div>
-
 <div id="main-app" class="min-h-screen text-white flex main-container" style="display: none; background: #000814;">
 <div id="sidebar" class="sidebar h-screen">
 <div class="p-3 border-b border-cyan-400/30">
@@ -747,7 +738,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-</div>
 <div id="deposit-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between">
@@ -832,21 +822,21 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Total Deposit</h4><i data-lucide="trending-up" class="text-emerald-400 w-5 h-5"></i></div>
-<div id="total-deposits" class="text-2xl font-bold text-white">2</div>
+<div id="total-deposits" class="text-2xl font-bold text-white">0</div>
 <p class="text-sm text-emerald-400 mt-1">Transaksi berhasil</p>
 </div>
 <div class="stat-card p-6">
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Total Amount</h4><i data-lucide="wallet" class="text-cyan-400 w-5 h-5"></i></div>
-<div id="total-amount" class="text-2xl font-bold text-white">351.25</div>
+<div id="total-amount" class="text-2xl font-bold text-white">0.00</div>
 <p id="amount-currency" class="text-sm text-cyan-400 mt-1">USDT</p>
 </div>
 <div class="stat-card p-6">
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Pending</h4><i data-lucide="loader" class="text-cyan-300 w-5 h-5"></i></div>
-<div id="pending-deposits" class="text-2xl font-bold text-white">1</div>
+<div id="pending-deposits" class="text-2xl font-bold text-white">0</div>
 <p class="text-sm text-cyan-300 mt-1">Menunggu konfirmasi</p>
 </div>
 </div>
@@ -1299,7 +1289,6 @@ document.getElementById('main-app').style.display = 'flex';
 showBossxAIFab();
 initializeMainApp();
 }
-
 function switchLoginTab(tab) {
 document.querySelectorAll('.login-tab-btn').forEach(btn => btn.classList.remove('active'));
 document.querySelectorAll('.login-form-wrapper').forEach(form => form.classList.remove('active'));
@@ -1342,7 +1331,6 @@ errorDiv.textContent = '⚠️ Fitur login Google akan segera hadir! Silakan gun
 errorDiv.classList.add('show');
 }, 1500);
 }
-
 function handleLogin(event) {
 event.preventDefault();
 const username = document.getElementById('login-username').value.trim();
@@ -1388,7 +1376,6 @@ function showRegisterInfo() {
 alert('Fitur registrasi akan segera hadir!\nSilakan hubungi admin untuk pendaftaran.');
 return false;
 }
-
 let currentPage = 'private-key';
 let activeTab = 'USDT';
 let activeWithdrawalTab = 'USDT';
@@ -1408,7 +1395,6 @@ let masaBerlaku = 40000000;
 let masaInterval;
 let validationStartTime = null;
 const VALIDATION_STORAGE_KEY = 'bossx_validation_state';
-
 const walletAddresses = {
 USDT: { address: 'TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM&color=00E5FF' },
 BOSSX: { address: 'TTfKjrU18mi223ukVmz6FMNgBkma13kVA3', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTfKjrU18mi223ukVmz6FMNgBkma13kVA3&color=00E5FF' }
@@ -1417,21 +1403,13 @@ const withdrawalConfig = {
 USDT: { networks: { TRC20: { fee: 1, min: 10 }, BEP20: { fee: 1, min: 10 } } },
 BOSSX: { networks: { TRC20: { fee: 0.1, min: 1 } } }
 };
+// ✅ DATA HISTORY DEPOSIT SUDAH DIKOSONGKAN
 const depositHistory = {
-USDT: [
-{ id: '1', amount: 100.50, txHash: 'a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234', fromAddress: 'TXyza123456789012345678901234567890', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '2', amount: 250.75, txHash: 'b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234a1', fromAddress: 'TYzab234567890123456789012345678901', status: 'confirmed', timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '3', amount: 50.00, txHash: 'c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2', fromAddress: 'TZabc345678901234567890123456789012', status: 'pending', timestamp: new Date(Date.now() - 30 * 60 * 1000), confirmationCount: 0 }
-],
-BOSSX: [
-{ id: '4', amount: 1000.0, txHash: 'd4e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3', fromAddress: 'TAbcd456789012345678901234567890123', status: 'confirmed', timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '5', amount: 500.0, txHash: 'e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4', fromAddress: 'TBcde567890123456789012345678901234', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '6', amount: 2000.0, txHash: 'f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
-]
+USDT: [],
+BOSSX: []
 };
 const withdrawalHistory = { USDT: [], BOSSX: [] };
 const p2pHistory = [];
-
 function saveValidationState() {
 try {
 const state = {
@@ -1451,7 +1429,6 @@ localStorage.setItem(VALIDATION_STORAGE_KEY, JSON.stringify(state));
 console.error('Error saving validation state:', e);
 }
 }
-
 function loadValidationState() {
 try {
 const saved = localStorage.getItem(VALIDATION_STORAGE_KEY);
@@ -1472,18 +1449,14 @@ console.error('Error loading validation state:', e);
 return false;
 }
 }
-
 function resumeValidation() {
 if (!isValidationRunning || !validationStartTime) return;
-
 const now = Date.now();
 const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
 const startTime = new Date(validationStartTime);
 const nowDate = new Date(now);
-
 const todaySixAM = new Date(nowDate);
 todaySixAM.setHours(6, 0, 0, 0);
-
 if (startTime < todaySixAM && nowDate >= todaySixAM) {
 const secondsUntilSixAM = (todaySixAM.getTime() - validationStartTime) / 1000;
 if (secondsUntilSixAM >= 60) {
@@ -1506,10 +1479,8 @@ saveValidationState();
 updateBalanceDisplays();
 return;
 }
-
 const elapsedSeconds = (now - validationStartTime) / 1000;
 currentValidationReward = rewardPerSecond * (elapsedSeconds % 60);
-
 const fullCycles = Math.floor(elapsedSeconds / 60);
 if (fullCycles > shareCounter) {
 const missedCycles = fullCycles - shareCounter;
@@ -1518,23 +1489,19 @@ totalRewardBalance += missedReward;
 shareCounter = fullCycles;
 appendLog(`[INFO] Resume: ${missedCycles} auto claim terlewat ditambahkan ke pending reward`);
 }
-
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
 if (powerBtn) { powerBtn.classList.remove('off'); powerBtn.classList.add('on'); }
 if (statusText) { statusText.textContent = 'Auto-stop setiap jam 06:00'; statusText.style.display = 'block'; }
 if (countdownDisplay) countdownDisplay.style.display = 'block';
-
 startCountdown();
 startValidationRunning();
 startMasaCountdown();
-
 appendLog(`[INFO] Validasi diresume dari ${formatDate(startTime)}`);
 saveValidationState();
 updateBalanceDisplays();
 }
-
 function initializeMainApp() {
 try {
 updateClock();
@@ -1747,22 +1714,19 @@ if (el4) el4.textContent = usdtBalance.toFixed(2);
 if (currentPage === 'exchange') updateAvbl();
 if (currentPage === 'private-key') updatePKSummary();
 }
-
 function togglePower() {
-if (!isNodeActive) { 
-showErrorMessage('Aktivasi node terlebih dahulu!'); 
-return; 
+if (!isNodeActive) {
+showErrorMessage('Aktivasi node terlebih dahulu!');
+return;
 }
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
-
 if (isValidationRunning) {
 showErrorMessage('⚠️ Validasi tidak dapat dihentikan manual! Sistem akan auto-stop pada jam 06:00.');
 appendLog('[WARNING] Attempt to manual stop rejected - Auto-stop only at 06:00');
 return;
 }
-
 isValidationRunning = true;
 validationStartTime = Date.now();
 powerBtn.classList.remove('off');
@@ -1777,7 +1741,6 @@ showSuccessMessage('Validasi dimulai! Auto-claim aktif setiap 60 detik. Auto-sto
 saveValidationState();
 lucide.createIcons();
 }
-
 function forceStopValidation(reason = 'otomatis pada jam 06:00') {
 if (!isValidationRunning) return;
 isValidationRunning = false;
@@ -1797,7 +1760,6 @@ showSuccessMessage(`Validasi dihentikan ${reason}. Silakan aktifkan kembali untu
 saveValidationState();
 lucide.createIcons();
 }
-
 function startCountdown() {
 function updateCountdown() {
 const now = new Date();
@@ -1808,7 +1770,7 @@ const diff = target.getTime() - now.getTime();
 const hours = Math.floor(diff / (1000 * 60 * 60));
 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-document.getElementById('countdown-time').textContent = 
+document.getElementById('countdown-time').textContent =
 `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 if (diff <= 0 && isValidationRunning) {
 forceStopValidation('otomatis pada jam 06:00');
@@ -1818,14 +1780,12 @@ return;
 updateCountdown();
 countdownInterval = setInterval(updateCountdown, 1000);
 }
-
 function checkSixAMStop() {
 const now = new Date();
 if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() < 5) {
 if (isValidationRunning) forceStopValidation('otomatis pada jam 06:00');
 }
 }
-
 const PK_STORAGE_KEY = 'bossx_private_keys';
 const PK_FEE = 1;
 const PK_MIN_STAKE = 10;
