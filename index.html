@@ -20,8 +20,95 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
-body { background: #000814; color: #ffffff; overflow-x: hidden; }
+body { background: #000814; color: #ffffff; overflow-x: hidden; transition: background 0.4s ease, color 0.4s ease; }
 :root { --glacier-primary: #00E5FF; --glacier-bright: #00F5FF; --glacier-electric: #7DF9FF; --glacier-ice: #E0FFFF; --glacier-frost: #B0E0E6; --glacier-arctic: #00B8D4; --glacier-deep: #0097A7; --glacier-bg: #000814; --glacier-card: #001233; --glacier-elevated: #001845; --glacier-border: #023E8A; --glacier-success: #00FFC8; --glacier-error: #FF006E; --glacier-warning: #FFBE0B; }
+/* ============================================ */
+/* 🌙 LIGHT MODE STYLES */
+/* ============================================ */
+body.light-mode { background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 50%, #ECFEFF 100%); color: #001233; }
+body.light-mode .sidebar { background: linear-gradient(180deg, #FFFFFF 0%, #E0F2FE 100%); border-right-color: rgba(0, 229, 255, 0.3); }
+body.light-mode .menu-item { color: #001233; }
+body.light-mode .menu-item:hover { background: linear-gradient(90deg, rgba(0, 229, 255, 0.1), transparent); }
+body.light-mode .menu-item.active { background: linear-gradient(90deg, rgba(0, 229, 255, 0.2), rgba(125, 249, 255, 0.1)); color: #00B8D4; }
+body.light-mode .stat-card, body.light-mode .exchange-card, body.light-mode .sfi-post-card, body.light-mode .sfi-compose-card, body.light-mode .sfi-stat-card, body.light-mode .sfi-subscribe-card { background: linear-gradient(145deg, #FFFFFF, #F0F9FF); border-color: rgba(0, 229, 255, 0.3); color: #001233; }
+body.light-mode .stat-card:hover, body.light-mode .exchange-card:hover { border-color: rgba(0, 229, 255, 0.6); }
+body.light-mode .login-card { background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(224, 242, 254, 0.95)); border-color: rgba(0, 229, 255, 0.5); }
+body.light-mode .login-input, body.light-mode .node-input, body.light-mode .bossx-ai-input, body.light-mode .sfi-compose-textarea, body.light-mode .sfi-comment-input, body.light-mode .sfi-media-url-input { background: rgba(255, 255, 255, 0.9); border-color: rgba(0, 229, 255, 0.4); color: #001233; }
+body.light-mode .login-input::placeholder, body.light-mode .node-input::placeholder, body.light-mode .bossx-ai-input::placeholder { color: #00B8D4; opacity: 0.6; }
+body.light-mode .bossx-ai-window { background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(224, 242, 254, 0.98)); border-color: rgba(0, 229, 255, 0.5); }
+body.light-mode .bossx-ai-header { background: linear-gradient(145deg, rgba(240, 249, 255, 0.9), rgba(224, 242, 254, 0.9)); }
+body.light-mode .bossx-ai-header-info h3 { color: #001233; }
+body.light-mode .bossx-ai-header-info p { color: #00B8D4; }
+body.light-mode .bossx-ai-msg.bot .bossx-ai-msg-content { background: rgba(224, 242, 254, 0.8); border-color: rgba(0, 229, 255, 0.3); color: #001233; }
+body.light-mode .bossx-ai-msg.user .bossx-ai-msg-content { background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #FFFFFF; }
+body.light-mode .bossx-ai-footer { background: rgba(240, 249, 255, 0.6); }
+body.light-mode .bossx-ai-thinking-stage { color: #001233; }
+body.light-mode .bossx-ai-context-badge { background: rgba(0, 229, 255, 0.1); color: #00B8D4; }
+body.light-mode .bossx-ai-context-badge.active { background: rgba(0, 255, 200, 0.15); color: #00D4A8; }
+body.light-mode .bossx-ai-context-badge.inactive { background: rgba(255, 0, 110, 0.1); color: #D4005A; }
+body.light-mode .bossx-ai-header-btn { background: rgba(224, 242, 254, 0.8); color: #00B8D4; }
+body.light-mode .bossx-ai-header-btn:hover { background: rgba(0, 229, 255, 0.2); color: #001233; }
+body.light-mode .bossx-ai-clear-btn { background: rgba(255, 0, 110, 0.1); color: #D4005A; }
+body.light-mode header { background: linear-gradient(to right, #FFFFFF, #E0F2FE, #FFFFFF) !important; }
+body.light-mode #time, body.light-mode .frost-text { color: #00B8D4 !important; text-shadow: 0 0 10px rgba(0, 229, 255, 0.3) !important; }
+body.light-mode #date { color: #001233 !important; }
+body.light-mode .text-white { color: #001233 !important; }
+body.light-mode .text-cyan-200, body.light-mode .text-cyan-300, body.light-mode .text-cyan-400 { color: #00B8D4 !important; }
+body.light-mode .text-cyan-100 { color: #001233 !important; }
+body.light-mode .bg-\[\#001233\], body.light-mode .bg-\[\#001845\]\/70, body.light-mode .bg-\[\#001845\] { background: rgba(255, 255, 255, 0.8) !important; }
+body.light-mode .bg-\[\#000814\] { background: #F0F9FF !important; }
+body.light-mode .border-cyan-400\/30, body.light-mode .border-cyan-400\/20 { border-color: rgba(0, 229, 255, 0.3) !important; }
+body.light-mode .pwa-install-banner { background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(224, 242, 254, 0.98)); }
+body.light-mode .pwa-install-title { color: #001233; }
+body.light-mode .pwa-install-desc { color: #00B8D4; }
+body.light-mode .sfi-comment-body { background: rgba(224, 242, 254, 0.6); color: #001233; }
+body.light-mode .sfi-comment-author { color: #00B8D4; }
+body.light-mode .sfi-comment-text { color: #001233; }
+body.light-mode .sfi-post-author { color: #001233; }
+body.light-mode .sfi-post-content { color: #001233; }
+body.light-mode .sfi-action-btn { background: rgba(224, 242, 254, 0.6); color: #00B8D4; }
+body.light-mode .sfi-action-btn:hover { background: rgba(0, 229, 255, 0.15); color: #001233; }
+body.light-mode .sfi-action-btn.liked { background: rgba(255, 0, 110, 0.1); color: #D4005A; }
+body.light-mode .sfi-status-badge.active { background: rgba(0, 255, 200, 0.15); color: #00D4A8; }
+body.light-mode .sfi-status-badge.inactive { background: rgba(255, 0, 110, 0.1); color: #D4005A; }
+body.light-mode .log-entry { color: #00B8D4; }
+body.light-mode .log-entry.auto-claim { color: #00D4A8; }
+body.light-mode .log-entry.pk-success { color: #00B8D4; }
+body.light-mode .log-entry.pk-error { color: #D4005A; }
+body.light-mode .pk-key-row-available { background: rgba(0, 255, 200, 0.1); }
+body.light-mode .pk-key-row-redeemed { background: rgba(0, 229, 255, 0.1); }
+body.light-mode .network-option { background: rgba(255, 255, 255, 0.7); color: #001233; }
+body.light-mode .network-option:hover, body.light-mode .network-option.selected { background: rgba(0, 229, 255, 0.15); }
+body.light-mode .tab-button:not(.active) { background: rgba(255, 255, 255, 0.7); color: #001233; }
+body.light-mode .tab-button.active { color: #FFFFFF !important; }
+body.light-mode .bg-cyan-400\/10, body.light-mode .bg-cyan-400\/15 { background: rgba(0, 229, 255, 0.1) !important; }
+body.light-mode .bg-emerald-400\/15, body.light-mode .bg-emerald-400\/20 { background: rgba(0, 255, 200, 0.1) !important; }
+body.light-mode .bg-rose-500\/10, body.light-mode .bg-rose-500\/5 { background: rgba(255, 0, 110, 0.05) !important; }
+body.light-mode .login-page { background: radial-gradient(ellipse at center, #E0F2FE 0%, #F0F9FF 50%, #FFFFFF 100%); }
+body.light-mode .login-title { background: linear-gradient(145deg, #001233, #00B8D4, #00E5FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+body.light-mode .login-subtitle, body.light-mode .login-footer, body.light-mode .login-divider { color: #001233; }
+body.light-mode .login-tab-btn { color: #00B8D4; }
+body.light-mode .login-tab-btn:hover { background: rgba(0, 229, 255, 0.1); color: #001233; }
+body.light-mode .login-tab-btn.active { background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #FFFFFF; }
+body.light-mode .login-info-box { background: rgba(0, 229, 255, 0.08); color: #001233; }
+body.light-mode .google-btn { background: #FFFFFF; color: #001233; }
+body.light-mode .google-btn-text span:last-child { color: #001233; }
+body.light-mode .exchange-bg { background: radial-gradient(ellipse at center, #E0F2FE 0%, #F0F9FF 50%, #FFFFFF 100%); }
+body.light-mode #running-text { background: linear-gradient(90deg, #00B8D4, #00E5FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+body.light-mode .countdown-timer { color: #00D4A8; }
+body.light-mode .auto-claim-timer { color: #00B8D4; }
+body.light-mode .order-book th { background: rgba(0, 229, 255, 0.1); color: #00B8D4; }
+body.light-mode .order-book td { border-bottom-color: rgba(0, 229, 255, 0.1); color: #001233; }
+body.light-mode .history-table th { background: rgba(0, 229, 255, 0.1); color: #00B8D4; }
+body.light-mode .history-table td { border-bottom-color: rgba(0, 229, 255, 0.1); color: #001233; }
+/* Toggle Button Styles */
+.theme-toggle-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 229, 255, 0.15); border: 2px solid rgba(0, 229, 255, 0.4); color: #00E5FF; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+.theme-toggle-btn:hover { background: rgba(0, 229, 255, 0.25); border-color: #00E5FF; color: #E0FFFF; transform: rotate(180deg) scale(1.1); box-shadow: 0 0 25px rgba(0, 229, 255, 0.5); }
+body.light-mode .theme-toggle-btn { background: rgba(0, 184, 212, 0.15); border-color: rgba(0, 184, 212, 0.4); color: #00B8D4; box-shadow: 0 0 15px rgba(0, 184, 212, 0.3); }
+body.light-mode .theme-toggle-btn:hover { background: rgba(0, 184, 212, 0.25); border-color: #00B8D4; color: #001233; box-shadow: 0 0 25px rgba(0, 184, 212, 0.5); }
+.theme-toggle-btn svg { width: 20px; height: 20px; transition: transform 0.5s ease; }
+/* Smooth transition for all elements */
+body, body *, .stat-card, .exchange-card, .sidebar, header, .login-card, .bossx-ai-window, .pwa-install-banner { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important; }
 .login-page { min-height: 100vh; background: radial-gradient(ellipse at center, #001845 0%, #000814 50%, #000000 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
 .login-page::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, rgba(125, 249, 255, 0.1) 30%, transparent 70%); animation: rotate 30s linear infinite; }
 .login-page::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 30%, rgba(0, 245, 255, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(125, 249, 255, 0.1) 0%, transparent 40%); pointer-events: none; }
@@ -69,7 +156,7 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .hover-scale:hover { transform: scale(1.02); }
 .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
-.sidebar { transition: width 0.3s ease-in-out; width: 14rem; min-width: 14rem; background: linear-gradient(180deg, #001233 0%, #000814 100%); border-right: 2px solid rgba(0, 229, 255, 0.2); box-shadow: inset -10px 0 30px rgba(0, 229, 255, 0.05); }
+.sidebar { transition: width 0.3s ease-in-out, background 0.4s ease; width: 14rem; min-width: 14rem; background: linear-gradient(180deg, #001233 0%, #000814 100%); border-right: 2px solid rgba(0, 229, 255, 0.2); box-shadow: inset -10px 0 30px rgba(0, 229, 255, 0.05); }
 .sidebar.collapsed { width: 4rem; min-width: 4rem; }
 .menu-item { transition: all 0.2s ease-in-out; border: 1px solid transparent; }
 .menu-item:hover { background: linear-gradient(90deg, rgba(0, 229, 255, 0.15), transparent); border-color: rgba(0, 229, 255, 0.3); transform: translateX(4px); box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); }
@@ -486,6 +573,9 @@ Dengan melanjutkan, Anda menyetujui <a href="#" style="color: #00E5FF;">Syarat &
 <i data-lucide="bell" class="w-4 h-4"></i>
 <span class="absolute -top-1 -right-1 bg-rose-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
 </button>
+<button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+<i data-lucide="moon" id="theme-icon"></i>
+</button>
 <div class="flex items-center space-x-2 px-2 py-1 bg-[#001845]/70 rounded-lg border-2 border-cyan-400/30 hover:border-cyan-400/60 transition-colors cursor-pointer">
 <div class="profile-picture">
 <img src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg" alt="Fery Muliawan" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'background: linear-gradient(145deg, #00E5FF, #00B8D4); color: white; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem; border-radius: 50%;\'>FM</div>'" />
@@ -588,7 +678,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <span class="text-xs text-emerald-400">TRC20/BEP20</span>
 </div>
 <div class="text-xl font-bold text-white mt-2">
-<span id="usdt-balance">1000.00</span> <span class="text-sm text-cyan-200">USDT</span>
+<span id="usdt-balance">0.00</span> <span class="text-sm text-cyan-200">USDT</span>
 </div>
 </div>
 <div class="bg-gradient-to-r from-cyan-400/15 to-sky-400/5 border-2 border-cyan-400/30 rounded-lg p-3" style="box-shadow: inset 0 0 15px rgba(0, 229, 255, 0.05);">
@@ -821,7 +911,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-</div>
 <div class="bg-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);">
 <div class="flex items-center justify-between mb-6">
 <h3 class="text-xl font-bold text-white flex items-center">
@@ -881,7 +970,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <i data-lucide="wallet" class="mr-2 text-rose-400 w-6 h-6"></i>Balance <span id="withdrawal-currency">USDT</span>
 </h3>
 <div class="text-center mb-6">
-<div class="text-3xl font-bold text-emerald-400 mb-2" style="text-shadow: 0 0 15px rgba(0, 255, 200, 0.6);"><span id="withdrawal-balance">50.00 USDT</span></div>
+<div class="text-3xl font-bold text-emerald-400 mb-2" style="text-shadow: 0 0 15px rgba(0, 255, 200, 0.6);"><span id="withdrawal-balance">0.00 USDT</span></div>
 <p class="text-sm text-cyan-200">Saldo tersedia</p>
 </div>
 <div class="space-y-4">
@@ -943,7 +1032,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <button id="withdrawal-submit" class="node-button withdrawal-button" onclick="submitWithdrawal()">
 <i data-lucide="send" class="mr-2 w-4 h-4"></i>Submit Withdrawal
 </button>
-</div>
 </div>
 </div>
 </div>
@@ -1223,7 +1311,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <select id="buy-order-type" class="node-input"><option value="limit">Limit</option><option value="market">Market</option></select>
 <input id="buy-amount" type="number" placeholder="Amount" class="node-input" min="0" step="0.01" />
 <input id="buy-price" type="number" placeholder="Price (Limit)" class="node-input" min="0" step="0.01" />
-<p class="text-sm text-cyan-200">AVBL: <span id="buy-avbl">1000 USDT</span></p>
+<p class="text-sm text-cyan-200">AVBL: <span id="buy-avbl">0 USDT</span></p>
 <button class="trade-button buy node-button w-full" onclick="demoTrade('buy')">Buy</button>
 </div>
 <div class="space-y-4">
@@ -1423,7 +1511,7 @@ let countdownInterval;
 let validationInterval;
 let currentValidationReward = 0;
 let totalRewardBalance = 0;
-let usdtBalance = 1000;
+let usdtBalance = 0;
 let bossxBalance = 1000;
 let stakedAmount = 0;
 let shareCounter = 0;
@@ -1475,7 +1563,7 @@ totalRewardBalance = state.totalRewardBalance || 0;
 shareCounter = state.shareCounter || 0;
 masaBerlaku = state.masaBerlaku !== undefined ? state.masaBerlaku : 40000000;
 bossxBalance = state.bossxBalance !== undefined ? state.bossxBalance : 1000;
-usdtBalance = state.usdtBalance !== undefined ? state.usdtBalance : 1000;
+usdtBalance = state.usdtBalance !== undefined ? state.usdtBalance : 0;
 isNodeActive = state.isNodeActive || false;
 return true;
 } catch (e) {
@@ -1553,6 +1641,7 @@ lucide.createIcons();
 if (!isValidationRunning) startMasaCountdown();
 setupEventListeners();
 initBossxAI();
+loadThemePreference();
 setTimeout(() => showSuccessMessage('Selamat datang di BossX Masternode Platform!'), 500);
 } catch (err) {
 console.error('Error di initializeMainApp:', err);
@@ -3019,71 +3108,113 @@ const div = document.createElement('div');
 div.textContent = text;
 return div.innerHTML;
 }
-
+// ============================================
+// 🌙☀️ DARK/LIGHT MODE TOGGLE
+// ============================================
+const THEME_STORAGE_KEY = 'bossx_theme_preference';
+const THEME_ICON_KEY = 'bossx_theme_icon';
+function toggleTheme() {
+const body = document.body;
+const themeIcon = document.getElementById('theme-icon');
+const isLightMode = body.classList.contains('light-mode');
+if (isLightMode) {
+body.classList.remove('light-mode');
+if (themeIcon) {
+themeIcon.setAttribute('data-lucide', 'moon');
+lucide.createIcons();
+}
+localStorage.setItem(THEME_STORAGE_KEY, 'dark');
+showSuccessMessage('🌙 Dark Mode diaktifkan!');
+} else {
+body.classList.add('light-mode');
+if (themeIcon) {
+themeIcon.setAttribute('data-lucide', 'sun');
+lucide.createIcons();
+}
+localStorage.setItem(THEME_STORAGE_KEY, 'light');
+showSuccessMessage('☀️ Light Mode diaktifkan!');
+}
+localStorage.setItem(THEME_ICON_KEY, isLightMode ? 'moon' : 'sun');
+}
+function loadThemePreference() {
+const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+const savedIcon = localStorage.getItem(THEME_ICON_KEY);
+const body = document.body;
+const themeIcon = document.getElementById('theme-icon');
+if (savedTheme === 'light') {
+body.classList.add('light-mode');
+if (themeIcon && savedIcon === 'sun') {
+themeIcon.setAttribute('data-lucide', 'sun');
+}
+} else {
+body.classList.remove('light-mode');
+if (themeIcon) {
+themeIcon.setAttribute('data-lucide', 'moon');
+}
+}
+setTimeout(() => {
+lucide.createIcons();
+}, 100);
+}
 // ============================================
 // 🧠 BOSSX AI AGENT - PREMIUM FEATURES
 // ============================================
-
 const THINKING_STAGES = [
-  { icon: '🔍', text: 'Menganalisis pertanyaan Anda...' },
-  { icon: '🧠', text: 'Membaca data blockchain & whitepaper...' },
-  { icon: '⚡', text: 'Memproses konteks akun Anda...' },
-  { icon: '📊', text: 'Menyusun jawaban terbaik...' }
+{ icon: '🔍', text: 'Menganalisis pertanyaan Anda...' },
+{ icon: '🧠', text: 'Membaca data blockchain & whitepaper...' },
+{ icon: '⚡', text: 'Memproses konteks akun Anda...' },
+{ icon: '📊', text: 'Menyusun jawaban terbaik...' }
 ];
-
 const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>tidak tersedia di whitepaper BossX</strong>. Saya hanya dapat menjawab pertanyaan seputar:<br><br>• Tentang BossX & Masternode<br>• Access Key & Validasi<br>• Deposit & Withdrawal<br>• Reward & Claim<br>• P2P & Referral<br>• SocialFi<br>• Team Developer<br>• <strong>Status akun Anda</strong> (coba tanya: "status saya", "saldo saya")<br><br>Silakan coba pertanyaan lain atau hubungi tim support.';
-
 function getContextualGreeting() {
-  const username = localStorage.getItem('bossx_username') || 'Fery Muliawan';
-  let statusBadge = '';
-  let statusInfo = '';
-  if (isNodeActive) {
-    if (isValidationRunning) {
-      statusBadge = '<span class="bossx-ai-context-badge active">⚡ Node AKTIF • Validasi Berjalan</span>';
-      statusInfo = 'Node Anda sedang <strong style="color:#00FFC8;">AKTIF</strong> dengan stake <strong>' + stakedAmount.toFixed(2) + ' BossX</strong>. Reward mengalir setiap detik! 🚀';
-    } else {
-      statusBadge = '<span class="bossx-ai-context-badge">🔌 Node Siap</span>';
-      statusInfo = 'Node Anda <strong style="color:#00E5FF;">siap</strong> dengan stake <strong>' + stakedAmount.toFixed(2) + ' BossX</strong>. Tekan Power ON untuk mulai validasi.';
-    }
-  } else {
-    statusBadge = '<span class="bossx-ai-context-badge inactive">❌ Node Belum Aktif</span>';
-    statusInfo = 'Node Anda <strong style="color:#FF006E;">belum aktif</strong>. Redeem Access Key untuk mulai mendapatkan reward!';
-  }
-  return '🧊 Halo, <strong>' + username + '</strong>! 👋<br><br>Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX.<br><br>' + statusBadge + '<br><br><em style="color:#7DF9FF;font-size:12px;">' + statusInfo + '</em><br><br>Silakan ketik pertanyaan Anda! 💬';
+const username = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+let statusBadge = '';
+let statusInfo = '';
+if (isNodeActive) {
+if (isValidationRunning) {
+statusBadge = '<span class="bossx-ai-context-badge active">⚡ Node AKTIF • Validasi Berjalan</span>';
+statusInfo = 'Node Anda sedang <strong style="color:#00FFC8;">AKTIF</strong> dengan stake <strong>' + stakedAmount.toFixed(2) + ' BossX</strong>. Reward mengalir setiap detik! 🚀';
+} else {
+statusBadge = '<span class="bossx-ai-context-badge">🔌 Node Siap</span>';
+statusInfo = 'Node Anda <strong style="color:#00E5FF;">siap</strong> dengan stake <strong>' + stakedAmount.toFixed(2) + ' BossX</strong>. Tekan Power ON untuk mulai validasi.';
 }
-
+} else {
+statusBadge = '<span class="bossx-ai-context-badge inactive">❌ Node Belum Aktif</span>';
+statusInfo = 'Node Anda <strong style="color:#FF006E;">belum aktif</strong>. Redeem Access Key untuk mulai mendapatkan reward!';
+}
+return '🧊 Halo, <strong>' + username + '</strong>! 👋<br><br>Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX.<br><br>' + statusBadge + '<br><br><em style="color:#7DF9FF;font-size:12px;">' + statusInfo + '</em><br><br>Silakan ketik pertanyaan Anda! 💬';
+}
 const BOSSX_AI_KB = [
-  { keywords: ['apa itu bossx', 'bossx itu apa', 'tentang bossx'], question: 'Apa itu BossX?', answer: '<strong>BossX</strong> adalah cryptocurrency berbasis <strong>TRC20</strong> (TRON) untuk sistem validator masternode dengan tema Glacier/Ice.' },
-  { keywords: ['cara deposit', 'deposit bagaimana', 'deposit usdt'], question: 'Cara Deposit', answer: '1. Buka menu <strong>Deposit</strong><br>2. Pilih USDT/BOSSX<br>3. Copy alamat wallet<br>4. Kirim crypto Anda<br><br>⚠️ USDT: Network TRC20, min 10 USDT' },
-  { keywords: ['access key', 'apa itu access key', 'private key'], question: 'Access Key', answer: '<strong>Access Key</strong> = kode 25 karakter (A-Z, 0-9) untuk aktivasi node.<br>• Min stake: <strong>10 BossX</strong><br>• Fee: <strong>1 BossX</strong><br>• One-time use' },
-  { keywords: ['reward', 'bagaimana reward', 'auto claim'], question: 'Reward System', answer: 'Rate: <code>0.000000038580246913580247 BossX/detik</code> per 1 BossX stake<br>• Auto claim: <strong>60 detik</strong><br>• Auto stop: <strong>06:00</strong><br>• Masa berlaku: <strong>40.000.000 detik</strong>' },
-  { keywords: ['cara withdrawal', 'tarik dana', 'withdraw'], question: 'Withdrawal', answer: '1. Menu <strong>Withdrawal</strong><br>2. Pilih USDT/BOSSX<br>3. Pilih network (TRC20/BEP20)<br>4. Masukkan alamat & jumlah<br><br>💰 Fee USDT: 1, Min: 10 | Fee BOSSX: 0.1, Min: 1' },
-  { keywords: ['team developer', 'siapa team', 'ceo'], question: 'Team', answer: '👑 <strong>Fery Muliawan</strong> — CEO<br>📊 <strong>Michael Johnson</strong> — Manager<br>💻 <strong>Lee</strong> — CTO<br>📝 <strong>Emily Brown</strong> — Secretary' },
-  { keywords: ['masternode', 'validator'], question: 'Masternode', answer: 'Node khusus untuk validasi transaksi & keamanan blockchain. Reward BossX mengalir otomatis.' },
-  { keywords: ['p2p', 'peer to peer', 'transfer'], question: 'P2P Transfer', answer: 'Transfer BossX ke user lain via <strong>@username</strong>. Min 1 BossX, tanpa fee, instan.' },
-  { keywords: ['referral', 'kode referral'], question: 'Referral', answer: 'Dapatkan reward dengan mengajak teman. Klik "Generate Kode Baru" untuk kode unik Anda.' },
-  { keywords: ['socialfi', 'sosial'], question: 'SocialFi', answer: 'Platform sosial eksklusif holder BossX. Biaya: <strong>1 BossX / 30 hari</strong>. Fitur: post, like, comment, share.' },
-  { keywords: ['status saya', 'status akun', 'node saya', 'apakah node aktif'], question: 'Status Akun', answer: function() {
-    const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
-    if (!isNodeActive) return '📊 <strong>' + u + '</strong>: Node <span style="color:#FF006E">Belum Aktif</span><br>💰 BossX: ' + bossxBalance.toFixed(9) + ' | USDT: ' + usdtBalance.toFixed(2) + '<br>💡 Redeem Access Key untuk mulai!';
-    if (isValidationRunning) return '📊 <strong>' + u + '</strong>: Node <span style="color:#00FFC8">AKTIF ✓</span><br>• Stake: ' + stakedAmount.toFixed(2) + ' BossX<br>• Rate: ' + (stakedAmount * 0.000000038580246913580247).toFixed(12) + ' BossX/dtk<br>• Pending: ' + totalRewardBalance.toFixed(9) + ' BossX<br>• Masa: ' + masaBerlaku.toLocaleString('id-ID') + ' detik';
-    return '📊 <strong>' + u + '</strong>: Node <span style="color:#00E5FF">Siap (Idle)</span><br>• Stake: ' + stakedAmount.toFixed(2) + ' BossX<br>• Pending: ' + totalRewardBalance.toFixed(9) + ' BossX<br>💡 Tekan Power ON!';
-  }},
-  { keywords: ['saldo saya', 'berapa saldo', 'cek saldo'], question: 'Saldo', answer: function() {
-    const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
-    return '💰 <strong>Saldo ' + u + ':</strong><br>• BOSSX: ' + bossxBalance.toFixed(9) + '<br>• USDT: ' + usdtBalance.toFixed(2) + '<br>• Pending Reward: ' + totalRewardBalance.toFixed(9) + '<br>• Staked: ' + stakedAmount.toFixed(9);
-  }},
-  { keywords: ['reward saya', 'berapa reward', 'pendapatan'], question: 'Reward', answer: function() {
-    const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
-    const rateH = stakedAmount * 0.000000038580246913580247 * 3600;
-    return '🎁 <strong>Reward ' + u + ':</strong><br>• Pending: ' + totalRewardBalance.toFixed(9) + ' BossX<br>• Rate: ' + (stakedAmount * 0.000000038580246913580247).toFixed(12) + ' BossX/dtk<br>• Estimasi/jam: ' + rateH.toFixed(6) + ' BossX';
-  }},
-  { keywords: ['siapa saya', 'nama saya', 'profil saya'], question: 'Profil', answer: function() {
-    const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
-    return '👤 <strong>' + u + '</strong><br>• Role: CEO • BossX<br>• Validator ID: 8055x<br>• Status: ' + (isNodeActive ? (isValidationRunning ? '<span style="color:#00FFC8">AKTIF</span>' : '<span style="color:#00E5FF">Siap</span>') : '<span style="color:#FF006E">Belum Aktif</span>');
-  }}
+{ keywords: ['apa itu bossx', 'bossx itu apa', 'tentang bossx'], question: 'Apa itu BossX?', answer: '<strong>BossX</strong> adalah cryptocurrency berbasis <strong>TRC20</strong> (TRON) untuk sistem validator masternode dengan tema Glacier/Ice.' },
+{ keywords: ['cara deposit', 'deposit bagaimana', 'deposit usdt'], question: 'Cara Deposit', answer: '1. Buka menu <strong>Deposit</strong><br>2. Pilih USDT/BOSSX<br>3. Copy alamat wallet<br>4. Kirim crypto Anda<br><br>⚠️ USDT: Network TRC20, min 10 USDT' },
+{ keywords: ['access key', 'apa itu access key', 'private key'], question: 'Access Key', answer: '<strong>Access Key</strong> = kode 25 karakter (A-Z, 0-9) untuk aktivasi node.<br>• Min stake: <strong>10 BossX</strong><br>• Fee: <strong>1 BossX</strong><br>• One-time use' },
+{ keywords: ['reward', 'bagaimana reward', 'auto claim'], question: 'Reward System', answer: 'Rate: <code>0.000000038580246913580247 BossX/detik</code> per 1 BossX stake<br>• Auto claim: <strong>60 detik</strong><br>• Auto stop: <strong>06:00</strong><br>• Masa berlaku: <strong>40.000.000 detik</strong>' },
+{ keywords: ['cara withdrawal', 'tarik dana', 'withdraw'], question: 'Withdrawal', answer: '1. Menu <strong>Withdrawal</strong><br>2. Pilih USDT/BOSSX<br>3. Pilih network (TRC20/BEP20)<br>4. Masukkan alamat & jumlah<br><br>💰 Fee USDT: 1, Min: 10 | Fee BOSSX: 0.1, Min: 1' },
+{ keywords: ['team developer', 'siapa team', 'ceo'], question: 'Team', answer: '👑 <strong>Fery Muliawan</strong> — CEO<br>📊 <strong>Michael Johnson</strong> — Manager<br>💻 <strong>Lee</strong> — CTO<br>📝 <strong>Emily Brown</strong> — Secretary' },
+{ keywords: ['masternode', 'validator'], question: 'Masternode', answer: 'Node khusus untuk validasi transaksi & keamanan blockchain. Reward BossX mengalir otomatis.' },
+{ keywords: ['p2p', 'peer to peer', 'transfer'], question: 'P2P Transfer', answer: 'Transfer BossX ke user lain via <strong>@username</strong>. Min 1 BossX, tanpa fee, instan.' },
+{ keywords: ['referral', 'kode referral'], question: 'Referral', answer: 'Dapatkan reward dengan mengajak teman. Klik "Generate Kode Baru" untuk kode unik Anda.' },
+{ keywords: ['socialfi', 'sosial'], question: 'SocialFi', answer: 'Platform sosial eksklusif holder BossX. Biaya: <strong>1 BossX / 30 hari</strong>. Fitur: post, like, comment, share.' },
+{ keywords: ['status saya', 'status akun', 'node saya', 'apakah node aktif'], question: 'Status Akun', answer: function() {
+const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+if (!isNodeActive) return '📊 <strong>' + u + '</strong>: Node <span style="color:#FF006E">Belum Aktif</span><br>💰 BossX: ' + bossxBalance.toFixed(9) + ' | USDT: ' + usdtBalance.toFixed(2) + '<br>💡 Redeem Access Key untuk mulai!';
+if (isValidationRunning) return '📊 <strong>' + u + '</strong>: Node <span style="color:#00FFC8">AKTIF ✓</span><br>• Stake: ' + stakedAmount.toFixed(2) + ' BossX<br>• Rate: ' + (stakedAmount * 0.000000038580246913580247).toFixed(12) + ' BossX/dtk<br>• Pending: ' + totalRewardBalance.toFixed(9) + ' BossX<br>• Masa: ' + masaBerlaku.toLocaleString('id-ID') + ' detik';
+return '📊 <strong>' + u + '</strong>: Node <span style="color:#00E5FF">Siap (Idle)</span><br>• Stake: ' + stakedAmount.toFixed(2) + ' BossX<br>• Pending: ' + totalRewardBalance.toFixed(9) + ' BossX<br>💡 Tekan Power ON!';
+}},
+{ keywords: ['saldo saya', 'berapa saldo', 'cek saldo'], question: 'Saldo', answer: function() {
+const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+return '💰 <strong>Saldo ' + u + ':</strong><br>• BOSSX: ' + bossxBalance.toFixed(9) + '<br>• USDT: ' + usdtBalance.toFixed(2) + '<br>• Pending Reward: ' + totalRewardBalance.toFixed(9) + '<br>• Staked: ' + stakedAmount.toFixed(9);
+}},
+{ keywords: ['reward saya', 'berapa reward', 'pendapatan'], question: 'Reward', answer: function() {
+const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+const rateH = stakedAmount * 0.000000038580246913580247 * 3600;
+return '🎁 <strong>Reward ' + u + ':</strong><br>• Pending: ' + totalRewardBalance.toFixed(9) + ' BossX<br>• Rate: ' + (stakedAmount * 0.000000038580246913580247).toFixed(12) + ' BossX/dtk<br>• Estimasi/jam: ' + rateH.toFixed(6) + ' BossX';
+}},
+{ keywords: ['siapa saya', 'nama saya', 'profil saya'], question: 'Profil', answer: function() {
+const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+return '👤 <strong>' + u + '</strong><br>• Role: CEO • BossX<br>• Validator ID: 8055x<br>• Status: ' + (isNodeActive ? (isValidationRunning ? '<span style="color:#00FFC8">AKTIF</span>' : '<span style="color:#00E5FF">Siap</span>') : '<span style="color:#FF006E">Belum Aktif</span>');
+}}
 ];
-
 let bossxAIHistory = [];
 let bossxAIIsOpen = false;
 let bossxAIIsMinimized = false;
@@ -3209,43 +3340,40 @@ setTimeout(function() {
 body.scrollTop = body.scrollHeight;
 }, 50);
 }
-
 // 🧠 DEEP THINKING ANIMATION
 function showBossxAITyping() {
-  const body = document.getElementById('bossx-ai-body');
-  const typingDiv = document.createElement('div');
-  typingDiv.className = 'bossx-ai-msg bot';
-  typingDiv.id = 'bossx-ai-typing-indicator';
-  typingDiv.innerHTML = '<div class="bossx-ai-msg-avatar">🤖</div><div class="bossx-ai-msg-content" style="padding: 12px 14px;"><div class="bossx-ai-thinking-stage fade-in" id="thinking-stage-text"><div class="bossx-ai-thinking-spinner"></div><span>' + THINKING_STAGES[0].icon + ' ' + THINKING_STAGES[0].text + '</span></div></div>';
-  body.appendChild(typingDiv);
-  scrollBossxAIToBottom();
-  let currentStage = 0;
-  const stageInterval = setInterval(function() {
-    currentStage++;
-    if (currentStage >= THINKING_STAGES.length) { clearInterval(stageInterval); return; }
-    const stageText = document.getElementById('thinking-stage-text');
-    if (stageText) {
-      stageText.classList.remove('fade-in');
-      stageText.classList.add('fade-out');
-      setTimeout(function() {
-        stageText.innerHTML = '<div class="bossx-ai-thinking-spinner"></div><span>' + THINKING_STAGES[currentStage].icon + ' ' + THINKING_STAGES[currentStage].text + '</span>';
-        stageText.classList.remove('fade-out');
-        stageText.classList.add('fade-in');
-        scrollBossxAIToBottom();
-      }, 300);
-    }
-  }, 2000);
-  typingDiv.dataset.intervalId = stageInterval.toString();
+const body = document.getElementById('bossx-ai-body');
+const typingDiv = document.createElement('div');
+typingDiv.className = 'bossx-ai-msg bot';
+typingDiv.id = 'bossx-ai-typing-indicator';
+typingDiv.innerHTML = '<div class="bossx-ai-msg-avatar">🤖</div><div class="bossx-ai-msg-content" style="padding: 12px 14px;"><div class="bossx-ai-thinking-stage fade-in" id="thinking-stage-text"><div class="bossx-ai-thinking-spinner"></div><span>' + THINKING_STAGES[0].icon + ' ' + THINKING_STAGES[0].text + '</span></div></div>';
+body.appendChild(typingDiv);
+scrollBossxAIToBottom();
+let currentStage = 0;
+const stageInterval = setInterval(function() {
+currentStage++;
+if (currentStage >= THINKING_STAGES.length) { clearInterval(stageInterval); return; }
+const stageText = document.getElementById('thinking-stage-text');
+if (stageText) {
+stageText.classList.remove('fade-in');
+stageText.classList.add('fade-out');
+setTimeout(function() {
+stageText.innerHTML = '<div class="bossx-ai-thinking-spinner"></div><span>' + THINKING_STAGES[currentStage].icon + ' ' + THINKING_STAGES[currentStage].text + '</span>';
+stageText.classList.remove('fade-out');
+stageText.classList.add('fade-in');
+scrollBossxAIToBottom();
+}, 300);
 }
-
+}, 2000);
+typingDiv.dataset.intervalId = stageInterval.toString();
+}
 function hideBossxAITyping() {
-  const typing = document.getElementById('bossx-ai-typing-indicator');
-  if (typing) {
-    if (typing.dataset.intervalId) clearInterval(parseInt(typing.dataset.intervalId));
-    typing.remove();
-  }
+const typing = document.getElementById('bossx-ai-typing-indicator');
+if (typing) {
+if (typing.dataset.intervalId) clearInterval(parseInt(typing.dataset.intervalId));
+typing.remove();
 }
-
+}
 function playBossxAISound() {
 try {
 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -3324,7 +3452,6 @@ event.preventDefault();
 sendBossxAIMessage();
 }
 }
-
 // ============================================
 // PWA INSTALLATION HANDLER
 // ============================================
@@ -3410,10 +3537,10 @@ const installBtn = document.getElementById('pwa-install-btn');
 const closeBtn = document.getElementById('pwa-install-close');
 if (installBtn) installBtn.addEventListener('click', installPWA);
 if (closeBtn) closeBtn.addEventListener('click', dismissPWAInstall);
+loadThemePreference();
 });
 initPWA();
-
-console.log('🚀 BossX Masternode Platform - Premium AI Agent Loaded');
+console.log('🚀 BossX Masternode Platform - Premium AI Agent + Dark/Light Mode Loaded');
 checkAuth();
 lucide.createIcons();
 </script>
